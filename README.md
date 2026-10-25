@@ -2,7 +2,7 @@
 
 ![Factory showcase](docs/media/factory-showcase.gif)
 
-[Watch the 34 s showcase video](docs/media/factory-showcase.mp4)
+[Watch the 34 s showcase video](docs/media/factory-showcase.mp4) (vertical cut: [docs/media/factory-showcase-portrait.mp4](docs/media/factory-showcase-portrait.mp4))
 
 Faceless YouTube channel (`@builtbyagents12`) of **animated "how things actually work" explainers for a general audience** (Shorts of 18-30 s and long-form of 4-10 min; AI is at most 1 in 5 topics). Claude writes each animation as code (HyperFrames), a synthetic voice narrates, every fact is checked, and a terminal "factory" runs the whole pipeline. You approve each video before it is uploaded.
 

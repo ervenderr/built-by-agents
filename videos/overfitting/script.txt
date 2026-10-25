@@ -1,0 +1,6 @@
+Your model can ace every training example and still fail in real life.
+That is overfitting.
+It means the model memorizes the training set so closely that it fails on new data.
+On the whiteboard, a wiggly curve hits every dot perfectly.
+But a simple line would likely predict new points better.
+So watch validation loss, not just training loss.

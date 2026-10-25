@@ -1,0 +1,8 @@
+{
+  "title": "What Is RAG? How AI Looks Things Up (20 Seconds)",
+  "description": "RAG (retrieval-augmented generation) searches an outside knowledge base first, then gives the question and the relevant info to the model, so it can answer with up-to-date facts and cite sources without retraining.\n\nThe refund-policy question and the documents shown are an illustrative example, not a real system.\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #RAG #AI",
+  "tags": ["what is rag", "retrieval augmented generation", "rag explained", "how rag works", "llm", "ai explained", "rag vs fine tuning"],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

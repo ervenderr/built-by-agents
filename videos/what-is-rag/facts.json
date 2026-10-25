@@ -1,0 +1,5 @@
+{"ok": true, "issues": [
+{"line": 1, "severity": "minor", "claim": "Most AI answers come from memory", "verdict": "NEEDS REWORDING", "problem": "\"Most\" is an unquantified statistic; the supportable claim is that a plain LLM answers from knowledge stored in its parameters.", "fix": "A plain AI model answers from memory, but RAG lets it open the book first."},
+{"line": 5, "severity": "minor", "claim": "new facts need no retraining", "verdict": "NEEDS REWORDING", "problem": "Sources say you update the external knowledge base instead of retraining; the sentence omits that step.", "fix": "It answers using them, so you update the knowledge base, not retrain the model."},
+{"line": 6, "severity": "minor", "claim": "It can even cite sources, which beats guessing from memory.", "verdict": "NEEDS REWORDING", "problem": "Citing is supported (AWS, Wikipedia), but 'beats guessing' is rhetoric; Wikipedia notes RAG reduces but does not prevent hallucinations.", "fix": "It can even cite sources, so you can check its answers."}
+]}

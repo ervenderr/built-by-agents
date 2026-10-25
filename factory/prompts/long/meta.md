@@ -1,0 +1,7 @@
+Write the YouTube metadata and thumbnail for ONE long video. Work ONLY in /Users/ervenderr/Projects/youtube-os/videos/{slug}/. Read script/ch*.txt, outline.json, chapters.json, SOURCES.md, README.md and the rules at the top of /Users/ervenderr/Projects/youtube-os/publish/metadata.md.
+1. `metadata.json`: {{"title": ..., "description": ..., "tags": [...], "category_id": "27", "synthetic_media": true, "made_for_kids": false, "thumbnail": "thumbnail.png"}}.
+ - title: max 70 chars, concept in the first 40, a clear promise, no ALL CAPS, no fake clickbait.
+ - description: line 1-2 = what the viewer learns; a blank line; chapter timestamps generated from chapters.json in the form `0:00 Title` (first must be 0:00, at least 3, each at least 10 s apart); then a line on anything illustrative/uncertain; a "Sources" list of the main URLs from SOURCES.md (max 6); then "Narration is a synthetic voice (VoiceStudio). Animation is written as code."; then 2-3 hashtags WITHOUT #Shorts. No < or > characters.
+ - tags: 8-12 search keywords, total under 450 characters.
+2. `thumbnail.png`, 1280x720, under 2 MB: very large readable 3-5 word hook, one clear visual from the video (a snapshot frame via `npx hyperframes snapshot` is fine), accent #00e5a0 on a dark background, no tiny text. You may use /Users/ervenderr/Projects/youtube-os/thumbnail/render.sh (see its header). Look at the image and fix problems.
+Do not set publish_at. Reply with ONE line: DONE <title>.

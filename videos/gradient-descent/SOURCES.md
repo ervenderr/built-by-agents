@@ -1,0 +1,3 @@
+- Google ML Crash Course, Linear regression: Gradient descent: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent (loss, slope of the loss, weights/bias as parameters, small step in the loss-reducing direction)
+- Google ML Crash Course, Hyperparameters: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters (step size scales with slope and learning rate; too large a rate never converges, loss bounces around)
+- General web search results (educational blogs) agreeing that too large a rate overshoots the minimum; not relied on individually.

@@ -1,0 +1,6 @@
+A QR code can lose a quarter of itself and still scan.
+Invented in 1994 for car parts, it hides backup data on purpose.
+Three big corner squares tell your phone where to look.
+The rest holds your link plus extra bytes, using the math that fixes scratched music CDs.
+At the highest setting, thirty percent can be missing.
+So a scuffed QR code usually still works.

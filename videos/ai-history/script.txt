@@ -1,0 +1,6 @@
+In 1956, a Dartmouth workshop launched the field: artificial intelligence.
+In 1997, Deep Blue beat Kasparov: a machine beat the world chess champion.
+In 2012, AlexNet won the ImageNet challenge, and deep learning took the lead.
+In 2017, Attention Is All You Need introduced the Transformer.
+In 2022, ChatGPT launched, and the public finally noticed.
+Five moments, and the gaps keep shrinking.

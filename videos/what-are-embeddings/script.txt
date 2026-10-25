@@ -1,0 +1,6 @@
+What if every word had an address on a map?
+That is an embedding: a list of numbers that places a word as a point in space.
+Words with similar meanings land close together, like cat and dog.
+Words with different meanings land far apart.
+So AI can measure meaning with distance, which powers search, clustering, and recommendations.
+Meaning, turned into coordinates.

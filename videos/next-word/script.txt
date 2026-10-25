@@ -1,0 +1,6 @@
+A language model guesses one token at a time.
+First, it scores every possible next token.
+Then it turns those scores into probabilities.
+Then it samples one, weighted by those odds.
+Temperature decides how adventurous that pick gets.
+Turn it down for focused, turn it up for random.

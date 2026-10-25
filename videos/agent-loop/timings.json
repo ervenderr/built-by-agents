@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "An AI agent isn't magic. It's a loop.",
+    "start": 0.0,
+    "duration": 2.28
+  },
+  {
+    "i": 2,
+    "text": "The model reads your goal, and picks a tool.",
+    "start": 2.53,
+    "duration": 2.22
+  },
+  {
+    "i": 3,
+    "text": "The tool runs, and the result goes back in.",
+    "start": 5.0,
+    "duration": 2.72
+  },
+  {
+    "i": 4,
+    "text": "Then it decides again, until it's done.",
+    "start": 7.97,
+    "duration": 2.48
+  },
+  {
+    "i": 5,
+    "text": "Four common parts: model, instructions, tools, memory.",
+    "start": 10.7,
+    "duration": 3.06
+  },
+  {
+    "i": 6,
+    "text": "Forget a step limit, and it can loop on and on.",
+    "start": 14.01,
+    "duration": 2.88
+  }
+]

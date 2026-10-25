@@ -1,0 +1,17 @@
+{
+  "title": "AI Agents Are Just a Loop (Explained in 20 Seconds)",
+  "description": "An AI agent isn't magic: it's a model, instructions, tools and memory running in a loop, and without a step limit it can loop on and on.\n\nAnimation idea inspired by the strict \"one draw(t), deterministic\" prompt style in yihui-dev/awesome-opus5-5-videos. Narration is a synthetic voice (Kokoro). Animation is written as code.\n\n#Shorts #AIagents #AI",
+  "tags": [
+    "ai agents",
+    "how ai agents work",
+    "agent loop",
+    "llm tools",
+    "tool calling",
+    "ai explained",
+    "artificial intelligence"
+  ],
+  "publish_at": "2026-10-24T22:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

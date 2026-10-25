@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ch01",
+    "title": "The Sun is gone. You wouldn't know.",
+    "start": 0.0,
+    "duration": 42.71
+  },
+  {
+    "id": "ch02",
+    "title": "Why the sky stays bright for 8 minutes",
+    "start": 43.31,
+    "duration": 52.57
+  },
+  {
+    "id": "ch03",
+    "title": "Gravity has a speed limit too",
+    "start": 96.48,
+    "duration": 56.99
+  },
+  {
+    "id": "ch04",
+    "title": "What Earth does at the 8:20 mark",
+    "start": 154.07,
+    "duration": 53.54
+  },
+  {
+    "id": "ch05",
+    "title": "News can't outrun light",
+    "start": 208.21,
+    "duration": 33.9
+  }
+]

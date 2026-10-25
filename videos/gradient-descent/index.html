@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <style>
+      :root {
+        --ground: #111316;
+        --ink: #ffffff;
+        --dim: #9aa1ab;
+        --lava: #ff6a1a;
+        --cyan: #22d3ee;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #gl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 0; }
+      #brand { z-index: 5; position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--cyan); }
+      #title { z-index: 5; position: absolute; left: 0; width: 1080px; top: 225px; text-align: center; font-size: 104px; font-weight: 800; letter-spacing: -2px; line-height: 1; white-space: nowrap; }
+      #title em { color: var(--lava); font-style: normal; }
+      .kick { z-index: 5; position: absolute; left: 0; width: 1080px; top: 380px; text-align: center; font-size: 46px; font-weight: 800; letter-spacing: 1px; color: var(--cyan); white-space: nowrap; }
+      #k6 { color: var(--lava); }
+      .cap { z-index: 5; position: absolute; left: 60px; width: 960px; top: 1140px; height: 190px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 62px; font-weight: 800; line-height: 1.08; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000, 0 0 8px #000; }
+      .cap b { color: var(--lava); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="19" data-width="1080" data-height="1920">
+      <canvas id="gl" width="1080" height="1920"></canvas>
+
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">GRADIENT <em>DESCENT</em></div>
+
+      <div id="k1" class="clip kick" data-start="0" data-duration="2.61" data-track-index="1">ROLL DOWNHILL</div>
+      <div id="k2" class="clip kick" data-start="2.61" data-duration="3.67" data-track-index="1">FLOOR = PARAMETERS &nbsp;·&nbsp; HEIGHT = LOSS</div>
+      <div id="k3" class="clip kick" data-start="6.28" data-duration="2.83" data-track-index="1">SLOPE → DOWNHILL DIRECTION</div>
+      <div id="k4" class="clip kick" data-start="9.11" data-duration="2.49" data-track-index="1">STEP = LEARNING RATE × SLOPE</div>
+      <div id="k5" class="clip kick" data-start="11.6" data-duration="2.24" data-track-index="1">SMALL STEPS → THE VALLEY</div>
+      <div id="k6" class="clip kick" data-start="13.84" data-duration="5.16" data-track-index="1">TOO BIG → OVERSHOOT</div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.61" data-track-index="2"><span>A neural network learns by rolling <b>downhill</b>.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.61" data-duration="3.67" data-track-index="2"><span>Its settings are <b>parameters</b>, and the loss measures how wrong it is.</span></div>
+      <div id="cap3" class="clip cap" data-start="6.28" data-duration="2.83" data-track-index="2"><span>At each step, the <b>slope</b> tells it which way is down.</span></div>
+      <div id="cap4" class="clip cap" data-start="9.11" data-duration="2.49" data-track-index="2"><span>The <b>learning rate</b> sets how big each step is.</span></div>
+      <div id="cap5" class="clip cap" data-start="11.6" data-duration="2.24" data-track-index="2"><span><b>Small</b> steps settle into the valley.</span></div>
+      <div id="cap6" class="clip cap" data-start="13.84" data-duration="5.16" data-track-index="2"><span>Make the learning rate too big, and you <b>overshoot</b> the bottom.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="16.98" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      // ---------- DOM timeline (captions + kickers) ----------
+      const tl = gsap.timeline({ paused: true });
+      const caps = [["#cap1", 0, 2.61], ["#cap2", 2.61, 3.67], ["#cap3", 6.28, 2.83], ["#cap4", 9.11, 2.49], ["#cap5", 11.6, 2.24], ["#cap6", 13.84, 5.16]];
+      caps.forEach(([id, t, d], i) => {
+        tl.fromTo(id + " span", { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      tl.fromTo("#k6", { scale: 1 }, { scale: 1.08, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.inOut", transformOrigin: "50% 50%" }, 16.15);
+      tl.fromTo("#k2", { scale: 1 }, { scale: 1.06, duration: 0.3, yoyo: true, repeat: 1, ease: "power2.inOut", transformOrigin: "50% 50%" }, 5.0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+
+      // ---------- Three.js: pure function of time ----------
+      const clamp01 = (v) => Math.max(0, Math.min(1, v));
+      const ease = (u) => u * u * (3 - 2 * u);
+      const K = 0.25, ZW = 0.4; // surface: h = K (x^2 + 0.4 z^2)
+      const surf = (x, z) => K * (x * x + ZW * z * z);
+      const gradDescent = (lr, n) => {
+        const p = [[-2.2, -0.9]];
+        for (let i = 0; i < n; i++) { const [x, z] = p[i]; p.push([x - lr * 2 * x, z - lr * 2 * ZW * z]); }
+        return p;
+      };
+      const A = gradDescent(0.18, 8);   // small learning rate
+      const B = gradDescent(1.05, 4);   // too large: overshoots, loss grows
+      // hop windows [start, end] per step
+      const HA = [[0.7, 1.5], [8.3, 8.9], [9.2, 9.8], [9.9, 10.5], [10.6, 11.2], [11.8, 12.3], [12.4, 12.9], [13.0, 13.5]];
+      const HB = [[14.5, 15.0], [15.2, 15.7], [15.9, 16.4], [16.6, 17.1]];
+      const BALL_R = 0.25;
+
+      const canvas = document.getElementById("gl");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(1080, 1920, false);
+      renderer.setClearColor(0x111316, 1);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(48, 1080 / 1920, 0.1, 100);
+      camera.setViewOffset(1080, 1920, 0, 40, 1080, 1920); // shift the scene up into the safe band
+
+      scene.add(new THREE.AmbientLight(0x8a8f99, 0.9));
+      const key = new THREE.DirectionalLight(0xffa060, 2.2); key.position.set(-4, 8, 5); scene.add(key);
+      const rim = new THREE.DirectionalLight(0x22d3ee, 1.2); rim.position.set(5, 3, -6); scene.add(rim);
+
+      // loss landscape: lava-orange crest, grey trough
+      const N = 72, W = 3.7, D = 2.4;
+      const geo = new THREE.PlaneGeometry(2 * W, 2 * D, N, N); geo.rotateX(-Math.PI / 2);
+      const pos = geo.attributes.position, col = new Float32Array(pos.count * 3);
+      const cLow = new THREE.Color(0x3a3f47), cHigh = new THREE.Color(0xff6a1a), c = new THREE.Color();
+      for (let i = 0; i < pos.count; i++) {
+        const h = surf(pos.getX(i), pos.getZ(i)); pos.setY(i, h);
+        c.copy(cLow).lerp(cHigh, clamp01(h / 2.0)); col.set([c.r, c.g, c.b], i * 3);
+      }
+      geo.setAttribute("color", new THREE.BufferAttribute(col, 3)); geo.computeVertexNormals();
+      scene.add(new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.75, metalness: 0.05, side: THREE.DoubleSide })));
+      const wgeo = new THREE.PlaneGeometry(2 * W, 2 * D, 28, 12); wgeo.rotateX(-Math.PI / 2);
+      for (let i = 0; i < wgeo.attributes.position.count; i++) wgeo.attributes.position.setY(i, surf(wgeo.attributes.position.getX(i), wgeo.attributes.position.getZ(i)));
+      const wire = new THREE.Mesh(wgeo, new THREE.MeshBasicMaterial({ color: 0x111316, wireframe: true, transparent: true, opacity: 0.45 }));
+      wire.position.y = 0.006; scene.add(wire);
+
+      const ballMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x22d3ee, emissiveIntensity: 0.9, roughness: 0.3 });
+      const ball = new THREE.Mesh(new THREE.SphereGeometry(BALL_R, 32, 24), ballMat); scene.add(ball);
+
+      const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 10); // unit cylinder along Y
+      const mkSeg = (color, r) => { const m = new THREE.Mesh(cylGeo, new THREE.MeshBasicMaterial({ color, transparent: true })); m.userData.r = r; scene.add(m); return m; };
+      const placeSeg = (m, a, b, prog, opacity) => {
+        const dir = new THREE.Vector3().subVectors(b, a), len = dir.length() * prog;
+        m.visible = prog > 0 && opacity > 0;
+        if (!m.visible) return;
+        m.material.opacity = opacity;
+        m.position.copy(a).addScaledVector(dir.normalize(), len / 2);
+        m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+        m.scale.set(m.userData.r, len, m.userData.r);
+      };
+      const at = (p) => new THREE.Vector3(p[0], surf(p[0], p[1]) + BALL_R, p[1]);
+      const onSurf = (p) => new THREE.Vector3(p[0], surf(p[0], p[1]) + 0.03, p[1]);
+      const mkMarkers = (pts, color) => pts.map(() => { const m = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 12), new THREE.MeshBasicMaterial({ color, transparent: true })); scene.add(m); return m; });
+      const segA = A.slice(1).map(() => mkSeg(0x22d3ee, 0.04)), markA = mkMarkers(A, 0x22d3ee);
+      const segB = B.slice(1).map(() => mkSeg(0xfff1e0, 0.045)), markB = mkMarkers(B, 0xfff1e0);
+
+      // parameter marker on the floor + vertical loss line
+      const FLOOR = -0.02;
+      const ring = new THREE.Mesh(new THREE.RingGeometry(0.16, 0.24, 40).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, side: THREE.DoubleSide }));
+      scene.add(ring);
+      const lossLine = mkSeg(0x22d3ee, 0.025);
+      const floorDisc = new THREE.Mesh(new THREE.PlaneGeometry(2 * W, 2 * D).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0x1a1d22, transparent: true, opacity: 0.0 }));
+      floorDisc.position.y = FLOOR - 0.01; scene.add(floorDisc);
+
+      // slope arrow (shaft + cone) pointing downhill along the surface at the ball
+      const arrowShaft = mkSeg(0xffffff, 0.05);
+      const arrowHead = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.36, 16), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true })); scene.add(arrowHead);
+      const minRing = new THREE.Mesh(new THREE.RingGeometry(0.28, 0.36, 48).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, side: THREE.DoubleSide }));
+      minRing.position.set(0, 0.03, 0); scene.add(minRing);
+
+      const ballPath = (pts, hops, t) => { // position along discrete hops, held between them
+        let i = 0;
+        for (let k = 0; k < hops.length; k++) if (t >= hops[k][0]) i = k + 1;
+        if (i === 0) return { p: at(pts[0]), idx: 0, prog: 0 };
+        const [t0, t1] = hops[i - 1], u = ease(clamp01((t - t0) / (t1 - t0)));
+        const a = pts[i - 1], b = pts[i];
+        const x = a[0] + (b[0] - a[0]) * u, z = a[1] + (b[1] - a[1]) * u;
+        const v = new THREE.Vector3(x, surf(x, z) + BALL_R + 0.28 * Math.sin(Math.PI * u), z);
+        return { p: v, idx: i, prog: u };
+      };
+
+      const WN = [0, 2.61, 6.28, 9.11, 11.6, 13.84, 19], WO = [0, 2.42, 6.13, 9.12, 11.66, 13.79, 19];
+      const unwarp = (t) => { let k = 0; while (k < WN.length - 2 && t >= WN[k + 1]) k++; return WO[k] + (WO[k + 1] - WO[k]) * (t - WN[k]) / (WN[k + 1] - WN[k]); };
+      function renderAt(tNew) {
+        const t = unwarp(tNew); // scene below is authored on the old timeline
+        // camera: slow drift, function of t only
+        const az = -0.32 + 0.34 * (t / 19);
+        camera.position.set(18 * Math.sin(az), 8.5 - 0.6 * (t / 19), 18 * Math.cos(az));
+        camera.lookAt(0, 1.1, 0.3);
+        camera.updateProjectionMatrix();
+
+        const inB = t >= 13.8;
+        const fadeA = 1 - clamp01((t - 13.6) / 0.4);       // old path fades as the next sentence starts
+        const appearB = clamp01((t - 13.8) / 0.4);
+        const R = inB ? ballPath(B, HB, t) : ballPath(A, HA, t);
+        ball.position.copy(R.p);
+        ball.material.opacity = 1;
+        ball.visible = t < 13.6 || t >= 13.8;
+        ball.scale.setScalar(inB ? 0.6 + 0.4 * appearB : 1);
+
+        // trail A
+        const hopsA = A.map((_, k) => (k === 0 ? 0 : clamp01((t - HA[k - 1][0]) / (HA[k - 1][1] - HA[k - 1][0]))));
+        segA.forEach((s, k) => placeSeg(s, onSurf(A[k]), onSurf(A[k + 1]), hopsA[k + 1], fadeA));
+        markA.forEach((m, k) => { m.visible = (k === 0 || hopsA[k] >= 1) && fadeA > 0; if (m.visible) { m.position.copy(onSurf(A[k])); m.material.opacity = fadeA; } });
+        // trail B
+        const hopsB = B.map((_, k) => (k === 0 ? 0 : clamp01((t - HB[k - 1][0]) / (HB[k - 1][1] - HB[k - 1][0]))));
+        segB.forEach((s, k) => placeSeg(s, onSurf(B[k]), onSurf(B[k + 1]), hopsB[k + 1], 1));
+        markB.forEach((m, k) => { m.visible = k === 0 ? t >= 13.8 : hopsB[k] >= 1; if (m.visible) { m.position.copy(onSurf(B[k])); m.material.opacity = 1; } });
+        markB[0].material.opacity = appearB;
+
+        // s1 (2.42-6.13): parameters on the floor, loss as height
+        const s1 = clamp01((t - 2.5) / 0.4) * (1 - clamp01((t - 5.7) / 0.4));
+        const bp = R.p;
+        ring.visible = lossLine.visible = s1 > 0;
+        floorDisc.material.opacity = 0.9 * s1;
+        if (s1 > 0) {
+          ring.position.set(bp.x, FLOOR, bp.z); ring.material.opacity = s1;
+          placeSeg(lossLine, new THREE.Vector3(bp.x, FLOOR, bp.z), bp.clone().setY(bp.y - BALL_R), s1, s1);
+        }
+
+        // s2 (6.13-9.1): slope arrow downhill from the ball
+        const s2 = clamp01((t - 6.4) / 0.4) * (1 - clamp01((t - 8.3) / 0.25));
+        arrowShaft.visible = arrowHead.visible = s2 > 0;
+        if (s2 > 0) {
+          const p = A[1], g = [2 * K * p[0], 2 * K * ZW * p[1]], gl = Math.hypot(g[0], g[1]);
+          const d = [-g[0] / gl, -g[1] / gl], slope = -(g[0] * d[0] + g[1] * d[1]);
+          const dir = new THREE.Vector3(d[0], -slope, d[1]).normalize();
+          const start = bp.clone().addScaledVector(dir, 0.25), len = 1.5 * s2;
+          const end = start.clone().addScaledVector(dir, len);
+          placeSeg(arrowShaft, start, end, 1, s2);
+          arrowHead.position.copy(end).addScaledVector(dir, 0.18);
+          arrowHead.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+          arrowHead.material.opacity = s2;
+        }
+
+        // s4: minimum glows
+        const s4 = clamp01((t - 12.8) / 0.5) * fadeA;
+        minRing.visible = s4 > 0; minRing.material.opacity = s4;
+        const pulse = 1 + 0.12 * Math.sin(t * 6);
+        minRing.scale.setScalar(pulse);
+        ballMat.emissiveIntensity = 0.9;
+
+        renderer.render(scene, camera);
+      }
+      window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+      renderAt(0);
+    </script>
+  </body>
+</html>

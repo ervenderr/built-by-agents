@@ -1,0 +1,7 @@
+{
+  "slug": "sql-injection",
+  "working_title": "What Is SQL Injection? Explained in 20 Seconds",
+  "angle": "A character types a trick into a login box and the database runs it as a command instead of text.",
+  "style": "character",
+  "repo_remix": ""
+}

@@ -1,0 +1,16 @@
+{
+  "title": "One Forward Pass Through a Neural Network (3D)",
+  "description": "A forward pass is one trip through a network: numbers go in, each layer mixes them with weights and applies a nonlinearity, and the last layer gives the answer. No learning happens in a forward pass.\n\nInspired by @mdaman010's AI data centre and @lukasersil's showreel prompts (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code (Three.js).\n\n#Shorts #NeuralNetworks #AI",
+  "tags": [
+    "forward pass",
+    "neural network 3d",
+    "deep learning",
+    "activation function",
+    "weights",
+    "ai explained"
+  ],
+  "publish_at": "2026-10-26T09:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

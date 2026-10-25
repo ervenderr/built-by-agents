@@ -1,0 +1,7 @@
+{
+  "slug": "what-is-a-token",
+  "working_title": "What Is a Token? How LLMs Actually Read Text",
+  "angle": "LLMs don't read words. They read chunks called tokens, and that explains odd behavior like miscounting letters.",
+  "style": "kinetic-type",
+  "repo_remix": ""
+}

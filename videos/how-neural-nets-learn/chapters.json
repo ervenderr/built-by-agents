@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ch01",
+    "title": "Nobody typed in the answers",
+    "start": 0.0,
+    "duration": 34.53
+  },
+  {
+    "id": "ch02",
+    "title": "Error: one number for how wrong",
+    "start": 35.13,
+    "duration": 59.42
+  },
+  {
+    "id": "ch03",
+    "title": "Blame: who caused the error?",
+    "start": 95.15,
+    "duration": 53.08
+  },
+  {
+    "id": "ch04",
+    "title": "The small step (and why it must be small)",
+    "start": 148.83,
+    "duration": 53.82
+  },
+  {
+    "id": "ch05",
+    "title": "Recap: less wrong, again",
+    "start": 203.25,
+    "duration": 24.88
+  }
+]

@@ -1,0 +1,5 @@
+{"ok": true, "issues": [
+{"line": 2, "severity": "minor", "claim": "The trick is typing SQL code instead of a username.", "verdict": "NEEDS REWORDING", "problem": "Supported (PortSwigger administrator'-- example), but injection works in any input field, not only usernames.", "fix": "The trick is typing SQL code where the app expects a username."},
+{"line": 6, "severity": "minor", "claim": "Parameterized queries fix it by keeping input as data, never code.", "verdict": "NEEDS REWORDING", "problem": "OWASP says injection is 'best prevented' by parameterized queries; caveats exist (server-side binding, dynamic SQL in stored procedures, identifiers).", "fix": "Parameterized queries stop it by keeping input as data, never code."},
+{"line": 1, "severity": "minor", "claim": "A login box can let a stranger read your database.", "verdict": "VERIFIED", "problem": "Hedged with 'can'; reading data is supported by OWASP and PortSwigger, login forms are a classic vector.", "fix": "A login box can let a stranger read your database."}
+]}

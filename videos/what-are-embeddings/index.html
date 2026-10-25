@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <style>
+      :root {
+        --ground: #070b1a;
+        --ink: #ffffff;
+        --dim: #8f9bbd;
+        --accent: #00e5a0;
+        --amber: #ffb020;
+        --pink: #ff5d8f;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #gl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 0; }
+      #brand { z-index: 5; position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--accent); }
+      #title { z-index: 5; position: absolute; left: 0; width: 1080px; top: 235px; text-align: center; font-size: 84px; font-weight: 800; letter-spacing: -2px; line-height: 1; white-space: nowrap; }
+      #title em { color: var(--accent); font-style: normal; }
+      .kick { z-index: 5; position: absolute; left: 0; width: 1080px; top: 355px; text-align: center; font-size: 46px; font-weight: 800; letter-spacing: 1px; color: var(--dim); white-space: nowrap; }
+      #ill { z-index: 5; position: absolute; left: 0; width: 1080px; top: 425px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 3px; color: var(--dim); white-space: nowrap; }
+      #ill b { color: var(--amber); }
+      #readout { z-index: 5; position: absolute; left: 90px; width: 900px; top: 490px; height: 96px; border-radius: 24px; background: #121a38; border: 4px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 800; letter-spacing: 1px; white-space: nowrap; }
+      #readout b { color: var(--accent); }
+      .lab { z-index: 4; position: absolute; left: 0; top: 0; padding: 4px 18px 6px; border-radius: 18px; background: #070b1acc; font-size: 46px; font-weight: 800; white-space: nowrap; opacity: 0; transform: translate(-50%, -150%); }
+      .tag { z-index: 4; position: absolute; left: 0; top: 0; padding: 4px 20px 6px; border-radius: 18px; font-size: 44px; font-weight: 800; letter-spacing: 3px; white-space: nowrap; opacity: 0; transform: translate(-50%, 70%); color: #070b1a; }
+      #chips { z-index: 5; position: absolute; left: 0; width: 1080px; top: 490px; display: flex; justify-content: center; gap: 18px; }
+      .chip { padding: 12px 26px; border-radius: 22px; background: #121a38; border: 4px solid var(--accent); font-size: 38px; font-weight: 800; opacity: 0; }
+      .cap { z-index: 5; position: absolute; left: 60px; width: 960px; top: 1150px; height: 190px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 800; line-height: 1.08; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000, 0 0 8px #000; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.5" data-width="1080" data-height="1920">
+      <canvas id="gl" width="1080" height="1920"></canvas>
+
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">WORDS GET AN <em>ADDRESS</em></div>
+
+      <div id="k1" class="clip kick" data-start="0" data-duration="2.44" data-track-index="1">WORDS, SCATTERED ON A MAP</div>
+      <div id="k2" class="clip kick" data-start="2.44" data-duration="4.27" data-track-index="1">EMBEDDING = LIST OF NUMBERS</div>
+      <div id="k3" class="clip kick" data-start="6.71" data-duration="3.81" data-track-index="1">SIMILAR MEANING → CLOSE</div>
+      <div id="k4" class="clip kick" data-start="10.52" data-duration="2.77" data-track-index="1">DIFFERENT MEANING → FAR</div>
+      <div id="k5" class="clip kick" data-start="13.29" data-duration="5.16" data-track-index="1">DISTANCE = SIMILARITY</div>
+      <div id="k6" class="clip kick" data-start="18.45" data-duration="4.05" data-track-index="1">MEANING = COORDINATES</div>
+
+      <div id="ill">ILLUSTRATIVE: <b>3 NUMBERS</b> SHOWN · REAL ONES USE HUNDREDS</div>
+      <div id="readout">cat → [ <b id="r0">0.00</b>, <b id="r1">0.00</b>, <b id="r2">0.00</b> ]</div>
+
+      <div id="lab-cat" class="lab" data-layout-allow-overlap style="color:#00e5a0">cat</div>
+      <div id="lab-dog" class="lab" data-layout-allow-overlap style="color:#00e5a0">dog</div>
+      <div id="lab-car" class="lab" data-layout-allow-overlap style="color:#ffb020">car</div>
+      <div id="lab-pizza" class="lab" data-layout-allow-overlap style="color:#ff5d8f">pizza</div>
+      <div id="tag-near" class="tag" data-layout-allow-overlap style="background:#00e5a0">CLOSE</div>
+      <div id="tag-far" class="tag" data-layout-allow-overlap style="background:#ff5d8f">FAR</div>
+
+      <div id="chips"><div class="chip" id="ch1">search</div><div class="chip" id="ch2">clustering</div><div class="chip" id="ch3">recommendations</div></div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.44" data-track-index="2"><span>What if every word had an <b>address</b> on a map?</span></div>
+      <div id="cap2" class="clip cap" data-start="2.44" data-duration="4.27" data-track-index="2"><span>An <b>embedding</b> is a list of numbers that places a word as a point.</span></div>
+      <div id="cap3" class="clip cap" data-start="6.71" data-duration="3.81" data-track-index="2"><span><b>Similar</b> meanings land close together, like cat and dog.</span></div>
+      <div id="cap4" class="clip cap" data-start="10.52" data-duration="2.77" data-track-index="2"><span>Different meanings land <b>far apart</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="13.29" data-duration="5.16" data-track-index="2"><span>AI measures meaning with <b>distance</b>: search, clustering, recommendations.</span></div>
+      <div id="cap6" class="clip cap" data-start="18.45" data-duration="4.05" data-track-index="2"><span>Meaning, turned into <b>coordinates</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="20.5" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      // ---------- DOM timeline: captions, kickers, readout, chips ----------
+      const tl = gsap.timeline({ paused: true });
+      const caps = [["#cap1", 0, 2.44], ["#cap2", 2.44, 4.27], ["#cap3", 6.71, 3.81], ["#cap4", 10.52, 2.77], ["#cap5", 13.29, 5.16], ["#cap6", 18.45, 4.05]];
+      caps.forEach(([id, t, d], i) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      tl.fromTo("#readout", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.0);
+      tl.to("#readout", { opacity: 0, duration: 0.25 }, 6.45);
+      const num = { a: 0 };
+      tl.fromTo(num, { a: 0 }, { a: 1, duration: 1.2, ease: "power2.out", onUpdate() {
+        document.getElementById("r0").textContent = (0.82 * num.a).toFixed(2);
+        document.getElementById("r1").textContent = (-0.31 * num.a).toFixed(2);
+        document.getElementById("r2").textContent = (0.57 * num.a).toFixed(2);
+      } }, 3.1);
+      tl.fromTo("#ill", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.9);
+      tl.fromTo(["#ch1", "#ch2", "#ch3"], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)", stagger: 0.8 }, 16.0);
+      tl.to(["#ch1", "#ch2", "#ch3"], { opacity: 0, duration: 0.25 }, 18.3);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+
+      // ---------- Three.js: pure function of time ----------
+      const clamp01 = (v) => Math.max(0, Math.min(1, v));
+      const sm = (u) => u * u * (3 - 2 * u);
+      const win = (t, a, b) => clamp01((t - a) / (b - a));
+      function rng(seed) { return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let x = Math.imul(seed ^ (seed >>> 15), 1 | seed); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+      const rand = rng(42);
+      const V = (x, y, z) => new THREE.Vector3(x, y, z);
+
+      const canvas = document.getElementById("gl");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(1080, 1920, false);
+      renderer.setClearColor(0x070b1a, 1);
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x070b1a, 14, 30);
+      const camera = new THREE.PerspectiveCamera(60, 1080 / 1920, 0.1, 100);
+      camera.setViewOffset(1080, 1920, 0, 110, 1080, 1920); // push the map down into the safe band
+
+      // map: floor grid + three axes
+      const grid = new THREE.GridHelper(16, 16, 0x2a3a78, 0x1a2552); grid.position.y = -2.2; scene.add(grid);
+      const axis = (a, b, c) => { const g = new THREE.BufferGeometry().setFromPoints([a, b]); scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color: c }))); };
+      axis(V(-5, -2.2, 0), V(5, -2.2, 0), 0x4a5fb0); axis(V(0, -2.2, -5), V(0, -2.2, 5), 0x4a5fb0); axis(V(0, -2.2, 0), V(0, 3.5, 0), 0x4a5fb0);
+
+      // points: each has a scattered start and a clustered end
+      const CL = { animal: { c: V(-2.4, 0.6, 0), col: 0x00e5a0 }, vehicle: { c: V(2.5, -0.5, 0.6), col: 0xffb020 }, food: { c: V(0.3, 1.9, -2.2), col: 0xff5d8f } };
+      const pts = [];
+      const mk = (kind, end, start, r, named) => {
+        const m = new THREE.Mesh(new THREE.SphereGeometry(r, 20, 14), new THREE.MeshBasicMaterial({ color: 0x8f9bbd }));
+        scene.add(m);
+        pts.push({ kind, end, start, r, named, mesh: m, delay: rand() * 0.8 });
+      };
+      const scat = () => V((rand() - 0.5) * 8, (rand() - 0.5) * 5, (rand() - 0.5) * 8);
+      const near = (c, s) => V(c.x + (rand() - 0.5) * s, c.y + (rand() - 0.5) * s * 0.8, c.z + (rand() - 0.5) * s);
+      // named hero points first (indexes 0..3)
+      mk("animal", V(-2.55, 0.5, 0.2), V(1.4, -0.6, 1.6), 0.2, "cat");
+      mk("animal", V(-1.95, 0.85, -0.1), V(-3.2, 1.7, -1.2), 0.2, "dog");
+      mk("vehicle", V(2.7, -0.6, 0.7), V(2.7, -0.6, 0.7), 0.2, "car");
+      mk("food", V(0.4, 2.0, -2.1), V(0.4, 2.0, -2.1), 0.2, "pizza");
+      Object.keys(CL).forEach((k) => { for (let i = 0; i < 24; i++) mk(k, near(CL[k].c, 2.2), scat(), 0.08, null); });
+      for (let i = 0; i < 16; i++) mk("noise", scat(), scat(), 0.07, null);
+      const [CAT, DOG, CAR, PIZZA] = pts;
+
+      // line segments (unit cylinder along Y)
+      const cyl = new THREE.CylinderGeometry(1, 1, 1, 10);
+      const mkSeg = (color, r) => { const m = new THREE.Mesh(cyl, new THREE.MeshBasicMaterial({ color, transparent: true })); m.visible = false; scene.add(m); return m; };
+      const place = (m, a, b, prog, op) => {
+        const dir = new THREE.Vector3().subVectors(b, a), len = dir.length() * prog;
+        m.visible = prog > 0 && op > 0; if (!m.visible) return;
+        m.material.opacity = op; m.position.copy(a).addScaledVector(dir.normalize(), len / 2);
+        m.quaternion.setFromUnitVectors(V(0, 1, 0), dir); m.scale.set(0.035, len, 0.035);
+      };
+      const segNear = mkSeg(0x00e5a0), segFar = mkSeg(0xff5d8f);
+      // neighbourhood shell around cat (search)
+      const shell = new THREE.Mesh(new THREE.SphereGeometry(1, 28, 20), new THREE.MeshBasicMaterial({ color: 0x00e5a0, wireframe: true, transparent: true, opacity: 0 }));
+      scene.add(shell);
+
+      // camera keyframes [t, pos, look]
+      const KF = [
+        [0, V(6, 4, 14), V(0, 0.2, 0)],
+        [2.44, V(3.5, 2.5, 11), V(0.2, 0.2, 0.3)],
+        [6.71, V(0.5, 2.4, 10.5), V(0, 0.3, 0)],
+        [8.8, V(-1.3, 1.7, 6), V(-2.25, 0.65, 0.05)],
+        [10.52, V(-0.8, 1.9, 7.2), V(-2.2, 0.6, 0)],
+        [12.0, V(0.3, 2.6, 12), V(0.2, 0, 0.4)],
+        [13.29, V(0.4, 3.4, 12.5), V(0.1, 0.4, 0)],
+        [18.45, V(-3.2, 3.8, 12.5), V(0, 0.4, 0)],
+        [22.5, V(-5, 4, 12.5), V(0, 0.4, 0)],
+      ];
+      const camAt = (t) => {
+        let k = 0; while (k < KF.length - 2 && t >= KF[k + 1][0]) k++;
+        const u = sm(clamp01((t - KF[k][0]) / (KF[k + 1][0] - KF[k][0])));
+        return [KF[k][1].clone().lerp(KF[k + 1][1], u), KF[k][2].clone().lerp(KF[k + 1][2], u)];
+      };
+
+      const colA = new THREE.Color(), colB = new THREE.Color(), HIGH = new THREE.Color(0x00e5a0), GREY = new THREE.Color(0x8f9bbd);
+      const labels = [["lab-cat", CAT, 3.0, 22.5], ["lab-dog", DOG, 6.3, 22.5], ["lab-car", CAR, 10.3, 22.5], ["lab-pizza", PIZZA, 18.5, 22.5]];
+      const tags = [["tag-near", 8.6, 10.3], ["tag-far", 11.3, 13.0]];
+      const toScreen = (v) => { const p = v.clone().project(camera); return [(p.x * 0.5 + 0.5) * 1080, (-p.y * 0.5 + 0.5) * 1920]; };
+      const setBox = (el, v, op, dy = 0) => { const s = toScreen(v); el.style.left = s[0] + "px"; el.style.top = (s[1] + dy) + "px"; el.style.opacity = op; };
+
+      function renderAt(t) {
+        const [cp, cl] = camAt(t);
+        camera.position.copy(cp); camera.lookAt(cl); camera.updateMatrixWorld(); camera.updateProjectionMatrix();
+
+        // points drift to their clusters (6.7-8.6) and are tinted by cluster
+        const tint = win(t, 7.0, 8.0);
+        const R = 2.4 * sm(win(t, 15.3, 17.8)); // search radius around cat
+        pts.forEach((p) => {
+          const u = sm(win(t, 6.7 + p.delay, 8.4 + p.delay));
+          const bob = (p.named ? 0 : 0.06) * Math.sin(t * 1.3 + p.delay * 20);
+          p.mesh.position.copy(p.start).lerp(p.end, u); p.mesh.position.y += bob;
+          const cc = CL[p.kind] ? CL[p.kind].col : 0x8f9bbd;
+          colA.copy(GREY).lerp(colB.set(cc), p.named ? 1 : tint);
+          if (p.named === "cat" || p.named === "dog") colA.set(0x00e5a0);
+          if (R > 0 && !p.named && p.mesh.position.distanceTo(CAT.mesh.position) < R) colA.copy(HIGH);
+          p.mesh.material.color.copy(colA);
+          const pulse = p.named === "cat" ? 1 + 0.35 * Math.sin(t * 5) * win(t, 3, 3.6) * (1 - win(t, 6.2, 6.6)) : 1;
+          p.mesh.scale.setScalar(pulse * (p.named ? 1 + 0.25 * (t > 2.44 ? 1 : 0) : 1));
+        });
+
+        // close line cat-dog (8.6-10.3), far line cat-car (11.3-13.0)
+        const a = CAT.mesh.position, b = DOG.mesh.position, c = CAR.mesh.position;
+        place(segNear, a, b, sm(win(t, 8.6, 9.2)), 1 - win(t, 10.3, 10.52));
+        place(segFar, a, c, sm(win(t, 11.0, 11.8)), 1 - win(t, 13.0, 13.29));
+        shell.position.copy(a); shell.scale.setScalar(Math.max(R, 0.001));
+        shell.material.opacity = 0.35 * win(t, 15.3, 15.6) * (1 - win(t, 17.8, 18.4));
+
+        labels.forEach(([id, p, t0, t1]) => setBox(document.getElementById(id), p.mesh.position, win(t, t0, t0 + 0.3) * (t < t1 ? 1 : 0)));
+        setBox(document.getElementById("tag-near"), a.clone().lerp(b, 0.5), win(t, 9.0, 9.3) * (1 - win(t, 10.3, 10.52)));
+        setBox(document.getElementById("tag-far"), a.clone().lerp(c, 0.5), win(t, 11.6, 11.9) * (1 - win(t, 13.0, 13.29)));
+        renderer.render(scene, camera);
+      }
+      window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+      renderAt(0);
+    </script>
+  </body>
+</html>

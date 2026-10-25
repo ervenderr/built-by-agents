@@ -1,0 +1,6 @@
+An AI agent isn't magic. It's a loop.
+The model reads your goal, and picks a tool.
+The tool runs, and the result goes back in.
+Then it decides again, until it's done.
+Four common parts: model, instructions, tools, memory.
+Forget a step limit, and it can loop on and on.

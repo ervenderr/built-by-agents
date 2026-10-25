@@ -1,0 +1,44 @@
+[
+  {
+    "i": 1,
+    "text": "A neural network is just layers of simple units.",
+    "start": 0.0,
+    "duration": 2.81
+  },
+  {
+    "i": 2,
+    "text": "Every connection between units has a weight.",
+    "start": 3.06,
+    "duration": 2.54
+  },
+  {
+    "i": 3,
+    "text": "The signal flows forward, through a hidden layer, to an output.",
+    "start": 5.85,
+    "duration": 3.25
+  },
+  {
+    "i": 4,
+    "text": "The output is compared with the right answer.",
+    "start": 9.35,
+    "duration": 2.46
+  },
+  {
+    "i": 5,
+    "text": "The gap between them is the error.",
+    "start": 12.06,
+    "duration": 2.09
+  },
+  {
+    "i": 6,
+    "text": "Learning means nudging the weights to shrink that error.",
+    "start": 14.4,
+    "duration": 2.9
+  },
+  {
+    "i": 7,
+    "text": "Repeat that many times, and the network improves.",
+    "start": 17.55,
+    "duration": 3.2
+  }
+]

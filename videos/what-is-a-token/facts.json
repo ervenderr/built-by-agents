@@ -1,0 +1,4 @@
+{"ok": true, "issues": [
+{"line": 5, "severity": "minor", "claim": "Andrej Karpathy traces its spelling mistakes back to tokenization.", "verdict": "NEEDS REWORDING", "problem": "'its' is ambiguous (the AI's). Karpathy's lecture notes give a one-line attribution ('Why can't LLM spell words? Tokenization.') and call it a source of weirdness, not the sole cause.", "fix": "Andrej Karpathy points to tokenization as a reason language models struggle with spelling."},
+{"line": 6, "severity": "minor", "claim": "So when it fumbles spelling, blame the chunks.", "verdict": "NEEDS REWORDING", "problem": "Rhetorical; implies tokenization is the only cause, while sources say it is a main contributor.", "fix": "So when it fumbles spelling, the chunks are a big part of why."}
+]}

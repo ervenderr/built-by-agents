@@ -1,0 +1,7 @@
+So here is the whole loop.
+Measure the error, assign blame to each weight, take a small step, and repeat.
+Backpropagation is what makes gradient descent feasible for networks with many layers.
+The network never memorized an answer, it just got a little less wrong each time.
+But stack many layers, and the blame signal can shrink as it travels backward.
+Those vanishing gradients make layers train very slowly, or not at all.
+That problem is worth understanding next.

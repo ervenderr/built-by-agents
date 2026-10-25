@@ -1,0 +1,58 @@
+Nobody ever typed the answer into a neural network, and that is the strangest thing about them.
+Take a classic network that reads handwritten digits, with two hidden layers of sixteen neurons each.
+It has thirteen thousand and two weights and biases that can be adjusted.
+No human sets those by hand, and at the start they are random, so a seven produces garbage.
+So how does random turn into skilled?
+My claim: the network never learns an answer, it gets nudged slightly less wrong, millions of times.
+Learning just means changing the weights and biases to minimize a cost function.
+It happens through one loop with three parts: error, blame, and a small step.
+Start with error, because a network can only improve at something it can measure.
+The network outputs ten activations, one for each digit, and we know the answer we wanted.
+Take the gap between each output and its desired value, and square it.
+Then add up all those squares.
+For example, a guess of zero point one where the answer is one point zero gives a squared error of zero point eight one.
+Do this for every training example and take the average.
+That average is the cost, one number saying how wrong the whole network is.
+Millions of messy mistakes get squeezed into a single score.
+Learning then becomes a clear job: lower that score.
+The method is gradient descent, an iterative way of lowering a loss function.
+You compute the gradient, then move the weights a small step in the opposite direction.
+Google's machine learning course gives the same loop: calculate the loss, find the direction, move a small amount, and repeat.
+You stop when the loss can no longer drop.
+But thirteen thousand weights all affect that one number differently.
+Coming up: how the network works out which weights deserve the blame.
+So the cost is high. Which weights caused it?
+The answer is an algorithm called backpropagation.
+It computes the negative gradient of the cost, the direction that lowers the cost most efficiently.
+Think of it as handing out blame, weight by weight.
+A weight that multiplies a strongly active neuron has a large influence on the output.
+So the best adjustment is in proportion to those activations.
+Weights attached to quiet neurons barely change.
+But how do you do this for thousands of weights without going mad?
+Backpropagation works backward from the output, applying the chain rule again and again.
+Each piece computes only its own local effect and needs nothing else.
+The Stanford course notes call this a beautifully local process.
+Pieces pass a gradient signal back, saying whether they want their outputs pushed up or down.
+Each layer's result is computed once and reused for earlier layers, not recomputed for every weight.
+The error flows backward, and every weight gets its share of the blame.
+Now every weight knows which way to move, but not how far.
+The gradient gives a direction, never a distance.
+Picture the cost as terrain, and you as a hiker with a blindfold on, feeling the slope and stepping downhill.
+If your step is too low, progress is steady but slow.
+If it is too high, you go faster but it is riskier, and you can leap over the valley.
+Stanford's notes call step size one of the most important, and most headache-inducing, settings in training.
+So each step stays small, and you take a great many.
+Checking every example before each step would take forever.
+Instead the network looks at a small batch of data and steps from that.
+It is a noisy estimate, but on average it points the right way, because the errors cancel out.
+Three Blue One Brown compares it to a drunk man stumbling downhill, but taking quick steps.
+The path zigzags, yet it still heads down.
+When more steps stop reducing the loss, the model has converged.
+That is learning: not one brilliant leap, but millions of small nudges.
+So here is the whole loop.
+Measure the error, assign blame to each weight, take a small step, and repeat.
+Backpropagation is what makes gradient descent feasible for networks with many layers.
+The network never memorized an answer, it just got a little less wrong each time.
+But stack many layers, and the blame signal can shrink as it travels backward.
+Those vanishing gradients make layers train very slowly, or not at all.
+That problem is worth understanding next.

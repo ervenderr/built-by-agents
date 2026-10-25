@@ -1,0 +1,5 @@
+{"ok": true, "issues": [
+{"line": 4, "severity": "minor", "claim": "Words with different meanings land far apart.", "verdict": "NEEDS REWORDING", "problem": "Sources (OpenAI: large distances suggest low relatedness; Wikipedia: closer words are expected to be similar) describe a tendency, not a guarantee.", "fix": "Words with different meanings tend to land far apart."},
+{"line": 5, "severity": "minor", "claim": "So AI can measure meaning with distance", "verdict": "NEEDS REWORDING", "problem": "OpenAI says distance measures relatedness; 'measure meaning' is slightly stronger.", "fix": "So AI can measure how related two things are by distance, which powers search, clustering, and recommendations."},
+{"line": 2, "severity": "minor", "claim": "a list of numbers that places a word as a point in space", "verdict": "VERIFIED", "problem": "Verified (OpenAI: vector/list of floats; Jurafsky & Martin text: word as a point in a multidimensional space). Embeddings also exist for sentences, images, etc., so 'a word' is a simplification.", "fix": "That is an embedding: a list of numbers that places a word, or any piece of text, as a point in space."}
+]}

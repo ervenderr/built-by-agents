@@ -1,0 +1,86 @@
+[
+  {
+    "i": 1,
+    "text": "Now every weight knows which way to move, but not how far.",
+    "start": 0.0,
+    "duration": 2.72
+  },
+  {
+    "i": 2,
+    "text": "The gradient gives a direction, never a distance.",
+    "start": 2.97,
+    "duration": 2.48
+  },
+  {
+    "i": 3,
+    "text": "Picture the cost as terrain, and you as a hiker with a blindfold on, feeling the slope and stepping downhill.",
+    "start": 5.7,
+    "duration": 5.43
+  },
+  {
+    "i": 4,
+    "text": "If your step is too low, progress is steady but slow.",
+    "start": 11.38,
+    "duration": 2.8
+  },
+  {
+    "i": 5,
+    "text": "If it is too high, you go faster but it is riskier, and you can leap over the valley.",
+    "start": 14.43,
+    "duration": 3.89
+  },
+  {
+    "i": 6,
+    "text": "Stanford's notes call step size one of the most important, and most headache-inducing, settings in training.",
+    "start": 18.57,
+    "duration": 5.67
+  },
+  {
+    "i": 7,
+    "text": "So each step stays small, and you take a great many.",
+    "start": 24.49,
+    "duration": 2.73
+  },
+  {
+    "i": 8,
+    "text": "Checking every example before each step would take forever.",
+    "start": 27.47,
+    "duration": 2.89
+  },
+  {
+    "i": 9,
+    "text": "Instead the network looks at a small batch of data and steps from that.",
+    "start": 30.61,
+    "duration": 3.38
+  },
+  {
+    "i": 10,
+    "text": "It is a noisy estimate, but on average it points the right way, because the errors cancel out.",
+    "start": 34.24,
+    "duration": 4.58
+  },
+  {
+    "i": 11,
+    "text": "Three Blue One Brown compares it to a drunk man stumbling downhill, but taking quick steps.",
+    "start": 39.07,
+    "duration": 4.8
+  },
+  {
+    "i": 12,
+    "text": "The path zigzags, yet it still heads down.",
+    "start": 44.12,
+    "duration": 2.28
+  },
+  {
+    "i": 13,
+    "text": "When more steps stop reducing the loss, the model has converged.",
+    "start": 46.65,
+    "duration": 3.33
+  },
+  {
+    "i": 14,
+    "text": "That is learning: not one brilliant leap, but millions of small nudges.",
+    "start": 50.23,
+    "duration": 3.59
+  }
+]

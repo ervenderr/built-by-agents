@@ -1,0 +1,80 @@
+{
+  "thesis": "Gravity is not instant: if the Sun vanished, Earth would keep orbiting the empty spot, and sunlight would keep shining, for 8 minutes 20 seconds, because the news of its disappearance can only travel at the speed of light.",
+  "promise": "By the end you can explain why we would not notice a vanished Sun at once, what exactly happens at the 8:20 mark, and why even gravity has a speed limit.",
+  "sources": [
+    "https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/",
+    "https://wtamu.edu/~cbaird/sq/2013/04/30/what-is-the-speed-of-gravity/",
+    "https://en.wikipedia.org/wiki/Speed_of_gravity",
+    "https://en.wikipedia.org/wiki/GW170817",
+    "https://science.nasa.gov/sun/facts/",
+    "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+    "https://www.sciencefocus.com/space/what-would-happen-to-earths-orbit-if-the-sun-vanished/"
+  ],
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "The Sun is gone. You wouldn't know.",
+      "goal": "State the central question and the myth (we'd notice at once), flip it with the 8 min 20 s answer, and promise the why.",
+      "claims": [
+        "Central question: if the Sun vanished, how long before Earth noticed? Common belief: instantly. Answer: about 8 minutes 20 seconds, for both light and gravity. (https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/ ; https://wtamu.edu/~cbaird/sq/2013/04/30/what-is-the-speed-of-gravity/)",
+        "The Sun holds 99.8% of the solar system's mass and is more than 330,000 Earths in mass. (https://science.nasa.gov/sun/facts/)",
+        "Framing note: this is a thought experiment; the Sun cannot really vanish suddenly. (https://wtamu.edu/~cbaird/sq/2013/04/30/what-is-the-speed-of-gravity/)"
+      ],
+      "visual_idea": "Cold open on a glowing Sun with a tiny recurring Earth-dot orbiting it; the Sun pops out of existence in silence, but the dot keeps circling the empty spot while a big 8:20 timer starts counting up and the question sits on screen.",
+      "words": 140
+    },
+    {
+      "id": "ch02",
+      "title": "Why the sky stays bright for 8 minutes",
+      "goal": "Make light's delay concrete: nothing, not even news, travels instantly.",
+      "claims": [
+        "The Sun is about 150 million km (93 million miles) from Earth. (https://science.nasa.gov/sun/facts/ ; https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)",
+        "Light takes about 8.3 minutes to travel from the Sun to Earth (1 AU). (https://en.wikipedia.org/wiki/Speed_of_gravity)",
+        "The last sunlight already in flight keeps arriving, so the sky looks normal until the delay is over. (https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/)",
+        "Illustrative comparison (label as illustrative): a train at 100 km/h would need roughly 170 years for 150 million km (150e6/100/24/365 = about 171 years)."
+      ],
+      "visual_idea": "Side-view race track: a pulse of light crosses the Sun-Earth gap while a countdown runs 8:20 and a bullet train and jet are left far behind as tiny dots; the photons already in flight stay drawn as a glowing stream hitting Earth.",
+      "words": 170
+    },
+    {
+      "id": "ch03",
+      "title": "Gravity has a speed limit too",
+      "goal": "Explain that gravity is not instant but travels at light speed, and show how scientists tested it.",
+      "claims": [
+        "General relativity says changes in gravity spread at the speed of light, carried by gravitational waves. (https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/ ; https://en.wikipedia.org/wiki/Speed_of_gravity)",
+        "In 2017 two neutron stars merged 130 million light years away (GW170817); the gravitational wave arrived and the gamma-ray burst followed 1.7 seconds later. (https://en.wikipedia.org/wiki/Speed_of_gravity ; https://en.wikipedia.org/wiki/GW170817)",
+        "That limits any difference between the speed of gravity and light to about a few parts in a thousand trillion (between -3e-15 and +7e-16 of c), roughly 14 orders of magnitude better than the earlier ~20% limit. (https://en.wikipedia.org/wiki/GW170817)",
+        "Honest caveat: some other observations are argued to be in tension with equal speeds, but the mainstream view is that gravity travels at c. (https://en.wikipedia.org/wiki/Speed_of_gravity)"
+      ],
+      "visual_idea": "A stretched rubber-sheet grid with a heavy ball: the ball is yanked away and a ripple expands outward ring by ring, a marble out at Earth's distance sits undisturbed until the ring reaches it; then a zoom-out to two colliding stars sending a wave and a flash that arrive nearly together.",
+      "words": 170
+    },
+    {
+      "id": "ch04",
+      "title": "What Earth does at the 8:20 mark",
+      "goal": "Show the two phases: eight minutes circling a ghost, then a straight-line escape and a dark, freezing world.",
+      "claims": [
+        "Earth moves at about 29.78 km/s in orbit. (https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)",
+        "During the delay Earth keeps tracing its normal orbit around the Sun's old position; derived figure: about 30 km every second, so nearly 15,000 km of path in the 500 s (29.78 km/s x 500 s = 14,890 km). (https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html ; https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/)",
+        "When the change arrives, the Sun's pull stops bending Earth's path, so Earth flies off in a straight line at about 30 km/s (67,000 mph), with no jolt. (https://www.sciencefocus.com/space/what-would-happen-to-earths-orbit-if-the-sun-vanished/ ; https://wtamu.edu/~cbaird/sq/2013/04/30/what-is-the-speed-of-gravity/)",
+        "Light and gravity loss arrive together: the sky goes dark and Earth leaves its orbit at the same time. (https://wtamu.edu/~cbaird/sq/2013/04/30/what-is-the-speed-of-gravity/)",
+        "The Moon goes dark too, and humans would freeze within weeks. (https://www.sciencefocus.com/space/what-would-happen-to-earths-orbit-if-the-sun-vanished/)",
+        "Earth's average surface temperature today is about 15 C (288 K). (https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)"
+      ],
+      "visual_idea": "Top-down orbit view in two beats: Earth-dot circles the empty center with a trail while a glowing ring expands from the Sun's old spot; the instant the ring touches Earth the dashed orbit snaps off tangent and the dot streaks straight out, the scene fading to black with a falling thermometer.",
+      "words": 160
+    },
+    {
+      "id": "ch05",
+      "title": "News can't outrun light",
+      "goal": "Recap the chain of ideas, give one memorable line, and tee up a related next video.",
+      "claims": [
+        "Recap: light takes 8.3 min; gravity is carried at the same speed; so Earth orbits the Sun's ghost for 8 min 20 s, then leaves in a straight line. (https://en.wikipedia.org/wiki/Speed_of_gravity ; https://www.astronomy.com/science/if-the-sun-suddenly-disappeared-it-would-take-about-eight-minutes-for-earth-to-become-dark-due-to-the-speed-of-light-how-long-would-it-take-to-feel-the-absence-of-the-suns-gravity/)",
+        "Transfer: every glance at the Sun shows it as it was about 8 minutes ago. (https://en.wikipedia.org/wiki/Speed_of_gravity)",
+        "Teaser: the 2017 neutron-star collision was caught by LIGO and Virgo detectors; next video can explain how those detectors feel ripples in space. (https://en.wikipedia.org/wiki/GW170817)"
+      ],
+      "visual_idea": "Pull back to the opening scene: the Earth-dot is now tiny and drifting away; the timer freezes at 8:20 and the whole solar system shrinks to a dot, ending on a faint ripple crossing the frame as the teaser.",
+      "words": 110
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+A neural network is just layers of simple units.
+Every connection between units has a weight.
+The signal flows forward, through a hidden layer, to an output.
+The output is compared with the right answer.
+The gap between them is the error.
+Learning means nudging the weights to shrink that error.
+Repeat that many times, and the network improves.

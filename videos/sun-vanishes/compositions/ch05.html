@@ -1,0 +1,145 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; overflow: hidden; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; }
+    #root * { box-sizing: border-box; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+    em { color: #00e5a0; font-style: normal; }
+    .abs { position: absolute; opacity: 0; }
+    .dot { position: absolute; border-radius: 50%; }
+    #ch05-sys { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 560px 470px; }
+    #ch05-orbit { left: 300px; top: 210px; width: 520px; height: 520px; border: 2px dashed #8a97a6; opacity: 0; }
+    #ch05-sun { left: 520px; top: 430px; width: 80px; height: 80px; border: 3px dashed #ffb454; opacity: 0; }
+    #ch05-ring { left: 300px; top: 210px; width: 520px; height: 520px; border: 4px solid #00e5a0; opacity: 0; }
+    #ch05-earth { left: 0; top: 0; width: 36px; height: 36px; background: #4da3ff; box-shadow: 0 0 24px #4da3ff; opacity: 0; }
+    #ch05-timer { left: 0; width: 1920px; top: 110px; text-align: center; font-size: 96px; font-weight: 800; }
+    #ch05-timer small { display: block; font-size: 32px; font-weight: 700; color: #8a97a6; letter-spacing: 3px; font-family: "Inter", sans-serif; }
+    .lbl { font-size: 36px; font-weight: 700; color: #8a97a6; }
+    #ch05-l-ghost { left: 440px; top: 760px; width: 240px; text-align: center; color: #ffb454; }
+    #ch05-l-pulse { left: 880px; top: 300px; width: 700px; font-size: 40px; color: #00e5a0; }
+    #ch05-l-straight { left: 1160px; top: 760px; font-size: 40px; color: #e8eef5; }
+    #ch05-core { left: 951px; top: 461px; width: 18px; height: 18px; background: #ffb454; box-shadow: 0 0 30px #ffb454; opacity: 0; }
+    #ch05-limit { left: 0; width: 1920px; top: 640px; text-align: center; font-size: 56px; font-weight: 800; }
+    #ch05-limit span { display: block; font-size: 36px; color: #8a97a6; margin-top: 8px; }
+    #ch05-beam { left: 960px; top: 468px; width: 540px; height: 4px; background: #8a97a6; transform-origin: 0 50%; opacity: 0; }
+    #ch05-ph { left: 952px; top: 462px; width: 16px; height: 16px; background: #00e5a0; box-shadow: 0 0 20px #00e5a0; opacity: 0; }
+    #ch05-you { left: 1480px; top: 450px; width: 40px; height: 40px; background: #4da3ff; opacity: 0; }
+    #ch05-l-you { left: 1440px; top: 510px; width: 120px; text-align: center; }
+    #ch05-l-sun8 { left: 760px; top: 340px; width: 400px; text-align: center; color: #ffb454; font-size: 36px; }
+    #ch05-l-now { left: 0; top: 700px; width: 1920px; text-align: center; font-size: 44px; font-weight: 800; }
+    #ch05-big { left: 0; width: 1920px; top: 380px; text-align: center; font-size: 96px; font-weight: 800; line-height: 1.1; }
+    #ch05-big span { background: rgba(11,15,20,0.92); padding: 10px 40px; }
+    .rip { left: 660px; top: 170px; width: 600px; height: 600px; border: 3px solid #00e5a0; opacity: 0; }
+    .det { width: 44px; height: 44px; border: 4px solid #e8eef5; background: #0b0f14; }
+    #ch05-d1 { left: 300px; top: 448px; } #ch05-d2 { left: 1576px; top: 448px; }
+    #ch05-l-d1 { left: 240px; top: 510px; width: 164px; text-align: center; color: #e8eef5; }
+    #ch05-l-d2 { left: 1516px; top: 510px; width: 164px; text-align: center; color: #e8eef5; }
+    #ch05-l-ns { left: 760px; top: 560px; width: 400px; text-align: center; font-size: 32px; color: #ffb454; }
+    #ch05-nx { left: 0; width: 1920px; top: 130px; text-align: center; font-size: 72px; font-weight: 800; }
+    #ch05-nx small { display: block; font-size: 36px; color: #8a97a6; font-weight: 700; letter-spacing: 3px; margin-bottom: 10px; }
+    .cap { position: absolute; left: 210px; width: 1500px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; text-shadow: 0 3px 18px #000; }
+    .cap b { color: #00e5a0; }
+  </style>
+
+  <div id="root" data-composition-id="ch05" data-width="1920" data-height="1080">
+    <div id="ch05-sys">
+      <div id="ch05-orbit" class="dot"></div>
+      <div id="ch05-ring" class="dot"></div>
+      <div id="ch05-sun" class="dot"></div>
+      <div id="ch05-earth" class="dot"></div>
+    </div>
+    <div id="ch05-l-ghost" class="abs lbl">SUN'S GHOST</div>
+    <div id="ch05-l-pulse" class="abs lbl">gravity + light: same speed</div>
+    <div id="ch05-l-straight" class="abs lbl">straight line</div>
+    <div id="ch05-timer" class="abs mono"><small>TIME SINCE THE SUN VANISHED</small><span id="ch05-tv">00:00</span></div>
+    <div id="ch05-core" class="dot"></div>
+    <div id="ch05-limit" class="abs">THE SPEED LIMIT<span class="mono">299,792 km/s · for light, gravity, news</span></div>
+    <div id="ch05-beam"></div><div id="ch05-ph" class="dot"></div>
+    <div id="ch05-you" class="dot"></div><div id="ch05-l-you" class="abs lbl">YOU</div>
+    <div id="ch05-l-sun8" class="abs lbl">SUN, 8 MIN AGO</div>
+    <div id="ch05-l-now" class="abs">Sunlight = the Sun as it <em>was</em></div>
+    <div id="ch05-big" class="abs"><span>News can't outrun <em>light</em></span></div>
+    <div class="rip dot" id="ch05-r1"></div><div class="rip dot" id="ch05-r2"></div><div class="rip dot" id="ch05-r3"></div><div class="rip dot" id="ch05-r4"></div>
+    <div id="ch05-d1" class="abs dot det"></div><div id="ch05-d2" class="abs dot det"></div>
+    <div id="ch05-l-d1" class="abs lbl">LIGO</div><div id="ch05-l-d2" class="abs lbl">VIRGO</div>
+    <div id="ch05-l-ns" class="abs lbl">NEUTRON STAR CRASH</div>
+    <div id="ch05-nx" class="abs"><small>NEXT VIDEO</small>How do we feel <em>ripples in space</em>?</div>
+
+    <div class="clip cap" data-start="0" data-duration="4.41" data-track-index="2"><span>Light takes about <b>eight minutes</b> to reach us, and gravity travels at the very same speed.</span></div>
+    <div class="clip cap" data-start="4.66" data-duration="5.63" data-track-index="2"><span>That is why Earth would circle the Sun's ghost for <b>eight minutes and twenty seconds</b>, then fly off in a straight line.</span></div>
+    <div class="clip cap" data-start="10.54" data-duration="4.36" data-track-index="2"><span>The myth said we would notice at once, but the universe has a <b>speed limit</b>, even for news.</span></div>
+    <div class="clip cap" data-start="15.15" data-duration="5.5" data-track-index="2"><span>Every time you see sunlight, you see the Sun as it was <b>eight minutes ago</b>.</span></div>
+    <div class="clip cap" data-start="20.9" data-duration="3.37" data-track-index="2"><span>News cannot outrun light, and that is the <b>whole lesson</b> in one line.</span></div>
+    <div class="clip cap" data-start="24.52" data-duration="4.56" data-track-index="2"><span>That neutron star crash was caught by two detectors called <b>LIGO and Virgo</b>.</span></div>
+    <div class="clip cap" data-start="29.33" data-duration="4.57" data-track-index="2"><span>How do machines like that feel <b>ripples in space</b> itself, and what else could they reveal?</span></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const fade = (s, t, o = 1, d = 0.5) => tl.fromTo(s, { opacity: 0 }, { opacity: o, duration: d, ease: "power2.out" }, t);
+      const out = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const SX = 560, SY = 470, R = 260;
+
+      // earth: orbit (angle a, 0-4.6 rad), then straight tangent drift (d px)
+      const A_END = 4.6, E = { a: 0, d: 0 };
+      const ex = Math.cos(A_END) * R, ey = Math.sin(A_END) * R;
+      const vx = -Math.sin(A_END), vy = Math.cos(A_END);
+      const place = () => {
+        const x = SX + (E.d ? ex + vx * E.d : Math.cos(E.a) * R), y = SY + (E.d ? ey + vy * E.d : Math.sin(E.a) * R);
+        gsap.set("#ch05-earth", { x: x - 18, y: y - 18 });
+      };
+      place();
+
+      // A: orbit around the ghost, timer, gravity+light pulse
+      fade("#ch05-orbit", 0.2, 0.7); fade("#ch05-sun", 0.2); fade("#ch05-earth", 0.4);
+      fade("#ch05-l-ghost", 0.8, 1, 0.5);
+      tl.fromTo("#ch05-ring", { opacity: 1, scale: 0.15 }, { opacity: 0.15, scale: 1.02, duration: 3.6, ease: "power1.out" }, 0.4);
+      fade("#ch05-l-pulse", 1.2, 1, 0.5); out("#ch05-l-pulse", 4.0);
+      tl.fromTo(E, { a: 0 }, { a: A_END, duration: 9.3, ease: "none", onUpdate: place, immediateRender: false }, 0.5);
+      fade("#ch05-timer", 4.66, 1, 0.5);
+      const T = { s: 0 };
+      tl.fromTo(T, { s: 0 }, { s: 500, duration: 4.4, ease: "none", immediateRender: false, onUpdate: () => {
+        const n = Math.round(T.s); $("#ch05-tv").textContent = String(Math.floor(n / 60)).padStart(2, "0") + ":" + String(n % 60).padStart(2, "0");
+      } }, 4.9);
+      tl.to("#ch05-tv", { color: "#ffb454", duration: 0.3 }, 9.3);
+      tl.fromTo(E, { d: 0 }, { d: 420, duration: 3.0, ease: "power1.in", onUpdate: place, immediateRender: false }, 9.8);
+      out("#ch05-l-ghost", 9.5); fade("#ch05-l-straight", 10.0, 1, 0.4);
+      out("#ch05-l-straight", 13.0);
+
+      // B: pull back, solar system becomes a dot, timer frozen
+      tl.to("#ch05-sys", { scale: 0.04, x: 400, duration: 2.6, ease: "power3.inOut" }, 10.6);
+      out("#ch05-orbit", 10.6, 1.0);
+      fade("#ch05-core", 12.5, 1, 0.5);
+      fade("#ch05-limit", 12.0, 1, 0.5); out("#ch05-limit", 14.6);
+      out("#ch05-sys", 12.9, 0.3);
+
+      // C: sunlight shows the past
+      fade("#ch05-you", 15.4, 1, 0.4); fade("#ch05-l-you", 15.6, 1, 0.4);
+      fade("#ch05-l-sun8", 15.6, 1, 0.4);
+      tl.fromTo("#ch05-beam", { opacity: 0, width: 0 }, { opacity: 1, width: 540, duration: 0.8, ease: "power2.out" }, 15.6);
+      tl.fromTo("#ch05-ph", { opacity: 0, x: 0 }, { opacity: 1, x: 520, duration: 1.6, ease: "none", repeat: 2, repeatDelay: 0.2 }, 16.6);
+      out("#ch05-ph", 20.5, 0.2);
+      fade("#ch05-l-now", 17.4, 1, 0.5);
+      tl.to("#ch05-timer", { opacity: 0.45, duration: 0.5 }, 15.2);
+
+      // D: one-line lesson
+      ["#ch05-l-now", "#ch05-l-sun8", "#ch05-l-you", "#ch05-you", "#ch05-beam", "#ch05-timer", "#ch05-core"].forEach((s) => out(s, 20.6));
+      tl.fromTo("#ch05-big", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, 20.95);
+      tl.to("#ch05-big", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 22.2);
+      out("#ch05-big", 24.0, 0.4);
+
+      // E: teaser, faint ripples crossing the frame
+      fade("#ch05-d1", 24.6, 1, 0.5); fade("#ch05-d2", 24.6, 1, 0.5);
+      fade("#ch05-l-d1", 24.9, 1, 0.4); fade("#ch05-l-d2", 24.9, 1, 0.4);
+      fade("#ch05-core", 24.6, 1, 0.4); tl.set("#ch05-core", { opacity: 0 }, 33.9);
+      fade("#ch05-l-ns", 25.2, 1, 0.5); out("#ch05-l-ns", 28.8);
+      [0, 1, 2, 3].forEach((i) => {
+        tl.fromTo("#ch05-r" + (i + 1), { opacity: 0.55, scale: 0.05 }, { opacity: 0, scale: 5.2, duration: 5.2, ease: "power1.out" }, 25.4 + i * 1.7);
+      });
+      fade("#ch05-nx", 29.5, 1, 0.6);
+      window.__timelines["ch05"] = tl;
+    })();
+  </script>
+</template>

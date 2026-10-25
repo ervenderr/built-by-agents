@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --bar: #5b6f95;
+        --accent: #00e5a0;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #brand { position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--accent); }
+      #title { position: absolute; left: 0; width: 1080px; top: 225px; text-align: center; font-size: 76px; font-weight: 800; letter-spacing: -1px; line-height: 1.02; }
+      #title em { color: var(--accent); font-style: normal; }
+      .chip { position: absolute; top: 440px; height: 96px; border-radius: 22px; background: var(--panel); border: 4px solid var(--dim); display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 800; }
+      #k1 { left: 105px; width: 114px; } #k2 { left: 231px; width: 114px; } #k3 { left: 357px; width: 114px; }
+      #k4 { left: 483px; width: 88px; } #k5 { left: 583px; width: 114px; }
+      #k6 { left: 709px; width: 166px; border-color: var(--accent); color: var(--accent); }
+      #k7 { left: 887px; width: 88px; opacity: 0; }
+      #pick { position: absolute; top: 440px; left: 709px; width: 166px; height: 96px; border-radius: 22px; background: var(--accent); color: var(--ground); display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 800; }
+      #hl { position: absolute; left: 60px; width: 470px; top: 578px; font-size: 30px; font-weight: 700; letter-spacing: 2px; color: var(--dim); }
+      #ht { position: absolute; left: 540px; width: 480px; top: 572px; text-align: right; font-size: 38px; font-weight: 800; color: var(--accent); }
+      .row { position: absolute; left: 0; width: 1080px; height: 56px; }
+      .tok { position: absolute; left: 60px; width: 220px; top: 0; line-height: 56px; font-size: 44px; font-weight: 800; }
+      .track { position: absolute; left: 290px; width: 560px; top: 0; height: 56px; border-radius: 14px; background: var(--panel); overflow: hidden; }
+      .bar { width: 100%; height: 100%; background: var(--bar); transform-origin: 0 50%; transform: scaleX(0); }
+      .val { position: absolute; left: 870px; width: 170px; top: 0; line-height: 56px; font-size: 44px; font-weight: 800; }
+      #hit { position: absolute; left: 40px; top: 632px; width: 1000px; height: 72px; border-radius: 20px; border: 5px solid var(--accent); opacity: 0; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1190px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 68px; font-weight: 800; line-height: 1.08; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">HOW AN LLM PICKS<br />THE <em>NEXT WORD</em></div>
+
+      <div id="k1" class="chip">The</div>
+      <div id="k2" class="chip">cat</div>
+      <div id="k3" class="chip">sat</div>
+      <div id="k4" class="chip">on</div>
+      <div id="k5" class="chip">the</div>
+      <div id="k6" class="chip"><span id="q">?</span></div>
+      <div id="pick">floor</div>
+      <div id="k7" class="chip">?</div>
+
+      <div id="hl">ILLUSTRATIVE CANDIDATES</div>
+      <div id="ht"></div>
+
+      <div id="hit"></div>
+      <div id="r0" class="row" style="top:640px"><div class="tok">mat</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+      <div id="r1" class="row" style="top:720px"><div class="tok">floor</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+      <div id="r2" class="row" style="top:800px"><div class="tok">sofa</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+      <div id="r3" class="row" style="top:880px"><div class="tok">roof</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+      <div id="r4" class="row" style="top:960px"><div class="tok">moon</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+      <div id="r5" class="row" style="top:1040px"><div class="tok">pizza</div><div class="track"><div class="bar"></div></div><div class="val"></div></div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.61" data-track-index="2"><span>A language model guesses one <b>token</b> at a time.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.61" data-duration="2.63" data-track-index="2"><span>First, it <b>scores</b> every possible next token.</span></div>
+      <div id="cap3" class="clip cap" data-start="5.24" data-duration="2.65" data-track-index="2"><span>Then it turns those scores into <b>probabilities</b>.</span></div>
+      <div id="cap4" class="clip cap" data-start="7.89" data-duration="2.64" data-track-index="2"><span>Then it <b>samples</b> one, weighted by those odds.</span></div>
+      <div id="cap5" class="clip cap" data-start="10.53" data-duration="2.98" data-track-index="2"><span>Temperature decides how <b>adventurous</b> that pick gets.</span></div>
+      <div id="cap6" class="clip cap" data-start="13.51" data-duration="4.49" data-track-index="2"><span>Turn it down for <b>focused</b>, turn it up for <b>random</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="15.94" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0", BAR = "#5b6f95", DIM = "#8591a8";
+      // illustrative odds at T=1; scores z = ln(p)+2 give back exactly these through softmax
+      const P0 = [0.46, 0.24, 0.15, 0.08, 0.04, 0.03];
+      const Z = P0.map((p) => Math.log(p) + 2);
+      const rows = [0, 1, 2, 3, 4, 5].map((i) => {
+        const r = document.getElementById("r" + i);
+        return { bar: r.querySelector(".bar"), val: r.querySelector(".val") };
+      });
+      const st = { grow: 0, mode: 0, T: 1, show: 0 };
+      const lerp = (a, b, t) => a + (b - a) * t;
+      function draw() {
+        const w = Z.map((z) => Math.exp(z / st.T));
+        const sum = w.reduce((a, b) => a + b, 0);
+        rows.forEach((r, i) => {
+          const p = w[i] / sum;
+          const s = st.grow * lerp(Z[i] / 6.5, Math.min(1, p / 0.6), st.mode);
+          r.bar.style.transform = "scaleX(" + Math.max(0, s).toFixed(4) + ")";
+          if (st.show < 0.5) r.val.textContent = "";
+          else r.val.textContent = st.mode < 0.5 ? Z[i].toFixed(1) : p < 0.005 ? "<1%" : Math.round(p * 100) + "%";
+        });
+        const tag = st.T < 0.6 ? "  FOCUSED" : st.T > 2.2 ? "  RANDOM" : "";
+        document.getElementById("ht").textContent = st.T === 1 && st.show < 2 ? "" : "TEMP " + st.T.toFixed(1) + tag;
+      }
+      const upd = { onUpdate: draw };
+      draw();
+
+      // captions
+      [["#cap1", 0.1, 2.61], ["#cap2", 2.61, 2.63], ["#cap3", 5.24, 2.65], ["#cap4", 7.89, 2.64], ["#cap5", 10.53, 2.98], ["#cap6", 13.51, 4.49]].forEach(([id, t, d], n) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (n < 5) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14 - (n === 0 ? 0.1 : 0));
+      });
+
+      // S1 0-2.61: sentence is tokens; each token lights in turn, the open slot glows
+      ["#k1", "#k2", "#k3", "#k4", "#k5"].forEach((id, i) => {
+        const t = 0.2 + i * 0.35;
+        tl.to(id, { borderColor: ACC, scale: 1.1, duration: 0.15, transformOrigin: "50% 50%" }, t);
+        tl.to(id, { borderColor: DIM, scale: 1, duration: 0.2 }, t + 0.3);
+      });
+      tl.to("#k6", { scale: 1.12, duration: 0.2, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 1.9);
+
+      // S2 2.61-5.24: every candidate gets a score
+      tl.to(st, { show: 1, duration: 0.01, ...upd }, 2.71);
+      tl.set("#hl", { textContent: "ILLUSTRATIVE SCORES" }, 2.71);
+      tl.to(st, { grow: 1, duration: 1.3, ease: "power2.out", ...upd }, 2.71);
+      // S3 5.24-7.89: scores become probabilities
+      tl.set("#hl", { textContent: "ILLUSTRATIVE ODDS" }, 5.64);
+      tl.to(st, { mode: 1, duration: 1.1, ease: "power2.inOut", ...upd }, 5.44);
+      // S4 7.89-10.53: the sampler hops, lands on floor (not the top bar)
+      tl.to("#hit", { opacity: 1, y: 0, duration: 0.15 }, 8.0);
+      [[8.2, 160], [8.45, 80], [8.7, 240], [8.95, 0], [9.2, 80]].forEach(([t, y]) => tl.to("#hit", { y, duration: 0.12 }, t));
+      tl.to("#r1 .bar", { backgroundColor: ACC, duration: 0.2 }, 9.35);
+      tl.to("#q", { opacity: 0, duration: 0.15 }, 9.5);
+      tl.fromTo("#pick", { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 9.5);
+      tl.to("#k7", { opacity: 1, duration: 0.25 }, 9.9);
+      // S5 10.53-13.51: temperature, bars flatten
+      tl.to("#hit", { opacity: 0, duration: 0.2 }, 10.53);
+      tl.to("#r1 .bar", { backgroundColor: BAR, duration: 0.3 }, 10.53);
+      tl.to(st, { show: 2, duration: 0.01, ...upd }, 10.65);
+      tl.to(st, { T: 2, duration: 1.5, ease: "power2.inOut", ...upd }, 10.9);
+      // S6 13.51-15.94: down = focused (sharp), up = random (flat)
+      tl.to(st, { T: 0.3, duration: 0.9, ease: "power2.inOut", ...upd }, 13.6);
+      tl.to(st, { T: 2.5, duration: 1.0, ease: "power2.inOut", ...upd }, 14.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

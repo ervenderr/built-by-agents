@@ -1,0 +1,169 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; overflow: hidden; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; }
+    #root * { box-sizing: border-box; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+    em { color: #00e5a0; font-style: normal; }
+    #ch01-stars { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #ch01-orbit { position: absolute; left: 320px; top: 180px; width: 600px; height: 600px; }
+    #ch01-glow { position: absolute; left: 470px; top: 330px; width: 300px; height: 300px; margin: 0; border-radius: 50%; background: radial-gradient(circle, rgba(255,180,84,0.55) 0%, rgba(255,180,84,0.12) 45%, rgba(255,180,84,0) 70%); }
+    #ch01-sun { position: absolute; left: 550px; top: 410px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle at 40% 38%, #fff3d6 0%, #ffcf80 40%, #ffb454 100%); box-shadow: 0 0 80px 20px rgba(255,180,84,0.6); }
+    #ch01-flash { position: absolute; left: 560px; top: 420px; width: 120px; height: 120px; border-radius: 50%; border: 6px solid #e8eef5; opacity: 0; }
+    #ch01-spot { position: absolute; left: 540px; top: 400px; width: 160px; height: 160px; border-radius: 50%; border: 3px dashed #8a97a6; opacity: 0; }
+    #ch01-spotl { position: absolute; left: 520px; width: 200px; top: 580px; text-align: center; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: #8a97a6; opacity: 0; }
+    #ch01-earthw { position: absolute; left: 620px; top: 480px; width: 0; height: 0; }
+    #ch01-earth { position: absolute; left: 286px; top: -14px; width: 28px; height: 28px; border-radius: 50%; background: #00e5a0; box-shadow: 0 0 24px #00e5a0; }
+    #ch01-legend { position: absolute; left: 120px; top: 810px; font-size: 32px; font-weight: 700; color: #8a97a6; letter-spacing: 2px; }
+    #ch01-legend i { display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: #00e5a0; margin-right: 14px; vertical-align: -2px; }
+    #ch01-sunl { position: absolute; left: 520px; width: 200px; top: 215px; text-align: center; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: #ffb454; }
+    #ch01-tl { position: absolute; left: 1040px; width: 760px; top: 100px; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: #8a97a6; opacity: 0; }
+    #ch01-timer { position: absolute; left: 1040px; width: 760px; top: 140px; font-size: 190px; line-height: 1; font-weight: 700; color: #e8eef5; opacity: 0; font-family: "JetBrains Mono", monospace; transform-origin: 0 50%; }
+    #ch01-tn { position: absolute; left: 1040px; width: 760px; top: 350px; font-size: 30px; font-weight: 600; color: #8a97a6; opacity: 0; }
+    .grp { position: absolute; left: 1040px; width: 760px; opacity: 0; }
+    .chip { margin-bottom: 26px; padding: 24px 32px; border-radius: 22px; border: 3px solid #ffb454; background: #151c26; font-size: 44px; font-weight: 800; }
+    .chip s { color: #8a97a6; text-decoration-color: #ffb454; text-decoration-thickness: 5px; }
+    #ch01-g1 { top: 470px; }
+    #ch01-g1 h4 { font-size: 32px; letter-spacing: 3px; color: #ffb454; margin-bottom: 20px; }
+    #ch01-g2 { top: 470px; font-size: 76px; font-weight: 800; line-height: 1.12; }
+    #ch01-g3 { top: 450px; }
+    .row { display: flex; align-items: baseline; justify-content: space-between; padding: 22px 32px; margin-bottom: 24px; border-radius: 22px; border: 3px solid #00e5a0; background: #151c26; font-size: 56px; font-weight: 800; }
+    .row span { font-family: "JetBrains Mono", monospace; color: #00e5a0; }
+    #ch01-g4 { top: 480px; }
+    #ch01-g4 .stamp { display: inline-block; padding: 18px 36px; border: 6px solid #ffb454; border-radius: 16px; color: #ffb454; font-size: 64px; font-weight: 800; letter-spacing: 3px; transform-origin: 0 50%; }
+    #ch01-g4 p { margin-top: 30px; font-size: 44px; font-weight: 600; line-height: 1.2; }
+    #ch01-g5 { top: 470px; }
+    #ch01-g5 h4, #ch01-g6 h4 { font-size: 44px; font-weight: 800; margin-bottom: 20px; }
+    #ch01-bar { position: relative; width: 760px; height: 70px; border-radius: 10px; background: #ffb454; overflow: visible; }
+    #ch01-bar i { position: absolute; right: 0; top: 0; width: 6px; height: 70px; background: #00e5a0; border-radius: 3px; }
+    #ch01-g5 .sm { margin-top: 22px; font-size: 36px; font-weight: 700; color: #8a97a6; text-align: right; }
+    #ch01-g6 { top: 450px; }
+    #ch01-dots { display: grid; grid-template-columns: repeat(30, 18px); gap: 7px; width: 750px; }
+    #ch01-dots i { width: 18px; height: 18px; border-radius: 50%; background: #ffb454; }
+    #ch01-g6 .sm { margin-top: 20px; font-size: 32px; font-weight: 700; color: #8a97a6; }
+    #ch01-g7 { top: 470px; font-size: 76px; font-weight: 800; line-height: 1.12; }
+    #ch01-g8 { top: 450px; display: flex; align-items: center; gap: 44px; }
+    #ch01-sign { width: 250px; height: 250px; border-radius: 50%; border: 14px solid #00e5a0; display: flex; align-items: center; justify-content: center; font-size: 150px; font-weight: 800; font-style: italic; color: #e8eef5; font-family: "JetBrains Mono", monospace; }
+    #ch01-g8 div.t { font-size: 60px; font-weight: 800; line-height: 1.12; }
+    .cap { position: absolute; left: 210px; width: 1500px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; text-shadow: 0 3px 18px #000; }
+    .cap b { color: #00e5a0; }
+  </style>
+
+  <div id="root" data-composition-id="ch01" data-width="1920" data-height="1080">
+    <svg id="ch01-stars" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+      <g fill="#8a97a6" opacity="0.5">
+        <circle cx="140" cy="140" r="2"/><circle cx="410" cy="95" r="2"/><circle cx="880" cy="130" r="3"/><circle cx="1010" cy="860" r="2"/><circle cx="230" cy="720" r="2"/><circle cx="960" cy="600" r="2"/><circle cx="130" cy="500" r="3"/><circle cx="990" cy="300" r="2"/><circle cx="800" cy="800" r="2"/><circle cx="360" cy="840" r="2"/>
+      </g>
+    </svg>
+    <svg id="ch01-orbit" viewBox="0 0 600 600" data-layout-allow-overlap><circle id="ch01-ring" cx="300" cy="300" r="300" fill="none" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 10" opacity="0.7"/></svg>
+    <div id="ch01-glow"></div>
+    <div id="ch01-sun"></div>
+    <div id="ch01-flash"></div>
+    <div id="ch01-sunl">SUN</div>
+    <div id="ch01-spot"></div>
+    <div id="ch01-spotl">EMPTY SPOT</div>
+    <div id="ch01-earthw" data-layout-allow-overlap><div id="ch01-earth"></div></div>
+    <div id="ch01-legend"><i></i>EARTH</div>
+
+    <div id="ch01-tl">TIME SINCE THE SUN VANISHED</div>
+    <div id="ch01-timer">0:00</div>
+    <div id="ch01-tn">SPED UP. REAL TIME: 500 SECONDS</div>
+
+    <div id="ch01-g1" class="grp"><h4>THE MYTH</h4><div class="chip">Sky goes dark <s>at once</s></div><div class="chip">Earth flies off <s>at once</s></div></div>
+    <div id="ch01-g2" class="grp">How long before Earth <em>notices</em>?</div>
+    <div id="ch01-g3" class="grp"><div class="row">LIGHT <span>8:20</span></div><div class="row">GRAVITY <span>8:20</span></div></div>
+    <div id="ch01-g4" class="grp"><div class="stamp">THOUGHT EXPERIMENT</div><p>The Sun can't really vanish suddenly.</p></div>
+    <div id="ch01-g5" class="grp"><h4>SUN <em>99.8%</em> OF SOLAR SYSTEM MASS</h4><div id="ch01-bar"><i></i></div><div class="sm">everything else: 0.2%</div></div>
+    <div id="ch01-g6" class="grp"><h4><em>330,000</em> Earths in one Sun</h4><div id="ch01-dots"></div><div class="sm">1 dot = 1,000 Earths</div></div>
+    <div id="ch01-g7" class="grp">What happens at <em>8:20</em>?</div>
+    <div id="ch01-g8" class="grp"><div id="ch01-sign">c</div><div class="t">Even gravity has a <em>speed limit</em></div></div>
+
+    <div id="ch01-c1" class="clip cap" data-start="0" data-duration="4.76" data-track-index="2"><span>If the Sun vanished right now, you would carry on as <b>normal</b> for eight minutes and twenty seconds.</span></div>
+    <div id="ch01-c2" class="clip cap" data-start="4.76" data-duration="5.35" data-track-index="2"><span>Most people believe we would notice <b>at once</b>, that the sky would go dark and Earth would fly off instantly.</span></div>
+    <div id="ch01-c3" class="clip cap" data-start="10.11" data-duration="5.0" data-track-index="2"><span>Here is the question this video answers: if the Sun disappeared, <b>how long</b> before Earth noticed?</span></div>
+    <div id="ch01-c4" class="clip cap" data-start="15.11" data-duration="4.66" data-track-index="2"><span>The answer is about <b>eight minutes and twenty seconds</b>, for both the light and the gravity.</span></div>
+    <div id="ch01-c5" class="clip cap" data-start="19.77" data-duration="4.67" data-track-index="2"><span>Until then, Earth would keep circling an <b>empty spot</b> in space, as if nothing had happened.</span></div>
+    <div id="ch01-c6" class="clip cap" data-start="24.44" data-duration="4.07" data-track-index="2"><span>This is only a <b>thought experiment</b>, since the Sun cannot really vanish suddenly.</span></div>
+    <div id="ch01-c7" class="clip cap" data-start="28.51" data-duration="4.1" data-track-index="2"><span>The Sun holds <b>ninety-nine point eight percent</b> of all the mass in the solar system.</span></div>
+    <div id="ch01-c8" class="clip cap" data-start="32.61" data-duration="3.55" data-track-index="2"><span>It outweighs more than <b>three hundred and thirty thousand</b> Earths.</span></div>
+    <div id="ch01-c9" class="clip cap" data-start="36.16" data-duration="3.83" data-track-index="2"><span>By the end, you will know exactly what happens at the <b>eight minute twenty</b> mark.</span></div>
+    <div id="ch01-c10" class="clip cap" data-start="39.99" data-duration="2.72" data-track-index="2"><span>And you will see why even gravity has a <b>speed limit</b>.</span></div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const DUR = 42.71;
+      const dots = document.getElementById("ch01-dots");
+      for (let i = 0; i < 330; i++) dots.appendChild(document.createElement("i"));
+      const inn = (s, t, d = 0.5) => tl.fromTo(s, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+      const out = (s, t, d = 0.3) => tl.to(s, { opacity: 0, duration: d, ease: "power1.in" }, t);
+
+      // Earth never stops: wrapper at the orbit centre rotates ~6 times
+      tl.fromTo("#ch01-earthw", { rotation: 0 }, { rotation: 360 * 6, duration: DUR, ease: "none", transformOrigin: "0px 0px" }, 0);
+      // live Sun glow
+      tl.fromTo("#ch01-glow", { scale: 0.92 }, { scale: 1.08, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+      // 1 the Sun pops out, silently
+      tl.fromTo("#ch01-sun", { scale: 1 }, { scale: 0, duration: 0.15, ease: "power4.in" }, 2.0);
+      out("#ch01-glow", 2.0, 0.15); out("#ch01-sunl", 1.9, 0.2);
+      tl.fromTo("#ch01-flash", { opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 5, duration: 0.7, ease: "power2.out" }, 2.0);
+      tl.to("#ch01-ring", { opacity: 0.45, duration: 0.5 }, 2.1);
+      inn("#ch01-tl", 2.3, 0.4); inn("#ch01-timer", 2.3, 0.4); inn("#ch01-tn", 2.9, 0.4);
+      const tm = { v: 0 };
+      tl.fromTo(tm, { v: 0 }, { v: 500, duration: 15.7, ease: "power1.inOut", immediateRender: false, onUpdate: () => {
+        const s = Math.floor(tm.v), e = document.getElementById("ch01-timer");
+        if (e) e.textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+      } }, 2.3);
+
+      // 2 the myth
+      inn("#ch01-g1", 4.9);
+      tl.fromTo("#ch01-g1 .chip s", { textDecorationLine: "none" }, { textDecorationLine: "line-through", duration: 0.01 }, 8.8);
+      out("#ch01-g1", 9.8);
+
+      // 3 the question
+      tl.fromTo("#ch01-g2", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)", transformOrigin: "0 50%" }, 10.2);
+      out("#ch01-g2", 14.6);
+
+      // 4 the answer: 8:20 for both
+      tl.to("#ch01-timer", { color: "#00e5a0", duration: 0.3 }, 18.0);
+      tl.fromTo("#ch01-timer", { scale: 1 }, { scale: 1.08, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 18.0);
+      inn("#ch01-g3", 15.3);
+      out("#ch01-g3", 24.2);
+
+      // 5 Earth circles an empty spot
+      tl.fromTo("#ch01-spot", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 19.9);
+      inn("#ch01-spotl", 20.2, 0.4);
+      tl.fromTo("#ch01-spot", { rotation: 0 }, { rotation: 20, duration: 0.01 }, 20.6);
+
+      // 6 thought experiment
+      tl.fromTo("#ch01-g4 .stamp", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 24.5);
+      tl.set("#ch01-g4", { opacity: 1 }, 24.45);
+      inn("#ch01-g4 p", 25.3);
+      out("#ch01-g4", 28.2);
+
+      // 7 99.8 percent of the mass
+      tl.to("#ch01-spot", { borderColor: "#ffb454", duration: 0.4 }, 28.5);
+      tl.set("#ch01-spotl", { color: "#ffb454" }, 28.5);
+      inn("#ch01-g5", 28.6);
+      tl.fromTo("#ch01-bar", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "power3.out", transformOrigin: "0 50%" }, 28.8);
+      out("#ch01-g5", 32.3);
+
+      // 8 330,000 Earths
+      inn("#ch01-g6", 32.7, 0.4);
+      tl.fromTo("#ch01-dots i", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power2.out", stagger: 0.0075 }, 33.1);
+      out("#ch01-g6", 35.9);
+
+      // 9 the 8:20 mark
+      out("#ch01-spot", 35.9); out("#ch01-spotl", 35.9);
+      tl.fromTo("#ch01-g7", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)", transformOrigin: "0 50%" }, 36.2);
+      out("#ch01-g7", 39.7);
+
+      // 10 speed limit
+      inn("#ch01-g8", 40.1);
+      tl.fromTo("#ch01-sign", { scale: 0.7 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 40.1);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["ch01"] = tl;
+    })();
+  </script>
+</template>

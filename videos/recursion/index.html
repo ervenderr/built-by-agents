@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --accent: #00e5a0;
+        --paper: #f3ecdc;
+        --pen: #1b1b1b;
+        --red: #e63950;
+        --font-display: "Outfit", "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      .beat { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+      #b1 { background: var(--ground); z-index: 1; }
+      #b2 { background: #05080c; z-index: 2; }
+      #b3 { background: var(--paper); z-index: 3; }
+      #b4 { background: #12162a; z-index: 4; }
+      #b5 { background: var(--ground); z-index: 5; }
+      .tag { position: absolute; left: 0; width: 1080px; top: 240px; text-align: center; font-size: 30px; font-weight: 700; letter-spacing: 5px; color: var(--accent); }
+      #b3 .tag { color: #0a6b4b; }
+      .big { position: absolute; left: 0; width: 1080px; top: 285px; text-align: center; font-size: 96px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+      .big em { color: var(--accent); font-style: normal; }
+      #brand { position: absolute; z-index: 20; left: 340px; width: 400px; top: 176px; height: 50px; border-radius: 25px; background: var(--ground); border: 3px solid var(--accent); text-align: center; line-height: 44px; font-size: 24px; font-weight: 800; letter-spacing: 5px; color: var(--accent); }
+
+      /* beat 1: nested boxes */
+      #zoom1 { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .nb { position: absolute; border: 5px solid var(--accent); border-radius: 22px; }
+      .nb span { position: absolute; left: 0; width: 100%; top: 10px; text-align: center; font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--accent); }
+      #nb0 { left: 220px; top: 450px; width: 640px; height: 640px; background: #0e1522; }
+      #nb1 { left: 332px; top: 562px; width: 416px; height: 416px; background: #151b28; }
+      #nb2 { left: 410px; top: 640px; width: 260px; height: 260px; background: #0e1522; }
+      #nb3 { left: 465px; top: 695px; width: 150px; height: 150px; background: #151b28; }
+      #nb4 { left: 500px; top: 730px; width: 80px; height: 80px; background: #0e1522; }
+      #nb5 { left: 522px; top: 752px; width: 36px; height: 36px; background: var(--accent); border-radius: 8px; }
+
+      /* beat 2: terminal */
+      #term { position: absolute; left: 60px; top: 340px; width: 960px; height: 760px; border-radius: 24px; background: #000; border: 3px solid #2a3547; }
+      #bar { position: absolute; left: 0; top: 0; width: 100%; height: 64px; border-bottom: 3px solid #2a3547; font-family: var(--font-mono); font-size: 26px; color: var(--dim); text-align: center; line-height: 60px; }
+      .ln { position: absolute; left: 44px; font-family: var(--font-mono); font-size: 40px; font-weight: 700; color: #fff; white-space: pre; clip-path: inset(0 100% 0 0); }
+      .ln i { color: var(--dim); font-style: normal; }
+      .ln b { color: var(--accent); }
+      #l1 { top: 110px; } #l2 { top: 200px; } #l3 { top: 290px; } #l4 { top: 380px; } #l5 { top: 470px; }
+      .sz { position: absolute; left: 700px; height: 26px; border-radius: 13px; background: var(--accent); }
+      #z2 { top: 217px; width: 240px; } #z3 { top: 307px; width: 160px; } #z4 { top: 397px; width: 80px; } #z5 { top: 487px; width: 16px; }
+      #szl { position: absolute; left: 700px; top: 150px; font-family: var(--font-mono); font-size: 28px; color: var(--dim); }
+      #cur { position: absolute; left: 44px; top: 580px; width: 24px; height: 44px; background: var(--accent); }
+
+      /* beat 3: sketch */
+      #sk { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #sk path, #sk polygon { fill: none; stroke: var(--pen); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+      #sk .red { stroke: var(--red); }
+      .hw { position: absolute; font-weight: 800; color: var(--pen); text-align: center; }
+      #stop { left: 580px; width: 360px; top: 664px; font-size: 76px; color: var(--red); transform: rotate(-6deg); }
+      #hl { position: absolute; left: 585px; top: 910px; width: 350px; height: 78px; background: var(--accent); opacity: 0.7; border-radius: 8px; transform-origin: 0% 50%; }
+      #bc { left: 560px; width: 400px; top: 912px; font-size: 62px; }
+      #ci { left: 120px; width: 360px; top: 912px; font-size: 52px; }
+
+      /* beat 4: call stack */
+      #cs { position: absolute; left: 0; width: 1080px; top: 330px; text-align: center; font-family: var(--font-mono); font-size: 30px; letter-spacing: 6px; color: var(--dim); }
+      .fr { position: absolute; left: 90px; width: 900px; height: 150px; border-radius: 22px; background: #1d2440; border: 4px solid #3a4470; border-left: 14px solid var(--accent); font-family: var(--font-mono); font-size: 40px; font-weight: 700; line-height: 142px; padding-left: 36px; white-space: pre; }
+      .fr i { font-style: normal; color: var(--accent); }
+      .fr u { position: absolute; right: 30px; top: 0; text-decoration: none; font-size: 58px; color: var(--accent); }
+      #f1 { top: 400px; } #f2 { top: 575px; } #f3 { top: 750px; }
+      #six { position: absolute; left: 0; width: 1080px; top: 930px; text-align: center; font-size: 200px; font-weight: 800; line-height: 1; color: var(--accent); }
+
+      /* beat 5: video inside the video */
+      #b5 .big { top: 285px; font-size: 80px; }
+      #nest { position: absolute; left: 343px; top: 395px; }
+      .f { position: absolute; left: 0; top: 0; width: 394px; height: 700px; font-size: 38px; border: 0.11em solid var(--accent); border-radius: 0.7em; background: var(--ground); }
+      .f .f { left: 22.5%; top: 36%; width: 55%; height: 55%; font-size: 0.55em; }
+      .f .h { position: absolute; left: 0; width: 100%; top: 5%; text-align: center; font-weight: 800; letter-spacing: 0.05em; font-size: 0.8em; color: #fff; }
+      .f .h b { color: var(--accent); }
+      .f .t { position: absolute; left: 0; width: 100%; top: 17%; text-align: center; font-weight: 700; letter-spacing: 0.15em; font-size: 0.5em; color: var(--accent); }
+
+      .cap { z-index: 10; position: absolute; left: 50px; width: 980px; top: 1175px; text-align: center; font-size: 54px; font-weight: 800; line-height: 1.3; }
+      .cap span { display: inline; padding: 0.06em 0.3em; border-radius: 0.3em; background: rgba(11, 15, 23, 0.9); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.0" data-width="1080" data-height="1920">
+
+      <!-- BEAT 1: nested boxes (0 - 3.61) -->
+      <div id="b1" class="beat">
+        <div class="tag">STYLE 1/5 · NESTED BOXES</div>
+        <div class="big">RE<em>CURSION</em></div>
+        <div id="zoom1">
+          <div id="nb0" class="nb"><span>solve(problem)</span></div>
+          <div id="nb1" class="nb"><span>solve(smaller)</span></div>
+          <div id="nb2" class="nb"></div>
+          <div id="nb3" class="nb"></div>
+          <div id="nb4" class="nb"></div>
+          <div id="nb5" class="nb"></div>
+        </div>
+      </div>
+
+      <!-- BEAT 2: terminal (3.61 - 6.25) -->
+      <div id="b2" class="beat">
+        <div class="tag">STYLE 2/5 · TERMINAL</div>
+        <div id="term">
+          <div id="bar">zsh — count.py</div>
+          <div id="l1" class="ln"><i>$</i> python count.py 3</div>
+          <div id="l2" class="ln"><b>count</b>(3)</div>
+          <div id="l3" class="ln">  <b>count</b>(2)</div>
+          <div id="l4" class="ln">    <b>count</b>(1)</div>
+          <div id="l5" class="ln">      <b>count</b>(0) <i># stop</i></div>
+          <div id="szl">size</div>
+          <div id="z2" class="sz"></div><div id="z3" class="sz"></div><div id="z4" class="sz"></div><div id="z5" class="sz"></div>
+          <div id="cur"></div>
+        </div>
+      </div>
+
+      <!-- BEAT 3: hand-drawn sketch (6.25 - 8.77) -->
+      <div id="b3" class="beat">
+        <div class="tag">STYLE 3/5 · SKETCH</div>
+        <svg id="sk" viewBox="0 0 1080 1920">
+          <polygon id="oct" class="red" pathLength="1" points="637,574 723,606 758,694 722,782 636,818 548,780 512,692 550,608" />
+          <path id="lp1" pathLength="1" d="M300 540 C 395 538, 445 620, 442 700 C 438 790, 365 850, 295 848 C 205 846, 155 780, 158 700 C 160 618, 215 545, 305 548" />
+          <path id="lp2" pathLength="1" d="M300 580 C 372 580, 405 640, 402 700 C 398 770, 350 810, 298 808 C 232 806, 198 760, 200 700 C 202 640, 240 584, 304 588" />
+          <path id="lp3" pathLength="1" d="M300 620 C 345 620, 365 660, 362 700 C 358 745, 335 770, 300 768 C 262 766, 242 740, 242 700 C 244 664, 262 624, 304 628" />
+          <path id="ah" pathLength="1" d="M275 505 L 312 546 L 268 580" />
+        </svg>
+        <div id="stop" class="hw">STOP</div>
+        <div id="hl"></div>
+        <div id="bc" class="hw">BASE CASE</div>
+        <div id="ci" class="hw">never ends</div>
+      </div>
+
+      <!-- BEAT 4: call stack frames (8.77 - 13.96) -->
+      <div id="b4" class="beat">
+        <div class="tag">STYLE 4/5 · CALL STACK</div>
+        <div id="cs">CALL STACK</div>
+        <div id="f1" class="fr">fact(3) = 3 × <i>fact(2)</i><u></u></div>
+        <div id="f2" class="fr">fact(2) = 2 × <i>fact(1)</i><u></u></div>
+        <div id="f3" class="fr">fact(1) = 1  <i># base</i><u></u></div>
+        <div id="six">6</div>
+      </div>
+
+      <!-- BEAT 5: the video inside the video (13.96 - 18.0) -->
+      <div id="b5" class="beat">
+        <div class="tag">STYLE 5/5 · THIS VIDEO</div>
+        <div class="big">see: <em>recursion</em></div>
+        <div id="nest" data-layout-allow-overflow data-layout-allow-overlap>
+          <div id="fr0" class="f"><div class="h">BUILT <b>BY AGENTS</b></div><div class="t">SEE: RECURSION</div>
+            <div id="fr1" class="f" data-layout-ignore><div class="h">BUILT <b>BY AGENTS</b></div><div class="t">SEE: RECURSION</div>
+              <div id="fr2" class="f"><div class="h">BUILT <b>BY AGENTS</b></div><div class="t">SEE: RECURSION</div>
+                <div id="fr3" class="f"><div class="h">BUILT <b>BY AGENTS</b></div>
+                  <div id="fr4" class="f"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="brand">BUILT BY AGENTS</div>
+
+      <div id="cap1" class="clip cap" data-start="0.2" data-duration="3.41" data-track-index="2"><span>Recursion is a function solving a problem by <b>calling itself</b>.</span></div>
+      <div id="cap2" class="clip cap" data-start="3.61" data-duration="2.64" data-track-index="2"><span>Each call gets a <b>smaller</b> version of the problem.</span></div>
+      <div id="cap3" class="clip cap" data-start="6.25" data-duration="2.52" data-track-index="2"><span>Without a <b>base case</b> to stop, it never ends.</span></div>
+      <div id="cap4" class="clip cap" data-start="8.77" data-duration="2.93" data-track-index="2"><span>Factorial of three waits for two, which waits for <b>one</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="11.7" data-duration="2.26" data-track-index="2"><span>Then the answers come back up: <b>six</b>.</span></div>
+      <div id="cap6" class="clip cap" data-start="13.96" data-duration="4.04" data-track-index="2"><span>Still confused? <b>See: recursion.</b></span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0.3" data-duration="15.67" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0";
+      const caps = [["#cap1", 0.2, 3.41], ["#cap2", 3.61, 2.64], ["#cap3", 6.25, 2.52], ["#cap4", 8.77, 2.93], ["#cap5", 11.7, 2.26], ["#cap6", 13.96, 4.04]];
+      caps.forEach(([id, t, d], i) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+
+      // beat transitions (each a different shape), previous beat hidden after it is covered
+      const wipe = (id, from, to, t, d, prev) => {
+        tl.fromTo(id, { clipPath: from }, { clipPath: to, duration: d, ease: "power2.inOut" }, t);
+        tl.set(prev, { opacity: 0 }, t + d + 0.05);
+      };
+      wipe("#b2", "circle(0% at 50% 50%)", "circle(80% at 50% 50%)", 3.61, 0.4, "#b1");
+      wipe("#b3", "inset(0% 0% 0% 100%)", "inset(0% 0% 0% 0%)", 6.25, 0.3, "#b2");
+      wipe("#b4", "inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)", 8.77, 0.35, "#b3");
+      wipe("#b5", "inset(0% 50% 0% 50%)", "inset(0% 0% 0% 0%)", 13.96, 0.4, "#b4");
+
+      // beat 1: nested boxes pop in, camera pushes in
+      ["#nb2", "#nb3", "#nb4", "#nb5"].forEach((id, i) => {
+        tl.fromTo(id, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 0.35 + i * 0.3);
+      });
+      tl.fromTo("#zoom1", { scale: 1 }, { scale: 1.12, duration: 3.6, ease: "power1.inOut", transformOrigin: "540px 770px" }, 0);
+
+      // beat 2: terminal types line by line, size bars shrink
+      const typing = [["#l1", 3.92, 0.4, 19], ["#l2", 4.37, 0.25, 8], ["#l3", 4.77, 0.25, 10], ["#l4", 5.17, 0.25, 12], ["#l5", 5.57, 0.4, 22]];
+      typing.forEach(([id, t, d, n]) => tl.fromTo(id, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: d, ease: "steps(" + n + ")" }, t));
+      tl.fromTo(["#szl", "#z2", "#z3", "#z4", "#z5"], { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.4 }, 4.22);
+      tl.fromTo("#z2", { scaleX: 0 }, { scaleX: 1, duration: 0.25, transformOrigin: "0% 50%" }, 4.42);
+      tl.fromTo("#z3", { scaleX: 0 }, { scaleX: 1, duration: 0.3, transformOrigin: "0% 50%" }, 4.82);
+      tl.fromTo("#z4", { scaleX: 0 }, { scaleX: 1, duration: 0.3, transformOrigin: "0% 50%" }, 5.22);
+      tl.fromTo("#z5", { scaleX: 0 }, { scaleX: 1, duration: 0.3, transformOrigin: "0% 50%" }, 5.62);
+      tl.fromTo("#cur", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 6.02);
+
+      // beat 3: sketch draws itself
+      const draw = (id, t, d) => tl.fromTo(id, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, t);
+      draw("#oct", 6.44, 0.6);
+      tl.fromTo("#stop", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)", transformOrigin: "50% 50%" }, 7.0);
+      tl.fromTo("#hl", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, 7.15);
+      tl.fromTo("#bc", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 7.2);
+      draw("#lp1", 7.5, 0.4); draw("#lp2", 7.9, 0.3); draw("#lp3", 8.2, 0.25);
+      draw("#ah", 7.5, 0.25);
+      tl.fromTo("#ci", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 8.0);
+
+      // beat 4: frames push on, then return values pop off
+      [["#f1", 8.95], ["#f2", 9.55], ["#f3", 10.15]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, t));
+      tl.fromTo("#cs", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 8.95);
+      const ret = (id, txt, t) => {
+        tl.call(() => { document.querySelector(id + " u").textContent = txt; }, null, t);
+        tl.to(id, { borderColor: ACC, duration: 0.2 }, t);
+      };
+      ret("#f3", "→ 1", 11.8); ret("#f2", "→ 2", 12.3); ret("#f1", "→ 6", 12.8);
+      tl.call(() => { ["#f1", "#f2", "#f3"].forEach((id) => { document.querySelector(id + " u").textContent = ""; }); }, null, 8.7);
+      tl.fromTo("#six", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "50% 50%" }, 13.0);
+
+      // beat 5: the video contains itself
+      [["#fr1", 14.33], ["#fr2", 14.68], ["#fr3", 15.03], ["#fr4", 15.38]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out", transformOrigin: "50% 50%" }, t));
+      tl.fromTo("#nest", { scale: 1 }, { scale: 1.12, duration: 4.04, ease: "none", transformOrigin: "50% 50%" }, 13.96);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

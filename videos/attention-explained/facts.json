@@ -1,0 +1,5 @@
+{"ok": true, "issues": [
+{"line": 2, "severity": "minor", "claim": "each word looks at the other words around it", "verdict": "NEEDS REWORDING", "problem": "Wikipedia: each element attends to all others, and in practice also to itself, not only nearby words; 'around it' implies locality.", "fix": "It uses attention, where each word looks at the other words in the sentence."},
+{"line": 3, "severity": "minor", "claim": "Each word gives the other words a score.", "verdict": "VERIFIED", "problem": "Scores are query-key dot products (Wikipedia, Alammar); a word also scores itself, so 'other' is slightly narrow.", "fix": "Each word scores every word in the sentence, itself included."},
+{"line": 6, "severity": "minor", "claim": "The word's new meaning is a weighted sum of all of them.", "verdict": "NEEDS REWORDING", "problem": "Sources: the output is a weighted sum of value vectors (projections of the words), not the words themselves; 'meaning' is a loose gloss for a contextual representation.", "fix": "The word's new representation is a weighted sum of all their value vectors."}
+]}

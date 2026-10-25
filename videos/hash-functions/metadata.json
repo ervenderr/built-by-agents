@@ -1,0 +1,8 @@
+{
+  "title": "What Is a Hash Function? SHA-256 Explained in 20 Seconds",
+  "description": "A hash function turns any input into a fixed-size digest (256 bits for SHA-256), and changing one character changes the digest drastically: the avalanche effect.\n\nThe book and 4 GB file rows are stand-in bytes and the avalanche grid is decorative; the hello/hellp digests are real SHA-256 values.\n\nNo remixed repo; built with HyperFrames (HeyGen) and GSAP.\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #SHA256 #Hashing",
+  "tags": ["hash function", "what is a hash function", "sha-256 explained", "sha256", "avalanche effect", "hashing explained", "cryptography basics", "message digest"],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

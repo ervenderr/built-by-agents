@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>thumb</title>
+<style>
+  :root { --bg:#0b0f17; --fg:#ffffff; --accent:#00e5a0; --warn:#ffcc00; }
+  * { box-sizing:border-box; margin:0 }
+  body { width:1280px; height:720px; background:var(--bg); font-family:"Inter","Helvetica Neue",Arial,sans-serif; position:relative; overflow:hidden }
+  /* shot: the result screenshot, right side, cropped */
+  #shot { position:absolute; right:-40px; top:90px; width:640px; height:540px; object-fit:cover; border-radius:28px; border:6px solid var(--accent); box-shadow:0 0 80px #00e5a066 }
+  #t { position:absolute; left:56px; top:130px; width:640px; font-weight:900; font-size:150px; line-height:.92; letter-spacing:-3px; color:var(--fg); text-transform:uppercase }
+  #t em { color:var(--accent); font-style:normal }
+  #tag { position:absolute; left:56px; bottom:48px; font-size:38px; font-weight:800; color:var(--bg); background:var(--warn); padding:6px 22px; border-radius:12px }
+  #brand { position:absolute; left:56px; top:40px; font-size:30px; font-weight:800; color:var(--accent); letter-spacing:2px }
+</style>
+<div id="brand">BUILT BY AGENTS</div>
+<div id="t"></div>
+<div id="tag"></div>
+<img id="shot">
+<script>
+// ?t=AI TRIAGE *AGENT*&tag=NEVER LOSES A MESSAGE&img=/abs/path.png  (*word* = accent colour; max 4 words in t)
+const q = new URLSearchParams(location.search);
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+t.innerHTML = esc(q.get('t') || 'TITLE').replace(/\*(.+?)\*/g, '<em>$1</em>');
+tag.textContent = q.get('tag') || '';
+tag.style.display = q.get('tag') ? 'block' : 'none';
+shot.src = q.get('img') || '';
+shot.style.display = q.get('img') ? 'block' : 'none';
+</script>

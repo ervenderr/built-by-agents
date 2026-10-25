@@ -1,0 +1,86 @@
+[
+  {
+    "i": 1,
+    "text": "So the cost is high. Which weights caused it?",
+    "start": 0.0,
+    "duration": 2.37
+  },
+  {
+    "i": 2,
+    "text": "The answer is an algorithm called backpropagation.",
+    "start": 2.62,
+    "duration": 2.52
+  },
+  {
+    "i": 3,
+    "text": "It computes the negative gradient of the cost, the direction that lowers the cost most efficiently.",
+    "start": 5.39,
+    "duration": 4.96
+  },
+  {
+    "i": 4,
+    "text": "Think of it as handing out blame, weight by weight.",
+    "start": 10.6,
+    "duration": 2.53
+  },
+  {
+    "i": 5,
+    "text": "A weight that multiplies a strongly active neuron has a large influence on the output.",
+    "start": 13.38,
+    "duration": 4.1
+  },
+  {
+    "i": 6,
+    "text": "So the best adjustment is in proportion to those activations.",
+    "start": 17.73,
+    "duration": 3.31
+  },
+  {
+    "i": 7,
+    "text": "Weights attached to quiet neurons barely change.",
+    "start": 21.29,
+    "duration": 2.58
+  },
+  {
+    "i": 8,
+    "text": "But how do you do this for thousands of weights without going mad?",
+    "start": 24.12,
+    "duration": 3.1
+  },
+  {
+    "i": 9,
+    "text": "Backpropagation works backward from the output, applying the chain rule again and again.",
+    "start": 27.47,
+    "duration": 4.34
+  },
+  {
+    "i": 10,
+    "text": "Each piece computes only its own local effect and needs nothing else.",
+    "start": 32.06,
+    "duration": 3.5
+  },
+  {
+    "i": 11,
+    "text": "The Stanford course notes call this a beautifully local process.",
+    "start": 35.81,
+    "duration": 3.52
+  },
+  {
+    "i": 12,
+    "text": "Pieces pass a gradient signal back, saying whether they want their outputs pushed up or down.",
+    "start": 39.58,
+    "duration": 4.49
+  },
+  {
+    "i": 13,
+    "text": "Each layer's result is computed once and reused for earlier layers, not recomputed for every weight.",
+    "start": 44.32,
+    "duration": 5.16
+  },
+  {
+    "i": 14,
+    "text": "The error flows backward, and every weight gets its share of the blame.",
+    "start": 49.73,
+    "duration": 3.35
+  }
+]

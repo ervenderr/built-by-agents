@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Same photo, two different dresses.",
+    "start": 0.0,
+    "duration": 2.06
+  },
+  {
+    "i": 2,
+    "text": "In one survey of 1,401 people, 57 percent saw blue and black, and 30 percent saw white and gold.",
+    "start": 2.31,
+    "duration": 5.9
+  },
+  {
+    "i": 3,
+    "text": "Your eyes don't just record colour; scientists think your brain first guesses the light, then subtracts it.",
+    "start": 8.46,
+    "duration": 5.5
+  },
+  {
+    "i": 4,
+    "text": "Guess cool daylight, and you see white and gold.",
+    "start": 14.21,
+    "duration": 2.45
+  },
+  {
+    "i": 5,
+    "text": "Guess warm indoor light, and you see blue and black.",
+    "start": 16.91,
+    "duration": 2.61
+  },
+  {
+    "i": 6,
+    "text": "Same pixels, different guess.",
+    "start": 19.77,
+    "duration": 2.0
+  }
+]

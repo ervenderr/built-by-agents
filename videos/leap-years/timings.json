@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "In 1582, ten days vanished from the calendar.",
+    "start": 0.0,
+    "duration": 3.03
+  },
+  {
+    "i": 2,
+    "text": "Thursday, October 4 was followed by Friday, October 15.",
+    "start": 3.28,
+    "duration": 3.37
+  },
+  {
+    "i": 3,
+    "text": "The old calendar made every year slightly too long, so it kept sliding away from the seasons.",
+    "start": 6.9,
+    "duration": 4.44
+  },
+  {
+    "i": 4,
+    "text": "The fix: a century year only gets a leap day if it divides by 400.",
+    "start": 11.59,
+    "duration": 3.7
+  },
+  {
+    "i": 5,
+    "text": "That makes the average year 365.2425 days, nearly the real 365.2422.",
+    "start": 15.54,
+    "duration": 7.61
+  },
+  {
+    "i": 6,
+    "text": "So 1900 had no leap day, but 2000 did.",
+    "start": 23.4,
+    "duration": 2.94
+  }
+]

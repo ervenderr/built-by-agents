@@ -1,0 +1,8 @@
+Nobody ever typed the answer into a neural network, and that is the strangest thing about them.
+Take a classic network that reads handwritten digits, with two hidden layers of sixteen neurons each.
+It has thirteen thousand and two weights and biases that can be adjusted.
+No human sets those by hand, and at the start they are random, so a seven produces garbage.
+So how does random turn into skilled?
+My claim: the network never learns an answer, it gets nudged slightly less wrong, millions of times.
+Learning just means changing the weights and biases to minimize a cost function.
+It happens through one loop with three parts: error, blame, and a small step.

@@ -1,0 +1,7 @@
+{
+  "slug": "overfitting",
+  "working_title": "What Is Overfitting? (Whiteboard in 20 Seconds)",
+  "angle": "A model that memorizes its training data fails on new data, and the curve on the whiteboard shows why.",
+  "style": "whiteboard",
+  "repo_remix": ""
+}

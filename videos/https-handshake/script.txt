@@ -1,0 +1,6 @@
+Your browser and a server agree on a secret key while anyone watches.
+Your browser sends a ClientHello to start the handshake.
+The server replies with a ServerHello carrying its public Diffie-Hellman share.
+Together, those two messages determine the shared keys.
+The server then sends its certificate and signs the handshake, proving it holds the private key.
+After that, everything is encrypted, so only the endpoints can read it.

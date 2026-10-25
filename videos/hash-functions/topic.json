@@ -1,0 +1,6 @@
+{
+  "slug": "hash-functions",
+  "working_title": "Hash Functions",
+  "angle": "any input and any size goes in and a fixed-length fingerprint comes out, and changing one character scrambles it",
+  "style": "diagram"
+}

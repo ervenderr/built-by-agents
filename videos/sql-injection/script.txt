@@ -1,0 +1,6 @@
+A login box can let a stranger read your database.
+The trick is typing SQL code instead of a username.
+A careless app glues that text into its query.
+So the database runs it as a command, not as text.
+That can read or change data, even log you in without the password.
+Parameterized queries fix it by keeping input as data, never code.

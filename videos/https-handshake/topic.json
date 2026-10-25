@@ -1,0 +1,7 @@
+{
+  "slug": "https-handshake",
+  "working_title": "How HTTPS Works: The TLS Handshake in 25 Seconds",
+  "angle": "Step by step, your browser and a server agree on a secret key over a public connection.",
+  "style": "timeline",
+  "repo_remix": ""
+}

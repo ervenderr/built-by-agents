@@ -1,0 +1,394 @@
+[
+  {
+    "i": 1,
+    "text": "If the Sun vanished right now, you would carry on as normal for eight minutes and twenty seconds.",
+    "start": 0.0,
+    "duration": 4.51,
+    "chapter": "ch01"
+  },
+  {
+    "i": 2,
+    "text": "Most people believe we would notice at once, that the sky would go dark and Earth would fly off instantly.",
+    "start": 4.76,
+    "duration": 5.1,
+    "chapter": "ch01"
+  },
+  {
+    "i": 3,
+    "text": "Here is the question this video answers: if the Sun disappeared, how long before Earth noticed?",
+    "start": 10.11,
+    "duration": 4.75,
+    "chapter": "ch01"
+  },
+  {
+    "i": 4,
+    "text": "The answer is about eight minutes and twenty seconds, for both the light and the gravity.",
+    "start": 15.11,
+    "duration": 4.41,
+    "chapter": "ch01"
+  },
+  {
+    "i": 5,
+    "text": "Until then, Earth would keep circling an empty spot in space, as if nothing had happened.",
+    "start": 19.77,
+    "duration": 4.42,
+    "chapter": "ch01"
+  },
+  {
+    "i": 6,
+    "text": "This is only a thought experiment, since the Sun cannot really vanish suddenly.",
+    "start": 24.44,
+    "duration": 3.82,
+    "chapter": "ch01"
+  },
+  {
+    "i": 7,
+    "text": "The Sun holds ninety-nine point eight percent of all the mass in the solar system.",
+    "start": 28.51,
+    "duration": 3.85,
+    "chapter": "ch01"
+  },
+  {
+    "i": 8,
+    "text": "It outweighs more than three hundred and thirty thousand Earths.",
+    "start": 32.61,
+    "duration": 3.3,
+    "chapter": "ch01"
+  },
+  {
+    "i": 9,
+    "text": "By the end, you will know exactly what happens at the eight minute twenty mark.",
+    "start": 36.16,
+    "duration": 3.58,
+    "chapter": "ch01"
+  },
+  {
+    "i": 10,
+    "text": "And you will see why even gravity has a speed limit.",
+    "start": 39.99,
+    "duration": 2.72,
+    "chapter": "ch01"
+  },
+  {
+    "i": 1,
+    "text": "Why would the sky stay bright for eight minutes after the Sun is gone?",
+    "start": 43.31,
+    "duration": 3.33,
+    "chapter": "ch02"
+  },
+  {
+    "i": 2,
+    "text": "Because sunlight is not instant, it travels, and travelling takes time.",
+    "start": 46.89,
+    "duration": 3.65,
+    "chapter": "ch02"
+  },
+  {
+    "i": 3,
+    "text": "The Sun is about one hundred and fifty million kilometers from Earth.",
+    "start": 50.79,
+    "duration": 3.14,
+    "chapter": "ch02"
+  },
+  {
+    "i": 4,
+    "text": "That is about ninety-three million miles, a distance that is hard to picture.",
+    "start": 54.18,
+    "duration": 3.9,
+    "chapter": "ch02"
+  },
+  {
+    "i": 5,
+    "text": "Light covers that gap in about eight point three minutes.",
+    "start": 58.33,
+    "duration": 2.83,
+    "chapter": "ch02"
+  },
+  {
+    "i": 6,
+    "text": "So the sunlight hitting your face right now left the Sun about eight minutes ago.",
+    "start": 61.41,
+    "duration": 3.79,
+    "chapter": "ch02"
+  },
+  {
+    "i": 7,
+    "text": "When the Sun vanishes, that sunlight is already in flight, like a long stream of glowing dots.",
+    "start": 65.45,
+    "duration": 4.64,
+    "chapter": "ch02"
+  },
+  {
+    "i": 8,
+    "text": "Those last rays keep arriving, so the sky looks perfectly normal until the delay is over.",
+    "start": 70.34,
+    "duration": 4.48,
+    "chapter": "ch02"
+  },
+  {
+    "i": 9,
+    "text": "For example, imagine a bullet train at one hundred kilometers an hour heading for the Sun.",
+    "start": 75.07,
+    "duration": 4.44,
+    "chapter": "ch02"
+  },
+  {
+    "i": 10,
+    "text": "It would need roughly one hundred and seventy years to get there.",
+    "start": 79.76,
+    "duration": 2.88,
+    "chapter": "ch02"
+  },
+  {
+    "i": 11,
+    "text": "Light makes the same trip in less time than a short coffee break.",
+    "start": 82.89,
+    "duration": 3.24,
+    "chapter": "ch02"
+  },
+  {
+    "i": 12,
+    "text": "So nothing about the Sun's disappearance can reach us faster than light can carry the news.",
+    "start": 86.38,
+    "duration": 4.49,
+    "chapter": "ch02"
+  },
+  {
+    "i": 13,
+    "text": "But light is only half the story: what about the Sun's pull, the gravity that holds Earth in orbit?",
+    "start": 91.12,
+    "duration": 4.76,
+    "chapter": "ch02"
+  },
+  {
+    "i": 1,
+    "text": "Does gravity arrive instantly, even if light does not?",
+    "start": 96.48,
+    "duration": 2.94,
+    "chapter": "ch03"
+  },
+  {
+    "i": 2,
+    "text": "Einstein's theory of general relativity says that changes in gravity spread at the speed of light.",
+    "start": 99.67,
+    "duration": 4.88,
+    "chapter": "ch03"
+  },
+  {
+    "i": 3,
+    "text": "Imagine a heavy ball resting on a stretched rubber sheet, bending it.",
+    "start": 104.8,
+    "duration": 3.44,
+    "chapter": "ch03"
+  },
+  {
+    "i": 4,
+    "text": "Now yank the ball away, and watch a ripple spread outward ring by ring.",
+    "start": 108.49,
+    "duration": 3.63,
+    "chapter": "ch03"
+  },
+  {
+    "i": 5,
+    "text": "A marble far from the ball stays put until the ripple reaches it.",
+    "start": 112.37,
+    "duration": 3.29,
+    "chapter": "ch03"
+  },
+  {
+    "i": 6,
+    "text": "Those ripples in gravity are called gravitational waves, and they travel at light speed.",
+    "start": 115.91,
+    "duration": 4.43,
+    "chapter": "ch03"
+  },
+  {
+    "i": 7,
+    "text": "In two thousand seventeen, we detected two neutron stars that crashed together about one hundred and thirty million years ago.",
+    "start": 120.59,
+    "duration": 6.14,
+    "chapter": "ch03"
+  },
+  {
+    "i": 8,
+    "text": "Detectors caught the gravitational wave, and a flash of gamma rays arrived just one point seven seconds later.",
+    "start": 126.98,
+    "duration": 5.62,
+    "chapter": "ch03"
+  },
+  {
+    "i": 9,
+    "text": "That pins any difference between the speed of gravity and light to a few parts in a thousand trillion.",
+    "start": 132.85,
+    "duration": 4.96,
+    "chapter": "ch03"
+  },
+  {
+    "i": 10,
+    "text": "Honestly, a few other observations are argued to disagree, but the mainstream view is that gravity travels at light speed.",
+    "start": 138.06,
+    "duration": 6.2,
+    "chapter": "ch03"
+  },
+  {
+    "i": 11,
+    "text": "So the news of the Sun's missing pull reaches Earth on the very same eight minute schedule.",
+    "start": 144.51,
+    "duration": 4.55,
+    "chapter": "ch03"
+  },
+  {
+    "i": 12,
+    "text": "Next comes the best part: what Earth actually does when that news finally arrives.",
+    "start": 149.31,
+    "duration": 4.16,
+    "chapter": "ch03"
+  },
+  {
+    "i": 1,
+    "text": "So what does Earth do during those eight minutes and twenty seconds?",
+    "start": 154.07,
+    "duration": 3.27,
+    "chapter": "ch04"
+  },
+  {
+    "i": 2,
+    "text": "It keeps moving at about thirty kilometers every second, just like always.",
+    "start": 157.59,
+    "duration": 3.55,
+    "chapter": "ch04"
+  },
+  {
+    "i": 3,
+    "text": "Over five hundred seconds, that adds up to nearly fifteen thousand kilometers of path.",
+    "start": 161.39,
+    "duration": 4.25,
+    "chapter": "ch04"
+  },
+  {
+    "i": 4,
+    "text": "All that time, Earth bends around the Sun's old spot, circling a ghost.",
+    "start": 165.89,
+    "duration": 3.6,
+    "chapter": "ch04"
+  },
+  {
+    "i": 5,
+    "text": "Nothing feels different, because no news of the missing Sun has reached us yet.",
+    "start": 169.74,
+    "duration": 4.07,
+    "chapter": "ch04"
+  },
+  {
+    "i": 6,
+    "text": "Then a ring of news, travelling at light speed, finally touches Earth.",
+    "start": 174.06,
+    "duration": 3.46,
+    "chapter": "ch04"
+  },
+  {
+    "i": 7,
+    "text": "Two things happen at exactly the same moment.",
+    "start": 177.77,
+    "duration": 2.34,
+    "chapter": "ch04"
+  },
+  {
+    "i": 8,
+    "text": "The sky goes dark, and the Sun's pull stops bending Earth's path.",
+    "start": 180.36,
+    "duration": 3.1,
+    "chapter": "ch04"
+  },
+  {
+    "i": 9,
+    "text": "Without that pull, Earth flies off in a straight line at about thirty kilometers a second.",
+    "start": 183.71,
+    "duration": 4.53,
+    "chapter": "ch04"
+  },
+  {
+    "i": 10,
+    "text": "That is roughly sixty-seven thousand miles an hour, and there is no jolt, because nothing pushes us.",
+    "start": 188.49,
+    "duration": 5.02,
+    "chapter": "ch04"
+  },
+  {
+    "i": 11,
+    "text": "The Moon goes dark too, since it only shines with borrowed sunlight.",
+    "start": 193.76,
+    "duration": 3.36,
+    "chapter": "ch04"
+  },
+  {
+    "i": 12,
+    "text": "Today, Earth's average surface temperature is about fifteen degrees Celsius.",
+    "start": 197.37,
+    "duration": 3.83,
+    "chapter": "ch04"
+  },
+  {
+    "i": 13,
+    "text": "Without the Sun, humans would freeze within weeks.",
+    "start": 201.45,
+    "duration": 2.67,
+    "chapter": "ch04"
+  },
+  {
+    "i": 14,
+    "text": "Earth would become a dark, cold ball, drifting through the dark.",
+    "start": 204.37,
+    "duration": 3.24,
+    "chapter": "ch04"
+  },
+  {
+    "i": 1,
+    "text": "Light takes about eight minutes to reach us, and gravity travels at the very same speed.",
+    "start": 208.21,
+    "duration": 4.41,
+    "chapter": "ch05"
+  },
+  {
+    "i": 2,
+    "text": "That is why Earth would circle the Sun's ghost for eight minutes and twenty seconds, then fly off in a straight line.",
+    "start": 212.87,
+    "duration": 5.63,
+    "chapter": "ch05"
+  },
+  {
+    "i": 3,
+    "text": "The myth said we would notice at once, but the universe has a speed limit, even for news.",
+    "start": 218.75,
+    "duration": 4.36,
+    "chapter": "ch05"
+  },
+  {
+    "i": 4,
+    "text": "Here is something to spot in daily life: every time you see sunlight, you see the Sun as it was eight minutes ago.",
+    "start": 223.36,
+    "duration": 5.5,
+    "chapter": "ch05"
+  },
+  {
+    "i": 5,
+    "text": "News cannot outrun light, and that is the whole lesson in one line.",
+    "start": 229.11,
+    "duration": 3.37,
+    "chapter": "ch05"
+  },
+  {
+    "i": 6,
+    "text": "One more thing: that neutron star crash was caught by two detectors called LIGO and Virgo.",
+    "start": 232.73,
+    "duration": 4.56,
+    "chapter": "ch05"
+  },
+  {
+    "i": 7,
+    "text": "How do machines like that feel ripples in space itself, and what else could they reveal?",
+    "start": 237.54,
+    "duration": 4.57,
+    "chapter": "ch05"
+  }
+]

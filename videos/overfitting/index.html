@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #e9e6dc;
+        --board: #fbfaf5;
+        --ink: #1b2430;
+        --soft: #5b6676;
+        --blue: #2150d8;
+        --red: #d6284a;
+        --accent: #00e5a0;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #brand { position: absolute; left: 380px; width: 320px; top: 172px; height: 46px; border-radius: 23px; background: var(--ink); color: var(--accent); text-align: center; line-height: 46px; font-size: 24px; font-weight: 800; letter-spacing: 5px; }
+      .title { position: absolute; left: 0; width: 1080px; top: 240px; text-align: center; font-size: 54px; font-weight: 800; letter-spacing: -1px; line-height: 1; white-space: nowrap; }
+      .title em { color: var(--red); font-style: normal; }
+      #board { position: absolute; left: 50px; top: 325px; width: 980px; height: 760px; border-radius: 24px; background: var(--board); border: 10px solid #b9b4a3; }
+      #plot { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #plot text { font-family: var(--font-display); }
+      .lab { position: absolute; left: 60px; width: 960px; top: 1018px; text-align: center; font-size: 42px; font-weight: 800; white-space: nowrap; }
+      #legend { position: absolute; left: 90px; top: 345px; font-size: 32px; font-weight: 800; color: var(--soft); white-space: nowrap; }
+      #illus { position: absolute; left: 760px; top: 348px; width: 250px; text-align: right; font-size: 24px; font-weight: 800; letter-spacing: 3px; color: var(--soft); }
+      #lg1 { position: absolute; left: 150px; top: 350px; font-size: 34px; font-weight: 800; color: var(--blue); }
+      #lg2 { position: absolute; left: 150px; top: 395px; font-size: 34px; font-weight: 800; color: var(--red); }
+      #stop { position: absolute; left: 380px; width: 360px; top: 980px; text-align: center; font-size: 34px; font-weight: 800; color: var(--ink); }
+      .cap { position: absolute; left: 50px; width: 980px; top: 1130px; height: 200px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 54px; font-weight: 800; line-height: 1.12; }
+      .cap span { display: inline-block; max-width: 980px; padding: 12px 28px; border-radius: 26px; background: rgba(20, 27, 38, 0.94); color: #fff; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.59" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="t1" class="title">ACES TRAINING. <em>FAILS REAL LIFE.</em></div>
+      <div id="t2" class="title"><em>OVERFITTING</em></div>
+      <div id="t3" class="title">SIMPLE <em>BEATS</em> WIGGLY</div>
+      <div id="t4" class="title">WATCH <em>VALIDATION</em> LOSS</div>
+
+      <div id="board"></div>
+      <svg id="plot" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+        <g id="axes" stroke="#1b2430" stroke-width="6" stroke-linecap="round" fill="none">
+          <path d="M120 975 L120 400" /><path d="M120 975 L960 975" />
+        </g>
+        <g id="scatter">
+          <path id="wig" pathLength="1" fill="none" stroke="#2150d8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" />
+          <path id="lineOut" pathLength="1" fill="none" stroke="#1b2430" stroke-width="18" stroke-linecap="round" stroke-dasharray="1" />
+          <path id="line" pathLength="1" fill="none" stroke="#00e5a0" stroke-width="9" stroke-linecap="round" stroke-dasharray="1" />
+          <g id="ticks" stroke="#d6284a" stroke-width="7" stroke-linecap="round"></g>
+          <g id="oks" stroke="#00a371" stroke-width="7" stroke-linecap="round"></g>
+          <g id="dots" fill="#1b2430"></g>
+          <g id="news" fill="#fbfaf5" stroke="#d6284a" stroke-width="7"></g>
+        </g>
+        <g id="chart" fill="none" stroke-linecap="round">
+          <path id="trn" pathLength="1" d="M140 560 C 300 800, 600 900, 930 920" stroke="#2150d8" stroke-width="10" stroke-dasharray="1" />
+          <path id="val" pathLength="1" d="M140 580 C 300 760, 420 800, 560 810 C 700 820, 820 740, 930 650" stroke="#d6284a" stroke-width="10" stroke-dasharray="1" />
+          <path id="stopLine" d="M560 440 L560 970" stroke="#1b2430" stroke-width="5" stroke-dasharray="14 12" />
+        </g>
+      </svg>
+      <div id="legend"><span style="color:#1b2430">●</span> TRAIN DATA &nbsp;&nbsp; <span style="color:#d6284a">○</span> NEW DATA</div>
+      <div id="lg1">TRAINING LOSS</div>
+      <div id="lg2">VALIDATION LOSS</div>
+      <div id="stop">STOP HERE</div>
+      <div id="illus">ILLUSTRATIVE</div>
+      <div id="l1" class="lab">TRAINING DATA: PERFECT FIT</div>
+      <div id="l3a" class="lab">MEMORIZES THE TRAINING SET</div>
+      <div id="l3b" class="lab" style="color:#d6284a">NEW DATA: BIG MISS</div>
+      <div id="l4" class="lab" style="color:#2150d8">WIGGLY CURVE HITS EVERY DOT</div>
+      <div id="l5" class="lab" style="color:#00805a">SIMPLE LINE: CLOSER ON NEW DATA</div>
+      <div id="l6" class="lab" style="color:#d6284a">VALIDATION RISES = OVERFITTING</div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="3.65" data-track-index="2"><span>Your model can ace every training example and still <b>fail</b> in real life.</span></div>
+      <div id="cap2" class="clip cap" data-start="3.9" data-duration="1.56" data-track-index="2"><span>That is <b>overfitting</b>.</span></div>
+      <div id="cap3" class="clip cap" data-start="5.71" data-duration="4.31" data-track-index="2"><span>It means the model <b>memorizes</b> the training set so closely that it fails on new data.</span></div>
+      <div id="cap4" class="clip cap" data-start="10.27" data-duration="3.16" data-track-index="2"><span>On the whiteboard, a <b>wiggly curve</b> hits every dot perfectly.</span></div>
+      <div id="cap5" class="clip cap" data-start="13.68" data-duration="2.98" data-track-index="2"><span>But a <b>simple line</b> would likely predict new points better.</span></div>
+      <div id="cap6" class="clip cap" data-start="16.91" data-duration="4.68" data-track-index="2"><span>So watch <b>validation loss</b>, not just training loss.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="19.59" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (parent, tag, attrs) => {
+        const e = document.createElementNS(NS, tag);
+        Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+        document.getElementById(parent).appendChild(e);
+        return e;
+      };
+      // schematic data: trend y = 900 - 0.512*(x-130), noisy dots
+      const trend = (x) => 900 - 0.512 * (x - 130);
+      const D = [[170, 919], [270, 768], [370, 826], [470, 680], [570, 729], [670, 573], [770, 617], [870, 480]];
+      // wiggly path: each segment bulges away from the trend, alternating
+      let d = "M" + D[0][0] + " " + D[0][1];
+      const mids = [];
+      for (let i = 0; i < D.length - 1; i++) {
+        const [x1, y1] = D[i], [x2, y2] = D[i + 1], s = i % 2 === 0 ? 90 : -90;
+        const dx = (x2 - x1) / 3;
+        d += ` C ${x1 + dx} ${y1 + s}, ${x2 - dx} ${y2 + s}, ${x2} ${y2}`;
+        mids.push([(x1 + x2) / 2, 0.125 * y1 + 0.375 * (y1 + s) + 0.375 * (y2 + s) + 0.125 * y2]);
+      }
+      document.getElementById("wig").setAttribute("d", d);
+      const lp = `M130 ${trend(130)} L950 ${trend(950)}`;
+      ["line", "lineOut"].forEach((id) => document.getElementById(id).setAttribute("d", lp));
+      D.forEach(([x, y]) => mk("dots", "circle", { class: "dot", cx: x, cy: y, r: 14 }));
+      // new points near the trend at the wiggle's bulges (segments 1, 3, 5)
+      [1, 3, 5].forEach((i, k) => {
+        const x = mids[i][0], y = trend(x) + (k % 2 ? 14 : -12);
+        mk("news", "circle", { class: "new", cx: x, cy: y, r: 15 });
+        mk("ticks", "line", { class: "tick", x1: x, y1: y + (mids[i][1] < y ? -18 : 18), x2: x, y2: mids[i][1] });
+        const ly = trend(x);
+        mk("oks", "line", { class: "ok", x1: x, y1: y + (ly < y ? -18 : 18), x2: x, y2: ly });
+      });
+
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0";
+      const labs = ["#l1", "#l3a", "#l3b", "#l4", "#l5", "#l6", "#legend", "#lg1", "#lg2", "#stop", "#t2", "#t3", "#t4"];
+      gsap.set(labs, { opacity: 0 });
+      gsap.set([".tick", ".ok", ".new", "#chart", "#stopLine"], { opacity: 0 });
+      gsap.set(["#wig", "#line", "#lineOut"], { strokeDashoffset: 1 });
+      gsap.set(["#trn", "#val"], { strokeDashoffset: 1 });
+      ["#cap1", "#cap2", "#cap3", "#cap4", "#cap5", "#cap6"].forEach((c) => gsap.set(c + " span", { opacity: 0, y: 24 }));
+      const capIn = (id, t, dur, last) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (!last) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + dur - 0.14);
+      };
+      capIn("#cap1", 0, 3.65); capIn("#cap2", 3.9, 1.56); capIn("#cap3", 5.71, 4.31);
+      capIn("#cap4", 10.27, 3.16); capIn("#cap5", 13.68, 2.98); capIn("#cap6", 16.91, 4.68, true);
+      const show = (id, t) => tl.to(id, { opacity: 1, duration: 0.25 }, t);
+      const hide = (id, t) => tl.to(id, { opacity: 0, duration: 0.2 }, t);
+
+      // S1 0-3.65: hook on screen at frame 0, wiggly curve fits every dot
+      gsap.set("#t1", { opacity: 1 });
+      show("#l1", 0.2);
+      tl.fromTo("#wig", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.2, ease: "power1.inOut" }, 0.4);
+      // S2 3.9-5.46: name it
+      hide("#t1", 3.75); hide("#l1", 3.75); show("#t2", 3.9);
+      tl.fromTo("#t2", { scale: 0.8, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.9);
+      // S3 5.71-10.02: memorizes, then misses new data
+      show("#l3a", 5.8);
+      tl.to(".dot", { attr: { r: 22 }, duration: 0.15, stagger: 0.18, yoyo: true, repeat: 1 }, 6.0);
+      hide("#l3a", 7.9); show("#legend", 7.9); show("#l3b", 8.0);
+      tl.fromTo(".new", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.25 }, 8.0);
+      tl.fromTo(".tick", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.25 }, 8.5);
+      // S4 10.27-13.43: the wiggly curve hits every dot
+      hide("#t2", 10.2); show("#t3", 10.3);
+      hide("#l3b", 10.2); show("#l4", 10.4);
+      tl.to("#wig", { strokeWidth: 14, duration: 0.3, yoyo: true, repeat: 1 }, 10.4);
+      tl.to(".dot", { attr: { r: 20 }, duration: 0.12, stagger: 0.14, yoyo: true, repeat: 1 }, 10.6);
+      // S5 13.68-16.66: simple line, closer to new points
+      hide("#l4", 13.6); hide(".tick", 13.6);
+      tl.to("#wig", { opacity: 0.25, duration: 0.3 }, 13.7);
+      tl.fromTo(["#lineOut", "#line"], { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, 13.8);
+      tl.fromTo(".ok", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.2 }, 14.9);
+      show("#l5", 14.9);
+      // S6 16.91-19.59: validation vs training loss
+      hide("#t3", 16.8); show("#t4", 16.95);
+      hide("#l5", 16.8);
+      tl.to(["#scatter", "#legend"], { opacity: 0, duration: 0.3 }, 16.8);
+      tl.to("#chart", { opacity: 1, duration: 0.2 }, 17.0);
+      show("#lg1", 17.1); show("#lg2", 17.1);
+      tl.fromTo("#trn", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "none" }, 17.1);
+      tl.fromTo("#val", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "none" }, 17.1);
+      tl.to("#stopLine", { opacity: 1, duration: 0.3 }, 18.4);
+      show("#stop", 18.4); show("#l6", 18.8);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Factory Showcase</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+:root{--bg:#0a0f16;--bg2:#0f1824;--green:#00e6a0;--green-soft:#7ff3cf;--amber:#ffd21f;--pink:#ff5d8a;--sky:#7dd3fc;--ink:#f8fafc;--dim:#94a3b8;}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#root{position:relative;width:100%;height:100%;overflow:hidden;font-family:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 70%)}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
+#glow-a{width:760px;height:760px;left:-240px;top:120px;background:#0a7a5a}
+#glow-b{width:640px;height:640px;right:-260px;top:980px;background:#0e5a7a}
+.scene{position:absolute;inset:0}.stage{position:absolute;inset:0}
+.kicker{position:absolute;left:80px;top:150px;font-size:34px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green)}
+.headline{position:absolute;left:80px;right:60px;top:206px;font-size:82px;line-height:1.05;font-weight:800;letter-spacing:-.035em}
+.headline .ln{display:block;white-space:nowrap}.headline em{font-style:normal;color:var(--green)}
+.phone{position:absolute;left:210px;top:520px;width:660px;height:1150px;border-radius:80px;background:#05080c;padding:14px;box-shadow:0 0 0 3px #1e2d3d,0 60px 140px rgba(0,0,0,.65),0 0 120px rgba(0,230,160,.18)}
+.phone .screen{width:100%;height:100%;border-radius:68px;overflow:hidden;background:#0a0f16}
+.phone img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.land{position:absolute;left:70px;width:940px;height:529px;border-radius:28px;overflow:hidden;box-shadow:0 0 0 3px #1e2d3d,0 40px 100px rgba(0,0,0,.6),0 0 100px rgba(0,230,160,.15)}
+.land img{display:block;width:100%;height:100%;object-fit:cover}
+.term{position:absolute;left:70px;width:940px;border-radius:24px;overflow:hidden;box-shadow:0 0 0 3px #1e2d3d,0 40px 100px rgba(0,0,0,.6)}
+.term img{display:block;width:100%;height:auto}
+
+.src{position:absolute;left:80px;right:60px;font-size:28px;color:var(--dim);letter-spacing:.02em}.src b{color:var(--ink);font-weight:600}
+.chip{position:absolute;padding:24px 38px;border-radius:999px;font-size:42px;font-weight:750;background:rgba(10,18,28,.94);border:3px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.55);white-space:nowrap}
+.chip.amber{color:var(--amber);border-color:rgba(255,210,31,.55)}
+.chip.green{color:var(--green);border-color:rgba(0,230,160,.55)}
+.chip.pink{color:var(--pink);border-color:rgba(255,93,138,.55)}
+.chip.sky{color:var(--sky);border-color:rgba(125,211,252,.55)}
+.pill-row{position:absolute;left:70px;right:70px;display:flex;flex-wrap:wrap;gap:16px}
+.pill{padding:18px 30px;border-radius:999px;font-size:36px;font-weight:700;font-family:ui-monospace,Menlo,monospace;text-transform:uppercase;background:rgba(0,230,160,.1);border:3px solid rgba(0,230,160,.5);color:var(--green)}
+.pill.y{background:rgba(125,211,252,.12);border-color:rgba(125,211,252,.6);color:var(--sky)}
+.hook-line{position:absolute;left:80px;right:60px;font-weight:800;letter-spacing:-.04em;line-height:1}
+#h1{top:620px;font-size:124px;color:var(--ink)}
+#h2{top:780px;font-size:112px;color:var(--green)}
+#h3{top:1090px;font-size:44px;font-family:ui-monospace,Menlo,monospace;font-weight:600;letter-spacing:0;color:var(--amber);padding:26px 34px;border-radius:20px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.14);right:auto}
+#end-name{position:absolute;left:0;right:0;top:300px;text-align:center;font-size:150px;font-weight:800;letter-spacing:-.04em}
+#end-name em{font-style:normal;color:var(--green)}
+#end-sub{position:absolute;left:60px;right:60px;top:500px;text-align:center;font-size:44px;font-weight:600;color:var(--green-soft)}
+.thumb{position:absolute;width:700px;height:394px;left:190px;border-radius:24px;overflow:hidden;box-shadow:0 0 0 3px #1e2d3d,0 40px 100px rgba(0,0,0,.6)}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover}
+#end-cost{position:absolute;left:60px;right:60px;top:1540px;text-align:center;font-size:42px;font-weight:600;color:var(--ink);line-height:1.35}
+#end-cost span{color:var(--dim);font-size:30px;font-weight:500}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="34.5">
+<div class="glow" id="glow-a"></div><div class="glow" id="glow-b"></div>
+
+<section id="s1" class="clip scene" data-start="0" data-duration="3.9" data-track-index="1" data-track-kind="graphics">
+<div class="stage" id="s1-stage">
+<div class="hook-line" id="h1">One command.</div>
+<div class="hook-line" id="h2">A finished video.</div>
+<div class="hook-line" id="h3">factory/run.sh run --count 3</div>
+</div></section>
+
+<section id="s2" class="clip scene" data-start="3.5" data-duration="3.8" data-track-index="2" data-track-kind="graphics">
+<div class="stage" id="s2-stage">
+<div class="kicker">01 · PLAN</div>
+<div class="headline"><span class="ln">A planner agent</span><span class="ln"><em>picks the topic</em></span></div>
+<div class="term" id="s2-media" style="top:560px"><img src="assets/live-running.png" alt=""></div>
+<div class="pill-row" id="s2-pills" style="top:1190px"><div class="pill">script</div><div class="pill">facts</div><div class="pill">voice</div><div class="pill">build</div><div class="pill">verify</div><div class="pill">meta</div><div class="pill y">you</div></div>
+<div class="src" id="s2-src" style="top:1420px">one stage set to running</div>
+<div class="chip amber" id="s2-chip" style="left:70px;top:1500px">illustrative state</div>
+</div></section>
+<section id="s3" class="clip scene" data-start="6.9" data-duration="3.8" data-track-index="3" data-track-kind="graphics">
+<div class="stage" id="s3-stage">
+<div class="kicker">02 · SCRIPT</div>
+<div class="headline"><span class="ln">Researched</span><span class="ln"><em>and sourced</em></span></div>
+<div class="phone" id="s3-media"><div class="screen"><img src="assets/qr.jpg" alt=""></div></div>
+<div class="src" id="s3-src" style="top:1700px">frame from qr-codes.mp4</div>
+<div class="chip green" id="s3-chip" style="left:60px;top:1440px">script.txt + SOURCES.md</div>
+</div></section>
+<section id="s4" class="clip scene" data-start="10.3" data-duration="3.8" data-track-index="4" data-track-kind="graphics">
+<div class="stage" id="s4-stage">
+<div class="kicker">03 · FACTS</div>
+<div class="headline"><span class="ln">A second agent</span><span class="ln"><em>breaks every claim</em></span></div>
+<div class="phone" id="s4-media"><div class="screen"><img src="assets/dress.jpg" alt=""></div></div>
+<div class="src" id="s4-src" style="top:1700px">frame from the-dress.mp4</div>
+<div class="chip pink" id="s4-chip" style="right:60px;top:1440px">independent agent</div>
+</div></section>
+<section id="s5" class="clip scene" data-start="13.7" data-duration="3.8" data-track-index="5" data-track-kind="graphics">
+<div class="stage" id="s5-stage">
+<div class="kicker">04 · VOICE</div>
+<div class="headline"><span class="ln">Local voice,</span><span class="ln"><em>each sentence checked</em></span></div>
+<div class="phone" id="s5-media"><div class="screen"><img src="assets/leap.jpg" alt=""></div></div>
+<div class="src" id="s5-src" style="top:1700px">frame from leap-years.mp4</div>
+<div class="chip green" id="s5-chip" style="left:60px;top:1440px">every sentence checked</div>
+</div></section>
+<section id="s6" class="clip scene" data-start="17.1" data-duration="3.8" data-track-index="6" data-track-kind="graphics">
+<div class="stage" id="s6-stage">
+<div class="kicker">05 · BUILD</div>
+<div class="headline"><span class="ln">Animation as code,</span><span class="ln"><em>built in parallel</em></span></div>
+<div class="land" id="s6-media" style="top:560px"><img src="assets/sun1.jpg" alt=""></div>
+<div class="land l2" id="s6-media2" style="top:1230px"><img src="assets/sun2.jpg" alt=""></div>
+<div class="src" id="s6-src" style="top:1780px">frames from sun-vanishes.mp4 (long-form)</div>
+<div class="chip sky" id="s6-chip" style="left:70px;top:1100px">chapters in parallel + stitch</div>
+</div></section>
+<section id="s7" class="clip scene" data-start="20.5" data-duration="3.8" data-track-index="7" data-track-kind="graphics">
+<div class="stage" id="s7-stage">
+<div class="kicker">06 · VERIFY</div>
+<div class="headline"><span class="ln">Render transcribed,</span><span class="ln"><em>compared to the script</em></span></div>
+<div class="land" id="s7-media" style="top:560px"><img src="assets/nn1.jpg" alt=""></div>
+<div class="land l2" id="s7-media2" style="top:1230px"><img src="assets/nn2.jpg" alt=""></div>
+<div class="src" id="s7-src" style="top:1780px">frames from how-neural-nets-learn.mp4</div>
+<div class="chip green" id="s7-chip" style="left:70px;top:1100px">audio verify: render vs script</div>
+</div></section>
+<section id="s8" class="clip scene" data-start="23.9" data-duration="3.8" data-track-index="8" data-track-kind="graphics">
+<div class="stage" id="s8-stage">
+<div class="kicker">07 · YOU</div>
+<div class="headline"><span class="ln">You approve.</span><span class="ln"><em>Then it uploads.</em></span></div>
+<div class="term" id="s8-media" style="top:560px"><img src="assets/live-done.png" alt=""></div>
+<div class="term" id="s8-media2" style="top:1190px;width:760px;left:160px"><img src="assets/status.png" alt=""></div>
+<div class="src" id="s8-src" style="top:1590px">factory view + <b>factory/run.sh status</b>, 7 videos ready</div>
+<div class="chip amber" id="s8-chip" style="left:70px;top:1660px;font-size:40px">nothing uploads without your approval</div>
+</div></section>
+<section id="s9" class="clip scene" data-start="27.3" data-duration="3.8" data-track-index="9" data-track-kind="graphics">
+<div class="stage" id="s9-stage">
+<div class="kicker">THE WHOLE PIPELINE</div>
+<div class="headline"><span class="ln">Idea to</span><span class="ln"><em>scheduled video</em></span></div>
+<div class="term diag" id="s9-media" style="top:560px"><img src="assets/diagram.jpg" alt=""></div>
+<div class="src" id="s9-src" style="top:1400px">pipeline diagram</div>
+<div class="chip sky" id="s9-chip" style="right:60px;top:1480px">private + scheduled</div>
+</div></section>
+
+<section id="s10" class="clip scene" data-start="30.7" data-duration="3.8" data-track-index="10" data-track-kind="graphics">
+<div class="stage" id="s10-stage">
+<div id="end-name">Built by <em>Agents</em></div>
+<div id="end-sub">Terminal factory for animated explainers</div>
+<div class="thumb" id="th1" style="top:650px"><img src="assets/thumb-sun-vanishes.jpg" alt=""></div>
+<div class="thumb" id="th2" style="top:1080px"><img src="assets/thumb-how-neural-nets-learn.jpg" alt=""></div>
+<div id="end-cost">About $2 per Short, about $4 per 4-minute video<br><span>in our tests</span></div>
+</div></section>
+
+<audio id="bgm" src="assets/bgm.mp3" data-start="0" data-duration="34.5" data-track-index="20" data-volume="0.85"></audio>
+<audio id="whoosh0" src="assets/whoosh.mp3" data-start="3.4" data-duration="0.6" data-track-index="21" data-volume="0.35"></audio>
+<audio id="whoosh1" src="assets/whoosh.mp3" data-start="6.8" data-duration="0.6" data-track-index="22" data-volume="0.35"></audio>
+<audio id="whoosh2" src="assets/whoosh.mp3" data-start="10.2" data-duration="0.6" data-track-index="23" data-volume="0.35"></audio>
+<audio id="whoosh3" src="assets/whoosh.mp3" data-start="13.6" data-duration="0.6" data-track-index="24" data-volume="0.35"></audio>
+<audio id="whoosh4" src="assets/whoosh.mp3" data-start="17.0" data-duration="0.6" data-track-index="25" data-volume="0.35"></audio>
+<audio id="whoosh5" src="assets/whoosh.mp3" data-start="20.4" data-duration="0.6" data-track-index="26" data-volume="0.35"></audio>
+<audio id="whoosh6" src="assets/whoosh.mp3" data-start="23.8" data-duration="0.6" data-track-index="27" data-volume="0.35"></audio>
+<audio id="whoosh7" src="assets/whoosh.mp3" data-start="27.2" data-duration="0.6" data-track-index="28" data-volume="0.35"></audio>
+<audio id="whoosh8" src="assets/whoosh.mp3" data-start="30.6" data-duration="0.6" data-track-index="29" data-volume="0.35"></audio>
+</div>
+<script>
+window.__timelines=window.__timelines||{};
+const tl=gsap.timeline({paused:true});
+tl.to("#glow-a",{x:180,y:140,duration:34.5,ease:"none"},0);
+tl.to("#glow-b",{x:-160,y:-200,duration:34.5,ease:"none"},0);
+tl.fromTo("#h1",{y:50},{y:0,duration:.5,ease:"power3.out"},0);
+tl.fromTo("#h2",{y:60,opacity:0},{y:0,opacity:1,duration:.5,ease:"power3.out"},.9);
+tl.fromTo("#h3",{scale:.8,opacity:0,transformOrigin:"0% 50%"},{scale:1,opacity:1,duration:.5,ease:"back.out(1.6)"},1.7);
+tl.to("#s1-stage",{opacity:0,y:-50,duration:.4,ease:"power2.in"},3.5);
+function scene(id,t0,dur){
+  const q=(s)=>`#${id}-${s}`;
+  tl.fromTo(`#${id} .kicker`,{y:30,opacity:0},{y:0,opacity:1,duration:.5,ease:"power3.out"},t0+.1);
+  tl.fromTo(`#${id} .headline .ln`,{y:80,opacity:0},{y:0,opacity:1,duration:.7,ease:"expo.out",stagger:.14},t0+.2);
+  tl.fromTo(q("media"),{y:380,rotation:4,scale:.92,opacity:0},{y:0,rotation:0,scale:1,opacity:1,duration:1,ease:"power4.out"},t0+.3);
+  if(document.querySelector(q("media2"))) tl.fromTo(q("media2"),{y:380,rotation:-3,scale:.92,opacity:0},{y:0,rotation:0,scale:1,opacity:1,duration:1,ease:"power4.out"},t0+.55);
+  if(document.querySelector(q("pills"))) tl.fromTo(`${q("pills")} .pill`,{y:40,opacity:0,scale:.85},{y:0,opacity:1,scale:1,duration:.4,ease:"back.out(1.8)",stagger:.08},t0+1.1);
+  tl.fromTo(q("src"),{opacity:0},{opacity:1,duration:.5},t0+1.0);
+  tl.fromTo(q("chip"),{scale:.4,opacity:0},{scale:1,opacity:1,duration:.55,ease:"back.out(2)"},t0+1.2);
+  tl.to(q("stage"),{opacity:0,y:-60,duration:.4,ease:"power2.in"},t0+dur-.4);
+}
+scene("s2", 3.5, 3.8);
+scene("s3", 6.9, 3.8);
+scene("s4", 10.3, 3.8);
+scene("s5", 13.7, 3.8);
+scene("s6", 17.1, 3.8);
+scene("s7", 20.5, 3.8);
+scene("s8", 23.9, 3.8);
+scene("s9", 27.3, 3.8);
+const E=30.7;
+tl.fromTo("#end-name",{y:50,opacity:0,scale:.9},{y:0,opacity:1,scale:1,duration:.7,ease:"back.out(1.5)"},E+.1);
+tl.fromTo("#end-sub",{y:40,opacity:0},{y:0,opacity:1,duration:.6,ease:"power3.out"},E+.45);
+tl.fromTo("#th1",{y:80,opacity:0},{y:0,opacity:1,duration:.7,ease:"power3.out"},E+.7);
+tl.fromTo("#th2",{y:80,opacity:0},{y:0,opacity:1,duration:.7,ease:"power3.out"},E+.9);
+tl.fromTo("#end-cost",{y:30,opacity:0},{y:0,opacity:1,duration:.6,ease:"power3.out"},E+.6);
+window.__timelines["main"]=tl;
+</script>
+</body></html>

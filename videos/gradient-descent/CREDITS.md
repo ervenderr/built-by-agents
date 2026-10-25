@@ -1,0 +1,1 @@
+Remix source: prompt "3D animation of a path-points ball reaching approximation from crest to trough, gradient descent" by @anirockshady (slug anirockshady-032809), https://github.com/yihui-dev/awesome-opus5-5-videos. Palette idea (volcanic orange, cyan, greys) and technique (3D loss landscape, ball in discrete steps, overshoot) reused; all code and script here are new.

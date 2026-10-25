@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --c0: #ffb454;
+        --c1: #4da3ff;
+        --c2: #ff5c8a;
+        --c3: #b78cff;
+        --c4: #00e5a0;
+        --font-display: "Outfit", "Inter", sans-serif;
+        --font-mono: "Space Mono", monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); overflow: hidden; }
+      #brand { position: absolute; left: 0; width: 1080px; top: 176px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--dim); }
+      #head { position: absolute; left: 0; width: 1080px; top: 214px; text-align: center; font-size: 60px; font-weight: 800; letter-spacing: -1px; line-height: 1; white-space: nowrap; }
+      #head em { font-style: normal; color: var(--c4); }
+      #world { position: absolute; left: 0; top: 0; width: 1080px; height: 4000px; }
+      .seg { position: absolute; left: 119px; width: 6px; border-radius: 3px; transform-origin: 50% 0; }
+      .ms { position: absolute; left: 0; width: 1080px; height: 0; }
+      .node { position: absolute; left: 92px; top: -30px; width: 60px; height: 60px; border-radius: 50%; background: var(--ground); border: 8px solid var(--col); box-shadow: 0 0 36px var(--col), inset 0 0 14px var(--col); }
+      .ring { position: absolute; left: 92px; top: -30px; width: 60px; height: 60px; border-radius: 50%; border: 4px solid var(--col); }
+      .tag { position: absolute; left: 210px; top: -140px; font-size: 30px; font-weight: 700; letter-spacing: 5px; color: var(--col); white-space: nowrap; }
+      .year { position: absolute; left: 206px; top: -118px; font-family: var(--font-mono); font-size: 190px; font-weight: 700; line-height: 1; color: var(--col); letter-spacing: -8px; text-shadow: 0 0 40px var(--col); }
+      .ttl { position: absolute; left: 210px; top: 118px; width: 820px; font-size: 68px; font-weight: 800; line-height: 1.04; letter-spacing: -1px; }
+      .ttl span { display: inline-block; margin-right: 18px; }
+      .decor { position: absolute; left: 210px; top: 330px; width: 820px; height: 280px; }
+      .cell { position: absolute; border-radius: 6px; }
+      .mono { font-family: var(--font-mono); font-weight: 700; font-size: 62px; line-height: 1.25; color: var(--col); white-space: nowrap; }
+      .mono i { font-style: normal; display: inline-block; }
+      .bub { position: absolute; padding: 22px 30px; border-radius: 34px; font-size: 44px; font-weight: 700; background: var(--panel); border: 4px solid var(--col); }
+      .chip { position: absolute; width: 130px; height: 130px; border-radius: 28px; background: var(--panel); border: 4px solid var(--col); display: flex; align-items: center; justify-content: center; font-size: 64px; font-weight: 800; color: var(--col); }
+      #fin { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #fin-h { position: absolute; left: 0; width: 1080px; top: 330px; text-align: center; font-size: 76px; font-weight: 800; line-height: 1.05; letter-spacing: -1px; }
+      #fin-line { position: absolute; left: 90px; top: 700px; width: 900px; height: 6px; border-radius: 3px; background: var(--dim); transform-origin: 0 50%; }
+      .fd { position: absolute; width: 36px; height: 36px; top: 685px; border-radius: 50%; background: var(--col); box-shadow: 0 0 28px var(--col); }
+      .fl { position: absolute; width: 140px; text-align: center; font-family: var(--font-mono); font-size: 38px; font-weight: 700; color: var(--col); }
+      #fin-g { position: absolute; left: 0; width: 1080px; top: 880px; text-align: center; font-family: var(--font-mono); font-size: 64px; font-weight: 700; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1090px; height: 240px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 58px; font-weight: 800; line-height: 1.1; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000; }
+      .cap b { color: var(--col); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26.7" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="head">AI HISTORY IN <em>30 SECONDS</em></div>
+
+      <div id="world" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="seg" id="seg0" style="top:200px;height:260px;background:var(--c0)"></div>
+        <div class="seg" id="seg1" style="top:460px;height:800px;background:var(--c1)"></div>
+        <div class="seg" id="seg2" style="top:1260px;height:800px;background:var(--c2)"></div>
+        <div class="seg" id="seg3" style="top:2060px;height:800px;background:var(--c3)"></div>
+        <div class="seg" id="seg4" style="top:2860px;height:800px;background:var(--c4)"></div>
+
+        <div class="ms" id="ms0" style="top:460px;--col:var(--c0)">
+          <div class="ring"></div><div class="node"></div>
+          <div class="tag">THE FIELD LAUNCHES</div>
+          <div class="year">1956</div>
+          <div class="ttl"><span>Dartmouth</span> <span>workshop</span></div>
+          <div class="decor"><div class="mono" id="typed"></div></div>
+        </div>
+        <div class="ms" id="ms1" style="top:1260px;--col:var(--c1)">
+          <div class="ring"></div><div class="node"></div>
+          <div class="tag">THE MACHINE WINS</div>
+          <div class="year">1997</div>
+          <div class="ttl"><span>Deep</span> <span>Blue</span> <span>beats</span> <span>Kasparov</span></div>
+          <div class="decor" id="board"></div>
+        </div>
+        <div class="ms" id="ms2" style="top:2060px;--col:var(--c2)">
+          <div class="ring"></div><div class="node"></div>
+          <div class="tag">DEEP LEARNING</div>
+          <div class="year">2012</div>
+          <div class="ttl"><span>AlexNet</span> <span>wins</span> <span>ImageNet</span></div>
+          <div class="decor" id="pix"></div>
+        </div>
+        <div class="ms" id="ms3" style="top:2860px;--col:var(--c3)">
+          <div class="ring"></div><div class="node"></div>
+          <div class="tag">ATTENTION</div>
+          <div class="year">2017</div>
+          <div class="ttl"><span>The</span> <span>Transformer</span></div>
+          <div class="decor" id="attn">
+            <div class="chip" id="cq" style="left:340px;top:10px">Q</div>
+            <div class="chip" id="ck" style="left:490px;top:10px">K</div>
+            <div class="chip" id="cv" style="left:640px;top:10px">V</div>
+          </div>
+        </div>
+        <div class="ms" id="ms4" style="top:3660px;--col:var(--c4)">
+          <div class="ring"></div><div class="node"></div>
+          <div class="tag">THE PUBLIC NOTICES</div>
+          <div class="year">2022</div>
+          <div class="ttl"><span>ChatGPT</span> <span>launches</span></div>
+          <div class="decor">
+            <div class="bub" id="b1" style="left:330px;top:0px">Ask anything</div>
+            <div class="bub" id="b2" style="left:0px;top:120px;width:150px;text-align:center">...</div>
+            <div class="bub" id="b3" style="left:0px;top:120px;opacity:0">Here you go.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="fin">
+        <div id="fin-h">Five moments.<br /><span style="color:var(--c4)">Gaps shrinking.</span></div>
+        <div id="fin-line"></div>
+        <div id="fin-g">41 &rarr; 15 &rarr; 5 &rarr; 5 yrs</div>
+      </div>
+
+      <div id="cap0" class="clip cap" style="--col:var(--c0)" data-start="0" data-duration="4.75" data-track-index="2"><span>In 1956, a Dartmouth workshop launched the field: <b>artificial intelligence.</b></span></div>
+      <div id="cap1" class="clip cap" style="--col:var(--c1)" data-start="4.75" data-duration="5.03" data-track-index="2"><span>In 1997, Deep Blue beat Kasparov: a machine beat the <b>world chess champion.</b></span></div>
+      <div id="cap2" class="clip cap" style="--col:var(--c2)" data-start="9.78" data-duration="4.49" data-track-index="2"><span>In 2012, AlexNet won the ImageNet challenge, and deep learning took the <b>lead.</b></span></div>
+      <div id="cap3" class="clip cap" style="--col:var(--c3)" data-start="14.27" data-duration="4.09" data-track-index="2"><span>In 2017, Attention Is All You Need introduced the <b>Transformer.</b></span></div>
+      <div id="cap4" class="clip cap" style="--col:var(--c4)" data-start="18.36" data-duration="4.08" data-track-index="2"><span>In 2022, ChatGPT launched, and the public finally <b>noticed.</b></span></div>
+      <div id="cap5" class="clip cap" style="--col:var(--c4)" data-start="22.44" data-duration="4.26" data-track-index="2"><span>Five moments, and the gaps keep <b>shrinking.</b></span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="24.68" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const S = [0, 4.75, 9.78, 14.27, 18.36, 22.44];
+      const YEARS = [1956, 1997, 2012, 2017, 2022];
+      const STEP = 800;
+      const COLS = ["#ffb454", "#4da3ff", "#ff5c8a", "#b78cff", "#00e5a0"];
+      const $ = (s) => document.querySelector(s);
+      const mk = (parent, css) => { const d = document.createElement("div"); d.className = "cell"; Object.assign(d.style, css); parent.appendChild(d); return d; };
+
+      // ---- build decor deterministically ----
+      const typed = $("#typed");
+typed.innerHTML = '<div class="w1">ARTIFICIAL</div><div class="w2">INTELLIGENCE</div>';
+const letters = ["#typed .w1", "#typed .w2"];
+
+const boardCells = [];
+      for (let r = 0; r < 5; r++) for (let c = 0; c < 14; c++) {
+        boardCells.push(mk($("#board"), { left: c * 58 + "px", top: r * 56 + "px", width: "54px", height: "52px", background: (r + c) % 2 ? "#4da3ff" : "#1c2a44" }));
+      }
+      const pixCells = [];
+      for (let r = 0; r < 7; r++) for (let c = 0; c < 20; c++) {
+        const v = 0.5 + 0.5 * Math.sin(c * 0.55) * Math.cos(r * 0.8);
+        const cell = mk($("#pix"), { left: c * 41 + "px", top: r * 40 + "px", width: "37px", height: "36px", background: "#ff5c8a" });
+        cell.dataset.v = (0.2 + 0.8 * v).toFixed(2);
+        pixCells.push(cell);
+      }
+      const attnCells = [];
+      for (let r = 0; r < 7; r++) for (let c = 0; c < 7; c++) {
+        const v = r === c ? 1 : Math.max(0.12, 0.7 - 0.2 * Math.abs(r - c) + ((r * 3 + c * 5) % 4) * 0.05);
+        const cell = mk($("#attn"), { left: c * 40 + "px", top: r * 40 + "px", width: "36px", height: "36px", background: "#b78cff" });
+        cell.dataset.v = v.toFixed(2);
+        attnCells.push(cell);
+      }
+
+      // ---- initial state ----
+      gsap.set(["#ms1", "#ms2", "#ms3", "#ms4", "#fin"], { opacity: 0 });
+      gsap.set([".seg"], { scaleY: 0 });
+      gsap.set(".ring", { opacity: 0 });
+      gsap.set(letters, { clipPath: "inset(0 100% 0 0)" });
+      gsap.set(boardCells, { opacity: 0, scale: 0.4 });
+      pixCells.forEach((c) => gsap.set(c, { opacity: 0.08 }));
+      attnCells.forEach((c) => gsap.set(c, { opacity: 0 }));
+      gsap.set(["#cq", "#ck", "#cv"], { opacity: 0, scale: 0.5 });
+      gsap.set(["#b1", "#b2"], { opacity: 0, scale: 0.6 });
+      gsap.set("#fin-h", { opacity: 0 }); gsap.set("#fin-g", { opacity: 0 });
+      gsap.set("#fin-line", { scaleX: 0 });
+      gsap.set(".cap span", { opacity: 0, y: 24 });
+      gsap.set("#world", { y: 0 });
+
+      // fin dots built after
+      const finDots = [];
+      YEARS.forEach((y, i) => {
+        const x = 90 + (y - 1956) * (900 / 66);
+        const d = document.createElement("div"); d.className = "fd"; d.style.left = x - 18 + "px"; d.style.setProperty("--col", COLS[i]); $("#fin").appendChild(d);
+        const l = document.createElement("div"); l.className = "fl"; l.textContent = y; l.style.left = x - 70 + "px"; l.style.top = (i % 2 ? 735 : 625) + "px"; l.style.setProperty("--col", COLS[i]); $("#fin").appendChild(l);
+        gsap.set([d, l], { opacity: 0 });
+        finDots.push(d, l);
+      });
+
+      // ---- captions ----
+      const CAPD = [4.75, 5.03, 4.49, 4.09, 4.08, 4.26];
+      CAPD.forEach((d, i) => {
+        tl.fromTo("#cap" + i + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, S[i] + 0.02);
+        if (i < 5) tl.to("#cap" + i + " span", { opacity: 0, duration: 0.12 }, S[i] + d - 0.14);
+      });
+
+      // ---- milestones ----
+      YEARS.forEach((year, k) => {
+        const g = "#ms" + k, t0 = S[k];
+        const yr = $(g + " .year");
+        const from = k === 0 ? 1930 : YEARS[k - 1];
+        const o = { v: from };
+        yr.textContent = from;
+        tl.to(o, { v: year, duration: 1.0, ease: "power2.out", onUpdate() { yr.textContent = Math.round(o.v); } }, t0 + (k === 0 ? 0 : 0.4));
+        if (k > 0) {
+          tl.fromTo("#world", { y: -STEP * (k - 1) }, { y: -STEP * k, duration: 0.75, ease: "power2.inOut", immediateRender: false }, t0 - 0.05);
+          tl.to("#ms" + (k - 1), { opacity: 0, duration: 0.25 }, t0 - 0.05);
+          tl.fromTo(g, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t0 + 0.4);
+        }
+        tl.fromTo("#seg" + k, { scaleY: 0 }, { scaleY: 1, duration: k === 0 ? 0.5 : 0.75, ease: "power2.inOut" }, k === 0 ? 0 : t0 - 0.05);
+        tl.fromTo(g + " .node", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, t0 + (k === 0 ? 0.1 : 0.5));
+        tl.fromTo(g + " .ring", { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 3.2, duration: 0.8, ease: "power2.out" }, t0 + (k === 0 ? 0.1 : 0.5));
+        tl.fromTo(g + " .node", { boxShadow: "0 0 36px " + COLS[k] }, { boxShadow: "0 0 70px " + COLS[k], duration: 0.9, yoyo: true, repeat: 3, ease: "sine.inOut" }, t0 + 0.9);
+        tl.fromTo(g + " .tag", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, t0 + (k === 0 ? 0 : 0.5));
+        tl.fromTo(g + " .ttl span", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.8)", stagger: 0.09 }, t0 + (k === 0 ? 0.15 : 0.6));
+        if (k < 4) tl.to(g, { opacity: 0, duration: 0.25 }, S[k + 1] - 0.05);
+      });
+      // ms4 leaves for the closer
+      tl.to("#ms4", { opacity: 0, duration: 0.3 }, S[5] - 0.05);
+      tl.to([".seg", "#world"], { opacity: 0, duration: 0.3 }, S[5] - 0.05);
+
+      // 1956: typewriter
+      tl.to("#typed .w1", { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "steps(10)" }, 1.0);
+      tl.to("#typed .w2", { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "steps(12)" }, 2.0);
+      // 1997: board squares flip in, one square keeps flashing
+      tl.to(boardCells, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: { each: 0.03, from: "start" } }, S[1] + 0.9);
+      tl.to(boardCells[30], { background: "#ffffff", duration: 0.25, yoyo: true, repeat: 3 }, S[1] + 2.4);
+      // 2012: noise resolves into pattern from centre
+      tl.to(pixCells, { opacity: (i, el) => +el.dataset.v, duration: 0.4, stagger: { each: 0.02, from: "center" } }, S[2] + 0.9);
+      // 2017: attention matrix + Q K V chips
+      tl.to(["#cq", "#ck", "#cv"], { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.2 }, S[3] + 0.9);
+      tl.to(attnCells, { opacity: (i, el) => +el.dataset.v, duration: 0.3, stagger: { each: 0.025, from: "start" } }, S[3] + 1.0);
+      // 2022: chat bubbles
+      tl.to("#b1", { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, S[4] + 0.9);
+      tl.to("#b2", { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, S[4] + 1.6);
+      tl.to("#b2", { opacity: 0, duration: 0.15 }, S[4] + 2.6);
+      tl.fromTo("#b3", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, S[4] + 2.7);
+
+      // ---- closer ----
+      tl.fromTo("#fin", { opacity: 0 }, { opacity: 1, duration: 0.2 }, S[5]);
+      tl.fromTo("#fin-h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, S[5] + 0.1);
+      tl.fromTo("#fin-line", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, S[5] + 0.3);
+      tl.to(finDots, { opacity: 1, duration: 0.2, stagger: 0.05 }, S[5] + 0.3);
+      tl.fromTo("#fin-g", { opacity: 0, scale: 0.8, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, S[5] + 1.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

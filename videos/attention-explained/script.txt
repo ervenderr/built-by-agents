@@ -1,0 +1,6 @@
+How does an AI know what a word means?
+It uses attention, where each word looks at the other words around it.
+Each word gives the other words a score.
+Then softmax turns those scores into weights that are positive and add up to one.
+A bigger weight means that word matters more here.
+The word's new meaning is a weighted sum of all of them.

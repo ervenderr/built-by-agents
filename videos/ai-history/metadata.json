@@ -1,0 +1,17 @@
+{
+  "title": "AI History in 30 Seconds: 5 Moments That Mattered",
+  "description": "Dartmouth 1956, Deep Blue 1997, AlexNet 2012, the Transformer 2017, ChatGPT 2022: five milestones in AI. Sources are listed in the project's SOURCES.md.\n\nInspired by @kloss_xyz's \"key moments in the history of AI\" prompt (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #AIHistory #AI",
+  "tags": [
+    "history of ai",
+    "dartmouth workshop",
+    "deep blue",
+    "alexnet",
+    "transformer",
+    "chatgpt",
+    "ai timeline"
+  ],
+  "publish_at": "2026-10-28T09:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

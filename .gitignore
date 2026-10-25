@@ -1,0 +1,39 @@
+# secrets and tokens
+tools/.yt/
+.env*
+client_secret*.json
+token.json
+# environments, caches
+tools/tts-venv/
+node_modules/
+__pycache__/
+.DS_Store
+.claude/
+# heavy generated media (re-creatable by the factory)
+*.mp4
+*.wav
+*.mov
+videos/*/assets-vs/
+videos/*/out/
+videos/*/.verified
+videos/*/status.json
+
+# local tool state (absolute paths, caches)
+.hyperframes/
+.archify/
+
+# private planning/strategy and run logs: kept locally, not published
+PLAN.md
+PROMPTS.md
+PROGRESS.md
+HANDOVER.md
+scripts/
+publish/uploaded*.json
+research/*
+!research/engagement-playbook.md
+!research/topics-broad.md
+
+# showcase media is published on purpose
+!docs/media/*.mp4
+!docs/media/*.gif
+*.log

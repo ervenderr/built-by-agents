@@ -1,0 +1,7 @@
+{
+  "slug": "attention-explained",
+  "working_title": "What Is Attention in an LLM? Explained in 20 Seconds",
+  "angle": "Each word gets weights that show how much it should look at every other word.",
+  "style": "data-bars",
+  "repo_remix": ""
+}

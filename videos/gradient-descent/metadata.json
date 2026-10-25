@@ -1,0 +1,16 @@
+{
+  "title": "Gradient Descent in 20 Seconds (3D)",
+  "description": "A model learns by rolling downhill: parameters are its settings, the loss measures how wrong it is, the slope shows which way is down, and the learning rate sets the step size. Too big a step and it overshoots the bottom.\n\nInspired by @anirockshady's gradient-descent 3D animation prompt (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code (Three.js).\n\n#Shorts #MachineLearning #GradientDescent",
+  "tags": [
+    "gradient descent",
+    "learning rate",
+    "loss function",
+    "machine learning",
+    "optimization",
+    "3d animation"
+  ],
+  "publish_at": "2026-10-27T21:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

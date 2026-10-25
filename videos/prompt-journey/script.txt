@@ -1,0 +1,7 @@
+Every prompt you type goes on a journey.
+First, it's chopped into tokens: small pieces of text.
+Each token becomes a list of numbers, called a vector.
+Those numbers flow through many transformer layers.
+Attention lets each token look back at earlier ones.
+The model then picks the next token, and repeats.
+That's how a reply is written, one token at a time.

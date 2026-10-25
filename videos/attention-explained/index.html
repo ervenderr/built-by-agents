@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root { --ground:#0b0f17; --panel:#151b28; --ink:#fff; --dim:#8591a8; --accent:#00e5a0; --font-display:"Outfit","Inter",sans-serif; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+      #root { position:relative; width:1080px; height:1920px; font-family:var(--font-display); color:var(--ink); background:var(--ground); }
+      #brand { position:absolute; left:0; width:1080px; top:175px; text-align:center; font-size:28px; font-weight:700; letter-spacing:6px; color:var(--accent); }
+      #title { position:absolute; left:0; width:1080px; top:225px; text-align:center; font-size:76px; font-weight:800; letter-spacing:-2px; line-height:1; white-space:nowrap; }
+      #title em { color:var(--accent); font-style:normal; }
+      #query { position:absolute; left:54px; width:972px; top:340px; height:70px; display:flex; align-items:center; justify-content:center; gap:18px; font-size:42px; font-weight:800; color:var(--dim); }
+      #query b { background:var(--accent); color:var(--ground); border-radius:16px; padding:2px 26px; }
+      #tag { position:absolute; left:0; width:1080px; top:1138px; text-align:center; font-size:30px; font-weight:700; letter-spacing:5px; color:var(--dim); }
+      .row { position:absolute; left:54px; width:972px; height:92px; }
+      .lab { position:absolute; left:0; top:0; width:270px; height:92px; line-height:92px; text-align:right; font-size:44px; font-weight:800; color:var(--dim); }
+      .track { position:absolute; left:290px; top:0; width:560px; height:92px; border-radius:20px; background:var(--panel); border:3px solid #2a3348; }
+      .bar { position:absolute; left:293px; top:3px; width:554px; height:86px; border-radius:17px; background:var(--accent); transform-origin:0 50%; }
+      .val { position:absolute; left:865px; top:0; width:107px; height:92px; line-height:92px; font-size:44px; font-weight:800; }
+      .val span { position:absolute; left:0; top:0; }
+      #sum { position:absolute; left:54px; width:972px; top:1075px; text-align:center; font-size:52px; font-weight:800; color:var(--accent); }
+      #mix { position:absolute; left:54px; width:972px; top:1075px; text-align:center; font-size:44px; font-weight:800; }
+      #mix b { color:var(--accent); }
+      .cap { position:absolute; left:60px; width:960px; top:1190px; height:150px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:64px; font-weight:800; line-height:1.08; }
+      .cap span { display:block; text-shadow:0 4px 24px #000; }
+      .cap b { color:var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.85" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">WHAT IS <em>ATTENTION</em>?</div>
+      <div id="query">THE WORD <b>IT</b> LOOKS AT</div>
+      <div id="tag">ILLUSTRATIVE NUMBERS</div>
+      <div id="r1" class="row" style="top:440px"><div class="lab">THE</div><div class="track"></div><div id="b1" class="bar"></div><div class="val"><span id="s1">0.5</span><span id="p1" class="pc">2%</span></div></div>
+      <div id="r2" class="row" style="top:558px"><div class="lab">ANIMAL</div><div class="track"></div><div id="b2" class="bar"></div><div class="val"><span id="s2">4</span><span id="p2" class="pc">75%</span></div></div>
+      <div id="r3" class="row" style="top:676px"><div class="lab">CROSSED</div><div class="track"></div><div id="b3" class="bar"></div><div class="val"><span id="s3">1</span><span id="p3" class="pc">4%</span></div></div>
+      <div id="r4" class="row" style="top:794px"><div class="lab">STREET</div><div class="track"></div><div id="b4" class="bar"></div><div class="val"><span id="s4">0.5</span><span id="p4" class="pc">2%</span></div></div>
+      <div id="r5" class="row" style="top:912px"><div class="lab">TIRED</div><div class="track"></div><div id="b5" class="bar"></div><div class="val"><span id="s5">2.5</span><span id="p5" class="pc">17%</span></div></div>
+      <div id="sum">WEIGHTS ADD UP TO 100%</div>
+      <div id="mix">NEW <b>IT</b> = 75% ANIMAL + 17% TIRED + …</div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.36" data-track-index="2"><span>How does AI know what a <b>word means</b>?</span></div>
+      <div id="cap2" class="clip cap" data-start="2.36" data-duration="3.83" data-track-index="2"><span>It uses <b>attention</b>: each word looks at the others.</span></div>
+      <div id="cap3" class="clip cap" data-start="6.19" data-duration="2.42" data-track-index="2"><span>Each word gives the others a <b>score</b>.</span></div>
+      <div id="cap4" class="clip cap" data-start="8.61" data-duration="4.51" data-track-index="2"><span><b>Softmax</b> turns scores into weights that add up to <b>one</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="13.12" data-duration="2.9" data-track-index="2"><span>A bigger <b>weight</b> means it matters more.</span></div>
+      <div id="cap6" class="clip cap" data-start="16.02" data-duration="4.83" data-track-index="2"><span>New meaning = a <b>weighted sum</b> of all of them.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="18.85" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#8591a8", ACC = "#00e5a0";
+      const SC = [0.1111111111111111, 0.8888888888888888, 0.2222222222222222, 0.1111111111111111, 0.5555555555555556], WC = [0.028749999999999998, 0.9375, 0.04624999999999999, 0.028749999999999998, 0.20875];
+      const caps = [["#cap1",0,2.36],["#cap2",2.36,3.83],["#cap3",6.19,2.42],["#cap4",8.61,4.51],["#cap5",13.12,2.9],["#cap6",16.02,4.83]];
+      caps.forEach(([id,t,d],i) => {
+        gsap.set(id + " span", { opacity: 0, y: 24 });
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t + 0.02);
+        if (i < 5) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      gsap.set(".bar", { scaleX: 0 });
+      gsap.set(".pc", { opacity: 0 });
+      gsap.set(["#tag", "#sum", "#mix", "#query"], { opacity: 0 });
+      gsap.set(".val", { opacity: 0 });
+      // 1 hook: question + words
+      tl.fromTo(".row", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.12, ease: "power2.out" }, 0.1);
+      // 2 attention: IT looks at every word
+      tl.to("#query", { opacity: 1, duration: 0.3 }, 2.4);
+      tl.to(".lab", { color: "#fff", duration: 0.2, stagger: 0.25 }, 3.0);
+      tl.to(".track", { borderColor: ACC, duration: 0.2, stagger: 0.25 }, 3.0);
+      tl.to(".track", { borderColor: "#2a3348", duration: 0.3 }, 5.6);
+      // 3 scores
+      tl.to("#tag", { opacity: 1, duration: 0.3 }, 6.2);
+      tl.to(".val", { opacity: 1, duration: 0.2, stagger: 0.1 }, 6.4);
+      SC.forEach((s, i) => tl.fromTo("#b" + (i+1), { scaleX: 0 }, { scaleX: s, duration: 0.6, ease: "power2.out" }, 6.4 + i * 0.15));
+      // 4 softmax: bars reshape to weights, numbers become percents
+      WC.forEach((w, i) => tl.to("#b" + (i+1), { scaleX: w, duration: 1.0, ease: "power2.inOut" }, 8.9));
+      tl.to([1,2,3,4,5].map(i => "#s" + i), { opacity: 0, duration: 0.3 }, 9.2);
+      tl.to(".pc", { opacity: 1, duration: 0.3 }, 9.6);
+      tl.fromTo("#sum", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 10.6);
+      // 5 bigger = matters more
+      tl.to("#sum", { opacity: 0, duration: 0.2 }, 13.1);
+      tl.to(["#r1", "#r3", "#r4", "#r5"], { opacity: 0.35, duration: 0.4 }, 13.3);
+      tl.to("#r2 .lab", { color: ACC, duration: 0.3 }, 13.3);
+      tl.to("#r2 .track", { borderColor: ACC, duration: 0.3 }, 13.3);
+      // 6 weighted sum
+      tl.to(["#r5"], { opacity: 1, duration: 0.4 }, 16.0);
+      tl.fromTo("#mix", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.3);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

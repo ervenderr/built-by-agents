@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --accent: #00e5a0;
+        --warn: #ff4d6d;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #bg { position: absolute; inset: 0; }
+      #title { position: absolute; left: 0; width: 1080px; top: 235px; text-align: center; font-size: 88px; font-weight: 800; letter-spacing: -2px; line-height: 1; white-space: nowrap; }
+      #title em { color: var(--accent); font-style: normal; }
+      #brand { position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--accent); }
+      #arrows { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .node { z-index: 2; position: absolute; width: 330px; height: 130px; border-radius: 28px; background: var(--panel); border: 4px solid var(--dim); display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 800; letter-spacing: 2px; color: var(--dim); }
+      #n-model { left: 375px; top: 400px; }
+      #n-tool { left: 640px; top: 780px; }
+      #n-result { left: 110px; top: 780px; }
+      #goal { z-index: 3; position: absolute; left: 400px; top: 570px; width: 280px; text-align: center; font-size: 40px; font-weight: 800; padding: 12px 0; border-radius: 40px; background: var(--accent); color: var(--ground); }
+      #dot { z-index: 1; position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 40px var(--accent); }
+      #counter { position: absolute; left: 0; width: 1080px; top: 960px; text-align: center; font-size: 56px; font-weight: 800; color: var(--dim); }
+      #guard { position: absolute; left: 0; width: 1080px; top: 1030px; text-align: center; font-size: 56px; font-weight: 800; color: var(--accent); }
+      .chip { position: absolute; width: 440px; height: 84px; border-radius: 22px; background: var(--panel); border: 4px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 800; }
+      #c1 { left: 80px; top: 960px; } #c2 { left: 560px; top: 960px; } #c3 { left: 80px; top: 1070px; } #c4 { left: 560px; top: 1070px; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1190px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 68px; font-weight: 800; line-height: 1.08; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.9" data-width="1080" data-height="1920">
+      <svg id="arrows" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+        <defs>
+          <marker id="ah" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto"><path d="M0,0 L14,7 L0,14 z" fill="#00e5a0" /></marker>
+        </defs>
+        <path id="a1" d="M690 500 C 820 520, 840 640, 805 770" stroke="#00e5a0" stroke-width="8" fill="none" marker-end="url(#ah)" />
+        <path id="a2" d="M635 845 L 450 845" stroke="#00e5a0" stroke-width="8" fill="none" marker-end="url(#ah)" />
+        <path id="a3" d="M275 770 C 240 640, 260 520, 370 490" stroke="#00e5a0" stroke-width="8" fill="none" marker-end="url(#ah)" />
+      </svg>
+
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">AI AGENTS = <em>A LOOP</em></div>
+
+      <div id="n-model" class="node">MODEL</div>
+      <div id="n-tool" class="node">TOOL</div>
+      <div id="n-result" class="node">RESULT</div>
+      <div id="goal">YOUR GOAL</div>
+      <div id="dot"></div>
+      <div id="counter">STEP 1</div>
+      <div id="guard">EXAMPLE: MAX 10 STEPS</div>
+      <div id="c1" class="chip">MODEL</div>
+      <div id="c2" class="chip">INSTRUCTIONS</div>
+      <div id="c3" class="chip">TOOLS</div>
+      <div id="c4" class="chip">MEMORY</div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.53" data-track-index="2"><span>An AI agent isn't magic. It's a <b>loop</b>.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.53" data-duration="2.47" data-track-index="2"><span>The model reads your goal, and picks a <b>tool</b>.</span></div>
+      <div id="cap3" class="clip cap" data-start="5" data-duration="2.97" data-track-index="2"><span>The tool runs, and the <b>result</b> goes back in.</span></div>
+      <div id="cap4" class="clip cap" data-start="7.97" data-duration="2.73" data-track-index="2"><span>Then it decides <b>again</b>, until it's done.</span></div>
+      <div id="cap5" class="clip cap" data-start="10.7" data-duration="3.31" data-track-index="2"><span>Four common parts: <b>model, instructions, tools, memory.</b></span></div>
+      <div id="cap6" class="clip cap" data-start="14.01" data-duration="4.89" data-track-index="2"><span>Forget a <b>step limit</b>, and it can <b>loop on and on</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="16.89" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#8591a8", ACC = "#00e5a0", WARN = "#ff4d6d";
+      const lit = (id, t, c = ACC) => tl.to(id, { borderColor: c, color: "#fff", duration: 0.2 }, t);
+      const dim = (id, t) => tl.to(id, { borderColor: DIM, color: DIM, duration: 0.2 }, t);
+      // dot centres: model, tool, result
+      const P = { m: [540, 560], t: [805, 790], r: [275, 790] }; // node edges, so the dot never covers a label
+      const put = (p) => ({ x: p[0] - 22, y: p[1] - 22 });
+
+      // initial state
+      gsap.set(["#a1", "#a2", "#a3"], { opacity: 0.25 });
+      gsap.set("#goal", { opacity: 0 });
+      gsap.set("#counter", { opacity: 0 });
+      gsap.set("#guard", { opacity: 0 });
+      gsap.set(".chip", { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" });
+      gsap.set("#dot", { ...put(P.m), opacity: 0 });
+      ["#cap1","#cap2","#cap3","#cap4","#cap5","#cap6"].forEach((c) => gsap.set(c + " span", { opacity: 0, y: 24 }));
+      const capIn = (id, t, d) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      };
+      capIn("#cap1", 0, 2.53); capIn("#cap2", 2.53, 2.47); capIn("#cap3", 5, 2.97);
+      capIn("#cap4", 7.97, 2.73); capIn("#cap5", 10.7, 3.31); capIn("#cap6", 14.01, 4.89);
+
+      // scene 1 (0-2.53): the loop appears, dot laps once
+      tl.to(["#a1", "#a2", "#a3"], { opacity: 1, duration: 0.3, stagger: 0.2 }, 0.3);
+      lit("#n-model", 0.3); lit("#n-tool", 0.5); lit("#n-result", 0.7);
+      tl.set("#dot", { opacity: 1 }, 0.9);
+      tl.to("#dot", { ...put(P.t), duration: 0.4, ease: "power1.inOut" }, 0.9)
+        .to("#dot", { ...put(P.r), duration: 0.4, ease: "power1.inOut" }, 1.3)
+        .to("#dot", { ...put(P.m), duration: 0.4, ease: "power1.inOut" }, 1.7);
+      // scene 2 (2.53-5.0): goal drops into model, model picks tool
+      tl.fromTo("#goal", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 2.6);
+      tl.to("#goal", { y: 20, scale: 0.9, duration: 0.3 }, 3.2);
+      dim("#n-result", 2.6); dim("#n-tool", 2.6); lit("#n-model", 2.6);
+      tl.to("#dot", { ...put(P.t), duration: 0.5, ease: "power2.inOut" }, 3.9);
+      lit("#n-tool", 4.3);
+      // scene 3 (5.0-7.97): tool runs, result goes back in
+      tl.to("#goal", { opacity: 0, duration: 0.2 }, 5.0);
+      tl.to("#n-tool", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 5.1);
+      tl.to("#dot", { ...put(P.r), duration: 0.6, ease: "power2.inOut" }, 5.7);
+      lit("#n-result", 6.2);
+      tl.to("#dot", { ...put(P.m), duration: 0.7, ease: "power2.inOut" }, 6.9);
+      // scene 4 (7.97-10.7): decides again, counter ticks, done
+      tl.fromTo("#counter", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 8.0);
+      const steps = { v: 1 };
+      tl.to(steps, { v: 4, duration: 1.8, ease: "none", onUpdate() { document.getElementById("counter").textContent = "STEP " + Math.round(steps.v); } }, 8.05);
+      tl.to("#dot", { ...put(P.t), duration: 0.45 }, 8.05).to("#dot", { ...put(P.r), duration: 0.45 }, 8.5).to("#dot", { ...put(P.m), duration: 0.45 }, 8.95);
+      tl.to("#counter", { color: ACC, duration: 0.2 }, 9.85);
+      tl.call(() => { document.getElementById("counter").textContent = "DONE"; }, null, 9.9);
+      tl.call(() => { document.getElementById("counter").textContent = "STEP " + Math.round(steps.v); }, null, 9.85 - 0.001);
+      // scene 5 (10.7-14.01): four parts
+      tl.to(["#a1", "#a2", "#a3", "#n-model", "#n-tool", "#n-result", "#dot", "#counter"], { opacity: 0, duration: 0.3 }, 10.7);
+      tl.to(".chip", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.45 }, 10.95);
+      // scene 6 (14.01-18.9): no limit, it can loop on and on; example guard
+      tl.to(".chip", { opacity: 0, duration: 0.2 }, 14.01);
+      tl.to(["#a1", "#a2", "#a3", "#n-model", "#n-tool", "#n-result", "#dot"], { opacity: 1, duration: 0.3 }, 14.1);
+      tl.to("#counter", { opacity: 1, color: WARN, duration: 0.2 }, 14.1);
+      const runaway = { v: 5 };
+      tl.to(runaway, { v: 999, duration: 0.9, ease: "power2.in", onUpdate() { document.getElementById("counter").textContent = "STEP " + Math.round(runaway.v); } }, 14.2);
+      tl.to("#dot", { ...put(P.t), duration: 0.3 }, 14.2).to("#dot", { ...put(P.r), duration: 0.3 }, 14.5).to("#dot", { ...put(P.m), duration: 0.3 }, 14.8)
+        .to("#dot", { ...put(P.t), duration: 0.2 }, 15.1).to("#dot", { ...put(P.r), duration: 0.2 }, 15.3).to("#dot", { ...put(P.m), duration: 0.2 }, 15.5);
+      tl.fromTo("#guard", { opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 15.1);
+      tl.call(() => { document.getElementById("counter").textContent = "STEP 999"; }, null, 15.12);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

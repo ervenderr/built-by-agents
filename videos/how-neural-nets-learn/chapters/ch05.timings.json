@@ -1,0 +1,44 @@
+[
+  {
+    "i": 1,
+    "text": "So here is the whole loop.",
+    "start": 0.0,
+    "duration": 1.55
+  },
+  {
+    "i": 2,
+    "text": "Measure the error, assign blame to each weight, take a small step, and repeat.",
+    "start": 1.8,
+    "duration": 3.95
+  },
+  {
+    "i": 3,
+    "text": "Backpropagation is what makes gradient descent feasible for networks with many layers.",
+    "start": 6.0,
+    "duration": 4.29
+  },
+  {
+    "i": 4,
+    "text": "The network never memorized an answer, it just got a little less wrong each time.",
+    "start": 10.54,
+    "duration": 3.93
+  },
+  {
+    "i": 5,
+    "text": "But stack many layers, and the blame signal can shrink as it travels backward.",
+    "start": 14.72,
+    "duration": 3.89
+  },
+  {
+    "i": 6,
+    "text": "Those vanishing gradients make layers train very slowly, or not at all.",
+    "start": 18.86,
+    "duration": 3.54
+  },
+  {
+    "i": 7,
+    "text": "That problem is worth understanding next.",
+    "start": 22.65,
+    "duration": 2.23
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Recursion is a function solving a problem by calling itself.",
+    "start": 0.0,
+    "duration": 3.36
+  },
+  {
+    "i": 2,
+    "text": "Each call gets a smaller version of the problem.",
+    "start": 3.61,
+    "duration": 2.39
+  },
+  {
+    "i": 3,
+    "text": "Without a base case to stop, it never ends.",
+    "start": 6.25,
+    "duration": 2.72
+  },
+  {
+    "i": 4,
+    "text": "Factorial of three waits for two, which waits for one.",
+    "start": 9.22,
+    "duration": 3.44
+  },
+  {
+    "i": 5,
+    "text": "Then the answers come back up: six.",
+    "start": 12.91,
+    "duration": 2.24
+  },
+  {
+    "i": 6,
+    "text": "Still confused? See: recursion.",
+    "start": 15.4,
+    "duration": 2.16
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "slug": "what-is-rag",
+  "working_title": "What Is RAG? How AI Looks Things Up",
+  "angle": "Retrieval-augmented generation fetches relevant documents first, then the model answers using them.",
+  "style": "diagram",
+  "repo_remix": ""
+}

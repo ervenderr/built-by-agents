@@ -1,0 +1,8 @@
+{
+  "title": "What Is Attention in an LLM? Explained in 20 Seconds",
+  "description": "Learn how attention lets each word in a sentence look at the other words, score them, and use softmax weights to build its meaning.\n\nThe example sentence, scores and weights shown are made up for illustration; they are not output from a real model.\n\nBuilt with HyperFrames (HeyGen) and GSAP.\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #LLM #AI",
+  "tags": ["attention mechanism", "what is attention", "self attention explained", "how llms work", "transformer explained", "softmax", "attention is all you need", "ai explained"],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

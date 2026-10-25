@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "A forward pass is one trip through a neural network.",
+    "start": 0.0,
+    "duration": 2.93
+  },
+  {
+    "i": 2,
+    "text": "Numbers flow in at the input layer.",
+    "start": 3.18,
+    "duration": 2.05
+  },
+  {
+    "i": 3,
+    "text": "Those can be pixels, or words turned into numbers.",
+    "start": 5.48,
+    "duration": 3.2
+  },
+  {
+    "i": 4,
+    "text": "Each layer mixes them with weights, then usually applies a nonlinearity.",
+    "start": 8.93,
+    "duration": 3.83
+  },
+  {
+    "i": 5,
+    "text": "No learning happens here, the weights stay fixed.",
+    "start": 13.01,
+    "duration": 2.61
+  },
+  {
+    "i": 6,
+    "text": "The last layer produces the answer.",
+    "start": 15.87,
+    "duration": 1.91
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "title": "Why GPS Needs Einstein or It Drifts 10 km a Day",
+  "description": "GPS satellite clocks run fast because gravity is weaker 20,000 km up, and without relativity corrections your position would drift about 10 km a day.\n\nThe map, pin drift and distance counter are illustrative, not to scale. The 20,000 km orbit height is approximate (real GPS orbits are about 20,200 km).\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #GPS #Relativity",
+  "tags": [
+    "gps relativity",
+    "how gps works",
+    "einstein gps",
+    "general relativity explained",
+    "satellite clocks",
+    "time dilation",
+    "gps accuracy",
+    "physics explained"
+  ],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false,
+  "publish_at": "2026-10-26T09:00:00+08:00"
+}

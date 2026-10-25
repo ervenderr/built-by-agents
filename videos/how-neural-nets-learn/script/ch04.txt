@@ -1,0 +1,14 @@
+Now every weight knows which way to move, but not how far.
+The gradient gives a direction, never a distance.
+Picture the cost as terrain, and you as a hiker with a blindfold on, feeling the slope and stepping downhill.
+If your step is too low, progress is steady but slow.
+If it is too high, you go faster but it is riskier, and you can leap over the valley.
+Stanford's notes call step size one of the most important, and most headache-inducing, settings in training.
+So each step stays small, and you take a great many.
+Checking every example before each step would take forever.
+Instead the network looks at a small batch of data and steps from that.
+It is a noisy estimate, but on average it points the right way, because the errors cancel out.
+Three Blue One Brown compares it to a drunk man stumbling downhill, but taking quick steps.
+The path zigzags, yet it still heads down.
+When more steps stop reducing the loss, the model has converged.
+That is learning: not one brilliant leap, but millions of small nudges.

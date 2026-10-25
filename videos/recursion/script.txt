@@ -1,0 +1,6 @@
+Recursion is a function solving a problem by calling itself.
+Each call gets a smaller version of the problem.
+Without a base case to stop, it never ends.
+Factorial of three waits for two, which waits for one.
+Then the answers come back up: six.
+Still confused? See: recursion.

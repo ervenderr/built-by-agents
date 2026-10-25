@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "What if every word had an address on a map?",
+    "start": 0.0,
+    "duration": 2.19
+  },
+  {
+    "i": 2,
+    "text": "That is an embedding: a list of numbers that places a word as a point in space.",
+    "start": 2.44,
+    "duration": 4.02
+  },
+  {
+    "i": 3,
+    "text": "Words with similar meanings land close together, like cat and dog.",
+    "start": 6.71,
+    "duration": 3.56
+  },
+  {
+    "i": 4,
+    "text": "Words with different meanings land far apart.",
+    "start": 10.52,
+    "duration": 2.52
+  },
+  {
+    "i": 5,
+    "text": "So AI can measure meaning with distance, which powers search, clustering, and recommendations.",
+    "start": 13.29,
+    "duration": 4.91
+  },
+  {
+    "i": 6,
+    "text": "Meaning, turned into coordinates.",
+    "start": 18.45,
+    "duration": 2.05
+  }
+]

@@ -1,0 +1,6 @@
+Your AI doesn't read the way you do.
+It reads chunks of text called tokens.
+Common words usually stay whole, while rare words get split into smaller pieces.
+For example, annoyingly might become annoying and ly.
+Andrej Karpathy traces its spelling mistakes back to tokenization.
+So when it fumbles spelling, blame the chunks.

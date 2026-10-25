@@ -1,0 +1,18 @@
+{
+  "title": "Why a Damaged QR Code Still Scans (Error Correction)",
+  "description": "A QR code stores backup data on purpose (Reed-Solomon error correction, the same math used for music CDs), so it can still scan with part of it missing.\nThe 25% and 30% figures are shares of the code's data, not visible area, and the QR pattern shown is a drawn, non-decodable illustration.\nOriginal animation by ervenderr.\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #QRCode #Science",
+  "tags": [
+    "qr code",
+    "how qr codes work",
+    "qr code error correction",
+    "damaged qr code",
+    "reed solomon",
+    "qr code explained",
+    "why qr codes still scan",
+    "denso wave"
+  ],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false,
+  "publish_at": "2026-10-25T21:00:00+08:00"
+}

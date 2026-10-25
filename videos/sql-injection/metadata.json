@@ -1,0 +1,8 @@
+{
+  "title": "What Is SQL Injection? How a Login Box Gets Hacked",
+  "description": "SQL injection happens when typed input is run as database code, and parameterized queries stop it by keeping input as data.\nThe table rows and the example input shown are illustrative; real apps vary.\nNo repo author to credit.\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #SQLInjection #CyberSecurity",
+  "tags": ["sql injection", "what is sql injection", "sql injection explained", "parameterized queries", "prepared statements", "web security", "owasp", "login bypass"],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

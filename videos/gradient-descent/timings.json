@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "A neural network learns by rolling downhill.",
+    "start": 0.0,
+    "duration": 2.52
+  },
+  {
+    "i": 2,
+    "text": "Its settings are parameters, and the loss measures how wrong it is.",
+    "start": 2.77,
+    "duration": 3.68
+  },
+  {
+    "i": 3,
+    "text": "At each step, the slope tells it which way is down.",
+    "start": 6.7,
+    "duration": 3.16
+  },
+  {
+    "i": 4,
+    "text": "The learning rate sets how big each step is.",
+    "start": 10.11,
+    "duration": 2.8
+  },
+  {
+    "i": 5,
+    "text": "Small steps settle into the valley.",
+    "start": 13.16,
+    "duration": 2.36
+  },
+  {
+    "i": 6,
+    "text": "Make the learning rate too big, and you overshoot the bottom.",
+    "start": 15.77,
+    "duration": 3.35
+  }
+]

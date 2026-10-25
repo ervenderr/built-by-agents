@@ -1,0 +1,234 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; overflow: hidden; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; }
+    #root * { box-sizing: border-box; }
+    #root .a { position: absolute; opacity: 0; }
+    #root .mono { font-family: "JetBrains Mono", monospace; }
+    #root em { color: #00e5a0; font-style: normal; }
+    #root .lbl { font-size: 32px; font-weight: 700; color: #8a97a6; letter-spacing: 1px; white-space: nowrap; }
+    #root .lane { left: 300px; width: 1360px; height: 3px; background: #2a3542; }
+    #c2sun { left: 110px; top: 410px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #ffe3a8, #ffb454 60%, #d9822b); box-shadow: 0 0 80px 20px rgba(255,180,84,0.45); }
+    #c2earth { left: 1680px; top: 440px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #3b9cc9, #14465f 70%); border: 3px solid #00e5a0; }
+    #c2eglow { left: 1660px; top: 420px; width: 160px; height: 160px; border-radius: 50%; border: 5px solid #00e5a0; box-shadow: 0 0 50px 12px rgba(0,229,160,0.55), inset 0 0 40px rgba(0,229,160,0.35); }
+    #c2sunl { left: 110px; top: 612px; width: 180px; text-align: center; }
+    #c2sungone { left: 110px; top: 612px; width: 180px; text-align: center; color: #ffb454; }
+    #c2earthl { left: 1660px; top: 582px; width: 160px; text-align: center; }
+    #c2clkw { left: 460px; top: 88px; width: 800px; text-align: center; }
+    #c2clkw .lbl { height: 38px; }
+    #c2clk { height: 124px; font-size: 112px; font-weight: 800; line-height: 124px; color: #e8eef5; }
+    #c2sky { left: 1360px; top: 96px; width: 440px; }
+    #c2skybar { height: 30px; margin-top: 10px; background: #1b2530; border-radius: 15px; overflow: hidden; }
+    #c2skyfill { width: 100%; height: 100%; background: linear-gradient(90deg, #4fb8e8, #bfeaff); transform-origin: 0 50%; }
+    #c2ll0 { left: 300px; top: 316px; color: #00e5a0; }
+    #c2ll1 { left: 300px; top: 436px; }
+    #c2ll2 { left: 300px; top: 556px; }
+    #c2trail { left: 300px; top: 378px; width: 1360px; height: 6px; background: linear-gradient(90deg, rgba(0,229,160,0), #00e5a0); transform-origin: 0 50%; border-radius: 3px; }
+    #c2pulse { left: 278px; top: 358px; width: 44px; height: 44px; border-radius: 50%; background: #e8fff7; box-shadow: 0 0 36px 14px rgba(0,229,160,0.85); }
+    #root .dot { left: 0; top: 373px; width: 14px; height: 14px; border-radius: 50%; background: #00e5a0; box-shadow: 0 0 14px 4px rgba(0,229,160,0.7); }
+    #c2inflight { left: 300px; width: 1360px; top: 410px; text-align: center; font-size: 44px; font-weight: 800; color: #00e5a0; }
+    #c2br { left: 300px; top: 558px; width: 1360px; height: 4px; background: #8a97a6; transform-origin: 0 50%; }
+    #c2br i { position: absolute; top: -14px; width: 4px; height: 32px; background: #8a97a6; }
+    #c2br i:first-child { left: 0; } #c2br i:last-child { right: 0; }
+    #c2brt { left: 300px; width: 1360px; top: 596px; text-align: center; font-size: 88px; font-weight: 800; color: #00e5a0; }
+    #c2brm { left: 300px; width: 1360px; top: 704px; text-align: center; font-size: 44px; font-weight: 700; }
+    #c2brn { left: 300px; width: 1360px; top: 778px; text-align: center; font-size: 36px; font-weight: 600; color: #8a97a6; }
+    #c2back { left: 200px; top: 700px; width: 1540px; height: 4px; transform-origin: 100% 50%; background: repeating-linear-gradient(90deg, #ffb454 0 22px, transparent 22px 40px); }
+    #c2backh { left: 182px; top: 686px; width: 0; height: 0; border-right: 26px solid #ffb454; border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
+    #c2backt { left: 200px; width: 1540px; top: 730px; text-align: center; font-size: 48px; font-weight: 800; }
+    #c2jet, #c2train { left: 289px; width: 22px; height: 22px; border-radius: 50%; }
+    #c2jet { top: 489px; background: #e8eef5; } #c2train { top: 609px; background: #ffb454; }
+    #root .ping { left: 289px; width: 22px; height: 22px; border-radius: 50%; border: 3px solid #ffb454; }
+    #c2jping { top: 489px; border-color: #e8eef5; } #c2tping { top: 609px; }
+    #root .yrs { left: 860px; font-size: 72px; font-weight: 800; color: #ffb454; white-space: nowrap; }
+    #root .yrs small { font-size: 32px; font-weight: 700; color: #8a97a6; margin-left: 16px; }
+    #c2jyrs { top: 508px; } #c2tyrs { top: 628px; }
+    #root .res { left: 340px; font-size: 32px; font-weight: 600; color: #8a97a6; white-space: nowrap; }
+    #c2jres { top: 520px; } #c2tres { top: 640px; }
+    #c2coffee { left: 300px; width: 1360px; top: 760px; text-align: center; font-size: 48px; font-weight: 800; color: #00e5a0; }
+    #c2news { left: 270px; top: 304px; width: 90px; text-align: center; }
+    #c2news .lbl { color: #ffb454; height: 40px; }
+    #c2news svg { width: 70px; height: 50px; display: block; margin: 0 auto; }
+    #c2limit { left: 160px; width: 1600px; top: 700px; text-align: center; font-size: 88px; font-weight: 800; line-height: 1.1; }
+    #c2gt { left: 160px; width: 1600px; top: 110px; text-align: center; font-size: 80px; font-weight: 800; }
+    #c2gsun { left: 900px; top: 440px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #ffe3a8, #ffb454 60%, #d9822b); box-shadow: 0 0 60px 14px rgba(255,180,84,0.45); }
+    #c2orb { left: 680px; top: 220px; width: 560px; height: 560px; }
+    #c2orbring { position: absolute; inset: 0; border: 3px dashed #8a97a6; border-radius: 50%; }
+    #c2pull { position: absolute; left: 280px; top: 278px; width: 220px; height: 4px; background: repeating-linear-gradient(90deg, #ffb454 0 16px, transparent 16px 28px); }
+    #c2gearth { position: absolute; left: 504px; top: 250px; width: 60px; height: 60px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #3b9cc9, #14465f 70%); border: 3px solid #00e5a0; }
+    #c2q { left: 1340px; top: 380px; font-size: 220px; font-weight: 800; color: #ffb454; line-height: 1; }
+    #root .cap { position: absolute; left: 120px; width: 1680px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; }
+    #root .cap span { display: block; text-shadow: 0 4px 24px #000; }
+    #root .cap b { color: #00e5a0; }
+  </style>
+
+  <div id="root" data-composition-id="ch02" data-width="1920" data-height="1080" data-duration="52.57">
+    <div id="c2lane0" class="a lane" style="top:380px"></div>
+    <div id="c2lane1" class="a lane" style="top:500px"></div>
+    <div id="c2lane2" class="a lane" style="top:620px"></div>
+    <div id="c2sun" class="a"></div>
+    <div id="c2sunl" class="a lbl">SUN</div>
+    <div id="c2sungone" class="a lbl">GONE</div>
+    <div id="c2earth" class="a"></div>
+    <div id="c2eglow" class="a"></div>
+    <div id="c2earthl" class="a lbl">EARTH</div>
+    <div id="c2clkw" class="a"><div class="lbl">DELAY</div><div id="c2clk" class="mono">8:20</div></div>
+    <div id="c2sky" class="a"><div class="lbl">SKY BRIGHTNESS</div><div id="c2skybar"><div id="c2skyfill"></div></div></div>
+    <div id="c2ll0" class="a lbl">LIGHT · 300,000 km/s</div>
+    <div id="c2ll1" class="a lbl">JET · ~900 km/h · ILLUSTRATIVE</div>
+    <div id="c2ll2" class="a lbl">BULLET TRAIN · 100 km/h</div>
+    <div id="c2trail" class="a"></div>
+    <div id="c2pulse" class="a"></div>
+    <div id="c2inflight" class="a">ALREADY IN FLIGHT</div>
+    <div id="c2br" class="a"><i></i><i></i></div>
+    <div id="c2brt" class="a mono">150,000,000 km</div>
+    <div id="c2brm" class="a">≈ 93,000,000 miles</div>
+    <div id="c2brn" class="a">≈ 11,700 Earths side by side</div>
+    <div id="c2back" class="a"></div><div id="c2backh" class="a"></div>
+    <div id="c2backt" class="a">This light left the Sun <em>8:20</em> ago</div>
+    <div id="c2jping" class="a ping"></div><div id="c2tping" class="a ping"></div>
+    <div id="c2jet" class="a"></div><div id="c2train" class="a"></div>
+    <div id="c2jyrs" class="a yrs mono">≈ 19 years<small>ILLUSTRATIVE</small></div>
+    <div id="c2tyrs" class="a yrs mono">≈ 170 years</div>
+    <div id="c2jres" class="a res">0.0001% of the way</div>
+    <div id="c2tres" class="a res">0.00001% of the way</div>
+    <div id="c2coffee" class="a">Shorter than a coffee break</div>
+    <div id="c2news" class="a"><div class="lbl">NEWS</div><svg viewBox="0 0 70 50"><rect x="2" y="2" width="66" height="46" rx="6" fill="#ffb454"/><path d="M4 6L35 30L66 6" fill="none" stroke="#0b0f14" stroke-width="4"/></svg></div>
+    <div id="c2limit" class="a">Nothing travels faster than <em>light</em></div>
+    <div id="c2gt" class="a">What about the Sun's <em>pull</em>?</div>
+    <div id="c2gsun" class="a"></div>
+    <div id="c2orb" class="a"><div id="c2orbring"></div><div id="c2pull"></div><div id="c2gearth"></div></div>
+    <div id="c2q" class="a mono">?</div>
+
+    <div id="c2cap1" class="clip cap" data-start="0" data-duration="3.43" data-track-index="2"><span>Why would the sky stay bright for <b>eight minutes</b> after the Sun is gone?</span></div>
+    <div id="c2cap2" class="clip cap" data-start="3.58" data-duration="3.75" data-track-index="2"><span>Because sunlight is not instant, it <b>travels</b>, and travelling takes time.</span></div>
+    <div id="c2cap3" class="clip cap" data-start="7.48" data-duration="3.24" data-track-index="2"><span>The Sun is about <b>150 million kilometers</b> from Earth.</span></div>
+    <div id="c2cap4" class="clip cap" data-start="10.87" data-duration="4.0" data-track-index="2"><span>That is about <b>93 million miles</b>, a distance that is hard to picture.</span></div>
+    <div id="c2cap5" class="clip cap" data-start="15.02" data-duration="2.93" data-track-index="2"><span>Light covers that gap in about <b>8.3 minutes</b>.</span></div>
+    <div id="c2cap6" class="clip cap" data-start="18.1" data-duration="3.89" data-track-index="2"><span>So the sunlight hitting your face right now left the Sun about <b>eight minutes ago</b>.</span></div>
+    <div id="c2cap7" class="clip cap" data-start="22.14" data-duration="4.74" data-track-index="2"><span>When the Sun vanishes, that sunlight is <b>already in flight</b>, like a long stream of glowing dots.</span></div>
+    <div id="c2cap8" class="clip cap" data-start="27.03" data-duration="4.58" data-track-index="2"><span>Those last rays keep <b>arriving</b>, so the sky looks perfectly normal until the delay is over.</span></div>
+    <div id="c2cap9" class="clip cap" data-start="31.76" data-duration="4.54" data-track-index="2"><span>For example, imagine a <b>bullet train</b> at 100 kilometers an hour heading for the Sun.</span></div>
+    <div id="c2cap10" class="clip cap" data-start="36.45" data-duration="2.98" data-track-index="2"><span>It would need roughly <b>170 years</b> to get there.</span></div>
+    <div id="c2cap11" class="clip cap" data-start="39.58" data-duration="3.34" data-track-index="2"><span>Light makes the same trip in less time than a <b>short coffee break</b>.</span></div>
+    <div id="c2cap12" class="clip cap" data-start="43.07" data-duration="4.59" data-track-index="2"><span>So nothing about the Sun's disappearance can reach us faster than <b>light</b> can carry the news.</span></div>
+    <div id="c2cap13" class="clip cap" data-start="47.81" data-duration="4.76" data-track-index="2"><span>But light is only half the story: what about the Sun's pull, the <b>gravity</b> that holds Earth in orbit?</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const $ = (s) => document.querySelector(s);
+    const fi = (sel, t, d = 0.5, from = {}, to = {}) => tl.fromTo(sel, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power2.out", ...to }, t);
+    const fo = (sel, t, d = 0.4) => tl.to(sel, { opacity: 0, duration: d, ease: "power1.in" }, t);
+
+    // captions
+    [0, 3.58, 7.48, 10.87, 15.02, 18.1, 22.14, 27.03, 31.76, 36.45, 39.58, 43.07, 47.81].forEach((t, i) =>
+      tl.fromTo(`#c2cap${i + 1} span`, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, t));
+
+    // clock proxy: v = seconds of flight (0..500)
+    const ck = { v: 500 };
+    const fmt = (v) => { const s = Math.round(v); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+    const clock = (t, d, from, to) => tl.fromTo(ck, { v: from }, { v: to, duration: d, ease: "none", onUpdate: () => { $("#c2clk").textContent = fmt(ck.v); } }, t);
+
+    // stream dots (generated; ILLUSTRATIVE spacing)
+    const N = 46, SPEED = 175, T0 = 23.5;
+    for (let i = 0; i < N; i++) {
+      const e = document.createElement("div");
+      e.className = "a dot"; e.id = "c2d" + i; e.style.left = (293 + i * 30) + "px";
+      $("#root").insertBefore(e, $("#c2inflight"));
+    }
+
+    // ---- s1 (0-3.5): the question; Sun vanishes, sky stays bright
+    fi("#c2lane0", 0.1, 0.4); fi("#c2earth", 0.1, 0.5); fi("#c2earthl", 0.3, 0.4);
+    fi("#c2sun", 0.1, 0.5, { scale: 0.6 }, { scale: 1 }); fi("#c2sunl", 0.3, 0.4);
+    fi("#c2sky", 0.4, 0.5);
+    fi("#c2clkw", 1.8, 0.5, { y: 20 }, { y: 0 });
+    tl.to("#c2sun", { opacity: 0, scale: 0, duration: 0.5, ease: "power2.in" }, 1.2);
+    tl.to("#c2sunl", { opacity: 0, duration: 0.3 }, 1.2); fi("#c2sungone", 1.5, 0.4);
+    fo("#c2clkw", 3.2, 0.3); fo("#c2sungone", 3.3, 0.3);
+
+    // ---- s2 (3.58-7.3): sunlight leaves and travels
+    fi("#c2sun", 3.6, 0.5, { scale: 0.4 }, { scale: 1 }); fi("#c2sunl", 3.8, 0.4); fi("#c2ll0", 3.9, 0.4);
+    fi("#c2pulse", 4.2, 0.3, { x: 0 }, { x: 0 });
+    tl.fromTo("#c2pulse", { x: 0 }, { x: 900, duration: 2.8, ease: "none" }, 4.2);
+    fi("#c2trail", 4.2, 0.3, { scaleX: 0 }, { scaleX: 0 });
+    tl.fromTo("#c2trail", { scaleX: 0 }, { scaleX: 900 / 1360, duration: 2.8, ease: "none" }, 4.2);
+    fo(["#c2pulse", "#c2trail"], 7.0, 0.4);
+
+    // ---- s3-4 (7.48-14.8): the distance
+    fi("#c2br", 7.6, 0.6, { scaleX: 0 }, { scaleX: 1 });
+    fi("#c2brt", 8.3, 0.6, { y: 20 }, { y: 0 });
+    fi("#c2brm", 11.0, 0.5, { y: 20 }, { y: 0 });
+    fi("#c2brn", 12.8, 0.5, { y: 20 }, { y: 0 });
+    ["#c2br", "#c2brt", "#c2brm", "#c2brn"].forEach((s) => fo(s, 14.5, 0.4));
+
+    // ---- s5 (15.02-17.9): the crossing, clock counts up
+    fi("#c2clkw", 14.9, 0.4); clock(15.02, 2.6, 0, 500);
+    fi("#c2pulse", 15.02, 0.1, { x: 0 }, { x: 0, immediateRender: false }); tl.fromTo("#c2pulse", { x: 0 }, { x: 1360, duration: 2.6, ease: "none", immediateRender: false }, 15.02);
+    fi("#c2trail", 15.02, 0.1, { scaleX: 0 }, { scaleX: 0, immediateRender: false }); tl.fromTo("#c2trail", { scaleX: 0 }, { scaleX: 1, duration: 2.6, ease: "none", immediateRender: false }, 15.02);
+    fi("#c2eglow", 17.5, 0.3); tl.fromTo("#c2earth", { scale: 1 }, { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, ease: "power2.out" }, 17.5);
+    fo(["#c2pulse", "#c2trail"], 21.0, 0.5);
+
+    // ---- s6 (18.1-22): it left 8:20 ago
+    fi("#c2back", 18.4, 1.2, { scaleX: 0 }, { scaleX: 1, ease: "power2.inOut" }); fi("#c2backh", 19.4, 0.3);
+    fi("#c2backt", 19.0, 0.6, { y: 16 }, { y: 0 });
+    fo(["#c2back", "#c2backh", "#c2backt"], 21.7, 0.4);
+
+    // ---- s7 (22.14-26.9): Sun vanishes, the stream is already in flight
+    tl.to("#c2sun", { opacity: 0, scale: 0, duration: 0.5, ease: "power2.in" }, 22.3);
+    tl.to("#c2sunl", { opacity: 0, duration: 0.3 }, 22.3); fi("#c2sungone", 22.6, 0.4);
+    fi("#c2inflight", 22.8, 0.5, { y: 16 }, { y: 0 });
+    for (let i = 0; i < N; i++) {
+      const dx = 1668 - (293 + i * 30), dur = dx / SPEED;
+      fi("#c2d" + i, 22.6 + (N - 1 - i) * 0.02, 0.2);
+      tl.fromTo("#c2d" + i, { x: 0 }, { x: dx, duration: dur, ease: "none" }, T0);
+      tl.to("#c2d" + i, { opacity: 0, duration: 0.1 }, T0 + dur);
+    }
+    fi("#c2eglow", 23.6, 0.4); fo("#c2eglow", 31.2, 0.4);
+    fi("#c2clkw", 22.9, 0.4); clock(T0, 7.8, 500, 0);
+    fo("#c2inflight", 26.6, 0.4);
+
+    // ---- s8 (27.03-31.6): sky still bright until the delay ends
+    tl.fromTo("#c2skyfill", { scaleX: 1 }, { scaleX: 0.08, duration: 0.4, ease: "power2.in" }, 31.3);
+    tl.fromTo("#c2sky", { y: 0 }, { y: 0, duration: 0.01 }, 27.0);
+    tl.fromTo("#c2earth", { rotation: 0 }, { rotation: 0, duration: 0.01 }, 27.0);
+    fo("#c2sky", 32.4, 0.4); fo("#c2clkw", 31.5, 0.3); fo("#c2sungone", 31.5, 0.3);
+
+    // ---- s9 (31.76-36.3): the race, train and jet lanes
+    fi("#c2sun", 31.8, 0.5, { scale: 0.4 }, { scale: 1 }); fi("#c2sunl", 32.0, 0.4);
+    fi("#c2lane1", 32.0, 0.4, { scaleX: 0 }, { scaleX: 1 }); fi("#c2lane2", 32.2, 0.4, { scaleX: 0 }, { scaleX: 1 });
+    fi("#c2ll1", 32.6, 0.4); fi("#c2ll2", 32.8, 0.4);
+    fi("#c2jet", 33.0, 0.4); fi("#c2train", 33.2, 0.4);
+    tl.fromTo("#c2tping", { scale: 1, opacity: 0.9 }, { scale: 3.4, opacity: 0, duration: 1.2, ease: "power2.out", immediateRender: false }, 34.0);
+    tl.fromTo("#c2jping", { scale: 1, opacity: 0.9 }, { scale: 3.4, opacity: 0, duration: 1.2, ease: "power2.out", immediateRender: false }, 34.4);
+
+    // ---- s10 (36.45-39.4): 170 years
+    fi("#c2tyrs", 36.6, 0.5, { x: -40 }, { x: 0 }); fi("#c2jyrs", 37.6, 0.5, { x: -40 }, { x: 0 });
+
+    // ---- s11 (39.58-43): light wins by a mile
+    fi("#c2clkw", 39.4, 0.3); clock(39.58, 1.7, 0, 500);
+    fi("#c2pulse", 39.58, 0.1, { x: 0 }, { x: 0, immediateRender: false }); tl.fromTo("#c2pulse", { x: 0 }, { x: 1360, duration: 1.7, ease: "none", immediateRender: false }, 39.58);
+    fi("#c2trail", 39.58, 0.1, { scaleX: 0 }, { scaleX: 0, immediateRender: false }); tl.fromTo("#c2trail", { scaleX: 0 }, { scaleX: 1, duration: 1.7, ease: "none", immediateRender: false }, 39.58);
+    fi("#c2eglow", 41.2, 0.3);
+    fi("#c2jres", 41.4, 0.4); fi("#c2tres", 41.6, 0.4);
+    fi("#c2coffee", 41.9, 0.5, { y: 16 }, { y: 0 });
+
+    // ---- s12 (43.07-47.6): news rides the light
+    ["#c2lane1", "#c2lane2", "#c2ll1", "#c2ll2", "#c2jet", "#c2train", "#c2jyrs", "#c2tyrs", "#c2jres", "#c2tres", "#c2coffee", "#c2clkw", "#c2pulse", "#c2trail", "#c2ll0", "#c2eglow"].forEach((s) => fo(s, 42.9, 0.4));
+    fi("#c2news", 43.3, 0.4, { x: 0 }, { x: 0 }); tl.fromTo("#c2news", { x: 0 }, { x: 1355, duration: 3.4, ease: "none" }, 43.3);
+    fi("#c2eglow", 46.5, 0.3);
+    fi("#c2limit", 44.2, 0.6, { y: 20 }, { y: 0 });
+    fo("#c2news", 46.8, 0.3);
+
+    // ---- s13 (47.81-52.57): gravity next
+    ["#c2limit", "#c2sun", "#c2sunl", "#c2sungone", "#c2earth", "#c2earthl", "#c2lane0", "#c2eglow"].forEach((s) => fo(s, 47.4, 0.4));
+    fi("#c2gt", 47.9, 0.6, { y: 20 }, { y: 0 });
+    fi("#c2gsun", 48.1, 0.5, { scale: 0.5 }, { scale: 1 });
+    fi("#c2orb", 48.3, 0.5);
+    tl.fromTo("#c2orb", { rotation: 0 }, { rotation: 55, duration: 4.2, ease: "none" }, 48.3);
+    fi("#c2q", 49.6, 0.5, { scale: 0.6 }, { scale: 1 });
+    tl.to("#root", { opacity: 1, duration: 0.01 }, 52.56);
+
+    window.__timelines["ch02"] = tl;
+  </script>
+</template>

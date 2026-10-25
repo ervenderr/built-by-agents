@@ -1,0 +1,6 @@
+A forward pass is one trip through a neural network.
+Numbers flow in at the input layer.
+Those can be pixels, or words turned into numbers.
+Each layer mixes them with weights, then usually applies a nonlinearity.
+No learning happens here, the weights stay fixed.
+The last layer produces the answer.

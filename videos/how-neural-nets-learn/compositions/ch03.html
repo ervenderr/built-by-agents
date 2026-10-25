@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: #110c10; color: #e8eef5; font-family: Inter, system-ui, sans-serif; }
+        #net { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+        #title { position: absolute; left: 120px; top: 100px; font-size: 72px; font-weight: 800; letter-spacing: -1px; white-space: nowrap; }
+        #title em { color: #ff4d6d; font-style: normal; }
+        #illus { position: absolute; right: 120px; top: 120px; font-size: 32px; font-weight: 700; letter-spacing: 4px; color: #ffb454; white-space: nowrap; }
+        #costlbl { position: absolute; left: 1525px; top: 465px; font-size: 40px; font-weight: 800; color: #ff4d6d; white-space: nowrap; }
+        .band { position: absolute; left: 120px; width: 1680px; top: 790px; height: 60px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 38px; font-weight: 700; color: #e8eef5; }
+        .band span { display: block; white-space: nowrap; }
+        .cap { position: absolute; left: 160px; width: 1600px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; }
+        .cap span { display: block; text-shadow: 0 4px 24px #000; }
+        .cap b { color: #00e5a0; }
+      </style>
+      <div id="root" data-composition-id="ch03" data-width="1920" data-height="1080" data-start="0" data-duration="53.08">
+        <svg id="net" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+          <g id="pipes"></g><g id="stains"></g><g id="foc"></g><g id="rip"></g><g id="nodes"></g><g id="marks"></g>
+        </svg>
+        <div id="title">Who caused the <em>error</em>?</div>
+        <div id="illus">ILLUSTRATIVE</div>
+        <div id="costlbl">COST: HIGH</div>
+      <div id="band1" class="clip band" data-start="0.0" data-duration="2.62" data-track-index="3"><span>COST IS HIGH · WHO IS TO BLAME?</span></div>
+      <div id="band2" class="clip band" data-start="2.62" data-duration="2.77" data-track-index="3"><span>BACKPROPAGATION</span></div>
+      <div id="band3" class="clip band" data-start="5.39" data-duration="5.21" data-track-index="3"><span>−∇COST = THE DIRECTION THAT LOWERS COST FASTEST</span></div>
+      <div id="band4" class="clip band" data-start="10.6" data-duration="2.78" data-track-index="3"><span>BLAME, WEIGHT BY WEIGHT</span></div>
+      <div id="band5" class="clip band" data-start="13.38" data-duration="4.35" data-track-index="3"><span>STRONGLY ACTIVE NEURON × WEIGHT = BIG INFLUENCE</span></div>
+      <div id="band6" class="clip band" data-start="17.73" data-duration="3.56" data-track-index="3"><span>ADJUST IN PROPORTION TO ACTIVATION</span></div>
+      <div id="band7" class="clip band" data-start="21.29" data-duration="2.83" data-track-index="3"><span>QUIET NEURON → BARELY CHANGES</span></div>
+      <div id="band8" class="clip band" data-start="24.12" data-duration="3.35" data-track-index="3"><span>THOUSANDS OF WEIGHTS…</span></div>
+      <div id="band9" class="clip band" data-start="27.47" data-duration="4.59" data-track-index="3"><span>BACKWARD FROM THE OUTPUT · CHAIN RULE</span></div>
+      <div id="band10" class="clip band" data-start="32.06" data-duration="3.75" data-track-index="3"><span>EACH PIECE KNOWS ONLY ITS OWN LOCAL EFFECT</span></div>
+      <div id="band11" class="clip band" data-start="35.81" data-duration="3.77" data-track-index="3"><span>“A BEAUTIFULLY LOCAL PROCESS” — STANFORD COURSE NOTES</span></div>
+      <div id="band12" class="clip band" data-start="39.58" data-duration="4.74" data-track-index="3"><span>GRADIENT SIGNAL: PUSH OUTPUT UP ▲ OR DOWN ▼</span></div>
+      <div id="band13" class="clip band" data-start="44.32" data-duration="5.41" data-track-index="3"><span>COMPUTED ONCE · REUSED BY EARLIER LAYERS</span></div>
+      <div id="band14" class="clip band" data-start="49.73" data-duration="3.35" data-track-index="3"><span>EVERY WEIGHT GETS ITS SHARE OF THE BLAME</span></div>
+      <div id="cap1" class="clip cap" data-start="0.0" data-duration="2.62" data-track-index="2"><span>So the <b>cost</b> is high. Which <b>weights</b> caused it?</span></div>
+      <div id="cap2" class="clip cap" data-start="2.62" data-duration="2.77" data-track-index="2"><span>The answer is an algorithm called <b>backpropagation</b>.</span></div>
+      <div id="cap3" class="clip cap" data-start="5.39" data-duration="5.21" data-track-index="2"><span>It computes the <b>negative gradient</b> of the cost, the direction that lowers the cost most efficiently.</span></div>
+      <div id="cap4" class="clip cap" data-start="10.6" data-duration="2.78" data-track-index="2"><span>Think of it as handing out <b>blame</b>, weight by weight.</span></div>
+      <div id="cap5" class="clip cap" data-start="13.38" data-duration="4.35" data-track-index="2"><span>A weight that multiplies a <b>strongly active</b> neuron has a large influence on the output.</span></div>
+      <div id="cap6" class="clip cap" data-start="17.73" data-duration="3.56" data-track-index="2"><span>So the best adjustment is in <b>proportion</b> to those activations.</span></div>
+      <div id="cap7" class="clip cap" data-start="21.29" data-duration="2.83" data-track-index="2"><span>Weights attached to <b>quiet</b> neurons barely change.</span></div>
+      <div id="cap8" class="clip cap" data-start="24.12" data-duration="3.35" data-track-index="2"><span>But how do you do this for <b>thousands</b> of weights without going mad?</span></div>
+      <div id="cap9" class="clip cap" data-start="27.47" data-duration="4.59" data-track-index="2"><span>Backpropagation works <b>backward</b> from the output, applying the <b>chain rule</b> again and again.</span></div>
+      <div id="cap10" class="clip cap" data-start="32.06" data-duration="3.75" data-track-index="2"><span>Each piece computes only its own <b>local</b> effect and needs nothing else.</span></div>
+      <div id="cap11" class="clip cap" data-start="35.81" data-duration="3.77" data-track-index="2"><span>The Stanford course notes call this a <b>beautifully local</b> process.</span></div>
+      <div id="cap12" class="clip cap" data-start="39.58" data-duration="4.74" data-track-index="2"><span>Pieces pass a <b>gradient signal</b> back, saying whether they want their outputs pushed up or down.</span></div>
+      <div id="cap13" class="clip cap" data-start="44.32" data-duration="5.41" data-track-index="2"><span>Each layer's result is computed <b>once</b> and reused for earlier layers, not recomputed for every weight.</span></div>
+      <div id="cap14" class="clip cap" data-start="49.73" data-duration="3.35" data-track-index="2"><span>The error flows <b>backward</b>, and every weight gets its <b>share of the blame</b>.</span></div>
+      </div>
+      <script>
+        const NS = "http://www.w3.org/2000/svg";
+        const el = (parent, tag, attrs) => { const e = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); document.getElementById(parent).appendChild(e); return e; };
+        const X = [260, 660, 1060, 1460];
+        const Y = [[330, 490, 650], [270, 410, 570, 710], [330, 490, 650], [490]];
+        const ACT = [[0.5, 0.8, 0.3], [0.4, 0.95, 0.6, 0.08], [0.5, 0.9, 0.35], [1]];
+        const RED = "#ff2d55", ACC = "#00e5a0", AMB = "#ffb454", DIM = "#8a97a6";
+        const frac = (v) => { const s = Math.sin(v) * 43758.5453; return s - Math.floor(s); };
+        const pos = (l, i) => [X[l], Y[l][i]];
+        const pipe = (l, i, j, w) => { // drawn right to left so the stain flows backward
+          const [xl, yl] = pos(l, i), [xr, yr] = pos(l + 1, j), xm = (xl + xr) / 2;
+          return `M${xr} ${yr} C${xm} ${yr} ${xm} ${yl} ${xl} ${yl}`;
+        };
+        const edges = [];
+        for (let l = 0; l < 3; l++) for (let i = 0; i < Y[l].length; i++) for (let j = 0; j < Y[l + 1].length; j++) {
+          let w = 5 + 11 * frac((l * 17 + i * 5 + j * 3 + 1) * 12.9898);
+          if ((l === 1 && i === 3)) w = 3;
+          if (l === 1 && i === 1 && j === 1) w = 22;
+          if (l === 2 && i === 1) w = 20;
+          edges.push({ l, i, j, w, d: pipe(l, i, j), s: (w - 3) / 19, stage: 2 - l });
+        }
+        edges.forEach((e, k) => {
+          e.k = k;
+          el("pipes", "path", { id: "p" + k, d: e.d, fill: "none", stroke: "#3a4756", "stroke-width": e.w, opacity: 0 });
+          el("stains", "path", { id: "s" + k, class: "st", d: e.d, pathLength: 1, fill: "none", stroke: RED, "stroke-width": e.w, "stroke-dasharray": 1, "stroke-dashoffset": 1, opacity: 0.08 + 0.92 * Math.pow(e.s, 1.2) });
+        });
+        const focE = edges.filter((e) => e.l === 1 && e.i === 1 && e.j === 1);
+        el("foc", "path", { id: "focA", d: focE[0].d, fill: "none", stroke: ACC, "stroke-width": 30, opacity: 0 });
+        edges.filter((e) => (e.l === 1 && e.j === 1) || (e.l === 2 && e.i === 1)).forEach((e) => el("foc", "path", { class: "focB", d: e.d, fill: "none", stroke: ACC, "stroke-width": e.w + 8, opacity: 0 }));
+        for (let l = 0; l < 4; l++) for (let i = 0; i < Y[l].length; i++) {
+          const [x, y] = pos(l, i), a = ACT[l][i];
+          const g = el("nodes", "g", { id: `n${l}${i}`, class: "nd", opacity: 0 });
+          const c = (t, at) => { const e = document.createElementNS(NS, t); Object.entries(at).forEach(([k, v]) => e.setAttribute(k, v)); g.appendChild(e); return e; };
+          c("circle", { cx: x, cy: y, r: l === 3 ? 48 : 36, fill: "#110c10", stroke: l === 3 ? RED : DIM, "stroke-width": l === 3 ? 8 : 5 });
+          if (l < 3) c("circle", { cx: x, cy: y, r: 28, fill: ACC, opacity: 0.1 + 0.85 * a });
+        }
+        [[2, 0, "up"], [2, 1, "dn"], [2, 2, "up"]].forEach(([l, i, dir], k) => {
+          const [x, y] = pos(l, i), s = dir === "up" ? -1 : 1;
+          el("marks", "polygon", { class: "arr", points: `${x - 16},${y + 10 * -s} ${x + 16},${y + 10 * -s} ${x},${y + 10 * s + (s > 0 ? 8 : -8)}`, fill: s < 0 ? ACC : AMB, stroke: "#110c10", "stroke-width": 3, opacity: 0 });
+        });
+        const [hx, hy] = pos(1, 1), [qx, qy] = pos(1, 3), [fx, fy] = pos(2, 1), [ox, oy] = pos(3, 0);
+        el("marks", "circle", { id: "halo1", cx: hx, cy: hy, r: 52, fill: "none", stroke: ACC, "stroke-width": 6, opacity: 0 });
+        el("marks", "circle", { id: "halo2", cx: qx, cy: qy, r: 52, fill: "none", stroke: AMB, "stroke-width": 5, "stroke-dasharray": "10 8", opacity: 0 });
+        el("marks", "circle", { id: "halo3", cx: fx, cy: fy, r: 54, fill: "none", stroke: ACC, "stroke-width": 6, opacity: 0 });
+        for (let i = 0; i < 3; i++) el("rip", "circle", { class: "ripc", cx: ox, cy: oy, r: 48, fill: "none", stroke: RED, "stroke-width": 5, opacity: 0 });
+        for (let i = 0; i < 3; i++) el("marks", "circle", { class: "store", cx: pos(2, i)[0], cy: pos(2, i)[1], r: 48, fill: "none", stroke: AMB, "stroke-width": 5, opacity: 0 });
+
+        const tl = gsap.timeline({ paused: true });
+        const caps = [
+      [1, 0.0, 2.62],
+      [2, 2.62, 2.77],
+      [3, 5.39, 5.21],
+      [4, 10.6, 2.78],
+      [5, 13.38, 4.35],
+      [6, 17.73, 3.56],
+      [7, 21.29, 2.83],
+      [8, 24.12, 3.35],
+      [9, 27.47, 4.59],
+      [10, 32.06, 3.75],
+      [11, 35.81, 3.77],
+      [12, 39.58, 4.74],
+      [13, 44.32, 5.41],
+      [14, 49.73, 3.35],
+        ];
+        caps.forEach(([n, s, d]) => {
+          tl.fromTo(`#cap${n} span`, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, s);
+          tl.to(`#cap${n} span`, { opacity: 0, duration: 0.12 }, s + d - 0.14);
+          tl.fromTo(`#band${n} span`, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, s);
+          tl.to(`#band${n} span`, { opacity: 0, duration: 0.12 }, s + d - 0.14);
+        });
+        const at = (n) => caps[n - 1][1];
+        const stage = (k) => edges.filter((e) => e.stage === k).map((e) => "#s" + e.k);
+        const sop = (e) => 0.08 + 0.92 * Math.pow(e.s, 1.2);
+        const wave = (t0, dt, dur, ks) => ks.forEach((k, n) => edges.filter((e) => e.stage === k).forEach((e, m) =>
+          tl.fromTo("#s" + e.k, { strokeDashoffset: 1, opacity: sop(e) }, { strokeDashoffset: 0, opacity: sop(e), duration: dur, ease: "power1.inOut", immediateRender: false }, t0 + n * dt + m * 0.05)));
+        const unwave = (t, ks) => ks.forEach((k) => tl.to(stage(k), { opacity: 0, duration: 0.3 }, t));
+        const ripple = (t) => tl.fromTo(".ripc", { attr: { r: 48 }, opacity: 0.7 }, { attr: { r: 120 }, opacity: 0, duration: 1.4, ease: "power1.out", stagger: 0.25, immediateRender: false }, t);
+
+        // 1 network appears, cost lights up
+        tl.fromTo("#title", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+        tl.fromTo("#illus", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+        tl.fromTo("#pipes path", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.02 }, 0.2);
+        tl.fromTo(".nd", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.04 }, 0.3);
+        tl.fromTo("#costlbl", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.2);
+        ripple(1.4);
+        // 2-3 backprop named, the cost keeps emitting
+        ripple(at(2)); ripple(at(3) + 0.3); ripple(at(3) + 2.2); ripple(at(3) + 4.0);
+        // 4 first blame, layer by layer
+        wave(at(4) + 0.2, 1.1, 1.0, [0, 1]);
+        // 5 strong active neuron: big influence
+        tl.fromTo("#halo1", { opacity: 0, attr: { r: 70 } }, { opacity: 1, attr: { r: 52 }, duration: 0.5, ease: "power3.out" }, at(5) + 0.2);
+        tl.fromTo("#focA", { opacity: 0 }, { opacity: 0.35, duration: 0.5 }, at(5) + 0.3);
+        tl.to("#focA", { opacity: 0.8, duration: 0.7, yoyo: true, repeat: 3, ease: "sine.inOut" }, at(5) + 0.9);
+        // 6 proportional: reach the first layer
+        wave(at(6) + 0.1, 0, 1.2, [2]);
+        tl.to("#focA", { opacity: 0, duration: 0.3 }, at(7) - 0.1);
+        tl.to("#halo1", { opacity: 0, duration: 0.3 }, at(7) - 0.1);
+        // 7 quiet neuron
+        tl.fromTo("#halo2", { opacity: 0, attr: { r: 70 } }, { opacity: 1, attr: { r: 52 }, duration: 0.5, ease: "power3.out" }, at(7) + 0.1);
+        tl.to("#halo2", { opacity: 0, duration: 0.3 }, at(8) - 0.1);
+        // 8 thousands of weights: a pulse sweeps every layer of pipes
+        unwave(at(8) + 2.2, [0, 1, 2]);
+        [2, 1, 0].forEach((k, n) => tl.to(edges.filter((e) => e.stage === k).map((e) => "#p" + e.k), { stroke: "#7d8fa4", duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut" }, at(8) + 0.2 + n * 0.7));
+        // 9 full backward wave, chain rule
+        wave(at(9) + 0.2, 1.3, 1.1, [0, 1, 2]);
+        // 10 one piece, its local effect only
+        const others = ".nd:not(#n21)";
+        tl.to(others, { opacity: 0.3, duration: 0.4 }, at(10));
+        tl.to("#pipes, #stains", { opacity: 0.3, duration: 0.4 }, at(10));
+        tl.fromTo(".focB", { opacity: 0 }, { opacity: 0.55, duration: 0.4 }, at(10) + 0.1);
+        tl.fromTo("#halo3", { opacity: 0, attr: { r: 72 } }, { opacity: 1, attr: { r: 54 }, duration: 0.5, ease: "power3.out" }, at(10) + 0.1);
+        tl.to(others, { opacity: 1, duration: 0.4 }, at(11) - 0.2);
+        tl.to("#pipes, #stains", { opacity: 1, duration: 0.4 }, at(11) - 0.2);
+        tl.to(".focB", { opacity: 0, duration: 0.4 }, at(11) - 0.2);
+        tl.to("#halo3", { opacity: 0, duration: 0.4 }, at(11) - 0.2);
+        // 11 quote: quiet slow pulse on the whole chain
+        tl.to("#stains", { opacity: 0.6, duration: 0.8, yoyo: true, repeat: 1, ease: "sine.inOut" }, at(11) + 0.3);
+        // 12 up / down gradient signal
+        tl.fromTo(".arr", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.25 }, at(12) + 0.2);
+        tl.to(".arr", { opacity: 0, duration: 0.3 }, at(13) - 0.15);
+        // 13 computed once, reused: stored rings, then earlier stains re-pulse
+        tl.fromTo(".store", { opacity: 0, attr: { r: 60 } }, { opacity: 1, attr: { r: 48 }, duration: 0.5, ease: "power3.out", stagger: 0.15 }, at(13) + 0.1);
+        tl.to(stage(1).concat(stage(2)), { opacity: 1, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut" }, at(13) + 1.4);
+        tl.to(".store", { opacity: 0, duration: 0.4 }, at(14) - 0.2);
+        // 14 final replay, every weight stained by its share
+        unwave(at(14) - 0.4, [0, 1, 2]);
+        wave(at(14) + 0.1, 0.8, 0.8, [0, 1, 2]);
+
+        window.__timelines["ch03"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

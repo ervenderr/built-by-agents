@@ -1,0 +1,5 @@
+{"ok": true, "issues": [
+{"line": 1, "severity": "minor", "claim": "A QR code can lose a quarter of itself and still scan.", "verdict": "NEEDS REWORDING", "problem": "25% is Level Q (of codewords, not area); default/common level is M (~15%). Damage location matters: wiping a finder pattern breaks scanning regardless.", "fix": "A QR code can lose a quarter of its data and still scan."},
+{"line": 5, "severity": "minor", "claim": "At the highest setting, thirty percent can be missing.", "verdict": "NEEDS REWORDING", "problem": "Level H restores ~30% of codewords, a theoretical figure (Wikipedia); not 30% of visible area anywhere.", "fix": "At the highest setting, it can recover up to thirty percent of its data."},
+{"line": 6, "severity": "minor", "claim": "So a scuffed QR code usually still works.", "verdict": "NEEDS REWORDING", "problem": "Reasonable, but depends on level and on damage avoiding the three corner squares.", "fix": "So a lightly scuffed QR code often still works, as long as the corners survive."}
+]}

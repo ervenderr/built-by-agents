@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --faint: #5a6782;
+        --accent: #00e5a0;
+        --warn: #ff4d6d;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #brand { position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--accent); }
+      .hd { position: absolute; left: 0; width: 1080px; top: 225px; text-align: center; font-size: 80px; font-weight: 800; letter-spacing: -2px; line-height: 1; white-space: nowrap; }
+      .hd em { color: var(--accent); font-style: normal; }
+      .g { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .wd { position: absolute; top: 345px; width: 124px; text-align: center; font-size: 30px; font-weight: 700; color: var(--dim); }
+      .cell { position: absolute; width: 124px; height: 104px; border-radius: 18px; background: var(--panel); border: 3px solid var(--faint); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 46px; font-weight: 800; line-height: 1; }
+      .cell i { font-style: normal; font-size: 28px; font-weight: 700; color: var(--accent); height: 0; opacity: 0; overflow: visible; margin-top: 6px; }
+      .cell.gone { border-color: var(--warn); color: var(--warn); }
+      #arrow { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .big { position: absolute; left: 0; width: 1080px; text-align: center; font-weight: 800; }
+      .sm { position: absolute; left: 0; width: 1080px; text-align: center; font-weight: 700; color: var(--dim); font-size: 32px; }
+      #ring { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .tile { position: absolute; top: 640px; width: 170px; height: 250px; border-radius: 24px; background: var(--panel); border: 4px solid var(--faint); text-align: center; }
+      .tile .y { position: absolute; left: 0; width: 100%; top: 40px; font-size: 52px; font-weight: 800; }
+      .tile .m { position: absolute; left: 0; width: 100%; top: 130px; font-size: 90px; font-weight: 800; line-height: 1; }
+      #dots { position: absolute; left: 260px; top: 400px; width: 560px; height: 560px; }
+      .d { position: absolute; width: 22px; height: 22px; border-radius: 6px; background: var(--faint); }
+      .card { position: absolute; top: 420px; width: 450px; height: 560px; border-radius: 32px; background: var(--panel); border: 4px solid var(--faint); }
+      .card .y { position: absolute; left: 0; width: 100%; top: 36px; text-align: center; font-size: 96px; font-weight: 800; }
+      .card .f { position: absolute; left: 0; width: 100%; top: 160px; text-align: center; font-size: 36px; font-weight: 700; color: var(--dim); }
+      .card .c { position: absolute; top: 230px; width: 120px; height: 100px; border-radius: 16px; border: 3px solid var(--faint); display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 800; }
+      .card .v { position: absolute; left: 0; width: 100%; top: 400px; text-align: center; font-size: 56px; font-weight: 800; line-height: 1.1; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1140px; height: 190px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 54px; font-weight: 800; line-height: 1.1; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000; }
+      .cap b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28.34" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="h1" class="hd">10 DAYS <em>DELETED</em></div>
+      <div id="h2" class="hd">1582: THE <em>JUMP</em></div>
+      <div id="h3" class="hd">THE CALENDAR <em>DRIFTED</em></div>
+      <div id="h4" class="hd">THE <em>FIX</em></div>
+      <div id="h5" class="hd">ONE <em>400-YEAR</em> CYCLE</div>
+      <div id="h6" class="hd">1900 <em>vs</em> 2000</div>
+
+      <!-- scenes 1-2: October 1582 -->
+      <div id="g12" class="g">
+        <div id="grid"></div>
+        <svg id="arrow" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+          <defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="30" markerHeight="30" refX="26" refY="15" orient="auto"><path d="M0,0 L30,15 L0,30 z" fill="#00e5a0" /></marker></defs>
+          <path id="jump" d="M540 508 C 540 570, 144 500, 144 618" stroke="#00e5a0" stroke-width="8" fill="none" marker-end="url(#ah)" stroke-dasharray="420" />
+        </svg>
+        <div id="jt" class="big" style="top:1000px;font-size:72px;color:var(--accent)">OCT 4 → OCT 15</div>
+        <div id="jn" class="sm" style="top:1085px">IN ROME &amp; OTHER CATHOLIC LANDS</div>
+      </div>
+      <div id="g1t" class="sm" style="top:1000px;font-size:44px;color:var(--warn)">OCT 5–14, 1582: GONE</div>
+
+      <!-- scene 3: drift -->
+      <div id="g3" class="g">
+        <div class="big" style="top:372px;font-size:34px;color:var(--accent)">SPRING STARTS HERE</div>
+        <svg id="ring" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+          <circle cx="540" cy="720" r="270" fill="none" stroke="#3a4560" stroke-width="10" />
+          <path id="arc" d="M540 450 A270 270 0 0 1 713.55 513.17" stroke="#ff4d6d" stroke-width="14" fill="none" stroke-dasharray="189" stroke-linecap="round" />
+          <circle cx="540" cy="450" r="30" fill="#00e5a0" />
+          <g id="cal"><circle cx="540" cy="450" r="20" fill="#ff4d6d" stroke="#0b0f17" stroke-width="4" /></g>
+        </svg>
+        <div id="dn" class="big" style="top:660px;font-size:84px">0 DAYS</div>
+        <div class="sm" style="top:770px;font-size:34px">OFF FROM THE SEASONS</div>
+        <div class="sm" style="top:820px;font-size:28px;color:var(--warn)">ILLUSTRATIVE SPEED</div>
+        <div class="big" style="top:1030px;font-size:36px"><span style="color:var(--accent)">●</span> SEASON &nbsp;&nbsp; <span style="color:var(--warn)">●</span> CALENDAR</div>
+      </div>
+
+      <!-- scene 4: the rule -->
+      <div id="g4" class="g">
+        <div class="big" style="top:370px;font-size:60px">LEAP DAY ONLY IF</div>
+        <div class="big" style="top:450px;font-size:92px;color:var(--accent)">YEAR ÷ 400</div>
+        <div id="t1" class="tile" style="left:82px"><div class="y">1600</div><div id="m1" class="m" style="color:var(--accent)">✓</div></div>
+        <div id="t2" class="tile" style="left:266px"><div class="y">1700</div><div id="m2" class="m" style="color:var(--warn)">✗</div></div>
+        <div id="t3" class="tile" style="left:450px"><div class="y">1800</div><div id="m3" class="m" style="color:var(--warn)">✗</div></div>
+        <div id="t4" class="tile" style="left:634px"><div class="y">1900</div><div id="m4" class="m" style="color:var(--warn)">✗</div></div>
+        <div id="t5" class="tile" style="left:818px"><div class="y">2000</div><div id="m5" class="m" style="color:var(--accent)">✓</div></div>
+      </div>
+
+      <!-- scene 5: average year -->
+      <div id="g5" class="g">
+        <div id="dots"></div>
+        <div class="sm" style="top:345px;font-size:30px">EACH SQUARE = 1 YEAR</div>
+        <div id="lc" class="big" style="top:985px;font-size:64px;color:var(--accent)">0 LEAP DAYS</div>
+      </div>
+      <div id="g5b" class="g">
+        <div class="sm" style="top:380px;font-size:36px">OUR CALENDAR'S AVERAGE YEAR</div>
+        <div class="big" style="top:440px;font-size:150px;color:var(--accent);letter-spacing:-3px">365.2425</div>
+        <div class="sm" style="top:700px;font-size:36px">THE REAL YEAR</div>
+        <div class="big" style="top:760px;font-size:150px;letter-spacing:-3px">365.2422</div>
+        <div class="big" style="top:980px;font-size:50px;color:var(--warn)">ONLY 0.0003 DAYS APART</div>
+      </div>
+
+      <!-- scene 6: 1900 vs 2000 -->
+      <div id="g6" class="g">
+        <div id="k1" class="card" style="left:60px">
+          <div class="y">1900</div><div class="f">LAST DAYS OF FEB</div>
+          <div class="c" style="left:55px">27</div><div class="c" style="left:185px">28</div>
+          <div id="no29" class="c" style="left:315px;border-style:dashed;color:var(--warn);border-color:var(--warn)">✗</div>
+          <div class="v" style="color:var(--warn)">NO<br>LEAP DAY</div>
+        </div>
+        <div id="k2" class="card" style="left:570px">
+          <div class="y">2000</div><div class="f">LAST DAYS OF FEB</div>
+          <div class="c" style="left:55px">27</div><div class="c" style="left:185px">28</div>
+          <div id="yes29" class="c" style="left:315px;border-color:var(--accent);color:var(--accent)">29</div>
+          <div class="v" style="color:var(--accent)">LEAP<br>DAY</div>
+        </div>
+      </div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="3.28" data-track-index="2"><span>In 1582, ten days <b>vanished</b> from the calendar.</span></div>
+      <div id="cap2" class="clip cap" data-start="3.28" data-duration="3.62" data-track-index="2"><span>Thursday, October 4 was followed by <b>Friday, October 15</b>.</span></div>
+      <div id="cap3" class="clip cap" data-start="6.9" data-duration="4.69" data-track-index="2"><span>The old calendar made every year slightly <b>too long</b>, so it kept sliding away from the seasons.</span></div>
+      <div id="cap4" class="clip cap" data-start="11.59" data-duration="3.95" data-track-index="2"><span>The fix: a century year only gets a leap day if it divides by <b>400</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="15.54" data-duration="7.86" data-track-index="2"><span>That makes the average year <b>365.2425 days</b>, nearly the real 365.2422.</span></div>
+      <div id="cap6" class="clip cap" data-start="23.4" data-duration="4.94" data-track-index="2"><span>So 1900 had <b>no leap day</b>, but 2000 did.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="26.34" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0", WARN = "#ff4d6d", FAINT = "#5a6782";
+
+      // static geometry, built deterministically before the timeline
+      const grid = document.getElementById("grid");
+      "MTWTFSS".split("").forEach((l, c) => {
+        grid.insertAdjacentHTML("beforeend", `<div class="wd" style="left:${82 + c * 132}px">${l}</div>`);
+      });
+      for (let d = 1; d <= 31; d++) {
+        const r = Math.floor((d - 1) / 7), c = (d - 1) % 7;
+        const gone = d >= 5 && d <= 14;
+        const tag = d === 4 ? "<i>THU</i>" : d === 15 ? "<i>FRI</i>" : "";
+        grid.insertAdjacentHTML("beforeend", `<div id="c${d}" class="cell${gone ? " gone" : ""}" style="left:${82 + c * 132}px;top:${400 + r * 112}px">${d}${tag}</div>`);
+      }
+      const dots = document.getElementById("dots");
+      const leapIdx = [];
+      for (let y = 0; y < 400; y++) {
+        const leap = y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0);
+        if (leap) leapIdx.push(y);
+        dots.insertAdjacentHTML("beforeend", `<div id="y${y}" class="d" style="left:${(y % 20) * 28}px;top:${Math.floor(y / 20) * 28}px"></div>`);
+      }
+      if (leapIdx.length !== 97) throw new Error("expected 97 leap years per 400");
+
+      // initial state
+      ["#h2", "#h3", "#h4", "#h5", "#h6", "#g3", "#g4", "#g5", "#g5b", "#g6"].forEach((s) => gsap.set(s, { opacity: 0 }));
+      gsap.set("#g1t", { opacity: 0 });
+      ["#cap2", "#cap3", "#cap4", "#cap5", "#cap6"].forEach((c) => gsap.set(c + " span", { opacity: 0, y: 24 }));
+      gsap.set(["#jt", "#jn"], { opacity: 0 });
+      gsap.set("#jump", { strokeDashoffset: 420, opacity: 0 });
+      gsap.set("#arc", { strokeDashoffset: 189 });
+      gsap.set(".tile .m", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" });
+      gsap.set(["#k1", "#k2"], { opacity: 0, y: 40 });
+
+      const capIn = (id, t, d, first) => {
+        if (!first) tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      };
+      capIn("#cap1", 0, 3.28, true); capIn("#cap2", 3.28, 3.62); capIn("#cap3", 6.9, 4.69);
+      capIn("#cap4", 11.59, 3.95); capIn("#cap5", 15.54, 7.86);
+      tl.fromTo("#cap6 span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 23.4); // last line holds to the end
+
+      const swap = (id, t0, t1) => {
+        tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.25 }, t0);
+        if (t1) tl.to(id, { opacity: 0, duration: 0.2 }, t1 - 0.2);
+      };
+      swap("#h2", 3.28, 6.9); swap("#h3", 6.9, 11.59); swap("#h4", 11.59, 15.54); swap("#h5", 15.54, 23.4); swap("#h6", 23.4);
+      tl.to("#h1", { opacity: 0, duration: 0.2 }, 3.08);
+
+      // scene 1 (0-3.28): ten days crumble out of October 1582
+      tl.to(".cell.gone", { opacity: 0.14, scale: 0.8, duration: 0.3, stagger: 0.07, transformOrigin: "50% 50%" }, 0.9);
+      tl.fromTo("#g1t", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 1.8);
+      tl.to("#g1t", { opacity: 0, duration: 0.2 }, 3.08);
+
+      // scene 2 (3.28-6.9): Thursday 4 jumps to Friday 15
+      tl.to(".cell:not(.gone):not(#c4):not(#c15)", { opacity: 0.3, duration: 0.3 }, 3.4);
+      tl.to(["#c4", "#c15"], { borderColor: ACC, color: "#fff", duration: 0.25 }, 3.4);
+      tl.to(["#c4 i", "#c15 i"], { opacity: 1, height: 28, duration: 0.25 }, 3.5);
+      tl.set("#jump", { opacity: 1 }, 4.0);
+      tl.to("#jump", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 4.0);
+      tl.fromTo(["#jt", "#jn"], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.15, ease: "power3.out" }, 4.9);
+      tl.to("#g12", { opacity: 0, duration: 0.2 }, 6.7);
+
+      // scene 3 (6.9-11.59): the calendar slides ahead of the seasons
+      swap("#g3", 6.9, 11.59);
+      tl.to("#cal", { rotation: 40, svgOrigin: "540 720", duration: 3.6, ease: "none" }, 7.3);
+      tl.to("#arc", { strokeDashoffset: 0, duration: 3.6, ease: "none" }, 7.3);
+      const drift = { v: 0 };
+      tl.to(drift, { v: 10, duration: 3.6, ease: "none", onUpdate() { document.getElementById("dn").textContent = Math.round(drift.v) + " DAYS"; } }, 7.3);
+
+      // scene 4 (11.59-15.54): only 1600 and 2000 pass
+      swap("#g4", 11.59, 15.54);
+      tl.to(".tile .m", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.55 }, 12.2);
+      tl.to(["#t1", "#t5"], { borderColor: ACC, duration: 0.25 }, 12.4);
+      tl.to(["#t2", "#t3", "#t4"], { borderColor: WARN, duration: 0.25, stagger: 0.55 }, 12.8);
+
+      // scene 5 (15.54-23.4): 97 leap days per 400 years, so 365.2425
+      swap("#g5", 15.54, 18.9);
+      tl.fromTo(leapIdx.map((y) => "#y" + y), { backgroundColor: FAINT }, { backgroundColor: ACC, duration: 0.15, stagger: 0.022 }, 15.9);
+      const lc = { v: 0 };
+      tl.to(lc, { v: 97, duration: 2.1, ease: "none", onUpdate() { document.getElementById("lc").textContent = Math.round(lc.v) + " LEAP DAYS"; } }, 15.9);
+      swap("#g5b", 18.9, 23.4);
+
+      // scene 6 (23.4-28.34)
+      swap("#g6", 23.4);
+      tl.fromTo("#k1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 23.5);
+      tl.fromTo("#k2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 24.8);
+      tl.to("#k1", { borderColor: WARN, duration: 0.25 }, 24.0);
+      tl.to("#k2", { borderColor: ACC, duration: 0.25 }, 25.2);
+      tl.fromTo("#yes29", { scale: 0.6 }, { scale: 1.12, duration: 0.4, ease: "back.out(3)", transformOrigin: "50% 50%" }, 25.3);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

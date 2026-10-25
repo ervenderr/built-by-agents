@@ -1,0 +1,16 @@
+{
+  "title": "What Is a Neural Network? (Whiteboard in 23 Seconds)",
+  "description": "A neural network is layers of simple units joined by weights. It learns by comparing its output with the right answer and nudging the weights to shrink the error.\n\nInspired by @tak3sh8's hand-drawn whiteboard animation prompt (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #NeuralNetworks #MachineLearning",
+  "tags": [
+    "neural network explained",
+    "what is a neural network",
+    "weights",
+    "machine learning basics",
+    "deep learning",
+    "whiteboard"
+  ],
+  "publish_at": "2026-10-25T21:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

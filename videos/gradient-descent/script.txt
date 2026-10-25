@@ -1,0 +1,6 @@
+A neural network learns by rolling downhill.
+Its settings are parameters, and the loss measures how wrong it is.
+At each step, the slope tells it which way is down.
+The learning rate sets how big each step is.
+Small steps settle into the valley.
+Make the learning rate too big, and you overshoot the bottom.

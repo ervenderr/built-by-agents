@@ -1,0 +1,14 @@
+So the cost is high. Which weights caused it?
+The answer is an algorithm called backpropagation.
+It computes the negative gradient of the cost, the direction that lowers the cost most efficiently.
+Think of it as handing out blame, weight by weight.
+A weight that multiplies a strongly active neuron has a large influence on the output.
+So the best adjustment is in proportion to those activations.
+Weights attached to quiet neurons barely change.
+But how do you do this for thousands of weights without going mad?
+Backpropagation works backward from the output, applying the chain rule again and again.
+Each piece computes only its own local effect and needs nothing else.
+The Stanford course notes call this a beautifully local process.
+Pieces pass a gradient signal back, saying whether they want their outputs pushed up or down.
+Each layer's result is computed once and reused for earlier layers, not recomputed for every weight.
+The error flows backward, and every weight gets its share of the blame.

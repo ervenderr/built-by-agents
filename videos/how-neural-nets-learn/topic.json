@@ -1,0 +1,6 @@
+{
+  "slug": "how-neural-nets-learn",
+  "working_title": "How Neural Nets Learn",
+  "angle": "Neural networks do not store answers, they get nudged slightly less wrong millions of times; learning is just error, blame and a small step",
+  "format": "long"
+}

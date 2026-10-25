@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "You can't tickle yourself, because your brain spoils the surprise.",
+    "start": 0.0,
+    "duration": 3.45
+  },
+  {
+    "i": 2,
+    "text": "When you move your hand, your cerebellum predicts the touch it will cause.",
+    "start": 3.7,
+    "duration": 3.61
+  },
+  {
+    "i": 3,
+    "text": "Then that prediction is used to cancel the response to the tickle.",
+    "start": 7.56,
+    "duration": 3.05
+  },
+  {
+    "i": 4,
+    "text": "A stranger's touch has no prediction, so it still tickles.",
+    "start": 10.86,
+    "duration": 2.96
+  },
+  {
+    "i": 5,
+    "text": "Delay the touch after your move, and it tickles again.",
+    "start": 14.07,
+    "duration": 2.64
+  },
+  {
+    "i": 6,
+    "text": "Your brain only mutes the touches it saw coming.",
+    "start": 16.96,
+    "duration": 2.4
+  }
+]

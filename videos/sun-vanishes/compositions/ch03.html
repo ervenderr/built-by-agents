@@ -1,0 +1,325 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; color: #e8eef5; font-family: "Inter", sans-serif; overflow: hidden; }
+    #root .a { position: absolute; opacity: 0; }
+    #root .ttl { position: absolute; left: 120px; top: 90px; font-size: 88px; font-weight: 800; letter-spacing: -2px; white-space: nowrap; opacity: 0; }
+    #root .ttl em { color: #00e5a0; font-style: normal; }
+    #root .pill { position: absolute; left: 120px; top: 192px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 32px; color: #ffb454; border: 3px solid #ffb454; border-radius: 30px; padding: 2px 18px; white-space: nowrap; opacity: 0; }
+    #root .lab { position: absolute; font-size: 36px; font-weight: 700; color: #8a97a6; white-space: nowrap; opacity: 0; }
+    #root .mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    #root .card { position: absolute; border-radius: 22px; background: #121821; border: 4px solid #8a97a6; padding: 18px 26px; opacity: 0; }
+    #root .card small { display: block; font-size: 32px; font-weight: 700; letter-spacing: 2px; }
+    #root .card b { display: block; margin-top: 6px; font-size: 44px; line-height: 1.15; }
+    #root .cap { position: absolute; left: 120px; width: 1680px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; }
+    #root .cap span { display: block; text-shadow: 0 4px 24px #000; }
+    #root .cap b { color: #00e5a0; }
+  </style>
+  <div id="root" data-composition-id="ch03" data-width="1920" data-height="1080">
+    <svg id="c3svg" class="a" style="left:0;top:0;opacity:1" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+      <defs>
+        <radialGradient id="c3sun"><stop offset="0" stop-color="#fff3d6" /><stop offset="0.5" stop-color="#ffb454" /><stop offset="1" stop-color="#ffb454" stop-opacity="0.15" /></radialGradient>
+        <radialGradient id="c3ballg" cx="0.35" cy="0.3"><stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#8a97a6" /></radialGradient>
+        <radialGradient id="c3star" ><stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#00e5a0" /></radialGradient>
+      </defs>
+
+      <!-- A: Sun and Earth (scenes 1-2) -->
+      <g id="c3A" opacity="0">
+        <line x1="360" y1="400" x2="1560" y2="400" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <line x1="360" y1="540" x2="1560" y2="540" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <circle cx="260" cy="470" r="80" fill="url(#c3sun)" />
+        <circle cx="1620" cy="470" r="38" fill="#1a2a3a" stroke="#00e5a0" stroke-width="4" />
+        <circle id="c3Al" cx="360" cy="400" r="16" fill="#ffb454" />
+        <circle id="c3Ag" cx="1560" cy="540" r="16" fill="#00e5a0" />
+      </g>
+
+      <!-- S: rubber sheet (scenes 3-6) -->
+      <g id="c3S" opacity="0">
+        <g id="c3grid" fill="none" stroke="#8a97a6" stroke-width="2.5" stroke-opacity="0.75"></g>
+        <path id="c3front" d="" fill="none" stroke="#00e5a0" stroke-width="5" stroke-linecap="round" />
+        <circle id="c3marble" cx="0" cy="0" r="15" fill="#ffb454" />
+        <circle id="c3ball" cx="0" cy="0" r="42" fill="url(#c3ballg)" />
+      </g>
+
+      <!-- N: neutron stars (scene 7) -->
+      <g id="c3N" opacity="0">
+        <g id="c3stars"></g>
+        <g id="c3rings" fill="none" stroke="#00e5a0" stroke-width="4">
+          <circle class="c3rg" cx="960" cy="500" r="40" /><circle class="c3rg" cx="960" cy="500" r="40" /><circle class="c3rg" cx="960" cy="500" r="40" />
+          <circle class="c3rg" cx="960" cy="500" r="40" /><circle class="c3rg" cx="960" cy="500" r="40" /><circle class="c3rg" cx="960" cy="500" r="40" />
+        </g>
+        <circle id="c3s1" cx="0" cy="0" r="24" fill="url(#c3star)" />
+        <circle id="c3s2" cx="0" cy="0" r="24" fill="#ffb454" />
+        <circle id="c3boom" cx="960" cy="500" r="60" fill="#ffffff" opacity="0" />
+      </g>
+
+      <!-- R: the race (scene 8) -->
+      <g id="c3R" opacity="0">
+        <line x1="340" y1="400" x2="1540" y2="400" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <line x1="340" y1="540" x2="1540" y2="540" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <circle id="c3mrg" cx="290" cy="470" r="34" fill="#ffffff" />
+        <circle id="c3mrgring" cx="290" cy="470" r="34" fill="none" stroke="#ffffff" stroke-width="4" />
+        <circle id="c3det" cx="1640" cy="470" r="50" fill="#1a2a3a" stroke="#00e5a0" stroke-width="4" />
+        <circle id="c3Rw" cx="340" cy="400" r="16" fill="#00e5a0" />
+        <circle id="c3Rf" cx="340" cy="540" r="16" fill="#ffb454" />
+      </g>
+
+      <!-- B: the sliver (scene 9) -->
+      <g id="c3B" opacity="0">
+        <rect id="c3bar" x="160" y="420" width="1600" height="44" rx="10" fill="#1d2733" stroke="#8a97a6" stroke-width="3" />
+        <rect id="c3sliver" x="1748" y="400" width="12" height="84" fill="#ffb454" />
+      </g>
+
+      <!-- W: seesaw (scene 10) -->
+      <g id="c3W" opacity="0">
+        <polygon points="910,730 1010,730 960,646" fill="#8a97a6" />
+        <g id="c3beam"><line x1="300" y1="640" x2="1620" y2="640" stroke="#e8eef5" stroke-width="10" stroke-linecap="round" /></g>
+      </g>
+
+      <!-- K: Sun goes dark, news travels (scene 11) -->
+      <g id="c3K" opacity="0">
+        <line x1="360" y1="400" x2="1560" y2="400" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <line x1="360" y1="540" x2="1560" y2="540" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" />
+        <circle id="c3Ksun" cx="260" cy="470" r="80" fill="url(#c3sun)" />
+        <circle id="c3Kghost" cx="260" cy="470" r="80" fill="none" stroke="#8a97a6" stroke-width="4" stroke-dasharray="10 10" opacity="0" />
+        <circle id="c3Ke" cx="1620" cy="470" r="38" fill="#1a2a3a" stroke="#00e5a0" stroke-width="4" />
+        <circle id="c3Kpulse" cx="1620" cy="470" r="38" fill="none" stroke="#00e5a0" stroke-width="5" opacity="0" />
+        <circle id="c3Kl" cx="360" cy="400" r="16" fill="#ffb454" />
+        <circle id="c3Kg" cx="360" cy="540" r="16" fill="#00e5a0" />
+      </g>
+
+      <!-- E: Earth's orbit teaser (scene 12) -->
+      <g id="c3E" opacity="0">
+        <circle cx="960" cy="610" r="240" fill="none" stroke="#8a97a6" stroke-width="3" stroke-dasharray="12 12" />
+        <circle id="c3Eghost" cx="960" cy="610" r="48" fill="none" stroke="#8a97a6" stroke-width="4" stroke-dasharray="8 8" />
+        <circle id="c3Eearth" cx="960" cy="370" r="30" fill="#1a2a3a" stroke="#00e5a0" stroke-width="4" />
+      </g>
+    </svg>
+
+    <!-- titles -->
+    <div id="c3t1" class="ttl">GRAVITY: <em>INSTANT?</em></div>
+    <div id="c3t2" class="ttl">SAME SPEED AS <em>LIGHT</em></div>
+    <div id="c3t3" class="ttl">THE <em>RUBBER</em> SHEET</div>
+    <div id="c3t4" class="ttl"><em>GRAVITATIONAL</em> WAVES</div>
+    <div id="c3t5" class="ttl">TWO <em>NEUTRON</em> STARS</div>
+    <div id="c3t6" class="ttl">THE <em>RACE</em>: WAVE VS FLASH</div>
+    <div id="c3t7" class="ttl">HOW CLOSE A <em>MATCH</em>?</div>
+    <div id="c3t8" class="ttl">WEIGHING THE <em>EVIDENCE</em></div>
+    <div id="c3t9" class="ttl">THE SUN'S MISSING <em>PULL</em></div>
+    <div id="c3t10" class="ttl" style="left:0;width:1920px;text-align:center;top:90px">WHAT DOES <em>EARTH</em> DO?</div>
+
+    <div id="c3p1" class="pill">NOT TO SCALE</div>
+    <div id="c3p3" class="pill">ANALOGY</div>
+    <div id="c3p4" class="pill" style="color:#00e5a0;border-color:#00e5a0">WAVE SPEED = LIGHT SPEED</div>
+    <div id="c3p6" class="pill">ILLUSTRATIVE &middot; GAP NOT TO SCALE</div>
+    <div id="c3p7" class="pill">ILLUSTRATIVE &middot; NOT TO SCALE</div>
+    <div id="c3p9" class="pill">NOT TO SCALE</div>
+
+    <!-- A labels -->
+    <div id="c3Alab1" class="lab" style="left:360px;top:330px">LIGHT: 8 min 20 s</div>
+    <div id="c3Alab2" class="lab" style="left:360px;top:470px;color:#ffb454">INSTANT?</div>
+    <div id="c3Alab3" class="lab" style="left:360px;top:470px;color:#00e5a0">CHANGE IN GRAVITY</div>
+    <div id="c3Asun" class="lab" style="left:160px;width:200px;text-align:center;top:565px;font-size:32px">SUN</div>
+    <div id="c3Aearth" class="lab" style="left:1520px;width:200px;text-align:center;top:575px;font-size:32px">EARTH</div>
+
+    <!-- S labels -->
+    <div id="c3Sball" class="lab" style="left:1040px;top:500px;color:#e8eef5">HEAVY BALL</div>
+    <div id="c3Smar" class="lab" style="left:1324px;width:200px;text-align:center;top:430px;color:#ffb454">MARBLE</div>
+
+    <!-- N labels -->
+    <div id="c3Ny" class="lab mono" style="left:120px;top:192px;font-size:44px;color:#00e5a0">2017</div>
+    <div id="c3Nago" class="lab" style="left:0;width:1920px;text-align:center;top:790px;color:#e8eef5">CRASHED <span style="color:#ffb454">130 MILLION YEARS</span> AGO</div>
+
+    <!-- R labels -->
+    <div id="c3Rl1" class="lab" style="left:340px;top:330px;color:#00e5a0">GRAVITATIONAL WAVE</div>
+    <div id="c3Rl2" class="lab" style="left:340px;top:470px;color:#ffb454">GAMMA-RAY FLASH</div>
+    <div id="c3Rm" class="lab" style="left:190px;width:200px;text-align:center;top:520px;font-size:32px">CRASH</div>
+    <div id="c3Re" class="lab" style="left:1540px;width:200px;text-align:center;top:540px;font-size:32px">EARTH</div>
+    <div id="c3Rgap" class="a mono" style="left:0;width:1920px;text-align:center;top:660px;font-size:120px;color:#ffb454">+1.7 s</div>
+
+    <!-- B labels -->
+    <div id="c3Bl1" class="lab" style="left:160px;top:340px;color:#e8eef5">130 MILLION YEARS OF TRAVEL</div>
+    <div id="c3Bl2" class="lab" style="left:1260px;width:500px;text-align:right;top:510px;color:#ffb454">1.7 SECONDS</div>
+    <div id="c3Bnum" class="a mono" style="left:0;width:1920px;text-align:center;top:350px;font-size:96px;color:#00e5a0;white-space:nowrap">1 in <span id="c3Bz">1,000,000,000,000,000</span></div>
+    <div id="c3Bsub" class="lab" style="left:0;width:1920px;text-align:center;top:500px;color:#8a97a6">the most gravity and light speeds could differ</div>
+
+    <!-- W cards -->
+    <div id="c3Wl" class="card" style="left:300px;top:420px;width:520px;height:220px;border-color:#00e5a0"><small style="color:#00e5a0">MAINSTREAM VIEW</small><b>GRAVITY = LIGHT SPEED</b></div>
+    <div id="c3Wr" class="card" style="left:1130px;top:510px;width:400px;height:130px;border-color:#ffb454"><small style="color:#ffb454;font-size:32px">A FEW OTHER OBSERVATIONS</small></div>
+
+    <!-- K labels -->
+    <div id="c3Kl1" class="lab" style="left:360px;top:330px;color:#ffb454">LAST SUNLIGHT</div>
+    <div id="c3Kl2" class="lab" style="left:360px;top:470px;color:#00e5a0">NEWS OF THE MISSING PULL</div>
+    <div id="c3Ksunl" class="lab" style="left:160px;width:200px;text-align:center;top:565px;font-size:32px">SUN</div>
+    <div id="c3Kearthl" class="lab" style="left:1520px;width:200px;text-align:center;top:575px;font-size:32px">EARTH</div>
+    <div id="c3Kclock" class="a mono" style="left:0;width:1920px;text-align:center;top:660px;font-size:120px;color:#e8eef5">0:00</div>
+    <div id="c3Ksame" class="lab" style="left:0;width:1920px;text-align:center;top:800px;color:#00e5a0;font-size:44px">BOTH ARRIVE TOGETHER</div>
+
+    <!-- E label -->
+    <div id="c3Eq" class="a mono" style="left:910px;width:100px;text-align:center;top:565px;font-size:72px;color:#ffb454">?</div>
+
+    <!-- captions -->
+    <div id="c3cap1" class="clip cap" data-start="0" data-duration="2.94" data-track-index="2"><span>Does gravity arrive <b>instantly</b>, even if light does not?</span></div>
+    <div id="c3cap2" class="clip cap" data-start="3.19" data-duration="4.88" data-track-index="2"><span>Einstein's general relativity says changes in gravity spread at the <b>speed of light</b>.</span></div>
+    <div id="c3cap3" class="clip cap" data-start="8.32" data-duration="3.44" data-track-index="2"><span>Imagine a <b>heavy ball</b> resting on a stretched rubber sheet, bending it.</span></div>
+    <div id="c3cap4" class="clip cap" data-start="12.01" data-duration="3.63" data-track-index="2"><span>Now yank the ball away, and watch a <b>ripple</b> spread outward ring by ring.</span></div>
+    <div id="c3cap5" class="clip cap" data-start="15.89" data-duration="3.29" data-track-index="2"><span>A marble far from the ball <b>stays put</b> until the ripple reaches it.</span></div>
+    <div id="c3cap6" class="clip cap" data-start="19.43" data-duration="4.43" data-track-index="2"><span>Those ripples are called <b>gravitational waves</b>, and they travel at light speed.</span></div>
+    <div id="c3cap7" class="clip cap" data-start="24.11" data-duration="6.14" data-track-index="2"><span>In 2017, we detected two <b>neutron stars</b> that crashed together about 130 million years ago.</span></div>
+    <div id="c3cap8" class="clip cap" data-start="30.5" data-duration="5.62" data-track-index="2"><span>Detectors caught the wave, and a <b>flash of gamma rays</b> arrived just 1.7 seconds later.</span></div>
+    <div id="c3cap9" class="clip cap" data-start="36.37" data-duration="4.96" data-track-index="2"><span>That pins any difference in speed to a few <b>parts in a thousand trillion</b>.</span></div>
+    <div id="c3cap10" class="clip cap" data-start="41.58" data-duration="6.2" data-track-index="2"><span>A few other observations are argued to disagree, but the <b>mainstream view</b> is light speed.</span></div>
+    <div id="c3cap11" class="clip cap" data-start="48.03" data-duration="4.55" data-track-index="2"><span>So the news of the Sun's missing pull arrives on the <b>same eight minute</b> schedule.</span></div>
+    <div id="c3cap12" class="clip cap" data-start="52.83" data-duration="4.16" data-track-index="2"><span>Next comes the best part: what <b>Earth</b> actually does.</span></div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const $ = (s) => document.querySelector(s);
+    const NS = "http://www.w3.org/2000/svg";
+    const ACC = "#00e5a0", DIM = "#8a97a6";
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const fadeIn = (sel, t, d = 0.5, extra = {}) => tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d, ease: "power2.out", ...extra }, t);
+    const fadeOut = (sel, t, d = 0.4) => tl.to(sel, { opacity: 0, duration: d }, t);
+    const rise = (sel, t, d = 0.5) => tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+
+    // ---- captions ----
+    [[1, 0], [2, 3.19], [3, 8.32], [4, 12.01], [5, 15.89], [6, 19.43], [7, 24.11], [8, 30.5], [9, 36.37], [10, 41.58], [11, 48.03], [12, 52.83]].forEach(([n, t]) =>
+      tl.fromTo(`#c3cap${n} span`, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, t));
+
+    // ---- scene 1-2 (0-8.3): Sun, Earth, instant or not ----
+    fadeIn("#c3A", 0.1, 0.5); rise("#c3t1", 0.1); rise("#c3Alab1", 0.4); rise("#c3Asun", 0.4); rise("#c3Aearth", 0.4);
+    tl.fromTo("#c3Al", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    rise("#c3Alab2", 0.9);
+    tl.fromTo("#c3Ag", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 1.2);
+    tl.to("#c3Alab2", { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 1.8);
+    // scene 2: the rewind, then both go together
+    fadeOut("#c3t1", 3.3, 0.3); rise("#c3t2", 3.5);
+    fadeOut("#c3Alab2", 3.3, 0.3); rise("#c3Alab3", 3.6);
+    tl.to("#c3Ag", { attr: { cx: 360 }, duration: 0.4, ease: "power2.inOut" }, 3.3);
+    tl.to("#c3Al", { attr: { cx: 1560 }, duration: 4.0, ease: "none" }, 3.9);
+    tl.to("#c3Ag", { attr: { cx: 1560 }, duration: 4.0, ease: "none" }, 3.9);
+    fadeIn("#c3p1", 4.0, 0.4);
+
+    // ---- scene 3-6 (8.3-24): rubber sheet ----
+    fadeOut("#c3A", 8.0, 0.4); fadeOut(["#c3t2", "#c3Alab1", "#c3Alab3", "#c3Asun", "#c3Aearth", "#c3p1"], 8.0, 0.4);
+    const grid = $("#c3grid"), ROWS = 16, COLS = 21, S = { D: 0, R: -0.2, by: -520 };
+    const rowEls = [], colEls = [];
+    for (let i = 0; i < ROWS; i++) { const p = document.createElementNS(NS, "path"); grid.appendChild(p); rowEls.push(p); }
+    for (let j = 0; j < COLS; j++) { const p = document.createElementNS(NS, "path"); grid.appendChild(p); colEls.push(p); }
+    const H = (x, z) => {
+      const r = Math.hypot(x, z - 0.5), g = 1 / (1 + (r / 0.17) ** 2), q = clamp((r - S.R) / 0.1, 0, 1);
+      let h = -0.3 * S.D * g * q * q * (3 - 2 * q);
+      const u = S.R - r;
+      if (u > 0 && S.R > 0) h += 0.075 * Math.exp(-u * 4.5) * Math.sin(u * 46) * (1 - Math.exp(-u * 30)) / (1 + S.R * 1.2);
+      return h;
+    };
+    const P = (x, z) => { const s = 0.45 + 0.55 * z; return [960 + x * 800 * s, 300 + z * 470 - H(x, z) * 320 * s]; };
+    const pts = (a) => a.map((p, k) => (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join("");
+    const draw = () => {
+      for (let i = 0; i < ROWS; i++) { const z = i / (ROWS - 1), a = []; for (let k = 0; k <= 50; k++) a.push(P(-1 + k * 0.04, z)); rowEls[i].setAttribute("d", pts(a)); }
+      for (let j = 0; j < COLS; j++) { const x = -1 + (2 * j) / (COLS - 1), a = []; for (let k = 0; k <= 40; k++) a.push(P(x, k / 40)); colEls[j].setAttribute("d", pts(a)); }
+      let d = "", pen = false;
+      if (S.R > 0.02) for (let k = 0; k <= 120; k++) {
+        const th = (k / 120) * Math.PI * 2, x = S.R * Math.cos(th), z = 0.5 + S.R * Math.sin(th);
+        if (Math.abs(x) > 1 || z < 0 || z > 1) { pen = false; continue; }
+        const p = P(x, z); d += (pen ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); pen = true;
+      }
+      $("#c3front").setAttribute("d", d);
+      const b = P(0, 0.5), m = P(0.8, 0.5);
+      $("#c3ball").setAttribute("cx", b[0]); $("#c3ball").setAttribute("cy", b[1] - 40 + S.by);
+      $("#c3marble").setAttribute("cx", m[0]); $("#c3marble").setAttribute("cy", m[1] - 15);
+    };
+    draw();
+    fadeIn("#c3S", 8.1, 0.4); rise("#c3t3", 8.5); fadeIn("#c3p3", 8.7, 0.4);
+    tl.to(S, { by: 0, duration: 0.8, ease: "power2.in", onUpdate: draw }, 8.5);
+    tl.to(S, { D: 1, duration: 1.0, ease: "power2.out", onUpdate: draw }, 9.2);
+    rise("#c3Sball", 10.2); rise("#c3Smar", 10.6);
+    // yank: label off, ball up, ripple expands at 0.16 sheet-units/s
+    fadeOut("#c3Sball", 11.9, 0.3);
+    fadeOut("#c3t3", 12.0, 0.3); fadeOut("#c3p3", 12.0, 0.3);
+    tl.to(S, { by: -900, duration: 0.6, ease: "power2.in", onUpdate: draw }, 12.3);
+    tl.to(S, { R: 3.0, duration: 20, ease: "none", onUpdate: draw }, 12.4);
+    rise("#c3t4", 19.5); fadeIn("#c3p4", 19.9, 0.4);
+    fadeOut("#c3t4", 23.6, 0.3); fadeOut("#c3p4", 23.6, 0.3);
+
+    // ---- scene 7 (24-30.4): two neutron stars, zoom out ----
+    fadeOut("#c3S", 23.9, 0.5); fadeOut("#c3Smar", 23.6, 0.3);
+    const stars = $("#c3stars"); let seed = 11;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 46; i++) {
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", (120 + rnd() * 1680).toFixed(0)); c.setAttribute("cy", (230 + rnd() * 600).toFixed(0)); c.setAttribute("r", (1.5 + rnd() * 2.5).toFixed(1));
+      c.setAttribute("fill", "#e8eef5"); c.setAttribute("opacity", (0.35 + rnd() * 0.5).toFixed(2)); stars.appendChild(c);
+    }
+    const Q = { q: 0 };
+    const place = () => {
+      const r = 230 * Math.pow(1 - Q.q, 0.7) + 14, th = 0.6 + 55 * Math.pow(Q.q, 1.4);
+      $("#c3s1").setAttribute("cx", 960 + r * Math.cos(th)); $("#c3s1").setAttribute("cy", 500 + r * Math.sin(th) * 0.8);
+      $("#c3s2").setAttribute("cx", 960 - r * Math.cos(th)); $("#c3s2").setAttribute("cy", 500 - r * Math.sin(th) * 0.8);
+    };
+    place();
+    fadeIn("#c3N", 24.0, 0.5);
+    tl.fromTo("#c3N", { scale: 2.2, transformOrigin: "960px 500px" }, { scale: 1, duration: 1.4, ease: "power3.out" }, 24.0);
+    rise("#c3t5", 24.4); rise("#c3Ny", 24.9); rise("#c3Nago", 26.0);
+    tl.to(Q, { q: 1, duration: 5.7, ease: "none", onUpdate: place }, 24.3);
+    [24.8, 26.2, 27.4, 28.4, 29.1, 29.6].forEach((t, i) =>
+      tl.fromTo($("#c3rings").children[i], { attr: { r: 40 }, opacity: 0.6 }, { attr: { r: 620 }, opacity: 0, duration: 1.8, ease: "power1.out" }, t));
+    tl.fromTo("#c3boom", { attr: { r: 20 }, opacity: 1 }, { attr: { r: 420 }, opacity: 0, duration: 0.9, ease: "power2.out" }, 30.0);
+    tl.set(["#c3s1", "#c3s2"], { opacity: 0 }, 30.0);
+
+    // ---- scene 8 (30.5-36.4): the race ----
+    fadeOut(["#c3t5", "#c3Ny", "#c3Nago"], 30.2, 0.3); fadeOut("#c3N", 30.4, 0.4);
+    fadeIn("#c3R", 30.4, 0.4); rise("#c3t6", 30.7); fadeIn("#c3p6", 31.0, 0.4);
+    rise("#c3Rl1", 30.8); rise("#c3Rl2", 30.9); rise("#c3Rm", 30.8); rise("#c3Re", 30.8);
+    tl.fromTo("#c3mrgring", { attr: { r: 34 }, opacity: 1 }, { attr: { r: 110 }, opacity: 0, duration: 0.8, ease: "power2.out" }, 30.7);
+    tl.to("#c3Rw", { attr: { cx: 1540 }, duration: 2.8, ease: "none" }, 31.0);
+    tl.to("#c3Rf", { attr: { cx: 1540 }, duration: 3.2, ease: "none" }, 31.0);
+    tl.fromTo("#c3det", { attr: { "stroke-width": 4 } }, { attr: { "stroke-width": 14 }, duration: 0.2, yoyo: true, repeat: 1 }, 33.8);
+    tl.fromTo("#c3det", { stroke: ACC }, { stroke: "#ffb454", duration: 0.2, yoyo: true, repeat: 1 }, 34.2);
+    tl.fromTo("#c3Rgap", { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 34.4);
+
+    // ---- scene 9 (36.4-41.4): how close ----
+    fadeOut(["#c3R", "#c3t6", "#c3p6", "#c3Rl1", "#c3Rl2", "#c3Rm", "#c3Re", "#c3Rgap"], 36.2, 0.3);
+    rise("#c3t7", 36.5); fadeIn("#c3B", 36.5, 0.4); fadeIn("#c3p7", 36.8, 0.4); rise("#c3Bl1", 36.7);
+    tl.fromTo("#c3bar", { attr: { width: 0 } }, { attr: { width: 1600 }, duration: 1.0, ease: "power2.inOut" }, 36.7);
+    tl.fromTo("#c3sliver", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 37.7);
+    tl.fromTo("#c3sliver", { scaleY: 1, transformOrigin: "50% 50%" }, { scaleY: 1.5, duration: 0.25, yoyo: true, repeat: 1 }, 37.9);
+    rise("#c3Bl2", 38.0);
+    fadeOut(["#c3B", "#c3Bl1", "#c3Bl2"], 38.6, 0.3);
+    fadeIn("#c3Bnum", 38.8, 0.5); rise("#c3Bsub", 39.4);
+    tl.fromTo("#c3Bz", { scaleX: 0.7 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 38.8);
+
+    // ---- scene 10 (41.6-47.8): the evidence scale ----
+    fadeOut(["#c3t7", "#c3p7", "#c3Bnum", "#c3Bsub"], 41.3, 0.3);
+    rise("#c3t8", 41.7); fadeIn("#c3W", 41.7, 0.4);
+    fadeIn("#c3Wl", 42.0, 0.4); fadeIn("#c3Wr", 42.3, 0.4);
+    tl.to("#c3beam", { rotation: -7, svgOrigin: "960 640", duration: 1.2, ease: "power2.inOut" }, 44.0);
+    tl.to("#c3Wl", { y: 47, duration: 1.2, ease: "power2.inOut" }, 44.0);
+    tl.to("#c3Wr", { y: -47, duration: 1.2, ease: "power2.inOut" }, 44.0);
+    tl.to("#c3Wl", { boxShadow: "0 0 40px rgba(0,229,160,0.5)", duration: 0.6 }, 45.4);
+
+    // ---- scene 11 (48-52.7): the Sun's news ----
+    fadeOut(["#c3W", "#c3t8", "#c3Wl", "#c3Wr"], 47.8, 0.3);
+    fadeIn("#c3K", 47.9, 0.4); rise("#c3t9", 48.1); fadeIn("#c3p9", 48.4, 0.4);
+    rise("#c3Kl1", 48.3); rise("#c3Kl2", 48.4); rise("#c3Ksunl", 48.3); rise("#c3Kearthl", 48.3);
+    tl.to("#c3Ksun", { opacity: 0, duration: 0.4 }, 48.5);
+    tl.to("#c3Kghost", { opacity: 1, duration: 0.4 }, 48.5);
+    tl.fromTo(["#c3Kl", "#c3Kg"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 48.6);
+    tl.to("#c3Kl", { attr: { cx: 1560 }, duration: 3.2, ease: "none" }, 48.8);
+    tl.to("#c3Kg", { attr: { cx: 1560 }, duration: 3.2, ease: "none" }, 48.8);
+    fadeIn("#c3Kclock", 48.7, 0.3);
+    const clk = { s: 0 };
+    tl.to(clk, { s: 500, duration: 3.2, ease: "none", onUpdate() { const s = Math.round(clk.s); $("#c3Kclock").textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); } }, 48.8);
+    tl.fromTo("#c3Kpulse", { attr: { r: 38 }, opacity: 0.9 }, { attr: { r: 120 }, opacity: 0, duration: 0.8, ease: "power2.out" }, 52.0);
+    rise("#c3Ksame", 52.0, 0.4);
+
+    // ---- scene 12 (52.8-57): what does Earth do? ----
+    fadeOut(["#c3K", "#c3t9", "#c3p9", "#c3Kl1", "#c3Kl2", "#c3Ksunl", "#c3Kearthl", "#c3Kclock"], 52.7, 0.4); fadeOut("#c3Ksame", 53.3, 0.3);
+    fadeIn("#c3E", 52.9, 0.5); rise("#c3t10", 53.0); rise("#c3Eq", 53.8);
+    const OR = { a: -90 };
+    tl.to(OR, { a: -10, duration: 3.0, ease: "power1.inOut", onUpdate() { const r = OR.a * Math.PI / 180; $("#c3Eearth").setAttribute("cx", 960 + 240 * Math.cos(r)); $("#c3Eearth").setAttribute("cy", 610 + 240 * Math.sin(r)); } }, 53.4);
+    tl.to("#c3Eq", { scale: 1.25, duration: 0.5, yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 54.0);
+
+    window.__timelines["ch03"] = tl;
+  </script>
+</template>

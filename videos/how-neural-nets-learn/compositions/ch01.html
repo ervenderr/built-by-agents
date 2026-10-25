@@ -1,0 +1,177 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; overflow: hidden; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; }
+    #root * { box-sizing: border-box; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+    #ch01-wall { position: absolute; left: 120px; top: 90px; width: 1680px; height: 770px; transform-origin: 50% 50%; }
+    #ch01-canvas { width: 1680px; height: 770px; display: block; }
+    .plate { position: absolute; left: 0; width: 1920px; text-align: center; opacity: 0; }
+    .plate span { display: inline-block; background: rgba(11,15,20,0.92); padding: 22px 48px; border-radius: 24px; border: 3px solid #00e5a0; }
+    #ch01-p1 { top: 400px; font-size: 84px; font-weight: 800; }
+    #ch01-p2 { top: 410px; font-size: 56px; font-weight: 700; }
+    #ch01-p3 { top: 380px; font-size: 96px; font-weight: 800; }
+    #ch01-p3 small { display: block; font-size: 40px; font-weight: 600; color: #8a97a6; margin-top: 8px; font-family: "Inter", sans-serif; }
+    em { color: #00e5a0; font-style: normal; }
+    #ch01-top { position: absolute; left: 0; width: 1920px; top: 120px; text-align: center; font-size: 44px; font-weight: 700; opacity: 0; }
+    #ch01-top.cost { font-family: "JetBrains Mono", monospace; }
+    #ch01-top small { font-size: 32px; color: #ffb454; margin-left: 24px; font-family: "Inter", sans-serif; font-weight: 700; }
+    #ch01-card { position: absolute; left: 190px; top: 340px; width: 280px; height: 280px; border-radius: 24px; background: #151c26; border: 3px solid #8a97a6; opacity: 0; }
+    #ch01-grid { position: absolute; left: 30px; top: 30px; width: 220px; height: 220px; display: grid; grid-template-columns: repeat(11, 1fr); grid-template-rows: repeat(11, 1fr); gap: 2px; }
+    #ch01-grid i { background: #1e2733; }
+    #ch01-grid i.on { background: #e8eef5; }
+    .lbl { position: absolute; font-size: 32px; font-weight: 700; color: #8a97a6; opacity: 0; letter-spacing: 2px; }
+    #ch01-l-in { left: 190px; width: 280px; text-align: center; top: 650px; }
+    #ch01-l-out { left: 1440px; top: 215px; }
+    #ch01-l-state { left: 1400px; width: 400px; top: 730px; color: #ffb454; font-size: 36px; letter-spacing: 0; }
+    #ch01-out { position: absolute; left: 1440px; top: 280px; width: 360px; opacity: 0; }
+    .row { height: 34px; margin-bottom: 8px; display: flex; align-items: center; }
+    .row b { width: 40px; font-size: 28px; color: #8a97a6; font-family: "JetBrains Mono", monospace; font-weight: 600; }
+    .row u { display: block; width: 300px; height: 28px; background: #ffb454; transform-origin: 0 50%; border-radius: 4px; text-decoration: none; }
+    #ch01-q { position: absolute; left: 0; width: 1920px; top: 270px; text-align: center; font-size: 400px; font-weight: 800; color: #00e5a0; line-height: 1; opacity: 0; }
+    #ch01-loop { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #ch01-loop .ttl { position: absolute; left: 0; width: 1920px; top: 170px; text-align: center; font-size: 72px; font-weight: 800; opacity: 0; }
+    .ico { position: absolute; top: 380px; width: 300px; text-align: center; opacity: 0; }
+    .ico svg { width: 180px; height: 180px; display: block; margin: 0 auto 24px; }
+    .ico span { font-size: 44px; font-weight: 800; }
+    .ico:nth-of-type(2) { left: 310px; } .ico:nth-of-type(3) { left: 810px; } .ico:nth-of-type(4) { left: 1310px; }
+    .arr { position: absolute; top: 450px; font-size: 80px; color: #8a97a6; opacity: 0; font-weight: 800; }
+    .cap { position: absolute; left: 210px; width: 1500px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; text-shadow: 0 3px 18px #000; }
+    .cap b { color: #00e5a0; }
+  </style>
+
+  <div id="root" data-composition-id="ch01" data-width="1920" data-height="1080">
+    <div id="ch01-wall"><canvas id="ch01-canvas" width="1680" height="770"></canvas></div>
+
+    <div id="ch01-p1" class="plate"><span>Nobody typed in the <em>answers</em></span></div>
+    <div id="ch01-p2" class="plate"><span>2 hidden layers × 16 neurons</span></div>
+    <div id="ch01-p3" class="plate"><span class="mono"><em>13,002</em><small>adjustable weights and biases</small></span></div>
+    <div id="ch01-top"></div>
+
+    <div id="ch01-card"><div id="ch01-grid"></div></div>
+    <div id="ch01-l-in" class="lbl">INPUT</div>
+    <div id="ch01-l-out" class="lbl">OUTPUT</div>
+    <div id="ch01-out"></div>
+    <div id="ch01-l-state" class="lbl"></div>
+    <div id="ch01-q">?</div>
+
+    <div id="ch01-loop">
+      <div class="ttl">One loop, <em>three</em> parts</div>
+      <div class="ico" id="ch01-i1">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#ffb454" stroke-width="6" stroke-linecap="round"><rect x="20" y="30" width="18" height="55"/><rect x="62" y="55" width="18" height="30"/><path d="M71 20v26M71 20l-8 9M71 20l8 9"/></svg>
+        <span>ERROR</span>
+      </div>
+      <div class="ico" id="ch01-i2">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#00e5a0" stroke-linecap="round"><circle cx="18" cy="50" r="9" stroke-width="6"/><path d="M27 50L78 18" stroke-width="3"/><path d="M27 50L78 50" stroke-width="9"/><path d="M27 50L78 82" stroke-width="3"/><circle cx="82" cy="18" r="6" stroke-width="4"/><circle cx="82" cy="50" r="6" stroke-width="4" fill="#00e5a0"/><circle cx="82" cy="82" r="6" stroke-width="4"/></svg>
+        <span>BLAME</span>
+      </div>
+      <div class="ico" id="ch01-i3">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#e8eef5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 80H34V62H56V44H78V26"/><path d="M66 18H86V38"/></svg>
+        <span>SMALL STEP</span>
+      </div>
+      <div class="arr" id="ch01-a1" style="left:640px">→</div>
+      <div class="arr" id="ch01-a2" style="left:1140px">→</div>
+    </div>
+
+    <div id="ch01-c1" class="clip cap" data-start="0" data-duration="4.84" data-track-index="2"><span>Nobody ever typed the answer into a neural network, and that is the <b>strangest</b> thing about them.</span></div>
+    <div id="ch01-c2" class="clip cap" data-start="4.84" data-duration="5.58" data-track-index="2"><span>Take a classic network that reads handwritten digits, with two hidden layers of <b>sixteen neurons</b> each.</span></div>
+    <div id="ch01-c3" class="clip cap" data-start="10.42" data-duration="3.83" data-track-index="2"><span>It has <b>thirteen thousand and two</b> weights and biases that can be adjusted.</span></div>
+    <div id="ch01-c4" class="clip cap" data-start="14.25" data-duration="4.93" data-track-index="2"><span>No human sets those by hand, and at the start they are random, so a seven produces <b>garbage</b>.</span></div>
+    <div id="ch01-c5" class="clip cap" data-start="19.18" data-duration="2.24" data-track-index="2"><span>So how does random turn into <b>skilled</b>?</span></div>
+    <div id="ch01-c6" class="clip cap" data-start="21.42" data-duration="5.29" data-track-index="2"><span>My claim: the network never learns an answer, it gets nudged <b>slightly less wrong</b>, millions of times.</span></div>
+    <div id="ch01-c7" class="clip cap" data-start="26.71" data-duration="4.15" data-track-index="2"><span>Learning just means changing the weights and biases to minimize a <b>cost function</b>.</span></div>
+    <div id="ch01-c8" class="clip cap" data-start="30.86" data-duration="3.67" data-track-index="2"><span>It happens through one loop with three parts: <b>error, blame, and a small step</b>.</span></div>
+  </div>
+
+  <script>
+    (function () {
+      const DUR = 34.53, COLS = 169, ROWS = 77, N = 13002, CW = 1680 / COLS, CH = 770 / ROWS;
+      const rng = (s) => () => { s |= 0; s = (s + 0x6d2b79f5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+      const r = rng(7);
+      const a0 = new Float32Array(N), w = new Float32Array(N), tgt = new Float32Array(N), hot = new Uint8Array(N);
+      for (let i = 0; i < N; i++) {
+        a0[i] = r() * 6.283; w[i] = (r() - 0.5) * 6; hot[i] = r() < 0.18 ? 1 : 0;
+        const c = i % COLS, rw = (i / COLS) | 0;
+        tgt[i] = -0.9 + 0.35 * Math.sin(c / 14) + 0.2 * Math.cos(rw / 9);
+      }
+      const ctx = document.getElementById("ch01-canvas").getContext("2d");
+      const S = { t: 0, k: 0 };
+      function draw() {
+        ctx.clearRect(0, 0, 1680, 770);
+        ctx.lineWidth = 2.2; ctx.lineCap = "round";
+        for (let pass = 0; pass < 2; pass++) {
+          ctx.strokeStyle = pass ? "#00e5a0" : "#8a97a6";
+          ctx.beginPath();
+          for (let i = 0; i < N; i++) {
+            if (hot[i] !== pass) continue;
+            const a = (a0[i] + w[i] * S.t) * (1 - S.k) + tgt[i] * S.k;
+            const cx = (i % COLS) * CW + CW / 2, cy = ((i / COLS) | 0) * CH + CH / 2;
+            const dx = Math.cos(a) * 4, dy = Math.sin(a) * 4;
+            ctx.moveTo(cx - dx, cy - dy); ctx.lineTo(cx + dx, cy + dy);
+          }
+          ctx.stroke();
+        }
+      }
+
+      // pixel 7 on an 11x11 grid
+      const g = document.getElementById("ch01-grid");
+      const on = new Set();
+      for (let c = 2; c <= 8; c++) { on.add(1 * 11 + c); on.add(2 * 11 + c); }
+      [[3,8],[4,7],[5,6],[6,5],[7,5],[8,4],[9,4]].forEach(([rw, c]) => { on.add(rw * 11 + c); on.add(rw * 11 + c - 1); });
+      for (let i = 0; i < 121; i++) { const e = document.createElement("i"); if (on.has(i)) e.className = "on"; g.appendChild(e); }
+
+      // output readout: garbage = near-uniform, ends peaked on 7
+      const out = document.getElementById("ch01-out");
+      const garbage = [0.55, 0.8, 0.4, 0.7, 0.62, 0.35, 0.78, 0.5, 0.66, 0.45];
+      for (let d = 0; d < 10; d++) out.insertAdjacentHTML("beforeend", `<div class="row"><b>${d}</b><u id="ch01-b${d}"></u></div>`);
+
+      const tl = gsap.timeline({ paused: true });
+      const fade = (sel, t, o = 1, d = 0.5) => tl.fromTo(sel, { opacity: 0 }, { opacity: o, duration: d, ease: "power2.out" }, t);
+      const out_ = (sel, t, d = 0.4) => tl.to(sel, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      tl.fromTo(S, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: draw }, 0);
+      tl.fromTo(S, { k: 0 }, { k: 0.85, duration: 8.5, ease: "power2.inOut", onUpdate: draw, immediateRender: false }, 21.5);
+      tl.fromTo("#ch01-wall", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0);
+
+      // 1 title, 2 architecture, 3 the number
+      fade("#ch01-p1", 0.3); out_("#ch01-p1", 4.3);
+      fade("#ch01-p2", 5.0); out_("#ch01-p2", 10.0);
+      fade("#ch01-p3", 10.5); out_("#ch01-p3", 13.6);
+
+      // 4 pull back, feed the 7, garbage out
+      tl.to("#ch01-wall", { scale: 0.5, duration: 1.0, ease: "power3.inOut" }, 14.25);
+      fade("#ch01-top", 14.9, 1); tl.call(() => { document.getElementById("ch01-top").innerHTML = "<em class='mono'>13,002</em> adjustable numbers, all random"; }, null, 14.85);
+      tl.fromTo("#ch01-card", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 15.3);
+      fade("#ch01-l-in", 15.6, 1, 0.4);
+      for (let d = 0; d < 10; d++) tl.fromTo("#ch01-b" + d, { scaleX: 0 }, { scaleX: garbage[d], duration: 0.5, ease: "power3.out" }, 16.2 + d * 0.05);
+      fade("#ch01-out", 16.2, 1, 0.3); fade("#ch01-l-out", 16.2, 1, 0.3);
+      fade("#ch01-l-state", 17.4, 1, 0.4); tl.call(() => { const e = document.getElementById("ch01-l-state"); e.textContent = "GARBAGE"; e.style.color = "#ffb454"; }, null, 17.35);
+      for (let d = 0; d < 10; d++) tl.to("#ch01-b" + d, { scaleX: garbage[(d + 3) % 10], duration: 0.3, ease: "sine.inOut" }, 17.6 + d * 0.03);
+
+      // 5 the question
+      tl.to("#ch01-wall", { opacity: 0.22, duration: 0.5 }, 19.1);
+      out_("#ch01-top", 18.9, 0.3);
+      tl.fromTo("#ch01-q", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 19.3);
+      out_("#ch01-q", 21.0, 0.4);
+
+      // 6-7 nudged less wrong, minimize cost
+      tl.to("#ch01-wall", { opacity: 1, duration: 0.8 }, 21.5);
+      tl.call(() => { const e = document.getElementById("ch01-top"); e.className = "cost"; e.innerHTML = "cost <span id='ch01-cv'>2.30</span><small>ILLUSTRATIVE</small>"; }, null, 21.45);
+      fade("#ch01-top", 21.6, 1, 0.4);
+      const cv = { v: 2.3 };
+      tl.fromTo(cv, { v: 2.3 }, { v: 0.4, duration: 8.5, ease: "power2.out", onUpdate: () => { const e = document.getElementById("ch01-cv"); if (e) e.textContent = cv.v.toFixed(2); }, immediateRender: false }, 21.6);
+      tl.call(() => { const e = document.getElementById("ch01-l-state"); e.textContent = "LESS WRONG (ILLUSTRATIVE)"; e.style.color = "#00e5a0"; }, null, 21.8);
+      for (let d = 0; d < 10; d++) tl.to("#ch01-b" + d, { scaleX: d === 7 ? 0.95 : 0.12 + 0.06 * ((d * 5) % 4), duration: 7, ease: "power2.out", immediateRender: false }, 22.2);
+      tl.to("#ch01-top", { scale: 1.12, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 26.9);
+
+      // 8 the loop
+      out_("#ch01-card", 30.4); out_("#ch01-l-in", 30.4); out_("#ch01-out", 30.4); out_("#ch01-l-out", 30.4); out_("#ch01-l-state", 30.4); out_("#ch01-top", 30.4);
+      tl.to("#ch01-wall", { opacity: 0.12, duration: 0.6 }, 30.5);
+      fade("#ch01-loop .ttl", 30.9);
+      [["#ch01-i1", 31.4], ["#ch01-i2", 32.4], ["#ch01-i3", 33.3]].forEach(([s, t]) => tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t));
+      fade("#ch01-a1", 32.2, 1, 0.3); fade("#ch01-a2", 33.1, 1, 0.3);
+
+      draw();
+      window.__timelines["ch01"] = tl;
+    })();
+  </script>
+</template>

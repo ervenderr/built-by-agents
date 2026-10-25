@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root { --ground:#0b0f17; --panel:#151b28; --ink:#fff; --dim:#8591a8; --accent:#00e5a0; --warn:#ff4d6d; --font-display:"Outfit","Inter",sans-serif; --mono:"JetBrains Mono",monospace; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+      #root { position:relative; width:1080px; height:1920px; font-family:var(--font-display); color:var(--ink); background:var(--ground); }
+      #brand { position:absolute; left:0; width:1080px; top:175px; text-align:center; font-size:28px; font-weight:700; letter-spacing:6px; color:var(--accent); }
+      #title { position:absolute; left:0; width:1080px; top:225px; text-align:center; font-size:92px; font-weight:800; letter-spacing:-2px; line-height:1; white-space:nowrap; }
+      #title em { color:var(--warn); font-style:normal; }
+      #guy { position:absolute; left:20px; top:410px; width:290px; height:360px; }
+      #login { position:absolute; left:330px; top:400px; width:710px; height:350px; border-radius:28px; background:var(--panel); border:4px solid var(--dim); padding:28px 36px; }
+      #login h3 { font-size:40px; letter-spacing:6px; color:var(--dim); margin-bottom:18px; }
+      .lab { font-size:28px; font-weight:700; letter-spacing:3px; color:var(--dim); margin-bottom:6px; }
+      .field { height:76px; border-radius:14px; background:#0b0f17; border:3px solid var(--dim); margin-bottom:16px; padding:0 20px; display:flex; align-items:center; font-family:var(--mono); font-size:40px; font-weight:700; white-space:nowrap; overflow:hidden; }
+      #typed { color:var(--warn); }
+      #caret { display:inline-block; width:4px; height:44px; background:var(--ink); margin-left:3px; }
+      #btn { position:absolute; right:36px; top:36px; padding:6px 22px; border-radius:14px; background:var(--accent); color:var(--ground); font-size:30px; font-weight:800; }
+      #q { position:absolute; left:60px; top:790px; width:960px; height:170px; border-radius:24px; background:var(--panel); border:4px solid var(--dim); padding:16px 30px; font-family:var(--mono); font-size:42px; font-weight:700; line-height:1.4; }
+      #q .k { color:var(--dim); }
+      #inj { color:var(--warn); }
+      #qtag { position:absolute; right:22px; top:-22px; padding:2px 18px; border-radius:20px; background:var(--ground); border:3px solid var(--dim); font-family:var(--font-display); font-size:28px; font-weight:800; letter-spacing:3px; color:var(--dim); }
+      #db { position:absolute; left:720px; top:985px; width:300px; height:180px; }
+      #bubble { position:absolute; left:60px; top:1010px; width:620px; text-align:center; font-size:76px; font-weight:800; letter-spacing:-1px; color:var(--dim); white-space:nowrap; }
+      .row { position:absolute; left:60px; width:620px; height:48px; border-radius:12px; background:var(--panel); border:3px solid var(--warn); font-family:var(--mono); font-size:30px; font-weight:700; padding:0 16px; display:flex; align-items:center; color:var(--ink); }
+      #r1 { top:990px; } #r2 { top:1048px; } #r3 { top:1106px; }
+      #ill { position:absolute; left:60px; top:1160px; font-size:30px; font-weight:800; letter-spacing:3px; color:var(--dim); }
+      #safe { position:absolute; left:60px; top:1010px; width:620px; text-align:center; font-size:76px; font-weight:800; color:var(--accent); white-space:nowrap; }
+      .cap { position:absolute; left:60px; width:960px; top:1180px; height:150px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:56px; font-weight:800; line-height:1.1; }
+      .cap span { display:block; text-shadow:0 4px 24px #000; }
+      .cap b { color:var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.85" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title"><em>SQL</em> INJECTION</div>
+
+      <svg id="guy" viewBox="0 0 290 360">
+        <g id="gbody">
+          <rect x="60" y="170" width="170" height="190" rx="60" fill="#232c40" />
+          <circle id="ghead" cx="145" cy="110" r="80" fill="#232c40" stroke="#00e5a0" stroke-width="5" />
+          <path d="M80 110 Q145 60 210 110 L210 130 Q145 100 80 130 Z" fill="#0b0f17" />
+          <circle id="eyeL" cx="118" cy="128" r="9" fill="#fff" />
+          <circle id="eyeR" cx="172" cy="128" r="9" fill="#fff" />
+          <path id="smirk" d="M118 160 Q150 182 182 156" stroke="#00e5a0" stroke-width="6" fill="none" stroke-linecap="round" />
+          <rect x="30" y="290" width="230" height="22" rx="8" fill="#8591a8" />
+          <rect id="armL" x="70" y="236" width="70" height="26" rx="13" fill="#3a4663" />
+          <rect id="armR" x="150" y="236" width="70" height="26" rx="13" fill="#3a4663" />
+        </g>
+      </svg>
+
+      <div id="login">
+        <h3>LOGIN</h3>
+        <div id="btn">GO</div>
+        <div class="lab">USERNAME</div>
+        <div class="field"><span id="typed"></span><span id="caret"></span></div>
+        <div class="lab">PASSWORD</div>
+        <div class="field" style="color:var(--dim)">••••••••</div>
+      </div>
+
+      <div id="q"><div id="qtag">QUERY</div><span class="k">SELECT * FROM users</span><br /><span class="k">WHERE name = </span><span id="qa">'</span><span id="inj"></span><span id="qb">'</span></div>
+
+      <svg id="db" viewBox="0 0 300 180">
+        <ellipse id="dbbot" cx="150" cy="140" rx="110" ry="30" fill="#151b28" stroke="#8591a8" stroke-width="5" />
+        <rect id="dbmid" x="40" y="40" width="220" height="100" fill="#151b28" />
+        <line x1="40" y1="40" x2="40" y2="140" stroke="#8591a8" stroke-width="5" />
+        <line x1="260" y1="40" x2="260" y2="140" stroke="#8591a8" stroke-width="5" />
+        <ellipse id="dbtop" cx="150" cy="40" rx="110" ry="30" fill="#151b28" stroke="#8591a8" stroke-width="5" />
+        <ellipse cx="150" cy="86" rx="110" ry="28" fill="none" stroke="#8591a8" stroke-width="3" opacity="0.5" />
+        <text x="150" y="112" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="800" font-size="34" fill="#fff">DATABASE</text>
+      </svg>
+
+      <div id="bubble">TEXT?</div>
+      <div id="safe">INPUT = DATA</div>
+      <div id="r1" class="row">admin · ••••••</div>
+      <div id="r2" class="row">maria · ••••••</div>
+      <div id="r3" class="row">LOGGED IN · NO PASSWORD</div>
+      <div id="ill">ILLUSTRATIVE DATA</div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.93" data-track-index="2"><span>A login box can let a stranger <b>read your database</b>.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.93" data-duration="3.01" data-track-index="2"><span>The trick is typing <b>SQL code</b> instead of a username.</span></div>
+      <div id="cap3" class="clip cap" data-start="5.94" data-duration="2.73" data-track-index="2"><span>A careless app <b>glues</b> that text into its query.</span></div>
+      <div id="cap4" class="clip cap" data-start="8.67" data-duration="2.85" data-track-index="2"><span>So the database runs it as a <b>command</b>, not as text.</span></div>
+      <div id="cap5" class="clip cap" data-start="11.52" data-duration="3.77" data-track-index="2"><span>That can read or change data, even <b>log you in</b> without the password.</span></div>
+      <div id="cap6" class="clip cap" data-start="15.29" data-duration="5.56" data-track-index="2"><span><b>Parameterized queries</b> fix it by keeping input as data, never code.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="18.85" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0", WARN = "#ff4d6d", DIM = "#8591a8";
+      const $ = (id) => document.getElementById(id);
+      const PAYLOAD = "' OR '1'='1";
+      const capIn = (id, t, d, last) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (!last) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      };
+      gsap.set(["#cap1 span","#cap2 span","#cap3 span","#cap4 span","#cap5 span","#cap6 span"], { opacity: 0 });
+      gsap.set(["#q", "#db", "#bubble", "#safe", "#r1", "#r2", "#r3", "#ill"], { opacity: 0 });
+      gsap.set("#bubble", { transformOrigin: "50% 50%" });
+      capIn("#cap1", 0, 2.93); capIn("#cap2", 2.93, 3.01); capIn("#cap3", 5.94, 2.73);
+      capIn("#cap4", 8.67, 2.85); capIn("#cap5", 11.52, 3.77); capIn("#cap6", 15.29, 5.56, true);
+
+      // idle blink + typing bob helpers
+      tl.to("#caret", { opacity: 0, duration: 0.01, yoyo: true, repeat: 1 }, 0.4);
+
+      // beat 1 (0-2.9): hook, login box glows as a back door; db peeks in
+      tl.fromTo("#login", { borderColor: DIM }, { borderColor: WARN, duration: 0.5 }, 0.5);
+      tl.fromTo("#db", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+      tl.fromTo("#guy", { y: 0 }, { y: -10, duration: 0.2, yoyo: true, repeat: 1, ease: "power1.inOut" }, 0.2);
+
+      // beat 2 (2.93-5.94): types payload
+      const typed = { n: 0 };
+      tl.to("#login", { borderColor: ACC, duration: 0.2 }, 2.93);
+      tl.to(typed, { n: PAYLOAD.length, duration: 1.8, ease: "none", onUpdate() { $("typed").textContent = PAYLOAD.slice(0, Math.round(typed.n)); } }, 3.3);
+      tl.fromTo("#armL", { y: 0 }, { y: -10, duration: 0.15, yoyo: true, repeat: 11, ease: "none" }, 3.3);
+      tl.fromTo("#armR", { y: -10 }, { y: 0, duration: 0.15, yoyo: true, repeat: 11, ease: "none" }, 3.3);
+      tl.to("#smirk", { y: 4, duration: 0.3 }, 5.2);
+
+      // beat 3 (5.94-8.67): query appears, payload glued in
+      tl.fromTo("#q", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 6.0);
+      tl.call(() => { $("inj").textContent = PAYLOAD; }, null, 6.9);
+      tl.fromTo("#inj", { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 6.9);
+      tl.to("#q", { borderColor: WARN, duration: 0.3 }, 7.3);
+
+      // beat 4 (8.67-11.52): db reads it as a command
+      tl.fromTo("#bubble", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.75);
+      tl.to("#bubble", { opacity: 0, duration: 0.12 }, 9.7);
+      tl.call(() => { $("bubble").textContent = "COMMAND!"; $("bubble").style.color = WARN; }, null, 9.82);
+      tl.fromTo("#bubble", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 9.82);
+      tl.to("#dbtop", { stroke: WARN, duration: 0.2 }, 9.82);
+      tl.to("#inj", { color: ACC, duration: 0.01 }, 9.82); // code now
+      tl.fromTo("#qtag", { color: DIM }, { color: WARN, duration: 0.2 }, 9.82);
+      tl.call(() => { $("qtag").textContent = "RUNS AS CODE"; }, null, 9.82);
+
+      // beat 5 (11.52-15.29): data leaks, login without password
+      tl.to("#bubble", { opacity: 0, duration: 0.2 }, 11.55);
+      tl.fromTo(["#r1", "#r2", "#r3"], { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out", stagger: 0.45 }, 11.7);
+      tl.to("#r3", { background: WARN, duration: 0.2 }, 13.4);
+      tl.fromTo("#ill", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 11.7);
+
+      // beat 6 (15.29-20.85): parameterized, input stays data
+      tl.to(["#r1", "#r2", "#r3", "#ill"], { opacity: 0, duration: 0.25 }, 15.3);
+      tl.call(() => {
+        $("inj").textContent = ""; $("qa").textContent = ""; $("qb").textContent = "";
+        document.querySelector("#q .k:nth-of-type(2)").textContent = "WHERE name = ?";
+        $("qtag").textContent = "PARAMETERIZED";
+      }, null, 15.6);
+      tl.to("#q", { borderColor: ACC, duration: 0.3 }, 15.6);
+      tl.to("#qtag", { color: ACC, duration: 0.3 }, 15.6);
+      tl.to("#dbtop", { stroke: ACC, duration: 0.3 }, 15.6);
+      tl.fromTo("#safe", { opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 16.2);
+      tl.to("#login", { borderColor: ACC, duration: 0.3 }, 15.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

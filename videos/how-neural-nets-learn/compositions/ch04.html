@@ -1,0 +1,404 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0a1017; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; overflow: hidden; }
+    #root .scene { position: absolute; inset: 0; }
+    #root .lbl { position: absolute; font-weight: 800; font-size: 44px; white-space: nowrap; }
+    #root .sub { position: absolute; font-weight: 600; font-size: 32px; color: #8a97a6; white-space: nowrap; }
+    #root .mono { font-family: "JetBrains Mono", monospace; }
+    #root .acc { color: #00e5a0; }
+    #root .amb { color: #ffb454; }
+    #root .ctr { text-align: center; }
+    #root .ill { position: absolute; font-family: "JetBrains Mono", monospace; font-size: 28px; color: #8a97a6; letter-spacing: 3px; }
+    #root svg.full { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .hk { position: absolute; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: #00e5a0; box-shadow: 0 0 28px #00e5a0; }
+    #root .hk.amber { background: #ffb454; box-shadow: 0 0 28px #ffb454; }
+    #root .hk::after { content: ""; position: absolute; left: -5px; top: 9px; width: 44px; height: 11px; border-radius: 3px; background: #0a1017; border: 2px solid #e8eef5; }
+    #root .arr { position: absolute; left: 0; top: 0; height: 8px; margin-top: -4px; border-radius: 4px; background: currentColor; }
+    #root .arr::after { content: ""; position: absolute; right: -8px; top: -10px; border-left: 24px solid currentColor; border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+    #root .trail { position: absolute; left: 0; top: 0; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #00e5a0; opacity: .85; }
+    #root .ex { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: #8a97a6; opacity: .55; }
+    #root .chip { position: absolute; padding: 18px 36px; border-radius: 24px; border: 4px solid; font-size: 44px; font-weight: 800; background: #121b26; white-space: nowrap; }
+    #root .cap { position: absolute; left: 210px; width: 1500px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.12; }
+    #root .cap span { display: block; text-shadow: 0 4px 24px #000; }
+    #root .cap b { color: #00e5a0; font-weight: 800; }
+  </style>
+
+  <div id="root" data-composition-id="ch04" data-width="1920" data-height="1080">
+
+    <!-- g1: direction, never a distance (0 - 5.7) -->
+    <div id="c4-g1" class="clip scene" data-start="0" data-duration="5.7" data-track-index="1">
+      <div id="c4-g1-dot" class="hk" style="left:560px;top:430px"></div>
+      <div id="c4-g1-arr" class="arr acc"></div>
+      <div id="c4-g1-dir" class="lbl acc" style="left:560px;top:490px">DIRECTION</div>
+      <div id="c4-g1-rule" style="position:absolute;left:760px;top:426px;width:640px;height:0;border-top:6px dashed #ffb454"></div>
+      <div id="c4-g1-q" class="lbl amb mono" style="left:1440px;top:395px;font-size:84px">?</div>
+      <div id="c4-g1-how" class="lbl amb" style="left:1000px;top:490px">HOW FAR?</div>
+      <div id="c4-g1-t" class="lbl" style="left:0;width:1920px;top:150px;text-align:center;font-size:84px">THE GRADIENT</div>
+      <div id="c4-g1-c1" class="chip acc" style="left:430px;top:690px;border-color:#00e5a0">DIRECTION ✓</div>
+      <div id="c4-g1-c2" class="chip amb" style="left:1010px;top:690px;border-color:#ffb454">DISTANCE ✗</div>
+    </div>
+
+    <!-- g2: split screen, small steps vs giant leap (5.7 - 18.45) -->
+    <div id="c4-g2" class="clip scene" data-start="5.7" data-duration="12.75" data-track-index="1">
+      <svg id="c4-g2-svg" class="full" viewBox="0 0 1920 1080"></svg>
+      <div id="c4-g2-split" style="position:absolute;left:958px;top:130px;width:4px;height:680px;background:#1d2a39"></div>
+      <div id="c4-g2-hl" class="lbl acc" style="left:130px;top:120px">SMALL STEP</div>
+      <div id="c4-g2-hr" class="lbl amb" style="left:1030px;top:120px">GIANT LEAP</div>
+      <div id="c4-g2-sl1" class="sub" style="left:130px;top:178px">feels the slope, steps downhill</div>
+      <div id="c4-g2-sl2" class="sub" style="left:130px;top:178px">steady, but slow</div>
+      <div id="c4-g2-sr1" class="sub" style="left:1030px;top:178px">same blindfold, bigger step</div>
+      <div id="c4-g2-sr2" class="sub" style="left:1030px;top:178px">faster, but riskier</div>
+      <div id="c4-g2-sr3" class="sub amb" style="left:1030px;top:178px">overshoots, lands higher</div>
+      <div id="c4-g2-start" style="position:absolute;left:1030px;top:0;width:760px;height:0;border-top:3px dashed #8a97a6"></div>
+      <div id="c4-g2-stl" class="sub mono" style="left:1030px;top:0;font-size:28px">START HEIGHT</div>
+      <div id="c4-g2-slope" class="arr acc"></div>
+      <div id="c4-g2-hkl" class="hk"></div>
+      <div id="c4-g2-hkr" class="hk amber"></div>
+      <div class="ill" style="left:130px;top:830px">ILLUSTRATIVE</div>
+    </div>
+
+    <!-- g3: step size is the dial (18.45 - 24.4) -->
+    <div id="c4-g3" class="clip scene" data-start="18.45" data-duration="5.95" data-track-index="1">
+      <div id="c4-g3-t" class="lbl ctr" style="left:0;width:1920px;top:170px;font-size:96px">STEP <span class="acc">SIZE</span></div>
+      <div id="c4-g3-q" class="lbl ctr" style="left:360px;width:1200px;top:330px;font-size:44px;font-weight:600;white-space:normal;line-height:1.25">one of the most important, and most headache-inducing, settings in training</div>
+      <div id="c4-g3-src" class="sub mono ctr" style="left:0;width:1920px;top:480px;font-size:30px">— STANFORD CS231N NOTES</div>
+      <div id="c4-g3-track" style="position:absolute;left:360px;top:660px;width:1200px;height:12px;border-radius:6px;background:linear-gradient(90deg,#ffb454,#00e5a0 50%,#ffb454)"></div>
+      <div id="c4-g3-knob" style="position:absolute;left:0;top:0;width:44px;height:44px;margin:-16px 0 0 -22px;border-radius:50%;background:#e8eef5;box-shadow:0 0 24px #e8eef5"></div>
+      <div id="c4-g3-lo" class="sub" style="left:360px;top:710px">TOO SMALL</div>
+      <div id="c4-g3-hi" class="sub amb" style="left:1260px;top:710px">TOO BIG</div>
+      <div class="ill" style="left:130px;top:830px">ILLUSTRATIVE</div>
+    </div>
+
+    <!-- g4: many small steps (24.4 - 27.4) -->
+    <div id="c4-g4" class="clip scene" data-start="24.4" data-duration="3.05" data-track-index="1">
+      <svg id="c4-g4-svg" class="full" viewBox="0 0 1920 1080"></svg>
+      <div id="c4-g4-t" class="lbl" style="left:120px;top:130px;font-size:72px">SMALL STEPS, <span class="acc">MANY</span> OF THEM</div>
+      <div id="c4-g4-trails"></div>
+      <div class="ill" style="left:130px;top:830px">ILLUSTRATIVE</div>
+    </div>
+
+    <!-- g5: all examples vs a mini-batch (27.45 - 39.05) -->
+    <div id="c4-g5" class="clip scene" data-start="27.45" data-duration="11.6" data-track-index="1">
+      <div id="c4-g5-h1" class="lbl" style="left:130px;top:120px">EVERY EXAMPLE, EVERY STEP</div>
+      <div id="c4-g5-h2" class="lbl acc" style="left:130px;top:120px">ONE SMALL BATCH</div>
+      <div id="c4-g5-s1" class="sub amb" style="left:130px;top:178px">forever</div>
+      <div id="c4-g5-s2" class="sub" style="left:130px;top:178px">a few examples, step from those</div>
+      <div id="c4-g5-grid"></div>
+      <div id="c4-g5-scan" style="position:absolute;left:110px;top:250px;width:760px;height:44px;border-radius:8px;background:rgba(255,180,84,.28);border:2px solid #ffb454"></div>
+      <div id="c4-g5-step" class="arr acc"></div>
+      <div id="c4-g5-split" style="position:absolute;left:958px;top:130px;width:4px;height:680px;background:#1d2a39"></div>
+      <div id="c4-g5-rh" class="lbl" style="left:1030px;top:120px">THE DIRECTION</div>
+      <div id="c4-g5-rs1" class="sub amb" style="left:1030px;top:178px">noisy estimate from one batch</div>
+      <div id="c4-g5-rs2" class="sub acc" style="left:1030px;top:178px">on average, the right way</div>
+      <div id="c4-g5-ring" style="position:absolute;left:1150px;top:300px;width:500px;height:500px;border-radius:50%;border:3px dashed #2a3a4d"></div>
+      <div id="c4-g5-arrows"></div>
+      <div id="c4-g5-avg" class="arr acc" style="font-size:0"></div>
+      <div class="ill" style="left:1030px;top:830px">ILLUSTRATIVE</div>
+    </div>
+
+    <!-- g6: zig-zag path, cost meter (39.05 - 50.15) -->
+    <div id="c4-g6" class="clip scene" data-start="39.05" data-duration="11.1" data-track-index="1">
+      <svg id="c4-g6-svg" class="full" viewBox="0 0 1920 1080"></svg>
+      <div id="c4-g6-h1" class="lbl amb" style="left:120px;top:120px;font-size:56px">MINI-BATCH PATH: JITTERY</div>
+      <div id="c4-g6-h2" class="lbl acc" style="left:120px;top:120px;font-size:56px">ZIGZAGS, YET HEADS DOWN</div>
+      <div id="c4-g6-trails"></div>
+      <div id="c4-g6-hk" class="hk"></div>
+      <div id="c4-g6-conv" class="chip acc" style="left:0;top:0;border-color:#00e5a0">CONVERGED</div>
+      <div id="c4-g6-mtrack" style="position:absolute;left:1640px;top:200px;width:60px;height:520px;border-radius:12px;border:3px solid #8a97a6"></div>
+      <div id="c4-g6-mfill" style="position:absolute;left:1646px;top:206px;width:48px;height:508px;border-radius:8px;background:#ffb454;transform-origin:50% 100%"></div>
+      <div id="c4-g6-ml" class="sub" style="left:1590px;top:140px;color:#e8eef5;font-weight:800;font-size:36px">COST</div>
+      <div id="c4-g6-mv" class="lbl mono ctr" style="left:1560px;width:220px;top:745px;font-size:44px">0.00</div>
+      <div class="ill" style="left:1470px;top:820px">ILLUSTRATIVE</div>
+    </div>
+
+    <!-- g7: millions of nudges (50.15 - 53.82) -->
+    <div id="c4-g7" class="clip scene" data-start="50.15" data-duration="3.67" data-track-index="1">
+      <div id="c4-g7-a" class="lbl ctr" style="left:0;width:1920px;top:150px;font-size:72px;color:#8a97a6;text-decoration:line-through">ONE BRILLIANT LEAP</div>
+      <div id="c4-g7-b" class="lbl ctr acc" style="left:0;width:1920px;top:260px;font-size:96px">MILLIONS OF NUDGES</div>
+      <div id="c4-g7-stairs"></div>
+    </div>
+
+    <!-- captions: one per sentence -->
+    <div id="c4-cap01" class="clip cap" data-start="0" data-duration="2.97" data-track-index="5"><span>Now every weight knows which way to move, but not <b>how far</b>.</span></div>
+    <div id="c4-cap02" class="clip cap" data-start="2.97" data-duration="2.73" data-track-index="5"><span>The gradient gives a direction, never a <b>distance</b>.</span></div>
+    <div id="c4-cap03" class="clip cap" data-start="5.7" data-duration="5.68" data-track-index="5"><span>Picture the cost as terrain, and you as a hiker with a <b>blindfold</b> on, feeling the slope and stepping downhill.</span></div>
+    <div id="c4-cap04" class="clip cap" data-start="11.38" data-duration="3.05" data-track-index="5"><span>If your step is too low, progress is steady but <b>slow</b>.</span></div>
+    <div id="c4-cap05" class="clip cap" data-start="14.43" data-duration="4.14" data-track-index="5"><span>If it is too high, you go faster but it is riskier, and you can <b>leap over</b> the valley.</span></div>
+    <div id="c4-cap06" class="clip cap" data-start="18.57" data-duration="5.92" data-track-index="5"><span>Stanford's notes call step size one of the most important, and most <b>headache-inducing</b>, settings in training.</span></div>
+    <div id="c4-cap07" class="clip cap" data-start="24.49" data-duration="2.98" data-track-index="5"><span>So each step stays <b>small</b>, and you take a great many.</span></div>
+    <div id="c4-cap08" class="clip cap" data-start="27.47" data-duration="3.14" data-track-index="5"><span>Checking <b>every example</b> before each step would take forever.</span></div>
+    <div id="c4-cap09" class="clip cap" data-start="30.61" data-duration="3.63" data-track-index="5"><span>Instead the network looks at a small <b>batch</b> of data and steps from that.</span></div>
+    <div id="c4-cap10" class="clip cap" data-start="34.24" data-duration="4.83" data-track-index="5"><span>It is a <b>noisy</b> estimate, but on average it points the right way, because the errors cancel out.</span></div>
+    <div id="c4-cap11" class="clip cap" data-start="39.07" data-duration="5.05" data-track-index="5"><span>Three Blue One Brown compares it to a <b>drunk man</b> stumbling downhill, but taking quick steps.</span></div>
+    <div id="c4-cap12" class="clip cap" data-start="44.12" data-duration="2.53" data-track-index="5"><span>The path <b>zigzags</b>, yet it still heads down.</span></div>
+    <div id="c4-cap13" class="clip cap" data-start="46.65" data-duration="3.58" data-track-index="5"><span>When more steps stop reducing the loss, the model has <b>converged</b>.</span></div>
+    <div id="c4-cap14" class="clip cap" data-start="50.23" data-duration="3.59" data-track-index="5"><span>That is learning: not one brilliant leap, but millions of small <b>nudges</b>.</span></div>
+  </div>
+
+  <script>
+    (function () {
+      const ACC = "#00e5a0", AMB = "#ffb454", DIM = "#8a97a6", INK = "#e8eef5";
+      const NS = "http://www.w3.org/2000/svg";
+      const FMAX = 1.21;
+      const f = (x) => ((x < 0.45 ? 2 : 4) * (x - 0.45) * (x - 0.45)) / FMAX + 0.025 * (1 + Math.sin(x * 38));
+      let XMIN = 0.45;
+      for (let x = 0.2, best = 9; x < 0.7; x += 0.001) if (f(x) < best) { best = f(x); XMIN = x; }
+
+      const svgEl = (tag, attrs, parent) => {
+        const e = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach((k) => e.setAttribute(k, attrs[k]));
+        parent.appendChild(e);
+        return e;
+      };
+      const mk = (cls, id, parent) => {
+        const d = document.createElement("div");
+        d.className = cls; d.id = id; parent.appendChild(d);
+        return d;
+      };
+      // panel mapping: x in 0..1 to pixels
+      const mapper = (px0, w, base, h) => ({
+        X: (x) => px0 + x * w,
+        Y: (x) => base - f(x) * h,
+      });
+      const terrain = (svg, m, px0, w, base, color) => {
+        let d = "";
+        for (let i = 0; i <= 100; i++) d += (i ? "L" : "M") + m.X(i / 100).toFixed(1) + " " + m.Y(i / 100).toFixed(1);
+        for (let k = 3; k >= 1; k--) {
+          svgEl("path", { d, transform: "translate(0," + (-26 * k) + ")", fill: "none", stroke: "#2a3f52", "stroke-width": 2, opacity: 0.9 - k * 0.2 }, svg);
+        }
+        svgEl("path", { d: d + "L" + (px0 + w) + " " + (base + 40) + "L" + px0 + " " + (base + 40) + "Z", fill: "#101a25" }, svg);
+        svgEl("path", { d, fill: "none", stroke: color, "stroke-width": 5, "stroke-linejoin": "round" }, svg);
+      };
+
+      // ---------- g2 geometry ----------
+      const g2svg = document.getElementById("c4-g2-svg");
+      const BASE2 = 790, H2 = 440;
+      const mL = mapper(130, 760, BASE2, H2), mR = mapper(1030, 760, BASE2, H2);
+      const g2L = svgEl("g", { id: "c4-g2-tl" }, g2svg), g2R = svgEl("g", { id: "c4-g2-tr" }, g2svg);
+      terrain(g2L, mL, 130, 760, BASE2, ACC);
+      terrain(g2R, mR, 1030, 760, BASE2, AMB);
+
+      // ---------- g4 geometry ----------
+      const g4svg = document.getElementById("c4-g4-svg");
+      const BASE4 = 790, H4 = 440, m4 = mapper(120, 1680, BASE4, H4);
+      terrain(svgEl("g", { id: "c4-g4-tg" }, g4svg), m4, 120, 1680, BASE4, ACC);
+
+      // ---------- g6 geometry ----------
+      const g6svg = document.getElementById("c4-g6-svg");
+      const BASE6 = 790, H6 = 440, m6 = mapper(120, 1380, BASE6, H6);
+      terrain(svgEl("g", { id: "c4-g6-tg" }, g6svg), m6, 120, 1380, BASE6, DIM);
+
+      // ---------- g5 example grid ----------
+      const grid = document.getElementById("c4-g5-grid");
+      const COLS = 16, ROWS = 8, picked = [5, 19, 33, 42, 58, 66, 77, 85, 94, 103, 115, 122];
+      for (let i = 0; i < COLS * ROWS; i++) {
+        const d = mk("ex", "c4-ex" + i, grid);
+        gsap.set(d, { x: 150 + (i % COLS) * 46, y: 272 + Math.floor(i / COLS) * 44 });
+      }
+      // ---------- g5 noisy arrows ----------
+      const CX = 1400, CY = 420, TRUE = 35;
+      const arrowsHost = document.getElementById("c4-g5-arrows");
+      const noisy = [[-52, 150], [-30, 190], [-18, 170], [-6, 200], [14, 160], [28, 190], [48, 170], [66, 150]];
+      noisy.forEach((n, i) => {
+        const a = mk("arr amb", "c4-na" + i, arrowsHost);
+        a.style.width = n[1] + "px";
+        gsap.set(a, { x: CX, y: CY, rotation: TRUE + n[0], transformOrigin: "0% 50%" });
+      });
+      const avg = document.getElementById("c4-g5-avg");
+      avg.style.width = "260px";
+      gsap.set(avg, { x: CX, y: CY, rotation: TRUE, transformOrigin: "0% 50%" });
+      const step5 = document.getElementById("c4-g5-step");
+      step5.style.width = "110px";
+      gsap.set(step5, { x: 900, y: 440, rotation: 0, transformOrigin: "0% 50%" });
+
+      // ---------- g1 arrow ----------
+      const a1 = document.getElementById("c4-g1-arr");
+      a1.style.width = "150px";
+      gsap.set(a1, { x: 610, y: 447, rotation: 0, transformOrigin: "0% 50%" });
+      gsap.set("#c4-g1-dot", { x: 0, y: 0 });
+
+      // ---------- g2 slope arrow ----------
+      const slopeDeg = (Math.atan2(mL.Y(0.13) - mL.Y(0.12), mL.X(0.13) - mL.X(0.12)) * 180) / Math.PI;
+      const slope = document.getElementById("c4-g2-slope");
+      slope.style.width = "90px";
+      gsap.set(slope, { x: mL.X(0.12) + 30, y: mL.Y(0.12) - 8, rotation: slopeDeg, transformOrigin: "0% 50%" });
+
+      // ---------- g7 stairs ----------
+      const stairs = document.getElementById("c4-g7-stairs");
+      const NST = 32;
+      for (let i = 0; i < NST; i++) {
+        const d = mk("trail", "c4-st" + i, stairs);
+        gsap.set(d, { x: 240 + i * 46, y: 500 + i * 7 + (i % 2 ? 0 : -14) });
+      }
+
+      // ---------- timeline ----------
+      const tl = gsap.timeline({ paused: true });
+      const IN = 0.5;
+      const fade = (sel, t, y) => tl.fromTo(sel, { opacity: 0, y: y === undefined ? 20 : y }, { opacity: 1, y: 0, duration: IN, ease: "power3.out" }, t);
+      const out = (sel, t) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.in" }, t);
+      const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, t);
+
+      // g1
+      fade("#c4-g1-t", 0.1);
+      pop("#c4-g1-dot", 0.2);
+      tl.fromTo("#c4-g1-arr", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.6);
+      fade("#c4-g1-dir", 0.9);
+      tl.fromTo("#c4-g1-rule", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.6);
+      fade("#c4-g1-how", 1.8);
+      tl.fromTo("#c4-g1-q", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 1.9);
+      tl.fromTo("#c4-g1-t", { color: INK }, { color: AMB, duration: 0.3 }, 2.97);
+      pop("#c4-g1-c1", 3.1);
+      pop("#c4-g1-c2", 4.0);
+      out("#c4-g1", 5.4);
+
+      // g2 (times relative to this file: g2 starts at 5.7)
+      const T3 = 5.7;
+      tl.fromTo("#c4-g2-tl,#c4-g2-tr", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, T3);
+      tl.fromTo("#c4-g2-split", { opacity: 0 }, { opacity: 1, duration: 0.5 }, T3);
+      fade("#c4-g2-hl", T3 + 0.2); fade("#c4-g2-hr", T3 + 0.3);
+      fade("#c4-g2-sl1", T3 + 0.5); fade("#c4-g2-sr1", T3 + 0.6);
+      gsap.set("#c4-g2-sl2,#c4-g2-sr2,#c4-g2-sr3,#c4-g2-start,#c4-g2-stl", { opacity: 0 });
+      gsap.set("#c4-g2-hkl", { x: mL.X(0.12), y: mL.Y(0.12) });
+      gsap.set("#c4-g2-hkr", { x: mR.X(0.12), y: mR.Y(0.12) });
+      pop("#c4-g2-hkl", T3 + 0.8); pop("#c4-g2-hkr", T3 + 0.9);
+      tl.fromTo("#c4-g2-slope", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, T3 + 2.2);
+      tl.to("#c4-g2-slope", { opacity: 0.35, duration: 0.4, repeat: 0 }, T3 + 4.0);
+      tl.to("#c4-g2-slope", { opacity: 0, duration: 0.3 }, 11.2);
+
+      // s4: small steps, left (11.38 -> 14.2)
+      tl.to("#c4-g2-sl1", { opacity: 0, duration: 0.25 }, 11.3);
+      tl.fromTo("#c4-g2-sl2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.4);
+      const NSTEP = 11;
+      for (let i = 1; i <= NSTEP; i++) {
+        const x = 0.12 + i * 0.03, t = 11.4 + (i - 1) * 0.25;
+        tl.to("#c4-g2-hkl", { x: mL.X(x), y: mL.Y(x), duration: 0.2, ease: "power2.out" }, t);
+        const tr = mk("trail", "c4-g2-tr" + i, document.getElementById("c4-g2"));
+        gsap.set(tr, { x: mL.X(x), y: mL.Y(x) });
+        tl.fromTo(tr, { opacity: 0, scale: 0 }, { opacity: 0.85, scale: 1, duration: 0.2 }, t + 0.1);
+      }
+      // s5: giant leap, right (14.43 -> 18.3)
+      tl.to("#c4-g2-tl", { opacity: 0.45, duration: 0.4 }, 14.4);
+      tl.to("#c4-g2-hkl,[id^=c4-g2-tr]", { opacity: 0.45, duration: 0.4 }, 14.4);
+      tl.to("#c4-g2-sl2", { opacity: 0, duration: 0.25 }, 14.4);
+      tl.to("#c4-g2-sr1", { opacity: 0, duration: 0.25 }, 14.4);
+      tl.fromTo("#c4-g2-sr2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.5);
+      const LAND = 0.92;
+      tl.to("#c4-g2-hkr", { x: mR.X(LAND), duration: 0.9, ease: "none" }, 15.0);
+      tl.to("#c4-g2-hkr", { y: 340, duration: 0.45, ease: "power2.out" }, 15.0);
+      tl.to("#c4-g2-hkr", { y: mR.Y(LAND), duration: 0.45, ease: "power2.in" }, 15.45);
+      tl.fromTo("#c4-g2-start", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 16.1);
+      tl.fromTo("#c4-g2-stl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 16.1);
+      tl.to("#c4-g2-sr2", { opacity: 0, duration: 0.25 }, 16.7);
+      tl.fromTo("#c4-g2-sr3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.8);
+      tl.to("#c4-g2-hkr", { x: mR.X(LAND) - 40, y: mR.Y(LAND) - 14, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, 17.0);
+      out("#c4-g2", 18.15);
+      // start-height line and label sit at the starting dot's height (set after layout is known)
+      gsap.set("#c4-g2-start", { y: mR.Y(0.12) });
+      gsap.set("#c4-g2-stl", { y: mR.Y(0.12) - 44 });
+
+      // g3
+      const T6 = 18.45;
+      fade("#c4-g3-t", T6 + 0.1);
+      fade("#c4-g3-q", T6 + 0.7);
+      fade("#c4-g3-src", T6 + 1.3);
+      tl.fromTo("#c4-g3-track", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, T6 + 2.2);
+      gsap.set("#c4-g3-knob", { x: 960, y: 666 });
+      pop("#c4-g3-knob", T6 + 2.6);
+      fade("#c4-g3-lo", T6 + 2.7); fade("#c4-g3-hi", T6 + 2.8);
+      tl.to("#c4-g3-knob", { x: 400, duration: 0.9, ease: "sine.inOut" }, T6 + 3.3);
+      tl.to("#c4-g3-knob", { x: 1520, duration: 1.2, ease: "sine.inOut" }, T6 + 4.3);
+      tl.to("#c4-g3-knob", { x: 960, duration: 0.6, ease: "sine.inOut" }, T6 + 5.5);
+      out("#c4-g3", 24.1);
+
+      // g4
+      const T7 = 24.4;
+      tl.fromTo("#c4-g4-tg", { opacity: 0 }, { opacity: 1, duration: 0.5 }, T7);
+      fade("#c4-g4-t", T7 + 0.1);
+      const NT4 = 24;
+      for (let i = 0; i < NT4; i++) {
+        const x = 0.06 + (i * (XMIN - 0.06)) / (NT4 - 1);
+        const d = mk("trail", "c4-g4-d" + i, document.getElementById("c4-g4-trails"));
+        gsap.set(d, { x: m4.X(x), y: m4.Y(x) });
+        tl.fromTo(d, { opacity: 0, scale: 0 }, { opacity: 0.9, scale: 1, duration: 0.2, ease: "back.out(2)" }, T7 + 0.4 + i * 0.1);
+      }
+      out("#c4-g4", 27.15);
+
+      // g5
+      const T8 = 27.45;
+      fade("#c4-g5-h1", T8); fade("#c4-g5-s1", T8 + 0.2);
+      tl.fromTo("[id^=c4-ex]", { opacity: 0, scale: 0 }, { opacity: 0.55, scale: 1, duration: 0.4, stagger: 0.004, ease: "back.out(2)" }, T8 + 0.1);
+      tl.fromTo("#c4-g5-scan", { opacity: 0 }, { opacity: 1, duration: 0.2 }, T8 + 0.5);
+      tl.to("#c4-g5-scan", { y: 308, duration: 2.4, ease: "steps(8)" }, T8 + 0.6);
+      // s9: pick a mini-batch (30.61)
+      tl.to("#c4-g5-scan", { opacity: 0, duration: 0.3 }, 30.5);
+      tl.to("#c4-g5-h1,#c4-g5-s1", { opacity: 0, duration: 0.25 }, 30.5);
+      fade("#c4-g5-h2", 30.7); fade("#c4-g5-s2", 30.8);
+      tl.to("[id^=c4-ex]", { opacity: 0.2, duration: 0.4 }, 30.6);
+      picked.forEach((p, i) => {
+        tl.to("#c4-ex" + p, { opacity: 1, scale: 1.7, backgroundColor: ACC, duration: 0.35, ease: "back.out(2)" }, 30.9 + i * 0.1);
+      });
+      tl.fromTo("#c4-g5-step", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 32.4);
+      // right panel: noisy estimates (34.24)
+      tl.fromTo("#c4-g5-split", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 32.4);
+      fade("#c4-g5-rh", 32.5);
+      tl.fromTo("#c4-g5-ring", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 32.6);
+      fade("#c4-g5-rs1", 34.2);
+      noisy.forEach((n, i) => {
+        tl.fromTo("#c4-na" + i, { opacity: 0, scaleX: 0 }, { opacity: 0.9, scaleX: 1, duration: 0.4, ease: "power3.out" }, 34.3 + i * 0.25);
+      });
+      tl.to("#c4-g5-rs1", { opacity: 0, duration: 0.25 }, 36.5);
+      fade("#c4-g5-rs2", 36.6);
+      tl.to("[id^=c4-na]", { opacity: 0.35, duration: 0.4 }, 36.6);
+      tl.fromTo("#c4-g5-avg", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 36.8);
+      out("#c4-g5", 38.75);
+
+      // g6
+      const T11 = 39.05;
+      tl.fromTo("#c4-g6-tg", { opacity: 0 }, { opacity: 1, duration: 0.5 }, T11);
+      fade("#c4-g6-h1", T11 + 0.1);
+      fade("#c4-g6-ml", T11 + 0.2);
+      tl.fromTo("#c4-g6-mtrack,#c4-g6-mfill,#c4-g6-mv", { opacity: 0 }, { opacity: 1, duration: 0.5 }, T11 + 0.2);
+      const xs = [0.07, 0.15, 0.1, 0.2, 0.16, 0.27, 0.22, 0.33, 0.3, 0.38, 0.34, 0.42, 0.4, XMIN];
+      const COST = (x) => 0.15 + 2.2 * f(x);
+      const cost = { v: COST(xs[0]) };
+      const mv = document.getElementById("c4-g6-mv");
+      const paint = () => {
+        mv.textContent = cost.v.toFixed(2);
+        document.getElementById("c4-g6-mfill").style.height = Math.max(6, (cost.v / COST(0.07)) * 508) + "px";
+        document.getElementById("c4-g6-mfill").style.marginTop = (508 - Math.max(6, (cost.v / COST(0.07)) * 508)) + "px";
+      };
+      paint();
+      tl.to(cost, { v: cost.v, duration: 0.01, onUpdate: paint }, T11);
+      gsap.set("#c4-g6-hk", { x: m6.X(xs[0]), y: m6.Y(xs[0]) });
+      pop("#c4-g6-hk", T11 + 0.2);
+      const STEP6 = 0.5, S0 = 39.5;
+      const trails6 = document.getElementById("c4-g6-trails");
+      for (let i = 1; i < xs.length; i++) {
+        const t = S0 + (i - 1) * STEP6, x = xs[i];
+        tl.to("#c4-g6-hk", { x: m6.X(x), y: m6.Y(x), duration: 0.35, ease: "power2.out" }, t);
+        tl.to(cost, { v: COST(x), duration: 0.35, ease: "power2.out", onUpdate: paint }, t);
+        const seg = svgEl("line", { id: "c4-g6-seg" + i, x1: m6.X(xs[i - 1]), y1: m6.Y(xs[i - 1]), x2: m6.X(x), y2: m6.Y(x), stroke: AMB, "stroke-width": 4, "stroke-linecap": "round" }, g6svg);
+        tl.fromTo(seg, { opacity: 0 }, { opacity: 0.9, duration: 0.25 }, t + 0.1);
+      }
+      tl.to("#c4-g6-h1", { opacity: 0, duration: 0.25 }, 44.0);
+      fade("#c4-g6-h2", 44.15);
+      tl.to("[id^=c4-g6-seg]", { stroke: ACC, duration: 0.5 }, 44.2);
+      gsap.set("#c4-g6-conv", { x: m6.X(XMIN) - 110, y: m6.Y(XMIN) - 150 });
+      pop("#c4-g6-conv", 46.7);
+      tl.to("#c4-g6-conv", { scale: 1.06, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 47.3);
+      tl.to("#c4-g6-hk", { scale: 1.3, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 47.3);
+      out("#c4-g6", 49.85);
+
+      // g7
+      const T14 = 50.15;
+      fade("#c4-g7-a", T14 + 0.05);
+      fade("#c4-g7-b", T14 + 0.5);
+      for (let i = 0; i < NST; i++) {
+        tl.fromTo("#c4-st" + i, { opacity: 0, scale: 0 }, { opacity: 0.9, scale: 1, duration: 0.2, ease: "back.out(2)" }, T14 + 0.9 + i * 0.07);
+      }
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["ch04"] = tl;
+    })();
+  </script>
+</template>

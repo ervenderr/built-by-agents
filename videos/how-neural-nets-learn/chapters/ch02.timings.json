@@ -1,0 +1,92 @@
+[
+  {
+    "i": 1,
+    "text": "Start with error, because a network can only improve at something it can measure.",
+    "start": 0.0,
+    "duration": 3.81
+  },
+  {
+    "i": 2,
+    "text": "The network outputs ten activations, one for each digit, and we know the answer we wanted.",
+    "start": 4.06,
+    "duration": 4.64
+  },
+  {
+    "i": 3,
+    "text": "Take the gap between each output and its desired value, and square it.",
+    "start": 8.95,
+    "duration": 3.71
+  },
+  {
+    "i": 4,
+    "text": "Then add up all those squares.",
+    "start": 12.91,
+    "duration": 1.69
+  },
+  {
+    "i": 5,
+    "text": "For example, a guess of zero point one where the answer is one point zero gives a squared error of zero point eight one.",
+    "start": 14.85,
+    "duration": 6.11
+  },
+  {
+    "i": 6,
+    "text": "Do this for every training example and take the average.",
+    "start": 21.21,
+    "duration": 2.8
+  },
+  {
+    "i": 7,
+    "text": "That average is the cost, one number saying how wrong the whole network is.",
+    "start": 24.26,
+    "duration": 3.89
+  },
+  {
+    "i": 8,
+    "text": "Millions of messy mistakes get squeezed into a single score.",
+    "start": 28.4,
+    "duration": 3.11
+  },
+  {
+    "i": 9,
+    "text": "Learning then becomes a clear job: lower that score.",
+    "start": 31.76,
+    "duration": 2.79
+  },
+  {
+    "i": 10,
+    "text": "The method is gradient descent, an iterative way of lowering a loss function.",
+    "start": 34.8,
+    "duration": 3.86
+  },
+  {
+    "i": 11,
+    "text": "You compute the gradient, then move the weights a small step in the opposite direction.",
+    "start": 38.91,
+    "duration": 4.25
+  },
+  {
+    "i": 12,
+    "text": "Google's machine learning course gives the same loop: calculate the loss, find the direction, move a small amount, and repeat.",
+    "start": 43.41,
+    "duration": 6.36
+  },
+  {
+    "i": 13,
+    "text": "You stop when the loss can no longer drop.",
+    "start": 50.02,
+    "duration": 1.98
+  },
+  {
+    "i": 14,
+    "text": "But thirteen thousand weights all affect that one number differently.",
+    "start": 52.25,
+    "duration": 3.38
+  },
+  {
+    "i": 15,
+    "text": "Coming up: how the network works out which weights deserve the blame.",
+    "start": 55.88,
+    "duration": 3.54
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Feed this machine a message of practically any length, and the answer is always the same size.",
+    "start": 0.0,
+    "duration": 4.87
+  },
+  {
+    "i": 2,
+    "text": "A hash function turns it into a fixed-size digest.",
+    "start": 5.12,
+    "duration": 2.68
+  },
+  {
+    "i": 3,
+    "text": "For SHA-256, that digest is always exactly 256 bits.",
+    "start": 8.05,
+    "duration": 4.36
+  },
+  {
+    "i": 4,
+    "text": "Change one single character, and the digest almost certainly changes drastically.",
+    "start": 12.66,
+    "duration": 4.38
+  },
+  {
+    "i": 5,
+    "text": "Experts call that the avalanche effect.",
+    "start": 17.29,
+    "duration": 2.24
+  },
+  {
+    "i": 6,
+    "text": "A tiny edit, a very different fingerprint: that makes a hash useful for spotting changes.",
+    "start": 19.78,
+    "duration": 4.58
+  }
+]

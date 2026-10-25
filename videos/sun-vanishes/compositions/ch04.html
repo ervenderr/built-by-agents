@@ -1,0 +1,178 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; }
+    #root * { box-sizing: border-box; }
+    #ch04-bg { position: absolute; inset: 0; background: #0b0f14; }
+    #ch04-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+    .lab { position: absolute; left: 120px; width: 520px; white-space: nowrap; font-size: 30px; font-weight: 700; color: #8a97a6; letter-spacing: 2px; opacity: 0; }
+    .val { position: absolute; left: 120px; width: 440px; font-size: 72px; font-weight: 800; font-family: "JetBrains Mono", monospace; opacity: 0; white-space: nowrap; }
+    .val.sm { font-size: 56px; }
+    .chip { position: absolute; left: 120px; width: 400px; padding: 14px 24px; border-radius: 18px; border: 3px solid #8a97a6; background: #151c26; font-size: 36px; font-weight: 800; opacity: 0; }
+    .chip i { font-style: normal; color: #ffb454; margin-right: 12px; font-family: "JetBrains Mono", monospace; }
+    #ch04-title { position: absolute; left: 0; width: 1920px; top: 100px; text-align: center; font-size: 72px; font-weight: 800; opacity: 0; }
+    #ch04-banner { position: absolute; left: 1100px; width: 700px; top: 96px; text-align: right; font-size: 48px; font-weight: 800; color: #ffb454; opacity: 0; }
+    #ch04-ghost { position: absolute; left: 710px; width: 500px; top: 800px; text-align: center; font-size: 32px; font-weight: 700; color: #8a97a6; letter-spacing: 2px; opacity: 0; }
+    #ch04-thermo { position: absolute; left: 120px; top: 120px; width: 120px; height: 740px; opacity: 0; }
+    .tl2 { position: absolute; left: 290px; width: 290px; font-size: 32px; font-weight: 700; color: #8a97a6; letter-spacing: 2px; line-height: 1.2; opacity: 0; }
+    em { color: #00e5a0; font-style: normal; }
+    .cap { position: absolute; left: 210px; width: 1500px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; text-shadow: 0 3px 18px #000; }
+    .cap b { color: #00e5a0; }
+  </style>
+
+  <div id="root" data-composition-id="ch04" data-width="1920" data-height="1080">
+    <div id="ch04-bg"></div>
+    <svg id="ch04-svg" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+      <circle id="ch04-orbit" cx="960" cy="490" r="290" fill="none" stroke="#8a97a6" stroke-width="3" stroke-dasharray="14 12" opacity="0"/>
+      <circle id="ch04-sun" cx="960" cy="490" r="46" fill="#ffb454" opacity="1"/>
+      <circle id="ch04-sunglow" cx="960" cy="490" r="90" fill="#ffb454" opacity="0.25"/>
+      <path id="ch04-leader" d="M960 545V790" stroke="#8a97a6" stroke-width="2" stroke-dasharray="4 8" opacity="0"/>
+      <circle id="ch04-gm" cx="960" cy="490" r="40" fill="none" stroke="#8a97a6" stroke-width="3" stroke-dasharray="6 8" opacity="0"/>
+      <circle id="ch04-ring" cx="960" cy="490" r="0" fill="none" stroke="#00e5a0" stroke-width="6" opacity="0"/>
+      <circle id="ch04-flash" cx="960" cy="170" r="0" fill="none" stroke="#ffb454" stroke-width="8" opacity="0"/>
+      <polyline id="ch04-trail" points="" fill="none" stroke="#00e5a0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+      <circle id="ch04-halo" cx="0" cy="0" r="30" fill="#ffb454" opacity="0"/>
+      <circle id="ch04-earth" cx="0" cy="0" r="16" fill="#00e5a0" opacity="0"/>
+      <circle id="ch04-moon" cx="0" cy="0" r="9" fill="#e8eef5" opacity="0"/>
+    </svg>
+
+    <div id="ch04-title">The <em>8:20</em> mark</div>
+    <div id="ch04-banner">8:20 · NEWS ARRIVES</div>
+    <div id="ch04-ghost">▲ SUN'S OLD SPOT</div>
+
+    <div class="lab" id="ch04-lt" style="top:110px">SINCE THE SUN VANISHED</div>
+    <div class="val" id="ch04-vt" style="top:150px">0:00</div>
+    <div class="lab" id="ch04-ls" style="top:290px">EARTH SPEED</div>
+    <div class="val" id="ch04-vs" style="top:330px;color:#00e5a0">30 km/s</div>
+    <div class="lab" id="ch04-lp" style="top:470px">PATH SO FAR</div>
+    <div class="val sm" id="ch04-vp" style="top:515px">0 km</div>
+    <div class="chip" id="ch04-k1" style="top:650px"><i>1</i>LIGHT STOPS</div>
+    <div class="chip" id="ch04-k2" style="top:740px"><i>2</i>PULL STOPS</div>
+
+    <div class="lab" id="ch04-l2" style="top:150px">STRAIGHT LINE</div>
+    <div class="val" id="ch04-v2" style="top:195px;color:#00e5a0">30 km/s</div>
+    <div class="val sm" id="ch04-v3" style="top:300px;color:#ffb454">≈ 67,000 mph</div>
+    <div class="chip" id="ch04-k3" style="top:420px;border-color:#00e5a0">NO JOLT · NOTHING PUSHES</div>
+    <div class="lab" id="ch04-lm" style="top:150px;color:#e8eef5">MOON: BORROWED LIGHT</div>
+    <div class="val sm" id="ch04-vm" style="top:200px;color:#ffb454">DARK TOO</div>
+
+    <svg id="ch04-thermo" viewBox="0 0 120 740">
+      <rect x="40" y="10" width="40" height="610" rx="20" fill="#151c26" stroke="#8a97a6" stroke-width="4"/>
+      <circle cx="60" cy="670" r="56" fill="#151c26" stroke="#8a97a6" stroke-width="4"/>
+      <rect id="ch04-merc" x="52" y="60" width="16" height="610" rx="8" fill="#ffb454" style="transform-origin:60px 670px"/>
+      <circle cx="60" cy="670" r="42" fill="#ffb454" id="ch04-bulb"/>
+      <g stroke="#8a97a6" stroke-width="3"><path d="M88 60h18M88 180h18M88 300h18M88 420h18M88 540h18"/></g>
+    </svg>
+    <div class="tl2" id="ch04-tt" style="top:130px">AVERAGE SURFACE TEMP, TODAY</div>
+    <div class="val" id="ch04-tv" style="left:290px;width:290px;top:250px;color:#ffb454">15 °C</div>
+    <div class="tl2" id="ch04-tf" style="top:420px;color:#7fd0e8;font-size:40px;font-weight:800">FREEZING WITHIN WEEKS</div>
+    <div class="tl2" id="ch04-ti" style="top:700px">ILLUSTRATIVE FALL</div>
+
+    <div id="ch04-c1" class="clip cap" data-start="0.0" data-duration="3.52" data-track-index="2"><span>So what does Earth do during those <b>eight minutes</b> and twenty seconds?</span></div>
+    <div id="ch04-c2" class="clip cap" data-start="3.52" data-duration="3.8" data-track-index="2"><span>It keeps moving at about <b>thirty kilometers</b> every second, just like always.</span></div>
+    <div id="ch04-c3" class="clip cap" data-start="7.32" data-duration="4.5" data-track-index="2"><span>Over five hundred seconds, that adds up to nearly <b>fifteen thousand</b> kilometers of path.</span></div>
+    <div id="ch04-c4" class="clip cap" data-start="11.82" data-duration="3.85" data-track-index="2"><span>All that time, Earth bends around the Sun's old spot, <b>circling a ghost</b>.</span></div>
+    <div id="ch04-c5" class="clip cap" data-start="15.67" data-duration="4.32" data-track-index="2"><span>Nothing feels different, because <b>no news</b> of the missing Sun has reached us yet.</span></div>
+    <div id="ch04-c6" class="clip cap" data-start="19.99" data-duration="3.71" data-track-index="2"><span>Then a <b>ring of news</b>, travelling at light speed, finally touches Earth.</span></div>
+    <div id="ch04-c7" class="clip cap" data-start="23.7" data-duration="2.59" data-track-index="2"><span>Two things happen at <b>exactly the same moment</b>.</span></div>
+    <div id="ch04-c8" class="clip cap" data-start="26.29" data-duration="3.35" data-track-index="2"><span>The sky goes <b>dark</b>, and the Sun's pull stops bending Earth's path.</span></div>
+    <div id="ch04-c9" class="clip cap" data-start="29.64" data-duration="4.78" data-track-index="2"><span>Without that pull, Earth flies off in a <b>straight line</b> at about thirty kilometers a second.</span></div>
+    <div id="ch04-c10" class="clip cap" data-start="34.42" data-duration="5.27" data-track-index="2"><span>That is roughly <b>sixty-seven thousand miles an hour</b>, and there is no jolt, because nothing pushes us.</span></div>
+    <div id="ch04-c11" class="clip cap" data-start="39.69" data-duration="3.61" data-track-index="2"><span>The <b>Moon</b> goes dark too, since it only shines with borrowed sunlight.</span></div>
+    <div id="ch04-c12" class="clip cap" data-start="43.3" data-duration="4.08" data-track-index="2"><span>Today, Earth's average surface temperature is about <b>fifteen degrees</b> Celsius.</span></div>
+    <div id="ch04-c13" class="clip cap" data-start="47.38" data-duration="2.92" data-track-index="2"><span>Without the Sun, humans would <b>freeze</b> within weeks.</span></div>
+    <div id="ch04-c14" class="clip cap" data-start="50.3" data-duration="3.24" data-track-index="2"><span>Earth would become a <b>dark, cold ball</b>, drifting through the dark.</span></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const DUR = 53.54, CX = 960, CY = 490, R = 290, W = 0.4, TC = 26.4, T0 = 1.0, V = R * W, C = R / (TC - T0);
+      const TH = -Math.PI / 2, E0 = 0.3;
+      const $ = (id) => document.getElementById(id);
+      const sm = (x) => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+      const world = (t) => t <= TC ? [CX + R * Math.cos(TH + W * (t - TC)), CY + R * Math.sin(TH + W * (t - TC))] : [CX + V * (t - TC), CY - R];
+      const cam = (t) => 1 - 0.75 * sm((t - 27.5) / 17.5);
+      const scr = (p, s) => [CX + (p[0] - CX) * s, CY + (p[1] - CY) * s];
+      const set = (el, o) => { for (const k in o) el.setAttribute(k, o[k]); };
+      const fmtT = (s) => Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+
+      function render(t) {
+        const s = cam(t);
+        set($("ch04-orbit"), { r: R * s, opacity: t < 0.8 ? 0 : (t < TC ? 0.9 : 0.35) });
+        set($("ch04-gm"), { r: 40 * s });
+        const ring = Math.max(0, C * (t - T0));
+        set($("ch04-ring"), { r: ring * s, opacity: t < T0 ? 0 : (t < TC ? 0.9 : Math.max(0, 0.9 - (t - TC) * 0.6)) });
+        // trail: orbit arc, then the straight escape line
+        const L = 4 + Math.max(0, t - TC), pts = [];
+        for (let u = Math.max(E0, t - L); u <= t + 1e-6; u += 0.15) { const q = scr(world(u), s); pts.push(q[0].toFixed(1) + "," + q[1].toFixed(1)); }
+        if (t > E0) $("ch04-trail").setAttribute("points", pts.join(" "));
+        const e = scr(world(Math.max(t, E0)), s), ea = Math.min(1, Math.max(0, (t - E0) / 0.4));
+        set($("ch04-earth"), { cx: e[0], cy: e[1], opacity: ea });
+        set($("ch04-halo"), { cx: e[0], cy: e[1], opacity: ea * 0.22 * (t < TC ? 1 : Math.max(0, 1 - (t - TC) * 1.5)) });
+        const ma = t < 38.5 ? 0 : Math.min(1, (t - 38.5) / 0.6);
+        const ang = 3 * t;
+        set($("ch04-moon"), { cx: e[0] + 42 * Math.cos(ang), cy: e[1] + 42 * Math.sin(ang), opacity: ma, fill: t < 40.6 ? "#e8eef5" : "#3a4658", stroke: "#8a97a6", "stroke-width": t < 40.6 ? 0 : 2 });
+        // live readouts
+        const el = Math.min(500, Math.max(0, 500 * (t - T0) / (TC - T0)));
+        $("ch04-vt").textContent = fmtT(el);
+        $("ch04-vp").textContent = (Math.round(el * 30 / 10) * 10).toLocaleString("en-US") + " km";
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      const px = { t: 0 };
+      tl.to(px, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(px.t) }, 0);
+      const fade = (sel, t, o = 1, d = 0.5) => tl.fromTo(sel, { opacity: 0 }, { opacity: o, duration: d, ease: "power2.out", immediateRender: false }, t);
+      const out_ = (sel, t, d = 0.4) => tl.to(sel, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // captions
+      const CAPS = [[0.0,3.52],[3.52,3.8],[7.32,4.5],[11.82,3.85],[15.67,4.32],[19.99,3.71],[23.7,2.59],[26.29,3.35],[29.64,4.78],[34.42,5.27],[39.69,3.61],[43.3,4.08],[47.38,2.92],[50.3,3.24]];
+      CAPS.forEach(([s, d], i) => {
+        tl.fromTo("#ch04-c" + (i + 1) + " span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, s);
+        tl.to("#ch04-c" + (i + 1) + " span", { opacity: 0, duration: 0.12 }, s + d - 0.14);
+      });
+
+      // 1 (0-3.5): the Sun pops out, leaving a ghost; the news ring starts
+      fade("#ch04-title", 0.1, 1, 0.4); out_("#ch04-title", 3.0);
+      tl.to(["#ch04-sun", "#ch04-sunglow"], { opacity: 0, duration: 0.25 }, 0.75);
+      tl.fromTo("#ch04-gm", { opacity: 0 }, { opacity: 1, duration: 0.3, immediateRender: false }, 0.85);
+      tl.fromTo("#ch04-sun", { scale: 1 }, { scale: 1, duration: 0.01 }, 0);
+      // left readouts
+      fade("#ch04-lt", 0.9); fade("#ch04-vt", 1.0);
+      fade("#ch04-ls", 3.5); fade("#ch04-vs", 3.6);
+      fade("#ch04-lp", 7.3); fade("#ch04-vp", 7.4);
+      tl.to("#ch04-vp", { color: "#ffb454", duration: 0.3 }, 10.4);
+      fade("#ch04-ghost", 11.8); fade("#ch04-leader", 11.8, 0.7);
+      out_("#ch04-ghost", 15.4); out_("#ch04-leader", 15.4);
+      // 7: two things at once
+      tl.fromTo("#ch04-k1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 23.8);
+      tl.fromTo("#ch04-k2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 24.6);
+      // touch: flash, darkness, snap
+      tl.fromTo("#ch04-flash", { attr: { r: 0 }, opacity: 0.9 }, { attr: { r: 160 }, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, TC);
+      tl.to("#ch04-bg", { backgroundColor: "#03050a", duration: 0.9 }, TC);
+      tl.to("#ch04-vt", { color: "#ffb454", duration: 0.3 }, TC);
+      tl.to(["#ch04-k1", "#ch04-k2"], { borderColor: "#ffb454", duration: 0.2 }, TC);
+      fade("#ch04-banner", TC, 1, 0.3); out_("#ch04-banner", 29.4);
+      // 9-10: straight line
+      ["#ch04-lt", "#ch04-vt", "#ch04-ls", "#ch04-vs", "#ch04-lp", "#ch04-vp", "#ch04-k1", "#ch04-k2"].forEach((q) => out_(q, 29.0, 0.4));
+      fade("#ch04-l2", 29.7); fade("#ch04-v2", 29.8);
+      fade("#ch04-v3", 34.5);
+      fade("#ch04-k3", 36.5);
+      // 11: moon
+      ["#ch04-l2", "#ch04-v2", "#ch04-v3", "#ch04-k3"].forEach((q) => out_(q, 39.2, 0.4));
+      fade("#ch04-lm", 39.8); fade("#ch04-vm", 40.6);
+      // 12-14: thermometer
+      ["#ch04-lm", "#ch04-vm"].forEach((q) => out_(q, 42.8, 0.4));
+      fade("#ch04-thermo", 43.3); fade("#ch04-tt", 43.4); fade("#ch04-tv", 43.6);
+      tl.fromTo("#ch04-merc", { scaleY: 1 }, { scaleY: 0.12, duration: 5, ease: "power2.in", immediateRender: false }, 47.4);
+      tl.to("#ch04-merc", { fill: "#7fd0e8", duration: 3 }, 48);
+      tl.to("#ch04-bulb", { fill: "#7fd0e8", duration: 3 }, 48);
+      tl.to("#ch04-tv", { color: "#7fd0e8", duration: 3 }, 48);
+      fade("#ch04-ti", 47.6, 1, 0.4); fade("#ch04-tf", 48.0);
+      tl.to("#ch04-earth", { attr: { fill: "#7fd0e8" }, duration: 2.5 }, 50.3);
+
+      render(0);
+      window.__timelines["ch04"] = tl;
+    })();
+  </script>
+</template>

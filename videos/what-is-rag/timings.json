@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Most AI answers come from memory, but RAG lets the model open the book first.",
+    "start": 0.0,
+    "duration": 4.0
+  },
+  {
+    "i": 2,
+    "text": "RAG stands for retrieval-augmented generation.",
+    "start": 4.25,
+    "duration": 2.64
+  },
+  {
+    "i": 3,
+    "text": "Your question first triggers a search of an outside knowledge base.",
+    "start": 7.14,
+    "duration": 3.57
+  },
+  {
+    "i": 4,
+    "text": "Then the question and the relevant information are both given to the model.",
+    "start": 10.96,
+    "duration": 3.8
+  },
+  {
+    "i": 5,
+    "text": "It answers using them, so new facts need no retraining.",
+    "start": 15.01,
+    "duration": 2.94
+  },
+  {
+    "i": 6,
+    "text": "It can even cite sources, which beats guessing from memory.",
+    "start": 18.2,
+    "duration": 3.15
+  }
+]

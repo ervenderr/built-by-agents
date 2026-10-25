@@ -1,0 +1,6 @@
+Feed this machine a message of practically any length, and the answer is always the same size.
+A hash function turns it into a fixed-size digest.
+For SHA-256, that digest is always exactly 256 bits.
+Change one single character, and the digest almost certainly changes drastically.
+Experts call that the avalanche effect.
+A tiny edit, a very different fingerprint: that makes a hash useful for spotting changes.

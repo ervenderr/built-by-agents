@@ -1,0 +1,21 @@
+{
+  "title": "How Neural Networks Learn: Error, Blame and a Small Step",
+  "description": "Learn how every neural network is trained: measure the error, assign blame to each weight with backpropagation, then take a small step downhill with gradient descent, and repeat.\n\n0:00 Nobody typed in the answers\n0:35 Error: one number for how wrong\n1:35 Blame: who caused the error?\n2:28 The small step (and why it must be small)\n3:23 Recap: less wrong, again\n\nThe 0.94 cost, the dial wall and the example network are illustrative, not real training data.\n\nSources:\nhttps://www.3blue1brown.com/lessons/gradient-descent\nhttps://www.3blue1brown.com/lessons/backpropagation\nhttps://cs231n.github.io/optimization-1/\nhttps://cs231n.github.io/optimization-2/\nhttps://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent\nhttps://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#NeuralNetworks #MachineLearning #AIExplained",
+  "tags": [
+    "how neural networks learn",
+    "backpropagation explained",
+    "gradient descent explained",
+    "neural network training",
+    "machine learning basics",
+    "cost function",
+    "chain rule",
+    "deep learning explained",
+    "ai explained",
+    "learning rate"
+  ],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false,
+  "thumbnail": "thumbnail.png",
+  "publish_at": "2026-10-27T18:00:00+08:00"
+}

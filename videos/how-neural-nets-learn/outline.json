@@ -1,0 +1,79 @@
+{
+  "thesis": "Neural networks do not store answers; they get nudged slightly less wrong millions of times, and learning is just error, blame and a small step.",
+  "promise": "By the end you can explain, in plain words, the loop that trains every neural network: measure the error, assign blame to each weight, take a small step downhill, repeat.",
+  "sources": [
+    "https://www.3blue1brown.com/lessons/gradient-descent",
+    "https://www.3blue1brown.com/lessons/backpropagation",
+    "https://cs231n.github.io/optimization-1/",
+    "https://cs231n.github.io/optimization-2/",
+    "https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent",
+    "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+    "https://en.wikipedia.org/wiki/Backpropagation",
+    "https://d2l.ai/chapter_optimization/sgd.html"
+  ],
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "Nobody typed in the answers",
+      "goal": "Hook: a digit-reading network has thousands of adjustable numbers and nobody set them by hand; promise the 3-part loop.",
+      "claims": [
+        "The example MNIST network has 13,002 weights and biases that can be adjusted (two hidden layers of 16 neurons). https://www.3blue1brown.com/lessons/gradient-descent",
+        "Learning means changing the weights and biases to minimize a cost function. https://www.3blue1brown.com/lessons/gradient-descent"
+      ],
+      "visual_idea": "A wall of ~13,000 tiny dials in a grid, all spinning randomly; a handwritten 7 is fed in and the output readout shows garbage. Camera pulls back to show a question mark, then three icons (error, blame, step) light up as the promise.",
+      "words": 110
+    },
+    {
+      "id": "ch02",
+      "title": "Error: one number for how wrong",
+      "goal": "The network's mistakes get squeezed into a single score (the cost), and learning means lowering that score.",
+      "claims": [
+        "Cost adds up the squares of the differences between the output activations and the desired values, averaged over all training examples. https://www.3blue1brown.com/lessons/gradient-descent",
+        "Gradient descent is an iterative method for lowering a loss function: compute the gradient, move the weights a small step in the opposite direction. https://cs231n.github.io/optimization-1/",
+        "Loop: calculate loss, determine direction, move a small amount, repeat until loss stops dropping. https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent",
+        "Illustrative (made-up) numbers: a guess of 0.1 where the answer is 1.0 gives squared error 0.81."
+      ],
+      "visual_idea": "Output bars for digits 0-9 versus target bars; the gaps are squared into red blocks that merge into one big glowing number (the cost) that sits in a corner as a score meter for the rest of the video.",
+      "words": 190
+    },
+    {
+      "id": "ch03",
+      "title": "Blame: who caused the error?",
+      "goal": "Backpropagation assigns each weight a share of the blame by working backward and multiplying local effects (chain rule).",
+      "claims": [
+        "Backpropagation is an algorithm for computing the negative gradient of the cost. https://www.3blue1brown.com/lessons/backpropagation",
+        "A weight's influence scales with the activation it multiplies, so weights are adjusted in proportion to their associated activations. https://www.3blue1brown.com/lessons/backpropagation",
+        "Backprop is a recursive application of the chain rule; each gate computes only its own local gradient, 'a beautifully local process'. https://cs231n.github.io/optimization-2/",
+        "Backpropagation is an efficient application of the chain rule, reusing per-layer quantities instead of recomputing each weight's gradient separately. https://en.wikipedia.org/wiki/Backpropagation",
+        "Gates communicate through the gradient signal about whether to push outputs up or down. https://cs231n.github.io/optimization-2/"
+      ],
+      "visual_idea": "A network drawn as a chain of pipes; red liquid (the error) flows backward from the output, splitting at each junction and staining the thicker, more influential connections darker, while thin ones barely tint.",
+      "words": 190
+    },
+    {
+      "id": "ch04",
+      "title": "The small step (and why it must be small)",
+      "goal": "Each weight takes a tiny step downhill; step size and noisy mini-batches are why learning is millions of small nudges, not one jump.",
+      "claims": [
+        "The gradient gives the direction but not the distance; step size too low is slow, too high is faster but riskier, and is one of the most important and headache-inducing hyperparameters. https://cs231n.github.io/optimization-1/",
+        "The loss can be pictured as terrain; a blindfolded hiker feels the slope and steps downhill. https://cs231n.github.io/optimization-1/",
+        "The gradient is computed over a mini-batch rather than all data; the stochastic gradient is an unbiased estimate of the full gradient, so errors cancel out on average. https://d2l.ai/chapter_optimization/sgd.html",
+        "Mini-batch descent is like a drunk man stumbling downhill but taking quick steps. https://www.3blue1brown.com/lessons/backpropagation",
+        "A model converges when more iterations stop reducing loss. https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent"
+      ],
+      "visual_idea": "Split screen: a blindfolded dot on a bumpy 3D landscape taking tiny steps (left) versus a giant leap that overshoots across the valley and lands higher (right); then the jittery mini-batch path zig-zags down anyway while the cost meter ticks down.",
+      "words": 190
+    },
+    {
+      "id": "ch05",
+      "title": "Recap: less wrong, again",
+      "goal": "Recap the loop, deliver the memorable line, and point to a next topic.",
+      "claims": [
+        "Backpropagation makes gradient descent feasible for multi-layer neural networks. https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+        "Gradients through many layers can vanish and layers with vanishing gradients train very slowly or not at all (teaser for the next topic). https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation"
+      ],
+      "visual_idea": "The 13,000 dials from the opening, now ordered; the same handwritten 7 is read correctly as the cost meter hits near zero, then the three icons collapse into one loop arrow; end card teases a stack of layers where a signal fades to nothing (vanishing gradients).",
+      "words": 70
+    }
+  ]
+}

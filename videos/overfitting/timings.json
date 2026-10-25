@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Your model can ace every training example and still fail in real life.",
+    "start": 0.0,
+    "duration": 3.65
+  },
+  {
+    "i": 2,
+    "text": "That is overfitting.",
+    "start": 3.9,
+    "duration": 1.56
+  },
+  {
+    "i": 3,
+    "text": "It means the model memorizes the training set so closely that it fails on new data.",
+    "start": 5.71,
+    "duration": 4.31
+  },
+  {
+    "i": 4,
+    "text": "On the whiteboard, a wiggly curve hits every dot perfectly.",
+    "start": 10.27,
+    "duration": 3.16
+  },
+  {
+    "i": 5,
+    "text": "But a simple line would likely predict new points better.",
+    "start": 13.68,
+    "duration": 2.98
+  },
+  {
+    "i": 6,
+    "text": "So watch validation loss, not just training loss.",
+    "start": 16.91,
+    "duration": 2.68
+  }
+]

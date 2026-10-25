@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root { --ground:#0a0d14; --panel:#141a26; --ink:#fff; --dim:#8591a8; --accent:#00e5a0; --warn:#ff4d6d; --font-display:"Outfit","Inter",sans-serif; --mono:"Menlo","Courier New",monospace; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+      #root { position:relative; width:1080px; height:1920px; font-family:var(--font-display); color:var(--ink); background:var(--ground); }
+      #brand { position:absolute; left:0; width:1080px; top:175px; text-align:center; font-size:28px; font-weight:700; letter-spacing:6px; color:var(--accent); }
+      #title { position:absolute; left:0; width:1080px; top:222px; text-align:center; font-size:76px; font-weight:800; letter-spacing:-1px; line-height:1; white-space:nowrap; }
+      #title em { color:var(--accent); font-style:normal; }
+      .g { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+      .hd { position:absolute; top:335px; text-align:center; font-size:34px; font-weight:800; letter-spacing:3px; color:var(--dim); }
+      #h-in { left:40px; width:440px; } #h-fn { left:500px; width:200px; } #h-out { left:730px; width:310px; }
+      #mach { position:absolute; left:520px; top:395px; width:160px; height:545px; border-radius:40px; background:var(--panel); border:4px solid var(--accent); box-shadow:0 0 40px #00e5a055; }
+      .bar { position:absolute; height:96px; border-radius:20px; background:var(--panel); border:4px solid var(--dim); display:flex; align-items:center; justify-content:center; font-size:38px; font-weight:800; white-space:nowrap; }
+      .in { left:40px; } .out { left:740px; width:300px; font-family:var(--mono); font-size:34px; color:var(--accent); border-color:var(--accent); }
+      #i1 { top:440px; width:150px; } #i2 { top:630px; width:300px; } #i3 { top:820px; width:440px; }
+      #o1 { top:440px; } #o2 { top:630px; } #o3 { top:820px; }
+      .ar { position:absolute; left:0; top:0; }
+      .big { position:absolute; left:0; width:1080px; text-align:center; font-weight:800; }
+      #n256 { top:360px; font-size:210px; line-height:1; color:var(--accent); }
+      #bits { top:590px; font-size:56px; letter-spacing:8px; }
+      .hex { position:absolute; left:0; width:1080px; text-align:center; font-family:var(--mono); font-weight:700; }
+      .hex div { white-space:nowrap; }
+      .hex u { text-decoration:none; color:var(--warn); }
+      .lab { position:absolute; left:0; width:1080px; text-align:center; font-size:46px; font-weight:800; }
+      .lab b { color:var(--accent); } .lab u { text-decoration:none; color:var(--warn); }
+      #hexA { top:430px; font-size:42px; line-height:52px; letter-spacing:4px; color:var(--accent); }
+      #hexB1, #hexB2 { top:770px; font-size:42px; line-height:52px; letter-spacing:4px; }
+      #hexB1 { color:var(--accent); } #hexB2 { color:var(--dim); }
+      #hexS { top:700px; font-size:52px; line-height:68px; letter-spacing:8px; color:var(--accent); }
+      #cnt { top:1040px; font-size:54px; color:var(--warn); }
+      #grid { position:absolute; left:108px; top:500px; width:864px; display:grid; grid-template-columns:repeat(12,64px); gap:8px; }
+      .cell { width:64px; height:64px; border-radius:12px; background:var(--panel); border:3px solid #2a3347; }
+      #avl { top:340px; font-size:78px; letter-spacing:-1px; }
+      #ill { top:1090px; font-size:30px; letter-spacing:4px; color:var(--dim); font-weight:700; }
+      .card { position:absolute; left:90px; width:900px; height:230px; border-radius:30px; background:var(--panel); border:5px solid var(--accent); }
+      .card .t { position:absolute; left:40px; top:28px; font-size:44px; font-weight:800; }
+      .card .f { position:absolute; left:40px; top:95px; font-family:var(--mono); font-size:44px; font-weight:700; }
+      .card .s { position:absolute; left:40px; top:155px; font-size:42px; font-weight:800; letter-spacing:2px; }
+      #cA { top:380px; } #cA .f, #cA .s { color:var(--accent); }
+      #cB { top:680px; border-color:var(--warn); } #cB .f, #cB .s { color:var(--warn); }
+      #mid { top:960px; font-size:44px; color:var(--ink); }
+      .cap { position:absolute; left:50px; width:980px; top:1170px; height:170px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:52px; font-weight:800; line-height:1.1; }
+      .cap span { display:block; text-shadow:0 4px 24px #000; }
+      .cap b { color:var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26.36" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">HASH <em>FUNCTION</em></div>
+
+      <div id="s1" class="g">
+        <div id="h-in" class="hd">ANY SIZE IN</div>
+        <div id="h-fn" class="hd" style="color:#00e5a0">HASH</div>
+        <div id="h-out" class="hd">FIXED SIZE OUT</div>
+        <div id="mach"></div>
+        <div id="i1" class="bar in">hi</div><div id="o1" class="bar out">8f4343…</div>
+        <div id="i2" class="bar in">a whole book</div><div id="o2" class="bar out">2d7116…</div>
+        <div id="i3" class="bar in">a 4 GB video file</div><div id="o3" class="bar out">a1fce4…</div>
+      </div>
+
+      <div id="s3" class="g">
+        <div id="n256" class="big">256</div>
+        <div id="bits" class="big">BITS, ALWAYS</div>
+        <div id="hexS" class="hex"><div>2cf24dba5fb0a30e</div><div>26e83b2ac5b9e29e</div><div>1b161e5c1fa7425e</div><div>73043362938b9824</div></div>
+        <div id="ill" class="big" style="top:1010px;color:#8591a8">REAL SHA-256 OF "hello" = 64 HEX CHARS</div>
+      </div>
+
+      <div id="s4" class="g">
+        <div id="lA" class="lab" style="top:365px">SHA-256 of <b>"hello"</b></div>
+        <div id="hexA" class="hex"><div>2cf24dba5fb0a30e</div><div>26e83b2ac5b9e29e</div><div>1b161e5c1fa7425e</div><div>73043362938b9824</div></div>
+        <div id="lB1" class="lab" style="top:705px">SHA-256 of <b>"hello"</b></div>
+        <div id="lB2" class="lab" style="top:705px">SHA-256 of "hell<u>p</u>"</div>
+        <div id="hexB1" class="hex"><div>2cf24dba5fb0a30e</div><div>26e83b2ac5b9e29e</div><div>1b161e5c1fa7425e</div><div>73043362938b9824</div></div>
+        <div id="hexB2" class="hex"><div><u>f</u><u>d</u><u>d</u><u>7</u><u>5</u><u>8</u><u>5</u><u>e</u><u>0</u><u>8</u><u>c</u><u>4</u><u>e</u><u>2</u><u>a</u><u>f</u></div><div><u>d</u><u>7</u><u>1</u><u>d</u><u>c</u><u>a</u><u>b</u><u>d</u><u>b</u><u>4</u><u>6</u><u>3</u><u>6</u><u>c</u><u>8</u><u>9</u></div><div><u>d</u><u>5</u><u>5</u><u>7</u><u>a</u><u>3</u><u>f</u><u>4</u><u>2</u><u>d</u><u>b</u><u>9</u><u>e</u>2<u>0</u><u>4</u></div><div><u>0</u><u>c</u><u>8</u><u>b</u><u>b</u><u>d</u><u>1</u><u>7</u><u>0</u><u>8</u><u>a</u><u>a</u><u>4</u><u>c</u><u>e</u><u>7</u></div></div>
+        <div id="cnt" class="big">63 OF 64 CHARACTERS DIFFER</div>
+      </div>
+
+      <div id="s5" class="g">
+        <div id="avl" class="big">AVALANCHE <span style="color:#00e5a0">EFFECT</span></div>
+        <div id="grid"><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell"></div><div class="cell k"></div><div class="cell"></div><div class="cell k"></div></div>
+        <div id="ill2" class="big" style="top:1090px;font-size:30px;letter-spacing:4px;color:#8591a8;font-weight:700">ILLUSTRATIVE: ONE FLIP SPREADS</div>
+      </div>
+
+      <div id="s6" class="g">
+        <div id="cA" class="card"><div class="t">"hello"</div><div class="f">2cf24d…</div><div class="s">MATCH ✓ UNCHANGED</div></div>
+        <div id="cB" class="card"><div class="t">"hell<span style="color:#ff4d6d">p</span>"</div><div class="f">fdd758…</div><div class="s">DIFFERENT ✕ CHANGE SPOTTED</div></div>
+      </div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="5.12" data-track-index="2"><span>Feed this machine a message of practically <b>any length</b>, and the answer is always the <b>same size</b>.</span></div>
+      <div id="cap2" class="clip cap" data-start="5.12" data-duration="2.93" data-track-index="2"><span>A hash function turns it into a fixed-size <b>digest</b>.</span></div>
+      <div id="cap3" class="clip cap" data-start="8.05" data-duration="4.61" data-track-index="2"><span>For SHA-256, that digest is always exactly <b>256 bits</b>.</span></div>
+      <div id="cap4" class="clip cap" data-start="12.66" data-duration="4.63" data-track-index="2"><span>Change <b>one single character</b>, and the digest almost certainly changes drastically.</span></div>
+      <div id="cap5" class="clip cap" data-start="17.29" data-duration="2.49" data-track-index="2"><span>Experts call that the <b>avalanche effect</b>.</span></div>
+      <div id="cap6" class="clip cap" data-start="19.78" data-duration="6.58" data-track-index="2"><span>A tiny edit, a very different <b>fingerprint</b>: that makes a hash useful for <b>spotting changes</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="24.36" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0", WARN = "#ff4d6d";
+      gsap.set(["#s3", "#s4", "#s5", "#s6", "#lB2", "#hexB2", "#cnt", "#ill2"], { opacity: 0 });
+      gsap.set(["#h-fn", "#mach"], { opacity: 1 });
+      ["#cap2","#cap3","#cap4","#cap5","#cap6"].forEach((c) => gsap.set(c + " span", { opacity: 0, y: 24 }));
+      const caps = [["#cap1",0,5.12],["#cap2",5.12,2.93],["#cap3",8.05,4.61],["#cap4",12.66,4.63],["#cap5",17.29,2.49],["#cap6",19.78,6.58]];
+      caps.forEach(([id, t, d], i) => {
+        if (i) tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      const swap = (out, inn, t) => { tl.to(out, { opacity: 0, duration: 0.25 }, t); tl.fromTo(inn, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t + 0.1); };
+
+      // s1 (0-5.12): three inputs of different size, three outputs of the same size
+      tl.fromTo(["#i1", "#i2", "#i3"], { x: -40 }, { x: 0, duration: 0.4, ease: "power2.out", stagger: 0.35 }, 0.1);
+      tl.fromTo(["#o1", "#o2", "#o3"], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out", stagger: 0.35 }, 1.6);
+      tl.fromTo(["#h-in", "#h-out"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.2);
+      tl.to("#mach", { boxShadow: "0 0 90px #00e5a0cc", duration: 0.3, yoyo: true, repeat: 3 }, 1.2);
+      // s2 (5.12-8.05): the digest is the fixed-size output
+      tl.to(["#o1", "#o2", "#o3"], { backgroundColor: "#0b3a30", scale: 1.05, duration: 0.3, stagger: 0.15, transformOrigin: "50% 50%" }, 5.25);
+      tl.to(["#h-out"], { color: ACC, duration: 0.3 }, 5.25);
+      tl.to(["#i1", "#i2", "#i3", "#h-in"], { opacity: 0.35, duration: 0.3 }, 5.5);
+      tl.to("#s1", { opacity: 0, duration: 0.3 }, 7.8);
+      // s3 (8.05-12.66): 256 bits
+      tl.to("#s3", { opacity: 1, duration: 0.3 }, 8.05);
+      const n = { v: 0 };
+      tl.fromTo(n, { v: 0 }, { v: 256, duration: 1.4, ease: "power2.out", onUpdate() { document.getElementById("n256").textContent = Math.round(n.v); } }, 8.2);
+      tl.fromTo("#hexS", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 9.8);
+      tl.to("#s3", { opacity: 0, duration: 0.25 }, 12.4);
+      // s4 (12.66-17.29): one character changes, digest scrambles
+      tl.to("#s4", { opacity: 1, duration: 0.3 }, 12.66);
+      swap("#lB1", "#lB2", 13.7); swap("#hexB1", "#hexB2", 13.8);
+      tl.to("#hexB2", { color: ACC, duration: 0.01 }, 13.9);
+      tl.to("#hexB2 u", { color: WARN, duration: 0.3 }, 14.4);
+      tl.fromTo("#cnt", { opacity: 0, scale: 0.8, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 15.6);
+      tl.to("#s4", { opacity: 0, duration: 0.25 }, 17.05);
+      // s5 (17.29-19.78): avalanche
+      tl.to("#s5", { opacity: 1, duration: 0.3 }, 17.29);
+      tl.to("#ill2", { opacity: 1, duration: 0.3 }, 17.5);
+      tl.to(".cell", { backgroundColor: ACC, borderColor: ACC, duration: 0.25, stagger: { each: 0.025, from: "center", grid: [8, 12] } }, 17.6);
+      tl.to(".cell.k", { backgroundColor: WARN, borderColor: WARN, duration: 0.25, stagger: { each: 0.02, from: "center", grid: [8, 12] } }, 18.5);
+      tl.to("#s5", { opacity: 0, duration: 0.25 }, 19.55);
+      // s6 (19.78-26.36): fingerprint compare, holds to the end
+      tl.fromTo("#cA", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 19.9);
+      tl.fromTo("#s6", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 19.78);
+      tl.fromTo("#cB", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 21.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

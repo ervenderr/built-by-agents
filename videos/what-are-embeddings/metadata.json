@@ -1,0 +1,17 @@
+{
+  "title": "What Are Embeddings? Words as Points on a Map",
+  "description": "An embedding is a list of numbers that places a word as a point in space, so similar meanings sit close together and AI can measure meaning with distance for search, clustering and recommendations.\n\nThe coordinates, positions and distances shown are illustrative, and real embeddings typically use many more dimensions than the animation shows.\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #Embeddings #AI",
+  "tags": [
+    "what are embeddings",
+    "embeddings explained",
+    "word embeddings",
+    "vector embeddings",
+    "semantic search",
+    "vector space",
+    "ai explained",
+    "machine learning basics"
+  ],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

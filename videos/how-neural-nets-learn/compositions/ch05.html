@@ -1,0 +1,154 @@
+<template>
+  <style>
+    #ch05 { position: absolute; inset: 0; background: #0b0f14; color: #e8eef5; font-family: Inter, system-ui, sans-serif; overflow: hidden; }
+    #ch05 .abs { position: absolute; }
+    #ch05-dials { left: 120px; top: 110px; width: 1680px; height: 240px; }
+    #ch05-dials .d { position: absolute; width: 36px; height: 36px; border: 3px solid #8a97a6; border-radius: 50%; }
+    #ch05-dials .n { position: absolute; left: 14px; top: 2px; width: 4px; height: 15px; border-radius: 2px; background: #ffb454; transform-origin: 50% 100%; }
+    #ch05-dlabel { left: 120px; top: 360px; width: 1680px; text-align: center; font-size: 32px; color: #8a97a6; font-family: ui-monospace, Menlo, monospace; letter-spacing: 2px; }
+    .ch05-card { width: 360px; height: 260px; border: 4px solid #8a97a6; border-radius: 28px; background: #121821; top: 470px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+    .ch05-card svg { width: 110px; height: 110px; }
+    .ch05-card span { font-size: 40px; font-weight: 800; letter-spacing: 3px; }
+    #ch05-loop { left: 760px; top: 450px; width: 400px; height: 300px; }
+    #ch05-looplbl { left: 120px; top: 780px; width: 1680px; text-align: center; font-size: 40px; font-weight: 800; letter-spacing: 3px; color: #00e5a0; }
+    #ch05-seven { left: 330px; top: 430px; width: 260px; height: 330px; }
+    #ch05-seven svg { width: 260px; height: 330px; }
+    #ch05-read { left: 330px; top: 770px; width: 260px; text-align: center; font-size: 40px; font-family: ui-monospace, Menlo, monospace; font-weight: 700; height: 50px; }
+    #ch05-read .r { position: absolute; left: 0; width: 260px; }
+    #ch05-meterwrap { left: 800px; top: 520px; width: 900px; }
+    #ch05-meterlbl { font-size: 40px; font-weight: 800; letter-spacing: 3px; margin-bottom: 20px; }
+    #ch05-track { width: 900px; height: 60px; border-radius: 30px; border: 4px solid #8a97a6; overflow: hidden; }
+    #ch05-fill { width: 900px; height: 60px; background: #ffb454; transform-origin: 0 50%; }
+    #ch05-meternum { margin-top: 20px; font-size: 44px; font-family: ui-monospace, Menlo, monospace; color: #8a97a6; }
+    .ch05-col { top: 0; }
+    .ch05-nd { width: 56px; height: 56px; border-radius: 50%; border: 4px solid #8a97a6; background: #121821; }
+    .ch05-bar { height: 16px; border-radius: 8px; background: #00e5a0; top: 562px; transform-origin: 100% 50%; }
+    #ch05-sig { left: 0; width: 36px; height: 36px; border-radius: 50%; background: #00e5a0; box-shadow: 0 0 30px #00e5a0; top: 552px; }
+    #ch05-layerlbl { left: 120px; top: 780px; width: 1680px; text-align: center; font-size: 36px; color: #8a97a6; font-family: ui-monospace, Menlo, monospace; letter-spacing: 2px; }
+    #ch05-end { left: 120px; top: 440px; width: 1680px; text-align: center; }
+    #ch05-end .k { font-size: 36px; font-weight: 800; letter-spacing: 8px; color: #ffb454; }
+    #ch05-end .t { margin-top: 24px; font-size: 96px; font-weight: 800; }
+    #ch05-end .t b { color: #00e5a0; }
+    .ch05-cap { left: 120px; top: 900px; width: 1680px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 800; line-height: 1.12; }
+    .ch05-cap span { display: block; text-shadow: 0 4px 24px #000; }
+    .ch05-cap b { color: #00e5a0; }
+  </style>
+  <div id="ch05" data-composition-id="ch05" data-width="1920" data-height="1080">
+    <div id="ch05-dials" class="abs"></div>
+    <div id="ch05-dlabel" class="abs">~13,000 DIALS · ILLUSTRATIVE (200 SHOWN)</div>
+
+    <div id="ch05-c1" class="abs ch05-card" style="left:180px"><svg viewBox="0 0 100 100" fill="none" stroke="#e8eef5" stroke-width="6"><path d="M10 80 H90 M20 80 V40 M45 80 V20 M70 80 V55"/></svg><span>MEASURE</span></div>
+    <div id="ch05-c2" class="abs ch05-card" style="left:780px"><svg viewBox="0 0 100 100" fill="none" stroke="#e8eef5" stroke-width="6"><circle cx="50" cy="50" r="12"/><path d="M50 10 V30 M50 70 V90 M10 50 H30 M70 50 H90"/></svg><span>BLAME</span></div>
+    <div id="ch05-c3" class="abs ch05-card" style="left:1380px"><svg viewBox="0 0 100 100" fill="none" stroke="#e8eef5" stroke-width="6"><path d="M15 75 L40 75 L40 50 L65 50 L65 25 L90 25"/></svg><span>SMALL STEP</span></div>
+
+    <svg id="ch05-loop" class="abs" viewBox="0 0 400 300" fill="none" stroke="#00e5a0" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+      <g id="ch05-loopg"><path d="M330 150 A130 130 0 1 1 270 60"/><path d="M285 20 L270 60 L315 75"/></g>
+    </svg>
+    <div id="ch05-looplbl" class="abs">MEASURE → BLAME → STEP → REPEAT</div>
+
+    <div id="ch05-seven" class="abs"><svg viewBox="0 0 260 330" fill="none" stroke="#e8eef5" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path id="ch05-sevenp" d="M40 60 Q120 40 215 55 Q170 150 110 290" pathLength="1"/></svg></div>
+    <div id="ch05-read" class="abs"><span id="ch05-r1" class="r" style="color:#8a97a6">READS: 1</span><span id="ch05-r2" class="r" style="color:#00e5a0">READS: 7 ✓</span></div>
+    <div id="ch05-meterwrap" class="abs">
+      <div id="ch05-meterlbl">COST METER</div>
+      <div id="ch05-track"><div id="ch05-fill"></div></div>
+      <div id="ch05-meternum">ILLUSTRATIVE · cost 2.40 → 0.03</div>
+    </div>
+
+    <div id="ch05-layers"></div>
+    <div id="ch05-layerlbl" class="abs">BLAME SIGNAL TRAVELS BACKWARD · ILLUSTRATIVE</div>
+    <div id="ch05-sig" class="abs"></div>
+
+    <div id="ch05-end" class="abs"><div class="k">NEXT</div><div class="t">Vanishing <b>gradients</b></div></div>
+
+    <div id="ch05-cap1" class="clip abs ch05-cap" data-start="0" data-duration="1.8" data-track-index="2"><span>So here is the whole <b>loop</b>.</span></div>
+    <div id="ch05-cap2" class="clip abs ch05-cap" data-start="1.8" data-duration="4.2" data-track-index="2"><span>Measure the error, assign blame to each weight, take a <b>small step</b>, and repeat.</span></div>
+    <div id="ch05-cap3" class="clip abs ch05-cap" data-start="6" data-duration="4.54" data-track-index="2"><span><b>Backpropagation</b> is what makes gradient descent feasible for networks with many layers.</span></div>
+    <div id="ch05-cap4" class="clip abs ch05-cap" data-start="10.54" data-duration="4.18" data-track-index="2"><span>The network never memorized an answer, it just got a little <b>less wrong</b> each time.</span></div>
+    <div id="ch05-cap5" class="clip abs ch05-cap" data-start="14.72" data-duration="4.14" data-track-index="2"><span>But stack many layers, and the blame signal can <b>shrink</b> as it travels backward.</span></div>
+    <div id="ch05-cap6" class="clip abs ch05-cap" data-start="18.86" data-duration="3.79" data-track-index="2"><span>Those <b>vanishing gradients</b> make layers train very slowly, or not at all.</span></div>
+    <div id="ch05-cap7" class="clip abs ch05-cap" data-start="22.65" data-duration="2.23" data-track-index="2"><span>That problem is worth understanding <b>next</b>.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const $ = (s) => document.querySelector(s);
+    // dials: seeded pseudo-random start angles
+    let seed = 7;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const dials = $("#ch05-dials"); const needles = [];
+    for (let r = 0; r < 5; r++) for (let c = 0; c < 28; c++) {
+      const d = document.createElement("div"); d.className = "d";
+      d.style.left = c * 60 + 12 + "px"; d.style.top = r * 48 + "px";
+      const n = document.createElement("div"); n.className = "n"; d.appendChild(n); dials.appendChild(d); needles.push(n);
+    }
+    needles.forEach((n) => (n.dataset.a = Math.round(rnd() * 360 - 180)));
+    // layers
+    const XS = [300, 660, 1020, 1380, 1740 - 56];
+    const layers = $("#ch05-layers");
+    XS.forEach((x, i) => [0, 1, 2].forEach((k) => {
+      const nd = document.createElement("div"); nd.className = "abs ch05-nd ch05-n"; nd.style.left = x + "px"; nd.style.top = 480 + k * 90 + "px"; nd.style.top = [480, 560, 640][k] + "px"; layers.appendChild(nd);
+    }));
+    const WID = [16, 11, 6, 2];
+    const bars = XS.slice(0, 4).map((x, i) => {
+      const b = document.createElement("div"); b.className = "abs ch05-bar"; b.id = "ch05-b" + i;
+      b.style.left = x + 56 + "px"; b.style.width = XS[i + 1] - x - 56 + "px"; b.style.top = 588 - WID[i] / 2 + "px"; b.style.height = WID[i] + "px"; layers.appendChild(b); return b;
+    });
+
+    // initial states
+    gsap.set(needles, { rotation: (i) => +needles[i].dataset.a });
+    gsap.set(["#ch05-c1","#ch05-c2","#ch05-c3","#ch05-loop","#ch05-looplbl","#ch05-seven","#ch05-read","#ch05-meterwrap","#ch05-layers","#ch05-layerlbl","#ch05-sig","#ch05-end"], { opacity: 0 });
+
+    // captions
+    [[1,0,1.8],[2,1.8,4.2],[3,6,4.54],[4,10.54,4.18],[5,14.72,4.14],[6,18.86,3.79],[7,22.65,2.23]].forEach(([i, t, d]) => {
+      const s = "#ch05-cap" + i + " span";
+      tl.fromTo(s, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t);
+      if (i < 7) tl.to(s, { opacity: 0, duration: 0.15 }, t + d - 0.17);
+    });
+
+    // beat 1 (0-1.8): dials snap into order
+    tl.fromTo("#ch05-dials", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#ch05-dlabel", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);
+    tl.fromTo(needles, { rotation: (i) => +needles[i].dataset.a }, { rotation: 0, duration: 1.4, ease: "power2.inOut", stagger: { each: 0.004 } }, 0.3);
+
+    // beat 2 (1.8-6): three steps, collapse into a loop
+    ["#ch05-c1","#ch05-c2","#ch05-c3"].forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.2 + i * 0.9);
+    });
+    tl.to("#ch05-c1", { x: 600, duration: 0.7, ease: "power2.inOut" }, 5.0);
+    tl.to("#ch05-c3", { x: -600, duration: 0.7, ease: "power2.inOut" }, 5.0);
+    tl.to(["#ch05-c1","#ch05-c2","#ch05-c3"], { opacity: 0, duration: 0.3 }, 5.55);
+    tl.fromTo("#ch05-loop", { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 5.5);
+    tl.fromTo("#ch05-looplbl", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 6.3);
+    // beat 3 (6-10.5): loop spins slowly
+    tl.fromTo("#ch05-loopg", { rotation: 0, transformOrigin: "200px 150px" }, { rotation: 360, duration: 4.2, ease: "none" }, 6.2);
+    tl.to(["#ch05-loop","#ch05-looplbl"], { opacity: 0, duration: 0.4 }, 10.1);
+
+    // beat 4 (10.5-14.7): 7 read correctly, cost near zero
+    tl.fromTo("#ch05-seven", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 10.5);
+    tl.fromTo("#ch05-sevenp", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 10.6);
+    tl.fromTo("#ch05-read", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 11.3);
+    gsap.set("#ch05-r2", { opacity: 0 });
+    tl.fromTo("#ch05-meterwrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 10.7);
+    tl.fromTo("#ch05-fill", { scaleX: 1 }, { scaleX: 0.03, duration: 3, ease: "power2.out" }, 11.0);
+    tl.to("#ch05-r1", { opacity: 0, duration: 0.3 }, 13.2);
+    tl.fromTo("#ch05-r2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 13.3);
+    tl.to(["#ch05-seven","#ch05-read","#ch05-meterwrap"], { opacity: 0, duration: 0.4 }, 14.3);
+
+    // beat 5-6 (14.7-22.6): blame signal fades through the stack
+    tl.fromTo("#ch05-layers", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 14.7);
+    tl.fromTo("#ch05-layerlbl", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 15.0);
+    tl.fromTo("#ch05-sig", { opacity: 0, x: XS[4] + 10, scale: 1 }, { opacity: 1, duration: 0.3 }, 15.3);
+    [3, 2, 1, 0].forEach((i, k) => {
+      const t = 15.6 + k * 1.2;
+      tl.fromTo("#ch05-sig", { x: XS[i + 1] + 10 }, { x: XS[i] + 10, duration: 1.0, ease: "power1.inOut" }, t);
+      tl.to("#ch05-sig", { scale: 1 - 0.2 * (k + 1), opacity: 1 - 0.2 * (k + 1), duration: 1.0 }, t);
+    });
+    tl.to("#ch05-sig", { opacity: 0, duration: 0.6 }, 20.4);
+    tl.to("#ch05-b3", { opacity: 0.5, duration: 0.5 }, 17.0);
+    tl.to("#ch05-b0", { opacity: 0.2, duration: 0.5 }, 19.4);
+    tl.to(["#ch05-layers","#ch05-layerlbl","#ch05-dials","#ch05-dlabel"], { opacity: 0, duration: 0.5 }, 22.3);
+
+    // beat 7 (22.65-24.88): next-topic card
+    tl.fromTo("#ch05-end", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 22.8);
+    window.__timelines["ch05"] = tl;
+  </script>
+</template>

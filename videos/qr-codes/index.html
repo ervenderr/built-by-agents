@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0b0f17;
+        --panel: #151b28;
+        --ink: #ffffff;
+        --dim: #8591a8;
+        --accent: #00e5a0;
+        --warn: #ff4d6d;
+        --font-display: "Outfit", "Inter", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; font-family: var(--font-display); color: var(--ink); background: var(--ground); }
+      #brand { position: absolute; left: 0; width: 1080px; top: 175px; text-align: center; font-size: 28px; font-weight: 700; letter-spacing: 6px; color: var(--accent); }
+      #title { position: absolute; left: 0; width: 1080px; top: 222px; text-align: center; font-size: 78px; font-weight: 800; letter-spacing: -1px; line-height: 1; white-space: nowrap; }
+      #title em { color: var(--accent); font-style: normal; }
+      #ill { position: absolute; left: 0; width: 1080px; top: 306px; text-align: center; font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--dim); }
+      #panel { position: absolute; left: 201px; top: 340px; width: 678px; height: 678px; border-radius: 28px; background: #f4f6fa; }
+      #grid { position: absolute; left: 225px; top: 364px; width: 630px; height: 630px; }
+      .c { position: absolute; width: 30px; height: 30px; background: #0b0f17; }
+      #rings div { position: absolute; width: 226px; height: 226px; border: 8px solid var(--accent); border-radius: 14px; box-shadow: 0 0 30px var(--accent); }
+      #dmgbox { position: absolute; left: 555px; top: 694px; width: 300px; height: 300px; border: 6px dashed var(--warn); border-radius: 8px; }
+      #scan { position: absolute; left: 225px; top: 364px; width: 630px; height: 8px; background: var(--accent); box-shadow: 0 0 24px var(--accent); border-radius: 4px; }
+      #scratch, #brk { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .pill { position: absolute; left: 0; width: 1080px; top: 1030px; height: 64px; display: flex; align-items: center; justify-content: center; }
+      .pill span { padding: 0 34px; height: 64px; display: flex; align-items: center; border-radius: 32px; font-size: 40px; font-weight: 800; letter-spacing: 2px; background: var(--panel); border: 4px solid var(--accent); color: #fff; white-space: nowrap; }
+      .pill.bad span { border-color: var(--warn); }
+      .row { position: absolute; left: 0; width: 1080px; top: 1108px; height: 62px; display: flex; align-items: center; justify-content: center; gap: 24px; font-size: 38px; font-weight: 800; }
+      .tagc { padding: 0 24px; height: 58px; display: flex; align-items: center; border-radius: 16px; background: var(--panel); border: 3px solid var(--dim); white-space: nowrap; }
+      .sw { display: inline-block; width: 26px; height: 26px; margin-right: 12px; border-radius: 5px; }
+      #gear, #disc { width: 62px; height: 62px; }
+      #meter { width: 380px; height: 30px; border-radius: 15px; background: var(--panel); border: 3px solid var(--dim); overflow: hidden; }
+      #fill { width: 380px; height: 100%; background: var(--warn); transform-origin: 0 50%; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1182px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 62px; font-weight: 800; line-height: 1.06; }
+      .cap span { display: block; text-shadow: 0 4px 24px #000; }
+      .cap b { color: var(--accent); }
+      #cap4 { font-size: 50px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.17" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">LOSE 25%. <em>STILL SCANS.</em></div>
+      <div id="ill">ILLUSTRATIVE PATTERN</div>
+      <div id="panel"></div>
+      <div id="grid"></div>
+      <div id="rings">
+        <div id="r1" style="left:217px;top:356px"></div>
+        <div id="r2" style="left:645px;top:356px"></div>
+        <div id="r3" style="left:217px;top:784px"></div>
+      </div>
+      <div id="dmgbox"></div>
+      <div id="scan"></div>
+      <svg id="scratch" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+        <path id="scr" d="M200 930 L880 520" stroke="#6b7488" stroke-width="12" stroke-linecap="round" fill="none" />
+      </svg>
+      <svg id="brk" viewBox="0 0 1080 1920" data-layout-allow-overlap>
+        <g stroke="#00e5a0" stroke-width="10" fill="none" stroke-linecap="round">
+          <path d="M150 440 V 330 H 260" /><path d="M820 330 H 930 V 440" />
+          <path d="M150 920 V 1030 H 260" /><path d="M820 1030 H 930 V 920" />
+        </g>
+      </svg>
+
+      <div id="p1" class="pill"><span>SCANS</span></div>
+      <div id="p2" class="pill"><span>BACKUP BUILT IN</span></div>
+      <div id="p3" class="pill bad"><span>HIT A CORNER: NO SCAN</span></div>
+      <div id="p4" class="pill"><span>YOUR LINK + EXTRA BYTES</span></div>
+      <div id="p5" class="pill"><span>STILL SCANS</span></div>
+      <div id="p6" class="pill"><span>STILL WORKS</span></div>
+
+      <div id="w2" class="row">
+        <svg id="gear" viewBox="0 0 62 62"><circle cx="31" cy="31" r="21" fill="none" stroke="#8591a8" stroke-width="12" stroke-dasharray="9 7.2" /><circle cx="31" cy="31" r="17" fill="#151b28" stroke="#8591a8" stroke-width="6" /></svg>
+        <div class="tagc">1994 · CAR PARTS</div>
+      </div>
+      <div id="w4" class="row">
+        <div class="tagc"><i class="sw" style="background:#0b0f17;border:2px solid #fff"></i>LINK</div>
+        <div class="tagc"><i class="sw" style="background:#00a870"></i>EXTRA BYTES</div>
+        <svg id="disc" viewBox="0 0 62 62"><circle cx="31" cy="31" r="29" fill="#151b28" stroke="#00e5a0" stroke-width="4" /><circle cx="31" cy="31" r="9" fill="#0b0f17" stroke="#8591a8" stroke-width="3" /><path d="M10 50 L52 14" stroke="#ff4d6d" stroke-width="4" stroke-linecap="round" /></svg>
+      </div>
+      <div id="w5" class="row">
+        <div id="meter"><div id="fill"></div></div>
+        <div id="pct" style="color:#ff4d6d;min-width:230px">0% LOST</div>
+      </div>
+      <div id="w6" class="row"><div class="tagc" style="border-color:#00e5a0">3 CORNERS INTACT</div></div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.72" data-track-index="2"><span>A QR code can lose a <b>quarter</b> of itself and still scan.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.97" data-duration="4.17" data-track-index="2"><span>Invented in <b>1994</b> for car parts, it hides <b>backup data</b> on purpose.</span></div>
+      <div id="cap3" class="clip cap" data-start="7.39" data-duration="2.62" data-track-index="2"><span>Three big <b>corner squares</b> tell your phone where to look.</span></div>
+      <div id="cap4" class="clip cap" data-start="10.26" data-duration="4.51" data-track-index="2"><span>The rest holds your link plus <b>extra bytes</b>, using the math that fixes scratched music <b>CDs</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="15.02" data-duration="2.66" data-track-index="2"><span>At the highest setting, <b>thirty percent</b> can be missing.</span></div>
+      <div id="cap6" class="clip cap" data-start="17.93" data-duration="4.24" data-track-index="2"><span>So a scuffed QR code usually <b>still works</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="20.17" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const N = 21, S = 30, DARK = "#0b0f17", GREEN = "#00a870", LOST = "#ffb3c1";
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+      const inFinder = (r, c) => (r < 8 && c < 8) || (r < 8 && c > 12) || (r > 12 && c < 8);
+      const finderDark = (r, c) => {
+        const q = (a, b) => { const m = Math.max(Math.abs(a - 3), Math.abs(b - 3)); return m === 3 || m <= 1; };
+        if (r < 8 && c < 8) return r < 7 && c < 7 && q(r, c);
+        if (r < 8 && c > 12) return r < 7 && q(r, c - 14);
+        return c < 7 && q(r - 14, c);
+      };
+      const grid = document.getElementById("grid");
+      const cells = [];
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        const fin = inFinder(r, c);
+        const dark = fin ? finderDark(r, c) : (r === 6 || c === 6) ? (r + c) % 2 === 0 : rnd() < 0.5;
+        if (!dark) continue;
+        const el = document.createElement("div");
+        el.className = "c";
+        el.style.left = c * S + "px"; el.style.top = r * S + "px";
+        grid.appendChild(el);
+        cells.push({ el, r, c, fin, ecc: !fin && (r * 2 + c) % 3 === 0 });
+      }
+      const body = cells.filter((x) => !x.fin);
+      const E = (a) => a.map((x) => x.el);
+      const eccs = body.filter((x) => x.ecc), data = body.filter((x) => !x.ecc);
+      const box = body.filter((x) => x.r >= 11 && x.c >= 11);
+      const rand30 = body.filter((x) => x.r > 8 && rnd() < 0.55);
+      const scr = body.filter((x) => { // cells within 20px of the scratch line (200,930)->(880,520)
+        const px = 225 + x.c * S + 15, py = 364 + x.r * S + 15;
+        return Math.abs(-410 * (px - 200) - 680 * (py - 930)) / Math.hypot(680, 410) < 20;
+      });
+      const home = (arr, t, dur) => { // restore each cell to its own colour
+        tl.to(E(arr.filter((x) => x.ecc)), { backgroundColor: GREEN, duration: 0.3, stagger: { amount: dur } }, t);
+        tl.to(E(arr.filter((x) => !x.ecc)), { backgroundColor: DARK, duration: 0.3, stagger: { amount: dur } }, t);
+      };
+      const lose = (arr, t, dur) => tl.to(E(arr), { backgroundColor: LOST, duration: 0.3, stagger: { amount: dur } }, t);
+
+      // initial state
+      gsap.set(["#rings div", "#dmgbox", "#scan", "#scr"], { opacity: 0 });
+      gsap.set(".pill:not(#p1)", { opacity: 0 });
+      gsap.set(".row", { opacity: 0 });
+      gsap.set(["#cap2 span", "#cap3 span", "#cap4 span", "#cap5 span", "#cap6 span"], { opacity: 0, y: 24 });
+      const capIn = (id, t, d) => {
+        tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      };
+      tl.to("#cap1 span", { opacity: 0, duration: 0.12 }, 2.58);
+      capIn("#cap2", 2.97, 4.17); capIn("#cap3", 7.39, 2.62); capIn("#cap4", 10.26, 4.51); capIn("#cap5", 15.02, 2.66);
+      tl.fromTo("#cap6 span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 17.93);
+      const swap = (id, t0, t1) => { // fade a pill/row in at t0, out at t1
+        tl.fromTo(id, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, t0);
+        if (t1) tl.to(id, { opacity: 0, duration: 0.15 }, t1);
+      };
+
+      // beat 1 (0-2.72): lose a quarter, scan line sweeps, still scans
+      tl.fromTo("#dmgbox", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.35);
+      lose(box, 0.4, 0.5);
+      tl.fromTo("#scan", { opacity: 1, y: 0 }, { opacity: 1, y: 622, duration: 1, ease: "none" }, 1.1);
+      tl.to("#scan", { opacity: 0, duration: 0.15 }, 2.15);
+      // beat 2 (2.97-7.14): damage heals, backup bytes light up, car parts
+      tl.to("#p1", { opacity: 0, duration: 0.15 }, 2.8);
+      tl.to("#dmgbox", { opacity: 0, duration: 0.2 }, 2.97);
+      home(box, 2.97, 0.4);
+      swap("#p2", 3.2, 7.2);
+      swap("#w2", 3.4, 7.2);
+      tl.to("#gear", { rotation: 140, duration: 3.6, ease: "none", transformOrigin: "50% 50%" }, 3.4);
+      tl.to(E(eccs), { backgroundColor: GREEN, duration: 0.3, stagger: { amount: 1.6 } }, 4.2);
+      // beat 3 (7.39-10.0): three finder squares, dim the rest
+      tl.fromTo("#rings div", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.25, transformOrigin: "50% 50%" }, 7.5);
+      tl.to(E(body), { opacity: 0.2, duration: 0.3 }, 7.5);
+      swap("#p3", 8.3, 10.2);
+      // beat 4 (10.26-14.77): link vs extra bytes, same math as CDs
+      tl.to("#rings div", { opacity: 0, duration: 0.2 }, 10.26);
+      tl.to(E(body), { opacity: 1, duration: 0.3 }, 10.26);
+      swap("#p4", 10.5, 14.9);
+      swap("#w4", 11.0, 14.9);
+      tl.to("#disc", { rotation: 360, duration: 3.6, ease: "none", transformOrigin: "50% 50%" }, 11.0);
+      // beat 5 (15.02-17.68): 30% missing, meter fills
+      tl.fromTo("#w5", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.2 }, 15.0);
+      swap("#p5", 15.1, 17.8);
+      tl.fromTo("#fill", { scaleX: 0 }, { scaleX: 0.3, duration: 1.6, ease: "power1.out" }, 15.2);
+      const pct = { v: 0 };
+      tl.to(pct, { v: 30, duration: 1.6, ease: "power1.out", onUpdate() { document.getElementById("pct").textContent = Math.round(pct.v) + "% LOST"; } }, 15.2);
+      lose(rand30, 15.2, 1.6);
+      tl.to("#w5", { opacity: 0, duration: 0.15 }, 17.8);
+      // beat 6 (17.93-22.17): scuff the code, corners survive, still works; holds to end
+      home(rand30, 17.9, 0.3);
+      tl.fromTo("#scr", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 18.1);
+      lose(scr, 18.2, 0.4);
+      swap("#p6", 18.2);
+      swap("#w6", 18.7);
+      tl.fromTo("#scan", { opacity: 1, y: 0 }, { opacity: 1, y: 622, duration: 1, ease: "none" }, 18.9);
+      tl.to("#scan", { opacity: 0, duration: 0.15 }, 19.95);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+In 1582, ten days vanished from the calendar.
+Thursday, October 4 was followed by Friday, October 15.
+The old calendar made every year slightly too long, so it kept sliding away from the seasons.
+The fix: a century year only gets a leap day if it divides by 400.
+That makes the average year 365.2425 days, nearly the real 365.2422.
+So 1900 had no leap day, but 2000 did.

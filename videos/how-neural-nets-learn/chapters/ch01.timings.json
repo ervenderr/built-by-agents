@@ -1,0 +1,50 @@
+[
+  {
+    "i": 1,
+    "text": "Nobody ever typed the answer into a neural network, and that is the strangest thing about them.",
+    "start": 0.0,
+    "duration": 4.59
+  },
+  {
+    "i": 2,
+    "text": "Take a classic network that reads handwritten digits, with two hidden layers of sixteen neurons each.",
+    "start": 4.84,
+    "duration": 5.33
+  },
+  {
+    "i": 3,
+    "text": "It has thirteen thousand and two weights and biases that can be adjusted.",
+    "start": 10.42,
+    "duration": 3.58
+  },
+  {
+    "i": 4,
+    "text": "No human sets those by hand, and at the start they are random, so a seven produces garbage.",
+    "start": 14.25,
+    "duration": 4.68
+  },
+  {
+    "i": 5,
+    "text": "So how does random turn into skilled?",
+    "start": 19.18,
+    "duration": 1.99
+  },
+  {
+    "i": 6,
+    "text": "My claim: the network never learns an answer, it gets nudged slightly less wrong, millions of times.",
+    "start": 21.42,
+    "duration": 5.04
+  },
+  {
+    "i": 7,
+    "text": "Learning just means changing the weights and biases to minimize a cost function.",
+    "start": 26.71,
+    "duration": 3.9
+  },
+  {
+    "i": 8,
+    "text": "It happens through one loop with three parts: error, blame, and a small step.",
+    "start": 30.86,
+    "duration": 3.67
+  }
+]

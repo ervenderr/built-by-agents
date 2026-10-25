@@ -1,0 +1,6 @@
+Most AI answers come from memory, but RAG lets the model open the book first.
+RAG stands for retrieval-augmented generation.
+Your question first triggers a search of an outside knowledge base.
+Then the question and the relevant information are both given to the model.
+It answers using them, so new facts need no retraining.
+It can even cite sources, which beats guessing from memory.

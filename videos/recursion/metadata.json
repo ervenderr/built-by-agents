@@ -1,0 +1,16 @@
+{
+  "title": "Recursion in 5 Styles (Still Confused? See: Recursion)",
+  "description": "Recursion is a function solving a problem by calling itself on a smaller version, and it needs a base case to stop. Factorial of 3 waits for 2, which waits for 1, then the answers come back up: 6.\n\nInspired by @emollick's \"explain recursion in radically different styles\" prompt (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #Recursion #Programming",
+  "tags": [
+    "recursion",
+    "recursion explained",
+    "base case",
+    "factorial",
+    "programming basics",
+    "computer science"
+  ],
+  "publish_at": "2026-10-26T21:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

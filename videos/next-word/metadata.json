@@ -1,0 +1,16 @@
+{
+  "title": "How an LLM Picks the Next Word",
+  "description": "A language model scores every possible next token, turns the scores into probabilities, samples one, and temperature decides how adventurous that pick is.\n\nThe probabilities shown are illustrative, not from a real model. Inspired by the strict-structure prompts of @verbove, @twoclipping and @__morse and by @emollick (yihui-dev/awesome-opus5-5-videos). Narration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #LLM #AI",
+  "tags": [
+    "llm temperature",
+    "next token prediction",
+    "how llms work",
+    "softmax",
+    "sampling",
+    "ai explained"
+  ],
+  "publish_at": "2026-10-27T09:00:00+08:00",
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

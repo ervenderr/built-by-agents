@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b0f14; }
+      #root { position: relative; width: 1920px; height: 1080px; background: #0b0f14; font-family: "Inter", system-ui, sans-serif; color: #e8eef5; overflow: hidden; }
+      .wrap, .wrap > div { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      .lt { position: absolute; left: 120px; top: 56px; display: flex; align-items: center; gap: 16px; font-size: 30px; font-weight: 600; z-index: 20; text-shadow: 0 2px 12px #000; }
+      .lt i { width: 4px; height: 36px; background: #00e5a0; border-radius: 2px; }
+      .lt b { color: #00e5a0; font-family: "JetBrains Mono", monospace; margin-right: 8px; }
+      #tag { position: absolute; right: 120px; top: 62px; font-size: 24px; font-weight: 700; letter-spacing: 5px; color: #00e5a0; z-index: 20; opacity: 0.85; }
+      #end { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #0b0f14; z-index: 30; opacity: 0; }
+      #end h1 { position: absolute; left: 160px; width: 1600px; top: 340px; text-align: center; font-size: 96px; font-weight: 800; line-height: 1.1; }
+      #end h1 em { color: #00e5a0; font-style: normal; }
+      #end p { position: absolute; left: 0; width: 1920px; top: 640px; text-align: center; font-size: 44px; font-weight: 600; color: #8a97a6; }
+      #end p b { color: #00e5a0; }
+      #end .bar { position: absolute; left: 860px; top: 590px; width: 200px; height: 4px; background: #00e5a0; border-radius: 2px; transform-origin: 50% 50%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="250.11" data-width="1920" data-height="1080">
+      <div id="w-ch01" class="wrap"><div id="h-ch01" class="clip" data-composition-id="ch01" data-composition-src="compositions/ch01.html" data-start="0.0" data-duration="42.71" data-track-index="1" data-track-kind="graphics"></div></div>
+      <div id="w-ch02" class="wrap"><div id="h-ch02" class="clip" data-composition-id="ch02" data-composition-src="compositions/ch02.html" data-start="43.31" data-duration="52.57" data-track-index="2" data-track-kind="graphics"></div></div>
+      <div id="w-ch03" class="wrap"><div id="h-ch03" class="clip" data-composition-id="ch03" data-composition-src="compositions/ch03.html" data-start="96.48" data-duration="56.99" data-track-index="3" data-track-kind="graphics"></div></div>
+      <div id="w-ch04" class="wrap"><div id="h-ch04" class="clip" data-composition-id="ch04" data-composition-src="compositions/ch04.html" data-start="154.07" data-duration="53.54" data-track-index="4" data-track-kind="graphics"></div></div>
+      <div id="w-ch05" class="wrap"><div id="h-ch05" class="clip" data-composition-id="ch05" data-composition-src="compositions/ch05.html" data-start="208.21" data-duration="33.9" data-track-index="5" data-track-kind="graphics"></div></div>
+      <div id="lt-ch01" class="clip lt" data-start="0.40" data-duration="4" data-track-index="10"><i></i><span><b>01</b> The Sun is gone. You wouldn't know.</span></div>
+      <div id="lt-ch02" class="clip lt" data-start="43.71" data-duration="4" data-track-index="10"><i></i><span><b>02</b> Why the sky stays bright for 8 minutes</span></div>
+      <div id="lt-ch03" class="clip lt" data-start="96.88" data-duration="4" data-track-index="10"><i></i><span><b>03</b> Gravity has a speed limit too</span></div>
+      <div id="lt-ch04" class="clip lt" data-start="154.47" data-duration="4" data-track-index="10"><i></i><span><b>04</b> What Earth does at the 8:20 mark</span></div>
+      <div id="lt-ch05" class="clip lt" data-start="208.61" data-duration="4" data-track-index="10"><i></i><span><b>05</b> News can't outrun light</span></div>
+      <div id="tag" class="clip" data-start="0" data-duration="242.11" data-track-index="11">BUILT BY AGENTS</div>
+      <div id="end" class="clip" data-start="242.01" data-duration="8.10" data-track-index="12">
+        <h1>The Sun <em>Vanishes</em></h1>
+        <div class="bar"></div>
+        <p>Enjoyed it? <b>Subscribe</b> for more from Built by Agents</p>
+      </div>
+      <audio id="narr" src="assets/narration.wav" data-start="0" data-duration="242.11" data-track-index="0" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to("#w-ch01",{opacity:0,duration:0.3,ease:"power1.in"},42.41);
+      tl.fromTo("#w-ch02",{opacity:0},{opacity:1,duration:0.3,ease:"power1.out"},43.31);
+      tl.to("#w-ch02",{opacity:0,duration:0.3,ease:"power1.in"},95.58);
+      tl.fromTo("#w-ch03",{opacity:0},{opacity:1,duration:0.3,ease:"power1.out"},96.48);
+      tl.to("#w-ch03",{opacity:0,duration:0.3,ease:"power1.in"},153.17);
+      tl.fromTo("#w-ch04",{opacity:0},{opacity:1,duration:0.3,ease:"power1.out"},154.07);
+      tl.to("#w-ch04",{opacity:0,duration:0.3,ease:"power1.in"},207.31);
+      tl.fromTo("#w-ch05",{opacity:0},{opacity:1,duration:0.3,ease:"power1.out"},208.21);
+      tl.fromTo("#lt-ch01",{opacity:0,x:-30},{opacity:1,x:0,duration:0.5,ease:"power2.out"},0.40);
+      tl.to("#lt-ch01",{opacity:0,duration:0.5,ease:"power1.in"},3.90);
+      tl.fromTo("#lt-ch02",{opacity:0,x:-30},{opacity:1,x:0,duration:0.5,ease:"power2.out"},43.71);
+      tl.to("#lt-ch02",{opacity:0,duration:0.5,ease:"power1.in"},47.21);
+      tl.fromTo("#lt-ch03",{opacity:0,x:-30},{opacity:1,x:0,duration:0.5,ease:"power2.out"},96.88);
+      tl.to("#lt-ch03",{opacity:0,duration:0.5,ease:"power1.in"},100.38);
+      tl.fromTo("#lt-ch04",{opacity:0,x:-30},{opacity:1,x:0,duration:0.5,ease:"power2.out"},154.47);
+      tl.to("#lt-ch04",{opacity:0,duration:0.5,ease:"power1.in"},157.97);
+      tl.fromTo("#lt-ch05",{opacity:0,x:-30},{opacity:1,x:0,duration:0.5,ease:"power2.out"},208.61);
+      tl.to("#lt-ch05",{opacity:0,duration:0.5,ease:"power1.in"},212.11);
+      tl.fromTo("#end",{opacity:0},{opacity:1,duration:0.6,ease:"power1.out"},242.01);
+      tl.from("#end h1",{y:30,opacity:0,duration:0.7,ease:"power3.out"},242.51);
+      tl.from("#end .bar",{scaleX:0,duration:0.6,ease:"power2.out"},243.21);
+      tl.from("#end p",{opacity:0,duration:0.6,ease:"power2.out"},243.61);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

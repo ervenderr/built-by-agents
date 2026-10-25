@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root { --ground:#070b14; --panel:#151b28; --ink:#fff; --dim:#8591a8; --accent:#00e5a0; --warn:#ff4d6d; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+      #root { position:relative; width:1080px; height:1920px; font-family:"Outfit","Inter",sans-serif; color:var(--ink); background:var(--ground); }
+      #brand { position:absolute; left:0; width:1080px; top:175px; text-align:center; font-size:28px; font-weight:700; letter-spacing:6px; color:var(--accent); z-index:5; }
+      .scene { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+      svg { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+      .t { position:absolute; left:0; width:1080px; text-align:center; font-weight:800; line-height:1; }
+      .tag { position:absolute; left:0; width:1080px; top:1130px; text-align:center; font-size:30px; font-weight:700; letter-spacing:4px; color:var(--dim); }
+      .big { font-size:150px; letter-spacing:-3px; }
+      .mid { font-size:64px; }
+      .cap { position:absolute; left:60px; width:960px; top:1190px; height:150px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:64px; font-weight:800; line-height:1.08; z-index:6; }
+      .cap span { display:block; text-shadow:0 4px 24px #000; }
+      .cap b { color:var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="24.63" data-width="1080" data-height="1920">
+      <div id="brand">BUILT BY AGENTS</div>
+
+      <!-- 1: pin drifts off the road -->
+      <div id="s1" class="clip scene" data-start="0" data-duration="4.32" data-track-index="1">
+        <svg viewBox="0 0 1080 1920">
+          <g stroke="#1d2638" stroke-width="3">
+            <path d="M0 400H1080M0 560H1080M0 720H1080M0 880H1080M0 1040H1080M180 300V1120M360 300V1120M540 300V1120M720 300V1120M900 300V1120" />
+          </g>
+          <path d="M60 1000 L 400 760 L 700 700 L 1040 420" stroke="#2c3a55" stroke-width="40" fill="none" stroke-linecap="round" />
+          <path d="M60 1000 L 400 760 L 700 700 L 1040 420" stroke="#8591a8" stroke-width="3" stroke-dasharray="18 16" fill="none" />
+          <line id="trail" x1="400" y1="760" x2="400" y2="760" stroke="#ff4d6d" stroke-width="5" stroke-dasharray="10 10" />
+          <g id="pin0"><circle cx="400" cy="760" r="20" fill="#00e5a0" /><circle cx="400" cy="760" r="38" fill="none" stroke="#00e5a0" stroke-width="4" /></g>
+          <g id="pin1"><circle cx="400" cy="760" r="20" fill="#ff4d6d" /></g>
+        </svg>
+        <div id="s1a" class="t big" style="top:260px;color:#ff4d6d">~10 KM OFF</div>
+        <div id="s1b" class="t mid" style="top:440px">EVERY DAY</div>
+        <div class="tag">ILLUSTRATIVE MAP</div>
+      </div>
+
+      <!-- 2: two clocks -->
+      <div id="s2" class="clip scene" data-start="4.32" data-duration="3.25" data-track-index="1">
+        <svg viewBox="0 0 1080 1920">
+          <g transform="translate(290 640)"><circle r="190" fill="#151b28" stroke="#8591a8" stroke-width="8"/><line x1="0" y1="-170" x2="0" y2="-150" stroke="#8591a8" stroke-width="8"/><line x1="0" y1="170" x2="0" y2="150" stroke="#8591a8" stroke-width="8"/><line x1="-170" y1="0" x2="-150" y2="0" stroke="#8591a8" stroke-width="8"/><line x1="170" y1="0" x2="150" y2="0" stroke="#8591a8" stroke-width="8"/><line id="h1" x1="0" y1="20" x2="0" y2="-150" stroke="#fff" stroke-width="10" stroke-linecap="round"/><circle r="14" fill="#fff"/></g>
+          <g transform="translate(790 640)"><circle r="190" fill="#151b28" stroke="#00e5a0" stroke-width="8"/><line x1="0" y1="-170" x2="0" y2="-150" stroke="#00e5a0" stroke-width="8"/><line x1="0" y1="170" x2="0" y2="150" stroke="#00e5a0" stroke-width="8"/><line x1="-170" y1="0" x2="-150" y2="0" stroke="#00e5a0" stroke-width="8"/><line x1="170" y1="0" x2="150" y2="0" stroke="#00e5a0" stroke-width="8"/><line id="h2" x1="0" y1="20" x2="0" y2="-150" stroke="#00e5a0" stroke-width="10" stroke-linecap="round"/><circle r="14" fill="#00e5a0"/></g>
+        </svg>
+        <div class="t" style="left:0;width:580px;top:880px;font-size:46px;color:#fff">GROUND</div>
+        <div class="t" style="left:500px;width:580px;top:880px;font-size:46px;color:#00e5a0">SATELLITE</div>
+        <div id="s2a" class="t mid" style="top:300px">SAME TICK?</div>
+        <div id="s2b" class="t mid" style="top:300px;color:#ff4d6d">NOPE.</div>
+      </div>
+
+      <!-- 3: orbit -->
+      <div id="s3" class="clip scene" data-start="7.57" data-duration="5.63" data-track-index="1">
+        <svg viewBox="0 0 1080 1920">
+          <defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4aa3ff" stop-opacity=".55"/><stop offset="1" stop-color="#4aa3ff" stop-opacity="0"/></radialGradient></defs>
+          <circle id="halo" cx="540" cy="830" r="300" fill="url(#g)" />
+          <circle cx="540" cy="830" r="330" fill="none" stroke="#2c3a55" stroke-width="4" stroke-dasharray="14 12" />
+          <circle cx="540" cy="830" r="130" fill="#1b4f9c" stroke="#4aa3ff" stroke-width="6" />
+          <g id="sat"><rect x="522" y="470" width="36" height="36" rx="6" fill="#00e5a0"/><rect x="480" y="482" width="36" height="12" fill="#00e5a0" opacity=".6"/><rect x="564" y="482" width="36" height="12" fill="#00e5a0" opacity=".6"/></g>
+          <line id="dist" x1="800" y1="830" x2="800" y2="830" stroke="#fff" stroke-width="4" />
+        </svg>
+        <div id="s3a" class="t mid" style="top:290px;color:#00e5a0">CLOCK RUNS FAST</div>
+        <div id="s3b" class="t" style="left:440px;width:520px;top:770px;font-size:36px;text-align:center;color:#fff">20,000 km</div>
+        <div id="s3c" class="t" style="top:1000px;font-size:40px;color:#7fbfff">WEAKER GRAVITY</div>
+        <div class="tag" style="top:370px">NOT TO SCALE</div>
+      </div>
+
+      <!-- 4: 38 microseconds -->
+      <div id="s4" class="clip scene" data-start="13.2" data-duration="2.9" data-track-index="1">
+        <div id="s4a" class="t big" style="top:420px;color:#00e5a0;font-size:170px">+38 µs</div>
+        <div id="s4b" class="t mid" style="top:640px">PER DAY</div>
+        <div class="t" style="top:800px;font-size:36px;color:#8591a8;letter-spacing:3px">0.000038 SECONDS</div>
+        <svg viewBox="0 0 1080 1920"><rect x="90" y="930" width="900" height="26" rx="13" fill="#151b28"/><rect id="s4bar" x="90" y="930" width="8" height="26" rx="4" fill="#00e5a0"/></svg>
+        <div class="t" style="top:975px;font-size:32px;color:#8591a8;letter-spacing:3px">TINY NEXT TO ONE SECOND</div>
+      </div>
+
+      <!-- 5: signal timing -->
+      <div id="s5" class="clip scene" data-start="16.1" data-duration="4.22" data-track-index="1">
+        <svg viewBox="0 0 1080 1920">
+          <line x1="540" y1="420" x2="540" y2="960" stroke="#2c3a55" stroke-width="6" stroke-dasharray="12 12"/>
+          <rect x="500" y="360" width="80" height="60" rx="10" fill="#00e5a0"/>
+          <rect x="490" y="960" width="100" height="130" rx="18" fill="#151b28" stroke="#fff" stroke-width="6"/>
+          <circle id="p1" cx="540" cy="420" r="16" fill="#00e5a0"/><circle id="p2" cx="540" cy="420" r="16" fill="#00e5a0"/><circle id="p3" cx="540" cy="420" r="16" fill="#00e5a0"/>
+        </svg>
+        <div class="t" style="left:0;width:440px;top:620px;font-size:38px;color:#00e5a0">LIGHT SPEED</div>
+        <div class="t" style="left:660px;width:420px;top:620px;font-size:38px;color:#fff">1 µs = 300 m</div>
+        <div id="s5a" class="t" style="top:240px;font-size:92px;color:#ff4d6d">0 km OFF</div>
+        <div class="tag">ILLUSTRATIVE BUILD-UP</div>
+      </div>
+
+      <!-- 6: corrected -->
+      <div id="s6" class="clip scene" data-start="20.32" data-duration="4.31" data-track-index="1">
+        <svg viewBox="0 0 1080 1920">
+          <path d="M60 1000 L 400 760 L 700 700 L 1040 420" stroke="#2c3a55" stroke-width="40" fill="none" stroke-linecap="round" />
+          <path d="M60 1000 L 400 760 L 700 700 L 1040 420" stroke="#8591a8" stroke-width="3" stroke-dasharray="18 16" fill="none" />
+          <circle id="ring" cx="400" cy="760" r="40" fill="none" stroke="#00e5a0" stroke-width="5"/>
+          <circle id="pin2" cx="520" cy="500" r="20" fill="#00e5a0"/>
+        </svg>
+        <div id="s6a" class="t big" style="top:260px;color:#00e5a0;font-size:120px">E = mc²</div>
+        <div id="s6b" class="t mid" style="top:1000px;color:#fff;font-size:60px;left:0;width:1080px;top:1060px">LOCATION CORRECTED</div>
+      </div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="4.32" data-track-index="2"><span>Without Einstein, GPS drifts <b>10 km</b> a day.</span></div>
+      <div id="cap2" class="clip cap" data-start="4.32" data-duration="3.25" data-track-index="2"><span>Clocks don't tick the <b>same</b> everywhere.</span></div>
+      <div id="cap3" class="clip cap" data-start="7.57" data-duration="5.63" data-track-index="2"><span>Weaker gravity up there, so satellite clocks run <b>fast</b>.</span></div>
+      <div id="cap4" class="clip cap" data-start="13.2" data-duration="2.9" data-track-index="2"><span>Net gain: <b>38 millionths</b> of a second a day.</span></div>
+      <div id="cap5" class="clip cap" data-start="16.1" data-duration="4.22" data-track-index="2"><span>Light speed signals, so the error <b>adds up</b>.</span></div>
+      <div id="cap6" class="clip cap" data-start="20.32" data-duration="4.31" data-track-index="2"><span>Next time you open maps, thank <b>relativity</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="22.63" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const F = (s, a, b, t) => tl.fromTo(s, a, b, t);
+      const caps = [["#cap1",0,4.32],["#cap2",4.32,3.25],["#cap3",7.57,5.63],["#cap4",13.2,2.9],["#cap5",16.1,4.22],["#cap6",20.32,4.31]];
+      caps.forEach(([id, t, d], i) => {
+        F(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      // scenes: fade in
+      [["#s1",0],["#s2",4.32],["#s3",7.57],["#s4",13.2],["#s5",16.1],["#s6",20.32]].forEach(([id, t]) =>
+        F(id, { opacity: t === 0 ? 1 : 0 }, { opacity: 1, duration: 0.25 }, t));
+
+      // 1: pin drifts 10 km (illustrative), frame 0 shows hook
+      F("#pin1", { x: 0, y: 0 }, { x: 330, y: 260, duration: 3.2, ease: "power2.inOut" }, 0.5);
+      F("#trail", { attr: { x2: 400, y2: 760 } }, { attr: { x2: 730, y2: 1020 }, duration: 3.2, ease: "power2.inOut" }, 0.5);
+      F("#pin0", { scale: 1 }, { scale: 1.15, duration: 0.5, yoyo: true, repeat: 5, ease: "sine.inOut", svgOrigin: "400 760" }, 0.2);
+      // 2: clocks
+      F("#h1", { rotation: 0 }, { rotation: 360, duration: 3.2, ease: "none", svgOrigin: "0 0" }, 4.32);
+      F("#h2", { rotation: 0 }, { rotation: 360, duration: 3.2, ease: "none", svgOrigin: "0 0" }, 4.32);
+      tl.to("#h2", { rotation: 1080, duration: 1.6, ease: "power1.in", svgOrigin: "0 0" }, 5.9);
+      F("#s2a", { opacity: 1 }, { opacity: 0, duration: 0.2 }, 5.7);
+      F("#s2b", { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.9);
+      // 3: orbit
+      F("#sat", { rotation: 0 }, { rotation: 360, duration: 5.4, ease: "none", svgOrigin: "540 830" }, 7.57);
+      F("#halo", { opacity: 1, scale: 1.1, svgOrigin: "540 830" }, { opacity: 0.2, scale: 0.7, duration: 4, ease: "none", svgOrigin: "540 830" }, 8.5);
+      F("#dist", { attr: { x2: 670 } }, { attr: { x1: 670, x2: 870 }, duration: 0.4 }, 8.4);
+      F("#s3b", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.6);
+      F("#s3c", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10);
+      // 4: 38us
+      F("#s4a", { scale: 0.5, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 13.25);
+      F("#s4bar", { attr: { width: 8 } }, { attr: { width: 8 }, duration: 0.1 }, 13.9);
+      // 5: pulses and error counter
+      ["#p1","#p2","#p3"].forEach((p, i) => F(p, { y: 0, opacity: 1 }, { y: 520, opacity: 1, duration: 0.7, ease: "none", repeat: 4, repeatDelay: 0 }, 16.2 + i * 0.23));
+      const err = { v: 0 };
+      tl.to(err, { v: 10, duration: 3.2, ease: "power1.in", onUpdate() { document.getElementById("s5a").textContent = Math.round(err.v) + " km OFF"; } }, 16.5);
+      // 6: fix
+      F("#pin2", { x: 0, y: 0 }, { x: -120, y: 260, duration: 0.6, ease: "power3.out" }, 20.4);
+      F("#ring", { scale: 0.5, opacity: 0, svgOrigin: "400 760" }, { scale: 2, opacity: 1, duration: 0.8, svgOrigin: "400 760" }, 21);
+      F("#s6a", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 20.6);
+      F("#s6b", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 21.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

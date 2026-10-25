@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root { --ground:#0b0f17; --panel:#151b28; --ink:#ffffff; --dim:#8591a8; --accent:#00e5a0; --font-display:"Outfit","Inter",sans-serif; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+      #root { position:relative; width:1080px; height:1920px; font-family:var(--font-display); color:var(--ink); background:var(--ground); overflow:hidden; }
+      #brand { position:absolute; left:0; width:1080px; top:175px; text-align:center; font-size:28px; font-weight:700; letter-spacing:6px; color:var(--accent); }
+      #title { position:absolute; left:0; width:1080px; top:235px; text-align:center; font-size:84px; font-weight:800; letter-spacing:-2px; line-height:1; white-space:nowrap; }
+      #title em { color:var(--accent); font-style:normal; }
+      .tag { position:absolute; left:0; width:1080px; top:352px; text-align:center; font-size:40px; font-weight:800; letter-spacing:4px; color:var(--accent); opacity:0; }
+      #t0 { opacity:1; }
+      .g { position:absolute; left:0; top:0; width:1080px; height:1920px; opacity:0; }
+      #gA { opacity:1; }
+      .note { position:absolute; left:0; width:1080px; top:1085px; text-align:center; font-size:30px; font-weight:700; letter-spacing:4px; color:var(--dim); opacity:0; }
+      #bubble { position:absolute; left:60px; top:446px; width:960px; height:112px; border-radius:40px; background:var(--panel); border:4px solid var(--accent); }
+      .tk { position:absolute; top:458px; height:88px; }
+      .chip { width:100%; height:88px; border-radius:22px; border:4px solid rgba(0,229,160,0); display:flex; align-items:center; justify-content:center; font-size:58px; font-weight:800; line-height:1; }
+      .vec { position:absolute; left:0; top:104px; width:100%; text-align:center; font-size:30px; font-weight:700; line-height:44px; color:var(--accent); border-left:4px solid var(--accent); border-right:4px solid var(--accent); border-radius:10px; opacity:0; }
+      .slab { position:absolute; left:240px; width:600px; height:90px; border-radius:24px; background:var(--panel); border:4px solid var(--dim); display:flex; align-items:center; justify-content:center; font-size:40px; font-weight:800; letter-spacing:3px; color:var(--dim); opacity:0; }
+      #arcs { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+      .node { position:absolute; width:68px; height:68px; top:686px; border-radius:50%; background:var(--panel); border:5px solid var(--accent); }
+      .nl { position:absolute; top:766px; width:160px; text-align:center; font-size:36px; font-weight:800; color:var(--ink); }
+      .row4 { position:absolute; left:0; width:1080px; height:72px; }
+      .bl { position:absolute; left:60px; width:330px; text-align:right; top:0; line-height:72px; font-size:44px; font-weight:800; color:var(--dim); }
+      .bt { position:absolute; left:420px; width:580px; top:8px; height:56px; border-radius:16px; background:var(--panel); }
+      .bf { width:580px; position:absolute; left:420px; top:8px; height:56px; border-radius:16px; background:var(--dim); transform-origin:0 50%; }
+      #reply { position:absolute; left:90px; width:900px; top:470px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px 16px; }
+      .rc { height:88px; padding:0 26px; border-radius:22px; border:4px solid var(--accent); background:var(--panel); display:flex; align-items:center; font-size:54px; font-weight:800; opacity:0; }
+      #pip { position:absolute; left:0; top:0; width:120px; height:120px; z-index:5; }
+      #pip svg { width:120px; height:120px; overflow:visible; }
+      .dotbg { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--accent); opacity:0.14; }
+      .cap { position:absolute; left:60px; width:960px; top:1190px; height:150px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:62px; font-weight:800; line-height:1.08; }
+      .cap span { display:block; text-shadow:0 4px 24px #000; }
+      .cap b { color:var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.9" data-width="1080" data-height="1920">
+      <div id="dots"></div>
+      <div id="brand">BUILT BY AGENTS</div>
+      <div id="title">A PROMPT'S <em>JOURNEY</em></div>
+      <div id="t0" class="tag">YOUR PROMPT</div>
+      <div id="t1" class="tag">STATION 1 · TOKENS</div>
+      <div id="t2" class="tag">STATION 2 · NUMBERS</div>
+      <div id="t3" class="tag">STATION 3 · LAYERS</div>
+      <div id="t4" class="tag">STATION 4 · THE REPLY</div>
+
+      <div id="gA" class="g">
+        <div id="bubble"></div>
+        <div class="tk" style="left:90px;width:170px"><div class="chip">Why</div><div class="vec">0.21<br>-0.83<br>0.47<br>0.05<br>⋮</div></div>
+        <div class="tk" style="left:274px;width:110px"><div class="chip">is</div><div class="vec">-0.12<br>0.64<br>-0.31<br>0.90<br>⋮</div></div>
+        <div class="tk" style="left:398px;width:140px"><div class="chip">the</div><div class="vec">0.07<br>0.12<br>0.55<br>-0.44<br>⋮</div></div>
+        <div class="tk" style="left:552px;width:140px"><div class="chip">sky</div><div class="vec">0.73<br>-0.28<br>-0.66<br>0.19<br>⋮</div></div>
+        <div class="tk" style="left:706px;width:170px"><div class="chip">blue</div><div class="vec">0.68<br>-0.35<br>-0.59<br>0.26<br>⋮</div></div>
+        <div class="tk" style="left:890px;width:100px"><div class="chip">?</div><div class="vec">-0.50<br>0.02<br>0.38<br>-0.71<br>⋮</div></div>
+        <div id="nA1" class="note">ILLUSTRATIVE SPLIT</div>
+        <div id="nA2" class="note">ILLUSTRATIVE NUMBERS</div>
+      </div>
+
+      <div id="gB" class="g">
+        <div class="slab" style="top:430px">LAYER 1</div>
+        <div class="slab" style="top:550px">LAYER 2</div>
+        <div class="slab" style="top:670px">· · ·</div>
+        <div class="slab" style="top:790px">LAYER N</div>
+        <div class="note" style="opacity:1">ILLUSTRATIVE · LAYER COUNT VARIES BY MODEL</div>
+      </div>
+
+      <div id="gC" class="g">
+        <svg id="arcs" viewBox="0 0 1080 1920"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto"><path d="M2 3 L20 12 L2 21 Z" fill="#00e5a0"/></marker></defs></svg>
+        <div class="node" style="left:141px"></div><div class="nl" style="left:95px">Why</div>
+        <div class="node" style="left:295px"></div><div class="nl" style="left:249px">is</div>
+        <div class="node" style="left:434px"></div><div class="nl" style="left:388px">the</div>
+        <div class="node" style="left:588px"></div><div class="nl" style="left:542px">sky</div>
+        <div class="node" style="left:757px"></div><div class="nl" style="left:711px">blue</div>
+        <div class="node" style="left:906px"></div><div class="nl" style="left:860px">?</div>
+        <div class="note" style="opacity:1">ILLUSTRATIVE · ARROWS POINT BACK ONLY<br>THICKER LINE = MORE ATTENTION</div>
+      </div>
+
+      <div id="gD" class="g">
+        <div class="row4" style="top:470px"><div class="bl" id="bl0">Because</div><div class="bt"></div><div class="bf" id="bf0"></div></div>
+        <div class="row4" style="top:570px"><div class="bl">The</div><div class="bt"></div><div class="bf" id="bf1"></div></div>
+        <div class="row4" style="top:670px"><div class="bl">Sunlight</div><div class="bt"></div><div class="bf" id="bf2"></div></div>
+        <div class="row4" style="top:770px"><div class="bl">It</div><div class="bt"></div><div class="bf" id="bf3"></div></div>
+        <div class="note" style="opacity:1">ILLUSTRATIVE · CANDIDATES FOR THE NEXT TOKEN</div>
+      </div>
+
+      <div id="gE" class="g">
+        <div id="reply"><div class="rc">Because</div><div class="rc">blue</div><div class="rc">light</div><div class="rc">scatters</div><div class="rc">more</div></div>
+        <div class="note" style="opacity:1">ILLUSTRATIVE REPLY</div>
+      </div>
+
+      <div id="pip"><div id="pipj"><div id="pipb">
+        <svg viewBox="0 0 120 120">
+          <defs><radialGradient id="gl"><stop offset="0" stop-color="#00e5a0" stop-opacity="0.55"/><stop offset="1" stop-color="#00e5a0" stop-opacity="0"/></radialGradient></defs>
+          <circle id="glow" cx="60" cy="60" r="62" fill="url(#gl)"/>
+          <circle cx="60" cy="60" r="40" fill="#00e5a0"/>
+          <g id="eyeL"><ellipse cx="46" cy="54" rx="11" ry="14" fill="#fff" stroke="#0b0f17" stroke-width="3"/><circle class="pu" cx="46" cy="56" r="6" fill="#0b0f17"/></g>
+          <g id="eyeR"><ellipse cx="74" cy="54" rx="11" ry="14" fill="#fff" stroke="#0b0f17" stroke-width="3"/><circle class="pu" cx="74" cy="56" r="6" fill="#0b0f17"/></g>
+          <path d="M50 78 Q60 88 70 78" stroke="#0b0f17" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg></div></div></div>
+
+      <div id="cap1" class="clip cap" data-start="0" data-duration="2.34" data-track-index="2"><span>Every <b>prompt</b> you type goes on a journey.</span></div>
+      <div id="cap2" class="clip cap" data-start="2.34" data-duration="3.06" data-track-index="2"><span>First, it's chopped into <b>tokens</b>: small pieces of text.</span></div>
+      <div id="cap3" class="clip cap" data-start="5.4" data-duration="3.03" data-track-index="2"><span>Each token becomes a list of numbers, called a <b>vector</b>.</span></div>
+      <div id="cap4" class="clip cap" data-start="8.43" data-duration="2.88" data-track-index="2"><span>Those numbers flow through many <b>transformer layers</b>.</span></div>
+      <div id="cap5" class="clip cap" data-start="11.31" data-duration="3.05" data-track-index="2"><span><b>Attention</b> lets each token <b>look back at earlier ones</b>.</span></div>
+      <div id="cap6" class="clip cap" data-start="14.36" data-duration="2.88" data-track-index="2"><span>The model then picks the <b>next token</b>, and repeats.</span></div>
+      <div id="cap7" class="clip cap" data-start="17.24" data-duration="4.66" data-track-index="2"><span>That's how a reply is written, <b>one token at a time</b>.</span></div>
+
+      <audio id="narration" class="clip" src="assets/narration.wav" data-start="0" data-duration="19.88" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const ACC = "#00e5a0", DIM = "#8591a8", INK = "#ffffff", A0 = "rgba(0,229,160,0)";
+      const NS = "http://www.w3.org/2000/svg";
+      const C = [175, 329, 468, 622, 791, 940]; // token centre x (matches the .tk slots)
+      const show = (s, t, d = 0.3, vars = {}) => tl.fromTo(s, { opacity: 0, ...vars.from }, { opacity: 1, duration: d, immediateRender: false, ...vars.to }, t);
+      const hide = (s, t, d = 0.3) => tl.to(s, { opacity: 0, duration: d }, t);
+
+      // drifting background dots (fixed positions, no randomness)
+      const dots = document.getElementById("dots");
+      for (let i = 0; i < 16; i++) {
+        const d = document.createElement("div"); d.className = "dotbg"; d.id = "bd" + i;
+        d.style.left = ((i * 211) % 1040) + "px"; d.style.top = 1380 + ((i * 97) % 500) + "px"; dots.appendChild(d);
+        tl.fromTo(d, { y: 0 }, { y: -(40 + (i % 5) * 18), duration: 21.9, ease: "none" }, 0);
+      }
+      // attention arcs: every pair, thin; a few get thick later
+      const arcs = document.getElementById("arcs"); const arcEl = {};
+      for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) {
+        const p = document.createElementNS(NS, "path");
+        // drawn from the LATER token j back to the EARLIER token i (causal mask: never forward)
+        p.setAttribute("d", `M${C[j]} 680 Q${(C[i] + C[j]) / 2} ${680 - (j - i) * 75} ${C[i]} 680`);
+        p.setAttribute("marker-end", "url(#ah)");
+        p.setAttribute("fill", "none"); p.setAttribute("stroke", ACC); p.setAttribute("stroke-width", "3"); p.setAttribute("stroke-linecap", "round");
+        p.setAttribute("opacity", "0"); p.id = `ar${i}${j}`; arcs.appendChild(p); arcEl[i + "" + j] = p;
+      }
+
+      // ---- Pip rig (explicit fromTo values: seek safe) ----
+      let cur = { x: 540, y: 850 };
+      gsap.set("#pip", { x: cur.x - 60, y: cur.y - 60 });
+      gsap.set("#pipb", { transformOrigin: "50% 100%" });
+      const hop = (t, x, y, lift = 80) => {
+        const f = cur; cur = { x, y };
+        tl.fromTo("#pipb", { scaleX: 1, scaleY: 1 }, { scaleX: 1.18, scaleY: 0.8, duration: 0.1, immediateRender: false }, t)
+          .fromTo("#pipb", { scaleX: 1.18, scaleY: 0.8 }, { scaleX: 0.88, scaleY: 1.2, duration: 0.1, immediateRender: false }, t + 0.1)
+          .fromTo("#pip", { x: f.x - 60, y: f.y - 60 }, { x: x - 60, y: y - 60, duration: 0.4, ease: "power1.inOut", immediateRender: false }, t + 0.1)
+          .fromTo("#pipj", { y: 0 }, { y: -lift, duration: 0.2, ease: "power2.out", immediateRender: false }, t + 0.1)
+          .fromTo("#pipj", { y: -lift }, { y: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, t + 0.3)
+          .fromTo("#pipb", { scaleX: 0.88, scaleY: 1.2 }, { scaleX: 1.2, scaleY: 0.8, duration: 0.08, immediateRender: false }, t + 0.5)
+          .fromTo("#pipb", { scaleX: 1.2, scaleY: 0.8 }, { scaleX: 1, scaleY: 1, duration: 0.14, ease: "back.out(2)", immediateRender: false }, t + 0.58);
+      };
+      const jumpHere = (t) => { // in-place happy bounce
+        tl.fromTo("#pipb", { scaleX: 1, scaleY: 1 }, { scaleX: 1.15, scaleY: 0.85, duration: 0.1, immediateRender: false }, t)
+          .fromTo("#pipj", { y: 0 }, { y: -60, duration: 0.18, ease: "power2.out", immediateRender: false }, t + 0.1)
+          .fromTo("#pipb", { scaleX: 1.15, scaleY: 0.85 }, { scaleX: 0.9, scaleY: 1.15, duration: 0.1, immediateRender: false }, t + 0.1)
+          .fromTo("#pipj", { y: -60 }, { y: 0, duration: 0.18, ease: "power2.in", immediateRender: false }, t + 0.28)
+          .fromTo("#pipb", { scaleX: 0.9, scaleY: 1.15 }, { scaleX: 1, scaleY: 1, duration: 0.2, ease: "back.out(2.5)", immediateRender: false }, t + 0.46);
+      };
+      [1.0, 4.0, 7.0, 10.5, 13.0, 16.0, 19.5, 21.0].forEach((t) => {
+        tl.fromTo(["#eyeL", "#eyeR"], { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, immediateRender: false }, t)
+          .fromTo(["#eyeL", "#eyeR"], { scaleY: 0.1 }, { scaleY: 1, duration: 0.09, immediateRender: false }, t + 0.07);
+      });
+      gsap.set("#eyeL", { svgOrigin: "46 54" }); gsap.set("#eyeR", { svgOrigin: "74 54" });
+      for (let k = 0; k < 20; k++) { // glow pulse, chunked (no repeat:-1)
+        tl.fromTo("#glow", { scale: 1, svgOrigin: "60 60" }, { scale: 1.18, duration: 0.6, ease: "sine.inOut", immediateRender: false }, k * 1.2)
+          .fromTo("#glow", { scale: 1.18, svgOrigin: "60 60" }, { scale: 1, duration: 0.6, ease: "sine.inOut", immediateRender: false }, k * 1.2 + 0.6);
+      }
+      const look = (t, px, py) => tl.to(".pu", { x: px, y: py, duration: 0.25 }, t);
+
+      // ---- captions ----
+      const caps = [["#cap1", 0, 2.34], ["#cap2", 2.34, 3.06], ["#cap3", 5.4, 3.03], ["#cap4", 8.43, 2.88], ["#cap5", 11.31, 3.05], ["#cap6", 14.36, 2.88], ["#cap7", 17.24, 4.66]];
+      caps.forEach(([id, t, d], i) => {
+        if (i > 0) tl.fromTo(id + " span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out", immediateRender: false }, t);
+        if (i < caps.length - 1) tl.to(id + " span", { opacity: 0, duration: 0.12 }, t + d - 0.14);
+      });
+      // station tags
+      const tagSwap = (a, b, t) => { hide(a, t, 0.2); show(b, t + 0.1, 0.25); };
+      tagSwap("#t0", "#t1", 2.39); tagSwap("#t1", "#t2", 5.45); tagSwap("#t2", "#t3", 8.48); tagSwap("#t3", "#t4", 14.4);
+      // remap scene times (authored against the old 24 s pacing) onto the new narration
+      const OLD = [0, 2.85, 5.91, 9.16, 12.27, 15.53, 18.9, 22.02], NEW = [0, 2.34, 5.4, 8.43, 11.31, 14.36, 17.24, 19.88];
+      const r = (t) => { for (let i = 0; i < 7; i++) if (t <= OLD[i + 1]) return NEW[i] + (t - OLD[i]) / (OLD[i + 1] - OLD[i]) * (NEW[i + 1] - NEW[i]); return t - 2.14; };
+      ["fromTo", "to"].forEach((m) => { const f = tl[m].bind(tl); tl[m] = (...a) => { a[a.length - 1] = r(a[a.length - 1]); return f(...a); }; });
+
+      // ---- S1 (0-2.58): the prompt, as one bubble. Pip waves in place ----
+      jumpHere(0.9);
+      // ---- S2 (2.85-5.91): chopped into tokens ----
+      hide("#bubble", 3.0, 0.25);
+      document.querySelectorAll(".tk").forEach((el, i) => {
+        const c = el.querySelector(".chip");
+        tl.fromTo(c, { borderColor: A0, backgroundColor: "rgba(21,27,40,0)", scale: 1 }, { borderColor: ACC, backgroundColor: "#151b28", scale: 1, duration: 0.2, immediateRender: false }, 3.1 + i * 0.25);
+        tl.fromTo(c, { scale: 1 }, { scale: 1.12, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, 3.1 + i * 0.25);
+      });
+      show("#nA1", 3.1, 0.3);
+      cur = { x: 175, y: 730 };
+      tl.fromTo("#pip", { x: 540 - 60, y: 850 - 60 }, { x: 175 - 60, y: 730 - 60, duration: 0.4, ease: "power1.inOut", immediateRender: false }, 2.9);
+      for (let i = 1; i < 6; i++) hop(3.1 + i * 0.25 + 0.15, C[i], 730, 60);
+      // ---- S3 (5.91-9.16): each token becomes numbers ----
+      hide("#nA1", 5.9, 0.25); show("#nA2", 6.05, 0.3);
+      document.querySelectorAll(".vec").forEach((v, i) => show(v, 6.1 + i * 0.18, 0.3, { from: { y: -20 }, to: { y: 0, ease: "back.out(1.6)" } }));
+      hop(5.95, 540, 930, 50);
+      look(5.95, 0, 3);
+      // ---- S4 (9.16-12.27): through the layers ----
+      hide("#gA", 9.15, 0.3); show("#gB", 9.35, 0.3);
+      const slabs = document.querySelectorAll("#gB .slab");
+      slabs.forEach((s, i) => show(s, 9.4 + i * 0.12, 0.25, { from: { y: 20 }, to: { y: 0 } }));
+      look(9.15, 0, 0);
+      hop(9.2, 930, 475, 40);
+      [[9.8, 595], [10.3, 715], [10.8, 835]].forEach(([t, y]) => hop(t, 930, y, 40));
+      [[9.75, 0], [10.25, 1], [10.75, 2], [11.25, 3]].forEach(([t, i]) => {
+        tl.fromTo(slabs[i], { borderColor: DIM, color: DIM }, { borderColor: ACC, color: INK, duration: 0.2, immediateRender: false }, t);
+      });
+      // ---- S5 (12.27-15.53): attention, each token looks BACK at earlier ones ----
+      hide("#gB", 12.25, 0.25); show("#gC", 12.4, 0.3);
+      hop(12.3, 540, 900, 50); look(12.7, 0, -5);
+      const order = ["01","02","03","04","05","12","13","14","15","23","24","25","34","35","45"];
+      order.forEach((k, n) => tl.fromTo(arcEl[k], { opacity: 0 }, { opacity: 0.3, duration: 0.2, immediateRender: false }, 12.8 + n * 0.05));
+      [["34", 13.7, 12], ["45", 14.0, 8], ["04", 14.3, 6]].forEach(([k, t, w]) => {
+        tl.fromTo(arcEl[k], { strokeWidth: 3, opacity: 0.3 }, { strokeWidth: w, opacity: 1, duration: 0.3, immediateRender: false }, t);
+      });
+      // ---- S6 (15.53-18.9): pick the next token ----
+      hide("#gC", 15.45, 0.25); show("#gD", 15.6, 0.3);
+      look(15.5, 0, 0); hop(15.5, 540, 960, 50);
+      [0.5, 0.2, 0.18, 0.12].forEach((w, i) => {
+        tl.fromTo("#bf" + i, { scaleX: 0 }, { scaleX: w / 0.5 * 0.78, duration: 0.5, ease: "power2.out", immediateRender: false }, 16.0 + i * 0.12);
+      });
+      tl.fromTo("#bf0", { backgroundColor: DIM }, { backgroundColor: ACC, duration: 0.25, immediateRender: false }, 17.1);
+      tl.fromTo("#bl0", { color: DIM }, { color: INK, duration: 0.25, immediateRender: false }, 17.1);
+      jumpHere(17.4);
+      // ---- S7 (18.9-22.02): the reply, one token at a time ----
+      hide("#gD", 18.8, 0.25); show("#gE", 18.95, 0.3);
+      document.querySelectorAll(".rc").forEach((c, i) => {
+        show(c, 19.3 + i * 0.5, 0.2, { from: { scale: 0.6 }, to: { scale: 1, ease: "back.out(2.5)" } });
+      });
+      hop(18.85, 540, 900, 40);
+      [19.3, 19.8, 20.3, 20.8, 21.3].forEach((t) => jumpHere(t + 0.25));
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

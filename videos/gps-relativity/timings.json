@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "Without Einstein, your phone's GPS would drift about ten kilometres off every day.",
+    "start": 0.0,
+    "duration": 4.07
+  },
+  {
+    "i": 2,
+    "text": "You'd think clocks tick the same everywhere, but they don't.",
+    "start": 4.32,
+    "duration": 3.0
+  },
+  {
+    "i": 3,
+    "text": "Satellites orbit 20,000 kilometres up, where gravity is weaker, so their clocks run fast.",
+    "start": 7.57,
+    "duration": 5.38
+  },
+  {
+    "i": 4,
+    "text": "The net gain is 38 millionths of a second a day.",
+    "start": 13.2,
+    "duration": 2.65
+  },
+  {
+    "i": 5,
+    "text": "Tiny, but GPS times radio signals moving at light speed, so that error adds up.",
+    "start": 16.1,
+    "duration": 3.97
+  },
+  {
+    "i": 6,
+    "text": "Next time you open maps, thank relativity.",
+    "start": 20.32,
+    "duration": 2.31
+  }
+]

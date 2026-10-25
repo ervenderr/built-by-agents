@@ -1,0 +1,15 @@
+Start with error, because a network can only improve at something it can measure.
+The network outputs ten activations, one for each digit, and we know the answer we wanted.
+Take the gap between each output and its desired value, and square it.
+Then add up all those squares.
+For example, a guess of zero point one where the answer is one point zero gives a squared error of zero point eight one.
+Do this for every training example and take the average.
+That average is the cost, one number saying how wrong the whole network is.
+Millions of messy mistakes get squeezed into a single score.
+Learning then becomes a clear job: lower that score.
+The method is gradient descent, an iterative way of lowering a loss function.
+You compute the gradient, then move the weights a small step in the opposite direction.
+Google's machine learning course gives the same loop: calculate the loss, find the direction, move a small amount, and repeat.
+You stop when the loss can no longer drop.
+But thirteen thousand weights all affect that one number differently.
+Coming up: how the network works out which weights deserve the blame.

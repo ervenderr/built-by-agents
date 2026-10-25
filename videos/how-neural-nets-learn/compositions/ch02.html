@@ -1,0 +1,297 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b0f14; color: #e8eef5; font-family: "Inter", sans-serif; overflow: hidden; }
+    #root .c2abs { position: absolute; }
+    #root .c2mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    #root .c2dig { position: absolute; top: 530px; width: 80px; text-align: center; font-size: 40px; color: #8a97a6; }
+    #root .c2out { position: absolute; top: 260px; width: 40px; height: 260px; background: #00e5a0; border-radius: 6px 6px 0 0; transform-origin: 50% 100%; opacity: 0; }
+    #root .c2tg { position: absolute; top: 260px; width: 40px; height: 260px; background: #e8eef5; border-radius: 6px 6px 0 0; transform-origin: 50% 100%; opacity: 0; }
+    #root .c2gap { position: absolute; width: 8px; background: #ff5d73; transform-origin: 50% 100%; opacity: 0; }
+    #root .c2sq { position: absolute; top: 640px; background: #ff5d73; border-radius: 6px; opacity: 0; box-shadow: 0 0 24px rgba(255,93,115,0.5); }
+    #root .c2card { position: absolute; width: 300px; height: 170px; border: 3px solid #8a97a6; border-radius: 22px; background: #121821; opacity: 0; text-align: center; }
+    #root .c2card small { display: block; margin-top: 16px; font-size: 30px; color: #8a97a6; }
+    #root .c2card b { display: block; margin-top: 10px; font-size: 72px; color: #ff5d73; }
+    #root .c2dot { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: #ff5d73; opacity: 0; }
+    #root .c2chip { position: absolute; top: 400px; width: 210px; height: 72px; border: 4px solid #8a97a6; border-radius: 20px; background: #121821; color: #8a97a6; font-size: 32px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; opacity: 0; }
+    #root .c2arr { position: absolute; top: 410px; width: 36px; text-align: center; font-size: 36px; color: #8a97a6; opacity: 0; }
+    #root .c2cap { position: absolute; left: 120px; width: 1680px; top: 900px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 48px; font-weight: 700; line-height: 1.15; }
+    #root .c2cap span { display: block; text-shadow: 0 4px 24px #000; }
+    #root .c2cap b { color: #00e5a0; }
+  </style>
+  <div id="root" data-composition-id="ch02" data-width="1920" data-height="1080">
+    <div id="c2ttl1" class="c2abs" style="left:120px;top:90px;font-size:88px;font-weight:800;letter-spacing:-2px;opacity:0">ERROR</div>
+    <div id="c2ttl2" class="c2abs" style="left:120px;top:90px;font-size:88px;font-weight:800;letter-spacing:-2px;opacity:0;white-space:nowrap">GRADIENT <span style="color:#00e5a0">DESCENT</span></div>
+    <div id="c2pill" class="c2abs c2mono" style="left:120px;top:192px;font-size:32px;color:#ffb454;border:3px solid #ffb454;border-radius:30px;padding:2px 18px;opacity:0">ILLUSTRATIVE</div>
+    <div id="c2leg" class="c2abs" style="left:480px;top:196px;font-size:32px;color:#8a97a6;opacity:0;white-space:nowrap"><span style="color:#00e5a0">&#9632;</span> OUTPUT &nbsp;&nbsp;&nbsp; <span style="color:#e8eef5">&#9632;</span> TARGET</div>
+
+    <!-- scene 1: ruler -->
+    <svg id="c2ruler" class="c2abs" style="left:0;top:0;opacity:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+      <line x1="360" y1="600" x2="1560" y2="600" stroke="#8a97a6" stroke-width="4" />
+      <g id="c2ticks" stroke="#8a97a6" stroke-width="3"></g>
+      <polygon id="c2marker" points="0,0 -18,-30 18,-30" fill="#00e5a0" />
+    </svg>
+    <div id="c2rtxt" class="c2abs" style="left:360px;width:1200px;top:660px;text-align:center;font-size:44px;font-weight:700;color:#8a97a6;opacity:0">CAN'T MEASURE IT? <span style="color:#00e5a0">CAN'T IMPROVE IT.</span></div>
+
+    <!-- scenes 2-5: bars -->
+    <div id="c2cols"></div>
+    <div id="c2sqlab" class="c2abs c2mono" style="left:120px;top:675px;font-size:36px;color:#ff5d73;opacity:0">GAP&sup2;</div>
+    <div id="c2block" class="c2abs c2mono" style="left:880px;top:620px;width:161px;height:161px;background:#ff5d73;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:52px;color:#0b0f14;opacity:0;box-shadow:0 0 50px rgba(255,93,115,0.6)">1.54</div>
+    <div id="c2blocklab" class="c2abs" style="left:660px;width:600px;top:800px;text-align:center;font-size:32px;color:#8a97a6;opacity:0">SUM OF THE SQUARES</div>
+    <div id="c2v1" class="c2abs c2mono" style="left:1210px;top:450px;width:80px;text-align:center;font-size:36px;color:#00e5a0;opacity:0">0.1</div>
+    <div id="c2v2" class="c2abs c2mono" style="left:1290px;top:215px;width:80px;text-align:center;font-size:36px;color:#e8eef5;opacity:0">1.0</div>
+    <div id="c2sq7" class="c2sq" style="left:1222px;width:117px;height:117px"></div>
+    <div id="c2eq" class="c2abs c2mono" style="left:120px;top:630px;width:1000px;font-size:48px;line-height:72px;color:#e8eef5">
+      <div id="c2l1" style="opacity:0">gap = 1.0 &minus; 0.1 = <span style="color:#ff5d73">0.9</span></div>
+      <div id="c2l2" style="opacity:0"><span style="color:#ff5d73">0.9 &times; 0.9</span> = 0.81</div>
+      <div id="c2l3" style="opacity:0;color:#ff5d73">squared error: 0.81</div>
+    </div>
+
+    <!-- scene 6: examples -->
+    <div id="c2cards"></div>
+    <div id="c2more" class="c2abs" style="left:470px;width:980px;top:735px;text-align:center;font-size:36px;color:#8a97a6;opacity:0">&hellip; for every training example</div>
+
+    <!-- scenes 7-9: cost -->
+    <div id="c2dots"></div>
+    <div id="c2cost" class="c2abs c2mono" style="z-index:5;left:460px;top:330px;width:1000px;height:240px;line-height:240px;text-align:center;font-size:230px;color:#00e5a0;opacity:0">0.94</div>
+    <div id="c2clab" class="c2abs" style="left:460px;width:1000px;top:590px;text-align:center;font-size:44px;font-weight:800;letter-spacing:8px;color:#00e5a0;opacity:0">COST</div>
+    <div id="c2csub" class="c2abs" style="left:460px;width:1000px;top:650px;text-align:center;font-size:36px;color:#8a97a6;opacity:0">average squared error over all examples</div>
+    <div id="c2goal" class="c2abs" style="left:260px;width:1400px;top:430px;text-align:center;font-size:88px;font-weight:800;opacity:0;white-space:nowrap">LEARNING = LOWER THE <span style="color:#00e5a0">SCORE</span></div>
+
+    <!-- meter (stays in the corner) -->
+    <div id="c2meter" class="c2abs" style="left:1420px;top:100px;width:380px;height:200px;border:3px solid #8a97a6;border-radius:24px;background:#121821;opacity:0"></div>
+    <div id="c2mlab" class="c2abs" style="left:1444px;top:112px;font-size:32px;font-weight:800;letter-spacing:6px;color:#8a97a6;opacity:0">COST</div>
+    <div id="c2track" class="c2abs" style="left:1444px;top:268px;width:332px;height:14px;border-radius:7px;background:#1c2530;opacity:0"></div>
+    <div id="c2fill" class="c2abs" style="left:1444px;top:268px;width:332px;height:14px;border-radius:7px;background:#00e5a0;transform-origin:0% 50%;opacity:0"></div>
+
+    <!-- scenes 10-13: descent -->
+    <svg id="c2chart" class="c2abs" style="left:0;top:0;opacity:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-allow-overlap>
+      <defs>
+        <marker id="c2ahA" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#ffb454" /></marker>
+        <marker id="c2ahG" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#00e5a0" /></marker>
+      </defs>
+      <path id="c2curve" d="" fill="none" stroke="#e8eef5" stroke-width="6" stroke-linecap="round" />
+      <line id="c2arrUp" x1="200" y1="360" x2="134" y2="272" stroke="#ffb454" stroke-width="7" marker-end="url(#c2ahA)" opacity="0" />
+      <line id="c2arrDn" x1="200" y1="360" x2="266" y2="448" stroke="#00e5a0" stroke-width="7" marker-end="url(#c2ahG)" opacity="0" />
+    </svg>
+    <div id="c2ball" class="c2abs" style="left:0;top:0;width:36px;height:36px;border-radius:50%;background:#00e5a0;box-shadow:0 0 30px #00e5a0;opacity:0"></div>
+    <div id="c2lg1" class="c2abs" style="left:520px;top:400px;font-size:36px;font-weight:700;color:#ffb454;opacity:0;white-space:nowrap">GRADIENT: points uphill</div>
+    <div id="c2lg2" class="c2abs" style="left:520px;top:460px;font-size:36px;font-weight:700;color:#00e5a0;opacity:0;white-space:nowrap">STEP: the opposite way, small</div>
+    <div id="c2k1" class="c2chip" style="left:326px">LOSS</div>
+    <div id="c2a1" class="c2arr" style="left:536px">&rarr;</div>
+    <div id="c2k2" class="c2chip" style="left:572px">DIRECTION</div>
+    <div id="c2a2" class="c2arr" style="left:782px">&rarr;</div>
+    <div id="c2k3" class="c2chip" style="left:818px">SMALL STEP</div>
+    <div id="c2a3" class="c2arr" style="left:1028px">&rarr;</div>
+    <div id="c2k4" class="c2chip" style="left:1064px">REPEAT &#8635;</div>
+    <div id="c2stop" class="c2abs" style="left:450px;width:700px;top:805px;text-align:center;font-size:40px;font-weight:800;color:#00e5a0;opacity:0">CAN'T DROP ANY MORE &rarr; STOP</div>
+
+    <!-- scenes 14-15 -->
+    <svg id="c2web" class="c2abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-allow-overlap></svg>
+    <div id="c2w1" class="c2abs c2mono" style="left:120px;top:440px;font-size:96px;color:#00e5a0;opacity:0">13,000</div>
+    <div id="c2w2" class="c2abs" style="left:120px;top:560px;font-size:44px;font-weight:800;letter-spacing:6px;color:#8a97a6;opacity:0">WEIGHTS, ONE SCORE</div>
+    <div id="c2n1" class="c2abs" style="left:260px;width:1400px;top:360px;text-align:center;font-size:40px;font-weight:800;letter-spacing:8px;color:#ffb454;opacity:0">COMING UP</div>
+    <div id="c2n2" class="c2abs" style="left:260px;width:1400px;top:430px;text-align:center;font-size:88px;font-weight:800;opacity:0;white-space:nowrap">WHO GETS THE <span style="color:#00e5a0">BLAME?</span></div>
+
+    <!-- captions -->
+    <div id="c2cap1" class="clip c2cap" data-start="0" data-duration="3.81" data-track-index="2"><span>Start with error, because a network can only improve at something it can <b>measure</b>.</span></div>
+    <div id="c2cap2" class="clip c2cap" data-start="4.06" data-duration="4.64" data-track-index="2"><span>The network outputs <b>ten activations</b>, one for each digit, and we know the answer we wanted.</span></div>
+    <div id="c2cap3" class="clip c2cap" data-start="8.95" data-duration="3.71" data-track-index="2"><span>Take the gap between each output and its desired value, and <b>square</b> it.</span></div>
+    <div id="c2cap4" class="clip c2cap" data-start="12.91" data-duration="1.69" data-track-index="2"><span>Then <b>add up</b> all those squares.</span></div>
+    <div id="c2cap5" class="clip c2cap" data-start="14.85" data-duration="6.11" data-track-index="2"><span>A guess of 0.1 where the answer is 1.0 gives a squared error of <b>0.81</b>.</span></div>
+    <div id="c2cap6" class="clip c2cap" data-start="21.21" data-duration="2.8" data-track-index="2"><span>Do this for every training example and take the <b>average</b>.</span></div>
+    <div id="c2cap7" class="clip c2cap" data-start="24.26" data-duration="3.89" data-track-index="2"><span>That average is the <b>cost</b>, one number saying how wrong the whole network is.</span></div>
+    <div id="c2cap8" class="clip c2cap" data-start="28.4" data-duration="3.11" data-track-index="2"><span>Millions of messy mistakes get squeezed into a <b>single score</b>.</span></div>
+    <div id="c2cap9" class="clip c2cap" data-start="31.76" data-duration="2.79" data-track-index="2"><span>Learning then becomes a clear job: <b>lower that score</b>.</span></div>
+    <div id="c2cap10" class="clip c2cap" data-start="34.8" data-duration="3.86" data-track-index="2"><span>The method is <b>gradient descent</b>, an iterative way of lowering a loss function.</span></div>
+    <div id="c2cap11" class="clip c2cap" data-start="38.91" data-duration="4.25" data-track-index="2"><span>You compute the gradient, then move the weights a <b>small step</b> in the opposite direction.</span></div>
+    <div id="c2cap12" class="clip c2cap" data-start="43.41" data-duration="6.36" data-track-index="2"><span>Google's course gives the same loop: calculate the loss, find the direction, move a small amount, and <b>repeat</b>.</span></div>
+    <div id="c2cap13" class="clip c2cap" data-start="50.02" data-duration="1.98" data-track-index="2"><span>You <b>stop</b> when the loss can no longer drop.</span></div>
+    <div id="c2cap14" class="clip c2cap" data-start="52.25" data-duration="3.38" data-track-index="2"><span>But <b>thirteen thousand weights</b> all affect that one number differently.</span></div>
+    <div id="c2cap15" class="clip c2cap" data-start="55.88" data-duration="3.54" data-track-index="2"><span>Coming up: which weights deserve the <b>blame</b>.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const $ = (s) => document.querySelector(s);
+    const ACC = "#00e5a0", DIM = "#8a97a6", RED = "#ff5d73", AMB = "#ffb454";
+    const mk = (parent, cls, id, css, html) => {
+      const e = document.createElement("div");
+      e.className = cls; e.id = id; e.style.cssText = css; if (html) e.innerHTML = html;
+      $(parent).appendChild(e); return e;
+    };
+    let seed = 7;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+    // ---- data (ILLUSTRATIVE): outputs vs target for digit 7 ----
+    const OUT = [0.2, 0.1, 0.6, 0.1, 0.3, 0.1, 0.2, 0.1, 0.4, 0.1];
+    const TGT = [0, 0, 0, 0, 0, 0, 0, 1, 0, 0];
+    const BASE = 520, H = 260, SQ = 130;
+    const cx = (i) => 300 + 140 * i;
+    OUT.forEach((o, i) => {
+      const t = TGT[i], g = Math.abs(t - o), s = g * SQ;
+      mk("#c2cols", "c2dig c2mono", "c2d" + i, `left:${cx(i) - 40}px`, String(i));
+      mk("#c2cols", "c2out", "c2o" + i, `left:${cx(i) - 50}px`);
+      mk("#c2cols", "c2tg", "c2t" + i, `left:${cx(i) + 10}px`);
+      mk("#c2cols", "c2gap", "c2g" + i, `left:${cx(i) - 4}px;top:${BASE - H * Math.max(o, t)}px;height:${g * H}px`);
+      mk("#c2cols", "c2sq", "c2s" + i, `left:${cx(i) - s / 2}px;width:${s}px;height:${s}px`);
+    });
+
+    // ---- captions ----
+    [[1, 0, 3.81], [2, 4.06, 4.64], [3, 8.95, 3.71], [4, 12.91, 1.69], [5, 14.85, 6.11], [6, 21.21, 2.8], [7, 24.26, 3.89], [8, 28.4, 3.11],
+     [9, 31.76, 2.79], [10, 34.8, 3.86], [11, 38.91, 4.25], [12, 43.41, 6.36], [13, 50.02, 1.98], [14, 52.25, 3.38], [15, 55.88, 3.54]].forEach(([n, t]) => {
+      tl.fromTo(`#c2cap${n} span`, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, t);
+    });
+
+    // ---- scene 1 (0-3.9): error needs a measure ----
+    const ticks = $("#c2ticks");
+    for (let i = 0; i <= 40; i++) {
+      const x = 360 + i * 30, h = i % 5 === 0 ? 44 : 24;
+      ticks.insertAdjacentHTML("beforeend", `<line class="c2tick" x1="${x}" y1="600" x2="${x}" y2="${600 - h}"/>`);
+    }
+    tl.fromTo("#c2ttl1", { opacity: 0, y: 330 }, { opacity: 1, y: 330, duration: 0.5, ease: "power3.out" }, 0.1);
+    tl.fromTo("#c2ruler", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    tl.fromTo(".c2tick", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.025 }, 0.4);
+    tl.fromTo("#c2marker", { x: 360, y: 595 }, { x: 1380, y: 595, duration: 1.6, ease: "power2.inOut" }, 1.2);
+    tl.fromTo("#c2rtxt", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.0);
+    tl.to(["#c2ruler", "#c2rtxt"], { opacity: 0, duration: 0.3 }, 3.7);
+    tl.to("#c2ttl1", { y: 0, duration: 0.6, ease: "power3.inOut" }, 3.8);
+
+    // ---- scene 2 (4.06-8.7): ten outputs, then the targets ----
+    tl.fromTo("#c2pill", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 4.1);
+    tl.fromTo("#c2leg", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 4.1);
+    OUT.forEach((o, i) => {
+      tl.fromTo("#c2d" + i, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 4.2 + i * 0.07);
+      tl.fromTo("#c2o" + i, { opacity: 1, scaleY: 0 }, { opacity: 1, scaleY: Math.max(o, 0.015), duration: 0.6, ease: "power3.out" }, 4.3 + i * 0.1);
+      tl.fromTo("#c2t" + i, { opacity: 1, scaleY: 0 }, { opacity: 1, scaleY: Math.max(TGT[i], 0.015), duration: 0.6, ease: "power3.out" }, 6.2 + i * 0.08);
+    });
+    tl.to("#c2d7", { color: ACC, duration: 0.3 }, 7.3);
+
+    // ---- scene 3 (8.95-12.7): gaps, then squares ----
+    OUT.forEach((o, i) => {
+      tl.fromTo("#c2g" + i, { opacity: 1, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 9.0 + i * 0.06);
+      tl.fromTo("#c2s" + i, { opacity: 1, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 10.4 + i * 0.07);
+    });
+    tl.fromTo("#c2sqlab", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.4);
+
+    // ---- scene 4 (12.91-14.6): add them up ----
+    OUT.forEach((o, i) => {
+      const s = Math.abs(TGT[i] - OUT[i]) * SQ;
+      tl.to("#c2s" + i, { x: 960 - cx(i), y: 700 - (640 + s / 2), scale: 0.4, opacity: 0, duration: 0.7, ease: "power2.in" }, 13.0 + i * 0.03);
+    });
+    tl.to("#c2sqlab", { opacity: 0, duration: 0.2 }, 13.0);
+    tl.fromTo("#c2block", { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 13.7);
+    tl.fromTo("#c2blocklab", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 13.9);
+
+    // ---- scene 5 (14.85-20.96): one example, digit 7 ----
+    tl.to(["#c2block", "#c2blocklab", "#c2leg"], { opacity: 0, duration: 0.3 }, 14.85);
+    for (let i = 0; i < 10; i++) if (i !== 7) tl.to(["#c2d" + i, "#c2o" + i, "#c2t" + i, "#c2g" + i], { opacity: 0.12, duration: 0.4 }, 14.9);
+    tl.fromTo("#c2v1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.4);
+    tl.fromTo("#c2v2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.9);
+    tl.fromTo("#c2l1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 16.4);
+    tl.fromTo("#c2sq7", { opacity: 1, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 18.2);
+    tl.fromTo("#c2l2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 18.4);
+    tl.fromTo("#c2l3", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 19.7);
+    tl.to("#c2sq7", { scale: 1.12, duration: 0.25, yoyo: true, repeat: 1, ease: "power1.inOut" }, 19.8);
+
+    // ---- scene 6 (21.21-24.0): many examples, averaged ----
+    tl.to(["#c2cols", "#c2v1", "#c2v2", "#c2sq7", "#c2eq"], { opacity: 0, duration: 0.4 }, 21.2);
+    const errs = ["1.54", "0.32", "0.87", "0.21", "2.10", "0.62"];
+    errs.forEach((v, i) => {
+      const l = 470 + (i % 3) * 340, tp = 300 + Math.floor(i / 3) * 210;
+      mk("#c2cards", "c2card", "c2c" + i, `left:${l}px;top:${tp}px`, `<small>EXAMPLE ${i + 1}</small><b class="c2mono">${v}</b>`);
+      tl.fromTo("#c2c" + i, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 21.5 + i * 0.18);
+      tl.to("#c2c" + i, { x: 960 - (l + 150), y: 450 - (tp + 85), scale: 0.3, opacity: 0, duration: 0.7, ease: "power2.in" }, 23.1 + i * 0.03);
+    });
+    tl.fromTo("#c2more", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 22.4);
+    tl.to("#c2more", { opacity: 0, duration: 0.3 }, 23.0);
+
+    // ---- scene 7 (24.26-28.2): the cost ----
+    tl.fromTo("#c2cost", { opacity: 0, scale: 0.6, textShadow: "0 0 0px rgba(0,229,160,0)" }, { opacity: 1, scale: 1, textShadow: "0 0 60px rgba(0,229,160,0.7)", duration: 0.7, ease: "back.out(1.6)" }, 24.3);
+    tl.fromTo("#c2clab", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 24.9);
+    tl.fromTo("#c2csub", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 25.8);
+
+    // ---- scene 8 (28.4-31.5): millions of mistakes squeezed in ----
+    tl.to(["#c2clab", "#c2csub"], { opacity: 0, duration: 0.3 }, 28.4);
+    tl.to("#c2cost", { opacity: 0.2, duration: 0.3 }, 28.4);
+    for (let i = 0; i < 48; i++) {
+      const x = 160 + rnd() * 1580, y = 260 + rnd() * 560;
+      mk("#c2dots", "c2dot", "c2dt" + i, `left:${x}px;top:${y}px`);
+      tl.fromTo("#c2dt" + i, { opacity: 0, scale: 0 }, { opacity: 0.9, scale: 1, duration: 0.25, ease: "power3.out" }, 28.5 + i * 0.008);
+      tl.to("#c2dt" + i, { x: 949 - x, y: 449 - y, opacity: 0, duration: 0.9, ease: "power3.in" }, 29.5 + i * 0.012);
+    }
+    tl.to("#c2cost", { opacity: 1, duration: 0.3 }, 30.5);
+    tl.fromTo("#c2cost", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 30.6);
+    tl.to(["#c2clab", "#c2csub"], { opacity: 1, duration: 0.4 }, 30.8);
+
+    // ---- scene 9 (31.76-34.55): the score moves to the corner ----
+    tl.to(["#c2clab", "#c2csub"], { opacity: 0, duration: 0.3 }, 31.8);
+    tl.fromTo(["#c2meter", "#c2mlab", "#c2track", "#c2fill"], { opacity: 0 }, { opacity: 1, duration: 0.5 }, 32.0);
+    tl.fromTo("#c2fill", { scaleX: 1 }, { scaleX: 1, duration: 0.01 }, 32.0);
+    tl.to("#c2cost", { x: 650, y: -245, scale: 0.33, textShadow: "0 0 12px rgba(0,229,160,0.6)", duration: 0.8, ease: "power3.inOut" }, 32.0);
+    tl.fromTo("#c2goal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 33.0);
+    tl.to("#c2goal", { opacity: 0, duration: 0.3 }, 34.5);
+
+    // ---- scenes 10-13 (34.8-52): gradient descent ----
+    const CX = 800, HW = 600, TOP = 360, BOT = 760;
+    const Y = (x) => BOT - (BOT - TOP) * Math.pow((x - CX) / HW, 2);
+    const U2 = (x) => Math.pow((x - CX) / HW, 2);
+    let d = "";
+    for (let x = CX - HW; x <= CX + HW; x += 20) d += (d ? "L" : "M") + x + " " + Y(x).toFixed(1) + " ";
+    $("#c2curve").setAttribute("d", d);
+    const st = { x: 200 };
+    const ball = $("#c2ball"), costEl = $("#c2cost"), fill = $("#c2fill");
+    const render = () => {
+      ball.style.transform = `translate(${st.x - 18}px, ${Y(st.x) - 18}px)`;
+      const c = 0.12 + 0.82 * U2(st.x);
+      costEl.textContent = c.toFixed(2);
+      fill.style.transform = `scaleX(${(c / 0.94).toFixed(3)})`;
+    };
+    const step = (x, t, dur) => tl.to(st, { x, duration: dur, ease: "power2.inOut", onUpdate: render }, t);
+    tl.call(render, null, 0);
+    tl.to("#c2ttl1", { opacity: 0, duration: 0.3 }, 34.8);
+    tl.fromTo("#c2ttl2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 35.0);
+    tl.fromTo("#c2chart", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 35.0);
+    tl.fromTo("#c2ball", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 35.4);
+    tl.fromTo("#c2lg1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 38.9);
+    tl.fromTo("#c2arrUp", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 39.0);
+    tl.fromTo("#c2lg2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 40.2);
+    tl.fromTo("#c2arrDn", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 40.3);
+    tl.to(["#c2arrUp", "#c2arrDn"], { opacity: 0, duration: 0.3 }, 41.6);
+    step(330, 41.7, 0.8);
+    tl.to(["#c2lg1", "#c2lg2"], { opacity: 0, duration: 0.3 }, 43.2);
+
+    // scene 12: the loop, highlighted in step with the narration
+    const lit = (id, t) => tl.to(id, { borderColor: ACC, color: "#e8eef5", duration: 0.2 }, t);
+    const unlit = (id, t) => tl.to(id, { borderColor: DIM, color: DIM, duration: 0.2 }, t);
+    tl.fromTo([".c2chip", ".c2arr"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.08 }, 43.5);
+    lit("#c2k1", 45.3); step(440, 45.4, 0.8);
+    unlit("#c2k1", 46.5); lit("#c2k2", 46.5); step(540, 46.6, 0.8);
+    unlit("#c2k2", 47.6); lit("#c2k3", 47.6); step(630, 47.7, 0.8);
+    unlit("#c2k3", 48.8); lit("#c2k4", 48.8); step(700, 48.9, 0.7);
+    tl.to([".c2chip", ".c2arr"], { opacity: 0, duration: 0.3 }, 49.7);
+
+    // scene 13: no more drop
+    step(790, 50.1, 0.9);
+    step(800, 51.0, 0.5);
+    tl.fromTo("#c2stop", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 51.0);
+
+    // ---- scene 14 (52.25-55.7): 13,000 weights, one score ----
+    tl.to(["#c2chart", "#c2ball", "#c2stop", "#c2ttl2"], { opacity: 0, duration: 0.4 }, 52.0);
+    const web = $("#c2web");
+    for (let i = 0; i < 56; i++) {
+      const x = 860 + rnd() * 500, y = 340 + rnd() * 490, w = 1 + rnd() * 4, col = [ACC, AMB, DIM][i % 3];
+      web.insertAdjacentHTML("beforeend", `<line class="c2wl" x1="${x.toFixed(0)}" y1="${y.toFixed(0)}" x2="1610" y2="296" stroke="${col}" stroke-width="${w.toFixed(1)}" opacity="0"/><circle class="c2wl" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(w + 3).toFixed(1)}" fill="${col}" opacity="0"/>`);
+    }
+    tl.fromTo(".c2wl", { opacity: 0 }, { opacity: 0.75, duration: 0.3, stagger: 0.012 }, 52.5);
+    tl.fromTo("#c2w1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 52.4);
+    tl.fromTo("#c2w2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 53.0);
+    tl.to("#c2meter", { borderColor: AMB, duration: 0.3, yoyo: true, repeat: 1 }, 54.3);
+
+    // ---- scene 15 (55.88-59.4): coming up ----
+    tl.to(".c2wl", { opacity: 0.08, duration: 0.5 }, 55.7);
+    tl.to(["#c2w1", "#c2w2"], { opacity: 0, duration: 0.4 }, 55.7);
+    tl.fromTo("#c2n1", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 56.0);
+    tl.fromTo("#c2n2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 56.4);
+
+    window.__timelines["ch02"] = tl;
+  </script>
+</template>

@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "A login box can let a stranger read your database.",
+    "start": 0.0,
+    "duration": 2.68
+  },
+  {
+    "i": 2,
+    "text": "The trick is typing SQL code instead of a username.",
+    "start": 2.93,
+    "duration": 2.76
+  },
+  {
+    "i": 3,
+    "text": "A careless app glues that text into its query.",
+    "start": 5.94,
+    "duration": 2.48
+  },
+  {
+    "i": 4,
+    "text": "So the database runs it as a command, not as text.",
+    "start": 8.67,
+    "duration": 2.6
+  },
+  {
+    "i": 5,
+    "text": "That can read or change data, even log you in without the password.",
+    "start": 11.52,
+    "duration": 3.52
+  },
+  {
+    "i": 6,
+    "text": "Parameterized queries fix it by keeping input as data, never code.",
+    "start": 15.29,
+    "duration": 3.56
+  }
+]

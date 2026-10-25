@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "In 1956, a Dartmouth workshop launched the field: artificial intelligence.",
+    "start": 0.0,
+    "duration": 4.93
+  },
+  {
+    "i": 2,
+    "text": "In 1997, Deep Blue beat Kasparov: a machine beat the world chess champion.",
+    "start": 5.18,
+    "duration": 4.96
+  },
+  {
+    "i": 3,
+    "text": "In 2012, AlexNet won the ImageNet challenge, and deep learning took the lead.",
+    "start": 10.39,
+    "duration": 5.02
+  },
+  {
+    "i": 4,
+    "text": "In 2017, Attention Is All You Need introduced the Transformer.",
+    "start": 15.66,
+    "duration": 4.43
+  },
+  {
+    "i": 5,
+    "text": "In 2022, ChatGPT launched, and the public finally noticed.",
+    "start": 20.34,
+    "duration": 4.44
+  },
+  {
+    "i": 6,
+    "text": "Five moments, and the gaps keep shrinking.",
+    "start": 25.03,
+    "duration": 2.72
+  }
+]

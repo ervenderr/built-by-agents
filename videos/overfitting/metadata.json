@@ -1,0 +1,8 @@
+{
+  "title": "What Is Overfitting? Why Models Fail on New Data",
+  "description": "Overfitting is when a model memorizes its training set so closely that it fails on new data, and rising validation loss is the sign to watch.\n\nThe dots, curve and loss lines are schematic illustrations; no real model was trained, and a simple line being better is a rule of thumb, not shown for a specific dataset.\n\nNo remixed repo; built with HyperFrames (HeyGen) and GSAP.\n\nNarration is a synthetic voice (VoiceStudio). Animation is written as code.\n\n#Shorts #Overfitting #MachineLearning",
+  "tags": ["overfitting", "what is overfitting", "overfitting explained", "machine learning basics", "validation loss", "training vs validation loss", "model generalization", "ai explained"],
+  "category_id": "27",
+  "synthetic_media": true,
+  "made_for_kids": false
+}

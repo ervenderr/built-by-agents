@@ -1,0 +1,38 @@
+[
+  {
+    "i": 1,
+    "text": "How does an AI know what a word means?",
+    "start": 0.0,
+    "duration": 2.11
+  },
+  {
+    "i": 2,
+    "text": "It uses attention, where each word looks at the other words around it.",
+    "start": 2.36,
+    "duration": 3.58
+  },
+  {
+    "i": 3,
+    "text": "Each word gives the other words a score.",
+    "start": 6.19,
+    "duration": 2.17
+  },
+  {
+    "i": 4,
+    "text": "Then softmax turns those scores into weights that are positive and add up to one.",
+    "start": 8.61,
+    "duration": 4.26
+  },
+  {
+    "i": 5,
+    "text": "A bigger weight means that word matters more here.",
+    "start": 13.12,
+    "duration": 2.65
+  },
+  {
+    "i": 6,
+    "text": "The word's new meaning is a weighted sum of all of them.",
+    "start": 16.02,
+    "duration": 2.83
+  }
+]
